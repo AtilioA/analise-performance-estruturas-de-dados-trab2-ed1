@@ -1,2 +1,1 @@
-# trab2-ed1
-Projeto de um compactador feito com a codificação de Huffman apresentado como requisito parcial para a aprovação na disciplina de Estruturas de Dados 1.
+# Implementação de um compactador utilizando a codificação de Huffman e linguagem C
