@@ -1,7 +1,6 @@
 \documentclass[12pt, oneside, a4paper, brazil]{abntex2}
 % \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
-\usepackage{lmodern}
 % \usepackage[T1]{fontenc}
 \usepackage{fontspec}
 \usepackage{setspace}
@@ -17,6 +16,7 @@
 % \usepackage{times}
 \usepackage[scaled]{helvet}
 \usepackage{fancyhdr}
+\usepackage{lmodern}
 
 
 %%% Definição de variáveis. %%%
@@ -54,11 +54,11 @@
 % Informações do PDF.
 \makeatletter
 \hypersetup{
-	pdftitle={\@title},
+	pdftitle={\@title}, 
 	pdfauthor={\@author},
 	pdfsubject={\imprimirpreambulo},
 	pdfcreator={LaTeX with abnTeX2},
-	pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+	pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
 	colorlinks=true,				% Colore os links (ao invés de usar caixas).
 	linkcolor=blue,					% Cor dos links.
 	citecolor=blue,					% Cor dos links na bibliografia.
@@ -90,7 +90,7 @@
 \begin{figure}[h]
   \centering
   \includegraphics[scale=0.055]{figuras/brasao}
-\end{figure}
+\end{figure} 
 
 % Capa do trabalho.
 \imprimircapa
@@ -114,10 +114,14 @@
 
 % Inclusão dos capítulos.
 % (*) Para facilitar a organização, os capítulos foram divididos em arquivo separados e colocados dentro da.
-% pasta capitulos/. Caso o aluno prefira trabalhar com um só arquivo, basta substituir os comandos \input
+% pasta capitulos/. Caso o aluno prefira trabalhar com um só arquivo, basta substituir os comandos \input 
 % pelos conteúdos dos arquivos que estão sendo incluídos, excluindo a pasta capitulos/ em seguida.
 
-\input{corpo}
+\input{cap1.tex}
+\input{cap2.tex}
+\input{cap3.tex}
+\input{cap4.tex}
+\input{cap5.tex}
 
 
 % Finaliza a parte no bookmark do PDF para que se inicie o bookmark na raiz e adiciona espaço de parte no sumário.
