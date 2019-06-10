@@ -1,166 +1,22 @@
-% =========================================================
-% Modelo para relatório de disciplina baseado no
-% Modelo para Anteprojeto de Graduação - Ciência da Computação (em Português)
-% Prof. Vítor E. Silva Souza - NEMO / PPGI / DI / UFES
-%
-% Baseado em abtex2-modelo-trabalho-academico.tex, v-1.9.2 laurocesar
-% Copyright 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/
-%
-% This work may be distributed and/or modified under the conditions of the LaTeX
-% Project Public License, either version 1.3 of this license or (at your option)
-% any later version. The latest version of this license is in
-% http://www.latex-project.org/lppl.txt.
-%
-% IMPORTANTE:
-% Instruções encontram-se espalhadas pelo documento. Para facilitar sua leitura,
-% tais instruções são precedidas por (*) -- utilize a função localizar do seu
-% editor para passar por todas elas.
-% =========================================================
-
-% Usa o estilo abntex2, configurando detalhes de formatação e hifenização.
-\documentclass[
-	12pt,              % Tamanho da fonte.
-	oneside,         % Para impressão em apenas um lado (não inclui páginas em branco).
-	a4paper,        % Tamanho do papel.
-	english,			% Idioma adicional para hifenização.
-	french,				% Idioma adicional para hifenização.
-	spanish,			% Idioma adicional para hifenização.
-	brazil				% O último idioma é o principal do documento.
-	]{abntex2}
-
-
-
-
-%%% Importação de pacotes. %%%
-
-% Conserta o erro "No room for a new \count"
-% Em alguns sistemas operacionais, a linha \reserveinserts{28} deve ser comentada.
-\usepackage{etex}
-%\reserveinserts{28}
-
-% Usa a fonte Latin Modern.
+\documentclass[12pt, oneside, a4paper, brazil]{abntex2}
+% \usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
 \usepackage{lmodern}
-
-% Seleção de códigos de fonte.
-\usepackage[T1]{fontenc}
-
-% Codificação do documento em Unicode.
-\usepackage[utf8]{inputenc}
-
-% Indenta o primeiro parágrafo de cada seção.
-\usepackage{indentfirst}
-
-% Controle das cores.
-\usepackage[usenames,dvipsnames]{xcolor}
-
-% Inclusão de gráficos.
+% \usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{setspace}
 \usepackage{graphicx}
-
-% Posicionamento de elementos.
+\usepackage{scalefnt}
 \usepackage{float}
-
-% Melhor controle de layout em tabelas.
-\usepackage{tabularx}
-\usepackage{multirow}
-\usepackage{hhline}
-
-% Para melhorias de justificação.
-\usepackage{microtype}
-
-% Citações padrão ABNT.
-\usepackage[brazilian,hyperpageref]{backref}
-\usepackage[alf]{abntex2cite}
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}		% Usado sem a opção hyperpageref de backref.
-\renewcommand{\backref}{}										% Texto padrão antes do número das páginas.
-\renewcommand*{\backrefalt}[4]{									% Define os textos da citação.
-	\ifcase #1
-	Nenhuma citação no texto.
-	\or
-	Citado na página #2.
-	\else
-	Citado #1 vezes nas páginas #2.
-	\fi}
-
-% \rm is deprecated and should not be used in a LaTeX2e document
-% http://tex.stackexchange.com/questions/151897/always-textrm-never-rm-a-counterexample
-\renewcommand{\rm}{\textrm}
-
-% Inclusão de símbolos não padrão.
-\usepackage{amssymb}
-\usepackage{eurosym}
-
-% Para utilizar \eqref para referenciar equações.
-\usepackage{amsmath}
-
-% Permite mostrar figuras muito largas em modo paisagem com \begin{sidewaysfigure} ao invés de \begin{figure}.
-\usepackage{rotating}
-
-% Permite customizar listas enumeradas/com marcadores.
-\usepackage{enumitem}
-
-% Permite inserir hiperlinks com \url{}.
-\usepackage{bigfoot}
+\usepackage[a4paper, left=3cm, right=2.5cm, top=3cm, bottom = 2.5cm]{geometry}
 \usepackage{hyperref}
-
-% Permite usar o comando \hl{} para evidenciar texto com fundo amarelo. Útil para chamar atenção a itens a fazer.
-\usepackage{soulutf8}
-
-% Permite inserir espaço em branco condicional (incluído no texto final só se necessário) em macros.
-\usepackage{xspace}
-
-% Permite inserir comentários para controle de revisão de documentos.
-\usepackage[colorinlistoftodos, textwidth=20mm, textsize=footnotesize]{todonotes}
-\newcommand{\aluno}[1]{\todo[author=\textbf{Aluno},color=green!30,caption={},inline]{#1}}
-\newcommand{\professor}[1]{\todo[author=\textbf{Professor},color=red!30,caption={},inline]{#1}}
-
-% Permite incluir listagens de código com o comando \lstinputlisting{}.
 \usepackage{listings}
-\usepackage{caption}
-\DeclareCaptionFont{white}{\color{white}}
-\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
-\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
-\renewcommand{\lstlistingname}{Listagem}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\lstset{
-	basicstyle=\scriptsize,
-	breaklines=true,
-	numbers=left,
-	numbersep=5pt,
-	numberstyle=\tiny\color{mygray},
-	rulecolor=\color{black},
-	showstringspaces=false,
-	tabsize=2,
-	inputencoding=utf8,
-	extendedchars=true,
-	literate=%
-	{é}{{\'{e}}}1
-	{è}{{\`{e}}}1
-	{ê}{{\^{e}}}1
-	{ë}{{\¨{e}}}1
-	{É}{{\'{E}}}1
-	{Ê}{{\^{E}}}1
-	{û}{{\^{u}}}1
-	{ù}{{\`{u}}}1
-	{â}{{\^{a}}}1
-	{à}{{\`{a}}}1
-	{á}{{\'{a}}}1
-	{ã}{{\~{a}}}1
-	{Á}{{\'{A}}}1
-	{Â}{{\^{A}}}1
-	{Ã}{{\~{A}}}1
-	{ç}{{\c{c}}}1
-	{Ç}{{\c{C}}}1
-	{õ}{{\~{o}}}1
-	{ó}{{\'{o}}}1
-	{ô}{{\^{o}}}1
-	{Õ}{{\~{O}}}1
-	{Ó}{{\'{O}}}1
-	{Ô}{{\^{O}}}1
-	{î}{{\^{i}}}1
-	{Î}{{\^{I}}}1
-	{í}{{\'{i}}}1
-	{Í}{{\~{Í}}}1
-}
+\usepackage{color}
+\usepackage{titlesec}
+%\usepackage[alf]{abntex2cite}
+% \usepackage{times}
+\usepackage[scaled]{helvet}
+\usepackage{fancyhdr}
 
 
 %%% Definição de variáveis. %%%
@@ -238,6 +94,7 @@
 
 % Capa do trabalho.
 \imprimircapa
+\imprimirfolhaderosto
 
 % Lista de silgas.
 % (*) Indicar as siglas utilizadas no trabalho como no exemplo abaixo.
@@ -260,11 +117,8 @@
 % pasta capitulos/. Caso o aluno prefira trabalhar com um só arquivo, basta substituir os comandos \input
 % pelos conteúdos dos arquivos que estão sendo incluídos, excluindo a pasta capitulos/ em seguida.
 
-\input{cap1.tex}
-\input{cap2.tex}
-\input{cap3.tex}
-\input{cap4.tex}
-\input{cap5.tex}
+\input{corpo}
+
 
 % Finaliza a parte no bookmark do PDF para que se inicie o bookmark na raiz e adiciona espaço de parte no sumário.
 \phantompart
