@@ -2,6 +2,9 @@
  * relevantes ao TAD árvore binária para o indexador de arquivos.
  */
 
+// Guard para evitar dupla inclusão
+#ifndef __ARVORE_BINARIA_H
+#define __ARVORE_BINARIA_H
 
 /**
 Contem um inteiro e dois apontadores (esquerda/direita)
@@ -62,3 +65,5 @@ void posOrdemArvBin(ArvBin *raiz);
 Libera a árvore binária da memória
 */
 void liberaArvBin(ArvBin *raiz);
+
+#endif
