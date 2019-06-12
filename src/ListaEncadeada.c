@@ -5,96 +5,126 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-tMonte *CMVazio()
+tLista *CMVazio()
 {
-    tMonte *monte;
-    monte = (tMonte *)malloc(sizeof(tMonte));
+    tLista *lista;
+    lista = (tLista *)malloc(sizeof(tLista));
 
-    monte->cabeca = (tCelula *)malloc(sizeof(tCelula)); // monte->cabeca será a cabeça do monte AAAAAAAAAA
-    monte->ultimo = monte->cabeca;
-    monte->ultimo->prox = NULL;
-    monte->tamanho = 0;
+    lista->cabeca = (tCelula *)malloc(sizeof(tCelula));
+    lista->ultimo = lista->cabeca;
+    lista->ultimo->prox = NULL;
+    // lista->tamanho = 0;
 
-    return monte;
+    return lista;
 }
 
-void FMVazio(tMonte *monte)
+void FMVazio(tLista *lista)
 {
-    monte->cabeca = (tCelula *)malloc(sizeof(tCelula)); // monte->cabeca será a cabeça do monte AAAAAAAAAA
-    monte->ultimo = monte->cabeca;
-    monte->ultimo->prox = NULL;
-    monte->tamanho = 0;
+    lista->cabeca = (tCelula *)malloc(sizeof(tCelula));
+    lista->ultimo = lista->cabeca;
+    lista->ultimo->prox = NULL;
+    // lista->tamanho = 0;
 }
 
-int EstaVazio(tMonte *monte)
+int EstaVazio(tLista *lista)
 {
-    return (QuantidadeMonte(monte) == 0);
+    return lista->cabeca == lista->ultimo;
+    // return (QuantidadeLista(lista) == 0);
 }
 
-tCelula CriaCelulaVazia()
+tCelula *CriaCelulaVazia()
 {
-    tCelula celulaVazia;
+    tCelula *celulaVazia = (tCelula *)malloc(sizeof(tCelula));
 
-    // celulaVazia.carta = CartaVazia();
-    celulaVazia.prox = NULL;
+    celulaVazia->prox = NULL;
 
     return celulaVazia;
 }
 
-int QuantidadeMonte(tMonte *monte)
-{
-    return (monte->tamanho);
-}
+// int QuantidadeLista(tLista *lista)
+// {
+//     return (lista->tamanho);
+// }
 
-int ExisteCarta(int x, tMonte *monte)
+int ExistePalavra(tPalavra *x, tLista *lista)
 {
-    if (EstaVazio(monte))
+    if (EstaVazio(lista))
     {
         return 0;
     }
-    tCelula *atual = monte->cabeca->prox;
+    tCelula *atual = lista->cabeca;
 
     while (atual != NULL)
     {
-        // if ((Valor(Carta(atual)) == Valor(x)) && (Naipe(Carta(atual)) == Naipe(x)))
-        // {
-        //     return 1;
-        // }
+        if (String(x) == String(atual))
+        {
+            return 1;
+        }
         atual = atual->prox;
     }
     return 0;
 }
 
-void Insere(int x, tMonte *monte)
+int IndicePalavra(tPalavra *x, tLista *lista)
 {
-    if (!ExisteCarta(x, monte))
+    if (EstaVazio(lista))
     {
-        monte->ultimo->prox = (tCelula *)malloc(sizeof(tCelula));
-        monte->ultimo = monte->ultimo->prox;
-        // monte->ultimo->carta = x;
-        monte->ultimo->prox = NULL;
-
-        monte->tamanho++;
+        return 0;
     }
-    else
+    tCelula *atual = lista->cabeca;
+
+    int i = 0;
+
+    while (atual != NULL)
     {
-        printf("A carta ja existe no monte.\n");
+        if (String(x) == String(atual))
+        {
+            return i;
+        }
+        atual = atual->prox;
+        i++;
+    }
+    return -1;
+}
+
+void Insere(tPalavra *x, tLista *lista)
+{
+    int i = 0, indicePalavra = IndicePalavra(x, lista);
+    if (IndicePalavra == -1) // Palavra não existe na lista
+    {
+        lista->ultimo->prox = (tCelula *)malloc(sizeof(tCelula));
+        lista->ultimo = lista->ultimo->prox;
+        lista->ultimo->palavra = x;
+        lista->ultimo->prox = NULL;
+
+        // lista->tamanho++;
+    }
+    else // Palavra existe na lista
+    {
+        tCelula *atual = lista->cabeca;
+        for (i = 1; i < indicePalavra; i++) // Buscando posição da célula da palavra
+        {
+            atual = atual->prox;
+        }
+        atual->palavra->ocorrencias++;
+        realloc(atual->palavra->posicoes, Ocorrencias(atual) + 1);
+        /* atual->palavra->posicoes ... */
     }
 }
 
-void Retira(int x, tMonte *monte, int *cartaRetirada)
+void Retira(int x, tLista *lista, int *cartaRetirada)
 {
     tCelula *atual, *anterior;
 
-    anterior = monte->cabeca;
-    for (atual = monte->cabeca->prox; atual != NULL; atual = atual->prox)
+    anterior = lista->cabeca;
+    for (atual = lista->cabeca; atual != NULL; atual = atual->prox)
     {
         // if ((Valor(Carta(atual)) == Valor(x)) && (Naipe(Carta(atual)) == Naipe(x)))
         // {
         //     *cartaRetirada = Carta(atual);
         //     anterior->prox = atual->prox;
         //     free(atual);
-        //     monte->tamanho--;
+            // lista->tamanho--;
         //     return;
         // }
         anterior = atual;
@@ -102,31 +132,36 @@ void Retira(int x, tMonte *monte, int *cartaRetirada)
     // *cartaRetirada = CartaVazia();
 }
 // Usando imprimeCarta
-void ImprimeMonte(tMonte *monte)
+void ImprimeLista(tLista *lista)
 {
-    if (QuantidadeMonte(monte) != 0)
+    if (!EstaVazio(lista))
     {
         tCelula *atual = NULL;
 
-        // printf("Quantidade de itens: %i\n", QuantidadeMonte(monte));
-        for (atual = monte->cabeca->prox; atual != NULL; atual = atual->prox)
+        // printf("Quantidade de itens: %i\n", QuantidadeLista(lista));
+        for (atual = lista->cabeca; atual != NULL; atual = atual->prox)
         {
             // ImprimeCarta(Carta(atual));
         }
     }
 }
 
-void DestroiMonte(tMonte *monte)
+void DestroiCelula(tCelula *celula)
+{
+    DestroiPalavra(celula->palavra);
+}
+
+void DestroiLista(tLista *lista)
 {
     tCelula *anterior, *atual;
 
-    atual = monte->cabeca;
+    atual = lista->cabeca;
     while (atual != NULL)
     {
         anterior = atual;
         atual = atual->prox;
-        free(anterior);
+        DestroiCelula(anterior);
     }
 
-    monte->tamanho = 0;
+    // lista->tamanho = 0;
 }

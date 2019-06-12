@@ -6,48 +6,54 @@
 #ifndef __LISTA_ENCADEADA_H
 #define __LISTA_ENCADEADA_H
 
+#include "../include/Indexador.h"
+
 // Lista encadeada que abstrai um conjunto de itens
-typedef struct tCelula
+typedef struct celula
 {
-    /* item */
-    struct tCelula *prox;
+    tPalavra *palavra; // PONTEIRO??
+    struct celula *prox;
 } tCelula;
 
 typedef struct
 {
-    int tamanho;
     tCelula *cabeca, *ultimo;
-} tMonte;
+    char *nomeArquivo;
+    // int tamanho;
+} tLista;
 
 /* Funções para acessar estrutura opaca */
-// Retorna a quantidade de cartas do monte
-int QuantidadeMonte(tMonte *monte);
+// Retorna a quantidade de elementos da lista
+// int QuantidadeLista(tLista *lista);
 
-// Faz a lista (monte) ficar vazia
-void FMVazio(tMonte *monte);
+// Faz a lista (lista) ficar vazia
+void FMVazio(tLista *lista);
 
 // Preenche o baralho com todas as cartas possíveis de um baralho padrão de bisca
-void CriaBaralho(tMonte *monte);
+void CriaBaralho(tLista *lista);
 
-// Verifica se o monte está vazio
-int EstaVazio(tMonte *monte);
+// Verifica se o lista está vazio
+int EstaVazio(tLista *lista);
 
 // Cria uma célula vazia e retorna-a
-tCelula CriaCelulaVazia();
+tCelula *CriaCelulaVazia();
 
-// Verifica se uma carta existe no monte
-int ExisteCarta(int x, tMonte *monte);
+// Verifica se uma carta existe no lista
+int ExistePalavra(tPalavra *x, tLista *lista);
 
-// Insere uma carta no monte
-void Insere(int x, tMonte *monte);
+// Insere uma carta no lista
+void Insere(tPalavra *x, tLista *lista);
 
-// Retira uma carta do monte e retorna o elemento por referência
-void Retira(int x, tMonte *monte, int *cartaRetirada);
+// Retira uma carta do lista e retorna o elemento por referência
+void Retira(int x, tLista *lista, int *cartaRetirada);
 
-// Imprime as cartas do monte
-void ImprimeMonte(tMonte *monte);
+// Imprime as cartas do lista
+void ImprimeLista(tLista *lista);
 
-// Libera as células de um monte e define seu tamanho para 0
-void DestroiMonte(tMonte *monte);
+// Libera as células de um lista e define seu tamanho para 0
+void DestroiLista(tLista *lista);
+
+// Libera os elementos de uma célula
+void DestroiCelula(tCelula *celula);
 
 #endif

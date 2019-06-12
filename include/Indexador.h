@@ -1,9 +1,25 @@
-typedef struct item
-{
-    char *palavra;
-    /* coisas? meu deus o que eu to fazendo */
-} tItem;
+// Guard para evitar dupla inclusão
+#ifndef __INDEXADOR_H
+#define __INDEXADOR_H
 
+typedef struct palavra
+{
+    char *string;
+    int ocorrencias;
+    int *posicoes;
+} tPalavra;
+
+
+char *String(tPalavra *palavra);
+
+int Ocorrencias(tPalavra *palavra);
+
+int *Posicoes(tPalavra *palavra);
+
+// Libera os elementos de uma palavra
+void DestroiPalavra(tPalavra *palavra);
 
 /* Limpa a tela do terminal */
 void clrscr();
+
+#endif
