@@ -19,6 +19,13 @@ int *Posicoes(tPalavra *palavra)
     return palavra->posicoes;
 }
 
+void ImprimePalavra(tPalavra *palavra)
+{
+    printf("Palavra: %s\n", String(palavra));
+    printf("Ocorrencias: %i\n\n", Ocorrencias(palavra));
+    // nao vo printa vetor
+}
+
 tPalavra *criaPalavra(char *string)
 {
     tPalavra *nova = (tPalavra *)malloc(sizeof(tPalavra)); // ponteiro?

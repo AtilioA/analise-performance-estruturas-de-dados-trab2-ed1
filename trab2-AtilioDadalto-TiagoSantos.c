@@ -7,5 +7,18 @@ int main()
 {
     clrscr();
 
+    tLista lista;
+    FMVazio(&lista);
+
+    tPalavra *palavra1 = criaPalavra("sim");
+    ImprimePalavra(palavra1);
+    Insere(palavra1, &lista);
+    Insere(palavra1, &lista);
+    Insere(palavra1, &lista);
+
+    ImprimeLista(&lista);
+
+    // DestroiLista(&lista);
+
     return 0;
 }

@@ -16,6 +16,10 @@ int Ocorrencias(tPalavra *palavra);
 
 int *Posicoes(tPalavra *palavra);
 
+void imprimePalavra(tPalavra *palavra);
+tPalavra *criaPalavra(char *string);
+tPalavra *iniciaPalavra();
+
 // Libera os elementos de uma palavra
 void DestroiPalavra(tPalavra *palavra);
 
