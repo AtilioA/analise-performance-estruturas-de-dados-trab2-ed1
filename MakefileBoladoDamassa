@@ -1,0 +1,19 @@
+CC=gcc
+CFLAGS=-Wall -g
+
+DEPS=lista.h palavra.hi
+DEPSDIR= headers
+_DEPS=$(patsubst %,${DEPSDIR}/%,${DEPS})
+
+OBJ=lista.o palavra.o main.o
+OBJDIR=src
+_OBJ=$(patsubst %,${OBJDIR}/%,${OBJ})
+
+EXEC=LEIA_O_MAKEFILE
+
+${OBJDIR}/%.o: %.c ${_DEPS}
+  ${CC} -c -o $@ $< ${CFLAGS}
+
+all: ${_OBJ}
+  ${CC} -o ${EXEC} $^ ${CFLAGS}
+  rm -f ${OBJDIR}/*.o

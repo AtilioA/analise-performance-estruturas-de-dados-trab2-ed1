@@ -1,0 +1,63 @@
+CC	     := gcc
+CFLAGS   := -g -w -O3 # Sinto que esse O3 pode dar divergência no indexador
+
+OBJ:= ListaEncadeada.o Indexador.o ArvoreBinaria.o
+OBJDIR:= obj
+_OBJ:= $(patsubst %,${OBJDIR}/%,${OBJ})
+SRC:= src
+INC:= ListaEncadeada.h Indexador.h ArvoreBinaria.h
+INCDIR:= include
+_INC:= $(patsubst %,${INCDIR}/%,${INC})
+
+
+EXEC 	 := indexador
+PROJETO  := trab2-AtilioDadalto-TiagoSantos
+
+# Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
+${OBJDIR}/%.o: %.c ${_INC}
+	${CC} -c -o $@ $< ${CFLAGS}
+
+all: ${_OBJ}
+	${CC} -o ${EXEC} $^ ${CFLAGS}
+	rm -f ${OBJDIR}/*.o
+
+
+# Executa o programa
+run:
+	make all
+	./$(EXEC)
+
+# Compila e executa o programa
+voado: main run
+
+# Apenas Linux
+time:
+	time ./$(EXEC)
+
+# Executa o programa com valgrind checando todos os leaks
+# val:
+# 	valgrind --leak-check=full ./${EXEC}
+
+# Executa o programa com valgrind e flags úteis
+val:
+	valgrind --leak-check=full -v --track-origins=yes \
+	--show-leak-kinds=all ./$(EXEC)
+
+# Executa o programa com valgrind sem flags
+valzin:
+	valgrind ./$(EXEC)
+
+# Executa o programa com valgrind e salva resultados num .txt
+valtxt:
+	valgrind --leak-check=full -v --show-leak-kinds=all --track-origins=yes --verbose --log-file="valgrind-out.txt" ./$(EXEC)
+
+# Limpa objetos e o executável do programa (para Windows)
+cleanW:
+	del /F/Q/S "$(OBJ)\*.o"
+	del /F/Q/S $(EXEC).exe
+
+# Limpa objetos e o executável do programa (para Linux)
+clean:
+	-rm *.o
+	-rm $(OBJDIR)/*.o
+	-rm $(EXEC)

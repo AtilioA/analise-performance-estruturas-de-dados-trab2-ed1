@@ -3,7 +3,6 @@
 #include <ctype.h>
 #include "../include/Arquivos.h"
 
-// alterar essa budega
 int lePalavra(FILE *f, char *str, int BUFFER)
 {
     int i = 0;

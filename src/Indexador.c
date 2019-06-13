@@ -3,7 +3,15 @@
 #include <string.h>
 #include "../include/Indexador.h"
 
-
+void imprimeVetH(int *vet, int tamVet)
+{
+    int i = 0;
+    
+    for (i = 0; i < tamVet; i++)
+    {
+        printf("%i ", vet[i]);
+    }
+}
 char *String(tPalavra *palavra)
 {
     return palavra->string;

@@ -30,21 +30,25 @@ int ehFolha(tNo *no)
 
 // Calma, tô implementando
 /*
-Conta o número de nós não-folha de uma árvore binária
-retorna: Numero de nós não folha
+Conta o número de nós-folha de uma árvore binária
+retorna: Numero de nós folha
 */
-int totalNaoFolhaArvbin(ArvBin *raiz)
+int totalFolhaArvbin(ArvBin *raiz)
 {
+    int folhas = 0;
     if (raiz != NULL)
     {
-        printf("%d\n", (*raiz)->info);
+        if (ehFolha(*raiz))
+        {
+            folhas++;
+        }
         if ((*raiz)->esq != NULL)
         {
-            preOrdemArvBin(&((*raiz)->esq));
+            totalFolhaArvbin(&((*raiz)->esq));
         }
         if ((*raiz)->dir != NULL)
         {
-            preOrdemArvBin(&((*raiz)->dir));
+            totalFolhaArvbin(&((*raiz)->dir));
         }
     }
 }

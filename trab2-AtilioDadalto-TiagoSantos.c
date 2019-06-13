@@ -10,6 +10,8 @@ int main()
     tLista lista;
     FMVazio(&lista);
 
+    printf("Boa noite. Nao esta funcionando.\n");
+
     tPalavra *palavra1 = criaPalavra("sim");
     ImprimePalavra(palavra1);
     Insere(palavra1, &lista);
@@ -18,7 +20,7 @@ int main()
 
     ImprimeLista(&lista);
 
-    // DestroiLista(&lista);
+    DestroiLista(&lista);
 
     return 0;
 }
