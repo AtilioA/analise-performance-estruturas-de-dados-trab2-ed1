@@ -33,7 +33,6 @@ int EstaVazio(tLista *lista)
 tCelula *CriaCelulaVazia()
 {
     tCelula *celulaVazia = (tCelula *)malloc(sizeof(tCelula));
-
     celulaVazia->prox = NULL;
 
     return celulaVazia;
@@ -73,7 +72,6 @@ int IndicePalavra(tPalavra *x, tLista *lista)
     tCelula *atual = lista->cabeca;
 
     int i = 0;
-
     while (atual != NULL)
     {
         printf("%i <- oi\n", strcmp(String(x), String(atual)));
@@ -138,14 +136,10 @@ void Retira(int x, tLista *lista, int *cartaRetirada)
 
 void ImprimeLista(tLista *lista)
 {
-    if (!EstaVazio(lista))
-    {
-        tCelula *atual = NULL;
-        // printf("Quantidade de itens: %i\n", QuantidadeLista(lista));
-        for (atual = lista->cabeca; atual != NULL; atual = atual->prox)
-        {
-            ImprimePalavra(atual->palavra);
-        }
+    tCelula *aux = lista->cabeca;
+    while(aux != NULL){
+        ImprimePalavra(aux->palavra);
+        aux = aux->prox;
     }
 }
 
@@ -168,3 +162,36 @@ void DestroiLista(tLista *lista)
 
     // lista->tamanho = 0;
 }
+
+//vam ve se essa parte aqui de baixo vai
+
+tLista *Cria_Lista(){
+    tLista *nova = malloc(sizeof(tLista));
+    nova->cabeca = NULL;
+    nova->ultimo = NULL;
+    return nova;
+}
+
+void Insere_Lista(tPalavra *x, tLista *l){
+    tCelula *nova = malloc(sizeof(tCelula));
+    nova->palavra = x;
+    nova->prox = NULL;
+    if(l->cabeca == NULL){
+        l->cabeca = nova;
+        l->ultimo = nova;
+        return;
+    }else{
+        tCelula *aux = l->cabeca;
+        while(aux != NULL){
+            if(!strcasecmp(x->string, aux->palavra->string)){
+                printf("PALAVRA JÁ EXISTE\n");
+                aux->palavra->ocorrencias++;
+                free(nova);    
+                return;
+            }
+            aux = aux->prox;
+        }
+        l->ultimo->prox = nova;
+    }
+}
+

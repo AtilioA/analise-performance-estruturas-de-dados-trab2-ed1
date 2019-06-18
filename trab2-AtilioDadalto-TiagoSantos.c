@@ -7,20 +7,20 @@ int main()
 {
     clrscr();
 
-    tLista lista;
-    FMVazio(&lista);
+    tLista *lista = Cria_Lista();
 
     printf("Boa noite. Nao esta funcionando.\n");
 
     tPalavra *palavra1 = criaPalavra("sim");
     ImprimePalavra(palavra1);
-    Insere(palavra1, &lista);
-    Insere(palavra1, &lista);
-    Insere(palavra1, &lista);
+    Insere_Lista(palavra1, lista);
+    Insere_Lista(palavra1, lista);
+    Insere_Lista(palavra1, lista);
 
-    ImprimeLista(&lista);
+    ImprimeLista(lista);
 
-    DestroiLista(&lista);
+    DestroiLista(lista);
 
+    free(lista);
     return 0;
 }

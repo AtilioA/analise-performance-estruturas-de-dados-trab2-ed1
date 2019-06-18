@@ -14,6 +14,9 @@ void imprimeVetH(int *vet, int tamVet)
 }
 char *String(tPalavra *palavra)
 {
+    if(palavra == NULL){
+        return NULL;
+    }
     return palavra->string;
 }
 
@@ -49,7 +52,7 @@ tPalavra *criaPalavra(char *string)
     {
         return NULL;
     }
-    nova->ocorrencias = 0;
+    nova->ocorrencias = 1;
 
     return nova;
 }
