@@ -1,6 +1,7 @@
 #include "include/ListaEncadeada.h"
 #include "include/ArvoreBinaria.h"
 #include "include/Indexador.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 int main()
@@ -23,9 +24,9 @@ int main()
     Insere_Lista(palavra2, lista);
     ImprimeLista(lista);
 
-    DestroiLista(lista);
-    DestroiPalavra(palavra1);
-    DestroiPalavra(palavra2);
-    DestroiLista(lista);
-    return 0;
+DestroiLista(lista);
+DestroiPalavra(palavra1);
+DestroiPalavra(palavra2);
+DestroiLista(lista);
+return 0;
 }

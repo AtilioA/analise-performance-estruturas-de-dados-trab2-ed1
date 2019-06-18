@@ -4,26 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-tLista *CMVazio()
-{
-    tLista *lista;
-    lista = (tLista *)malloc(sizeof(tLista));
-
-    lista->cabeca = (tCelula *)malloc(sizeof(tCelula));
-    lista->ultimo = lista->cabeca;
-    lista->ultimo->prox = NULL;
-    // lista->tamanho = 0;
-
-    return lista;
-}
-
-void FMVazio(tLista *lista)
-{
-    lista->cabeca = (tCelula *)malloc(sizeof(tCelula));
-    lista->ultimo = lista->cabeca;
-    lista->ultimo->prox = NULL;
-    // lista->tamanho = 0;
-}
 
 int EstaVazio(tLista *lista)
 {
@@ -177,7 +157,7 @@ void Insere_Lista(tPalavra *x, tLista *l){
     nova->palavra = malloc(sizeof(tPalavra));
     nova->palavra->string = malloc(sizeof(char) * strlen(x->string) + 1);
     strcpy(nova->palavra->string, x->string);
-    nova->palavra->ocorrencias = x->ocorrencias; 
+    nova->palavra->ocorrencias = x->ocorrencias;
     nova->prox = NULL;
     if(l->cabeca == NULL){
         l->cabeca = nova;
@@ -199,4 +179,3 @@ void Insere_Lista(tPalavra *x, tLista *l){
         l->ultimo->prox = nova;
     }
 }
-
