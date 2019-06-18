@@ -12,15 +12,20 @@ int main()
     printf("Boa noite. Nao esta funcionando.\n");
 
     tPalavra *palavra1 = criaPalavra("sim");
-    ImprimePalavra(palavra1);
+    tPalavra *palavra2 = criaPalavra("sim");
     Insere_Lista(palavra1, lista);
     Insere_Lista(palavra1, lista);
-    Insere_Lista(palavra1, lista);
-
+    Insere_Lista(palavra2, lista);
+    Insere_Lista(palavra2, lista);
+    Insere_Lista(palavra2, lista);
+    Insere_Lista(palavra2, lista);
+    Insere_Lista(palavra2, lista);
+    Insere_Lista(palavra2, lista);
     ImprimeLista(lista);
 
     DestroiLista(lista);
-
-    free(lista);
+    DestroiPalavra(palavra1);
+    DestroiPalavra(palavra2);
+    DestroiLista(lista);
     return 0;
 }

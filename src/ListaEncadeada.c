@@ -174,7 +174,10 @@ tLista *Cria_Lista(){
 
 void Insere_Lista(tPalavra *x, tLista *l){
     tCelula *nova = malloc(sizeof(tCelula));
-    nova->palavra = x;
+    nova->palavra = malloc(sizeof(tPalavra));
+    nova->palavra->string = malloc(sizeof(char) * strlen(x->string) + 1);
+    strcpy(nova->palavra->string, x->string);
+    nova->palavra->ocorrencias = x->ocorrencias; 
     nova->prox = NULL;
     if(l->cabeca == NULL){
         l->cabeca = nova;
@@ -186,7 +189,9 @@ void Insere_Lista(tPalavra *x, tLista *l){
             if(!strcasecmp(x->string, aux->palavra->string)){
                 printf("PALAVRA JÁ EXISTE\n");
                 aux->palavra->ocorrencias++;
-                free(nova);    
+                free(nova->palavra->string);
+                free(nova->palavra);
+                free(nova);
                 return;
             }
             aux = aux->prox;
