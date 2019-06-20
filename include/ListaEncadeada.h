@@ -56,8 +56,6 @@ void DestroiLista(tLista *lista);
 // Libera os elementos de uma célula
 void DestroiCelula(tCelula *celula);
 
-
-
 tLista *Cria_Lista();
 void Insere_Lista(tPalavra *x, tLista *l);
 

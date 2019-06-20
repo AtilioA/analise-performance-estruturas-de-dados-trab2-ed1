@@ -4,8 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-int EstaVazio(tLista *lista)
+int EstaVazia(tLista *lista)
 {
     return lista->cabeca == NULL;
 }
@@ -106,7 +105,7 @@ void Retira(int x, tLista *lista, int *cartaRetirada)
         //     *cartaRetirada = Carta(atual);
         //     anterior->prox = atual->prox;
         //     free(atual);
-            // lista->tamanho--;
+        // lista->tamanho--;
         //     return;
         // }
         anterior = atual;
@@ -117,7 +116,8 @@ void Retira(int x, tLista *lista, int *cartaRetirada)
 void ImprimeLista(tLista *lista)
 {
     tCelula *aux = lista->cabeca;
-    while(aux != NULL){
+    while (aux != NULL)
+    {
         ImprimePalavra(aux->palavra);
         aux = aux->prox;
     }
@@ -140,33 +140,39 @@ void DestroiLista(tLista *lista)
         DestroiCelula(anterior);
     }
 
-    // lista->tamanho = 0;
+    // lista->tamanho = -1;
 }
 
-//vam ve se essa parte aqui de baixo vai
-
-tLista *Cria_Lista(){
+//vam ve se essa parte aqui de baixo vamo
+tLista *Cria_Lista()
+{
     tLista *nova = malloc(sizeof(tLista));
     nova->cabeca = NULL;
     nova->ultimo = NULL;
     return nova;
 }
 
-void Insere_Lista(tPalavra *x, tLista *l){
+void Insere_Lista(tPalavra *x, tLista *l)
+{
     tCelula *nova = malloc(sizeof(tCelula));
     nova->palavra = malloc(sizeof(tPalavra));
     nova->palavra->string = malloc(sizeof(char) * strlen(x->string) + 1);
     strcpy(nova->palavra->string, x->string);
     nova->palavra->ocorrencias = x->ocorrencias;
     nova->prox = NULL;
-    if(l->cabeca == NULL){
+    if (l->cabeca == NULL)
+    {
         l->cabeca = nova;
         l->ultimo = nova;
         return;
-    }else{
+    }
+    else
+    {
         tCelula *aux = l->cabeca;
-        while(aux != NULL){
-            if(!strcasecmp(x->string, aux->palavra->string)){
+        while (aux != NULL)
+        {
+            if (!strcasecmp(x->string, aux->palavra->string))
+            {
                 printf("PALAVRA JÁ EXISTE\n");
                 aux->palavra->ocorrencias++;
                 free(nova->palavra->string);
