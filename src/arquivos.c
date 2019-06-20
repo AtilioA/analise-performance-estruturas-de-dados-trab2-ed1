@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "../include/Arquivos.h"
+#include "../include/arquivos.h"
 
 int le_palavra(FILE *f, char *str, int BUFFER)
 {

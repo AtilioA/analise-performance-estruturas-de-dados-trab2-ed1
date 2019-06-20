@@ -1,5 +1,5 @@
-#include "../include/ListaEncadeada.h"
-#include "../include/Indexador.h"
+#include "../include/lista_encadeada.h"
+#include "../include/indexador.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,7 +24,7 @@ Celula *cria_Celula_vazia()
 
 int existe_palavra(Palavra *x, Lista *lista)
 {
-    if (EstaVazio(lista))
+    if (esta_vazia_Lista(lista))
     {
         return 0;
     }
@@ -43,7 +43,7 @@ int existe_palavra(Palavra *x, Lista *lista)
 
 int indice_Palavra(Palavra *x, Lista *lista)
 {
-    if (EstaVazio(lista))
+    if (esta_vazia_Lista(lista))
     {
         printf("Lista vazia.\n");
         return -1;
@@ -68,9 +68,10 @@ int indice_Palavra(Palavra *x, Lista *lista)
 
 void insere_Lista_antigo(Palavra *x, Lista *lista)
 {
-    int i = 0, indice_palavra = indice_palavra(x, lista);
+    int i = 0;
+    int indicePalavra = indice_Palavra(x, lista);
     printf("Inserindo...\n");
-    if (indice_palavra == -1) // Palavra não existe na lista
+    if (indicePalavra == -1) // Palavra não existe na lista
     {
         printf("Palavra NAO existe na lista\n");
         lista->ultimo->prox = (Celula *)malloc(sizeof(Celula));
@@ -83,7 +84,7 @@ void insere_Lista_antigo(Palavra *x, Lista *lista)
     {
         printf("Palavra existe na lista\n");
         Celula *atual = lista->cabeca;
-        for (i = 1; i < indice_palavra; i++) // Buscando posição da célula da palavra
+        for (i = 1; i < indicePalavra; i++) // Buscando posição da célula da palavra
         {
             atual = atual->prox;
         }

@@ -1,13 +1,6 @@
-#include "../include/ArvoreBinaria.h"
+#include "../include/arvore_binaria.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct No
-{
-    int info;
-    struct No *esq;
-    struct No *dir;
-} tNo;
 
 ArvBin *criaArvBin()
 {
@@ -25,7 +18,7 @@ int esta_vazia_ArvBin(ArvBin *raiz)
     return 0;
 }
 
-int eh_folha(tNo *no)
+int eh_folha(No *no)
 {
     if (no == NULL)
     {
@@ -151,11 +144,11 @@ int insere_ArvBin(ArvBin *raiz, int valor)
 {
     if (raiz != NULL)
     {
-        tNo *novo = malloc(sizeof(tNo));
+        No *novo = malloc(sizeof(tNo));
         novo->esq = NULL;
         novo->dir = NULL;
         novo->info = valor;
-        tNo *aux = (*raiz);
+        No *aux = (*raiz);
 
         if ((*raiz) == NULL)
         {

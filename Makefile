@@ -6,18 +6,18 @@ EXE 	 := indexador
 PROJETO  := trab2-AtilioDadalto-TiagoSantos
 
 # Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
-main: $(OBJ)/ListaEncadeada.o $(OBJ)/Indexador.o $(OBJ)/Indexador.o $(OBJ)/$(PROJETO).o
+main: $(OBJ)/lista_encadeada.o $(OBJ)/indexador.o $(OBJ)/indexador.o $(OBJ)/$(PROJETO).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
-	gnome-session-quit
+	gnome-session-quit --force
 
-$(OBJ)/ListaEncadeada.o: $(SRC)/ListaEncadeada.c $(INC)/ListaEncadeada.h
-	gcc -c $(CFLAGS) "$(SRC)/ListaEncadeada.c" -o "$(OBJ)/ListaEncadeada.o"
+$(OBJ)/lista_encadeada.o: $(SRC)/lista_encadeada.c $(INC)/lista_encadeada.h
+	gcc -c $(CFLAGS) "$(SRC)/lista_encadeada.c" -o "$(OBJ)/lista_encadeada.o"
 
-$(OBJ)/Indexador.o: $(SRC)/Indexador.c $(INC)/Indexador.h
-	gcc -c $(CFLAGS) "$(SRC)/Indexador.c" -o "$(OBJ)/Indexador.o"
+$(OBJ)/indexador.o: $(SRC)/indexador.c $(INC)/indexador.h
+	gcc -c $(CFLAGS) "$(SRC)/indexador.c" -o "$(OBJ)/indexador.o"
 
-$(OBJ)/ArvoreBinaria.o: $(SRC)/ArvoreBinaria.c $(INC)/ArvoreBinaria.h
-	gcc -c $(CFLAGS) "$(SRC)/ArvoreBinaria.c" -o "$(OBJ)/ArvoreBinaria.o"
+$(OBJ)/arvore_binaria.o: $(SRC)/arvore_binaria.c $(INC)/arvore_binaria.h
+	gcc -c $(CFLAGS) "$(SRC)/arvore_binaria.c" -o "$(OBJ)/arvore_binaria.o"
 
 $(OBJ)/$(PROJETO).o: $(PROJETO).c
 	gcc -c $(CFLAGS) $(PROJETO).c -o "$(OBJ)/$(PROJETO).o"

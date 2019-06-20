@@ -1,5 +1,10 @@
+// Guard para evitar dupla inclusão
+#ifndef __ARVORE_AVL_H
+#define __ARVORE_AVL_H
 
-typedef struct No* ArvAVL;
+#include "arvore_binaria.h"
+
+typedef struct No *ArvAVL;
 
 ArvAVL *cria_ArvAVL();
 void libera_ArvAVL(ArvAVL *raiz);
@@ -12,3 +17,5 @@ int consulta_ArvAVL(ArvAVL *raiz, int valor);
 void pre_ordem_ArvAVL(ArvAVL *raiz);
 void em_ordem_ArvAVL(ArvAVL *raiz);
 void pos_ordem_ArvAVL(ArvAVL *raiz);
+
+#endif

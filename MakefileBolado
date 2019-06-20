@@ -1,11 +1,11 @@
 CC	     := gcc
 CFLAGS   := -g -w -O3 # Sinto que esse O3 pode dar divergência no indexador
 
-OBJ:= ListaEncadeada.o Indexador.o ArvoreBinaria.o
+OBJ:= lista_encadeada.o indexador.o arvore_binaria.o
 OBJDIR:= obj
 _OBJ:= $(patsubst %,${OBJDIR}/%,${OBJ})
 SRC:= src
-INC:= ListaEncadeada.h Indexador.h ArvoreBinaria.h
+INC:= lista_encadeada.h indexador.h arvore_binaria.h
 INCDIR:= include
 _INC:= $(patsubst %,${INCDIR}/%,${INC})
 

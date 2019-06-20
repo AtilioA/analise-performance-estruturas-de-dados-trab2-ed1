@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ArvoreBinaria.h" //inclui os Prot�tipos
+#include "arvore_binaria.h" //inclui os Prot�tipos
 
 // Já mesclada com biblioteca arvore_binaria
 

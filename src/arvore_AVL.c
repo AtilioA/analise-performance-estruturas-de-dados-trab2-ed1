@@ -2,15 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "ArvoreAVL.h" //inclui os Prot�tipos
-
-struct No
-{
-    int info;
-    int altura;
-    struct No *esq;
-    struct No *dir;
-};
+#include "arvore_AVL.h" //inclui os Prot�tipos
 
 ArvAVL *cria_ArvAVL()
 {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../include/Indexador.h"
+#include "../include/indexador.h"
 
 void imprime_vet_h(int *vet, int tamVet)
 {
@@ -34,7 +34,7 @@ int *get_posicoes(Palavra *palavra)
 void imprime_Palavra(Palavra *palavra)
 {
     printf("Palavra: %s\n", get_string(palavra));
-    printf("Ocorrencias: %i\n\n", Ocorrencias(palavra));
+    printf("Ocorrencias: %i\n\n", get_ocorrencias(palavra));
     // nao vo printa vetor
 }
 

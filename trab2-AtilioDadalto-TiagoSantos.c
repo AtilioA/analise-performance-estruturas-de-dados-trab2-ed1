@@ -1,6 +1,6 @@
-#include "include/ListaEncadeada.h"
-#include "include/ArvoreBinaria.h"
-#include "include/Indexador.h"
+#include "include/lista_encadeada.h"
+#include "include/arvore_binaria.h"
+#include "include/indexador.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-    clrscr();
+    clr_scr();
 
     Lista *lista = cria_Lista();
 

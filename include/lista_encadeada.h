@@ -6,7 +6,7 @@
 #ifndef __LISTA_ENCADEADA_H
 #define __LISTA_ENCADEADA_H
 
-#include "../include/Indexador.h"
+#include "../include/indexador.h"
 
 // Lista encadeada que abstrai um conjunto de itens
 typedef struct Celula

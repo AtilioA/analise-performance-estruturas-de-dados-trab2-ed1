@@ -2,7 +2,7 @@
 /**
 Contem um inteiro e dois apontadores (esquerda/direita)
 */
-typedef struct No* ArvBin;
+typedef struct No * ArvBin;
 
 /**
 Inicializa a árvore e deixa a raiz NULL

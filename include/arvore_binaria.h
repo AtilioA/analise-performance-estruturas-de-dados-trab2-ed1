@@ -6,10 +6,18 @@
 #ifndef __ARVORE_BINARIA_H
 #define __ARVORE_BINARIA_H
 
+typedef struct No
+{
+    int info;
+    struct No *esq;
+    struct No *dir;
+} No;
+
+
 /**
 Contem um inteiro e dois apontadores (esquerda/direita)
 */
-typedef struct No *ArvBin;
+typedef struct No* ArvBin;
 
 /**
 Inicializa a árvore e deixa a raiz NULL
@@ -36,7 +44,7 @@ Verifica se a árvore está vazia
 */
 int estaVaziaArvBin(ArvBin *raiz);
 
-int eh_Folha(tNo *no);
+int eh_Folha(No *no);
 
 /*
 Conta o número de nós não-folha de uma árvore binária
