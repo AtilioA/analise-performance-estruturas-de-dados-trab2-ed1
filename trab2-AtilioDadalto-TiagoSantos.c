@@ -4,29 +4,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ * CONVENÇÕES PARA O TRABALINDO:
+ * Constantes em CAPS: UNUSED, TRUE, FALSE.
+ * Structs e typedefs em CamelCase: ArvBin, Lista.
+ * Funções em snake_case: pre_ordem_ArvBin(), insere_lista().
+ * Ponteiros com asterisco do lado do nome da variável: ArvBin *foo, int *bar.
+ */
+
 int main()
 {
     clrscr();
 
-    tLista *lista = Cria_Lista();
+    Lista *lista = cria_Lista();
 
-    printf("Boa noite. Nao esta funcionando.\n");
+    printf("Boa noite. Esta quase funcionando.\n");
 
-    tPalavra *palavra1 = criaPalavra("sim");
-    tPalavra *palavra2 = criaPalavra("sim");
-    Insere_Lista(palavra1, lista);
-    Insere_Lista(palavra1, lista);
-    Insere_Lista(palavra2, lista);
-    Insere_Lista(palavra2, lista);
-    Insere_Lista(palavra2, lista);
-    Insere_Lista(palavra2, lista);
-    Insere_Lista(palavra2, lista);
-    Insere_Lista(palavra2, lista);
-    ImprimeLista(lista);
+    Palavra *palavra1 = cria_Palavra("sim");
+    Palavra *palavra2 = cria_Palavra("sim");
+    insere_Lista(palavra1, lista);
+    insere_Lista(palavra1, lista);
+    insere_Lista(palavra2, lista);
+    insere_Lista(palavra2, lista);
+    insere_Lista(palavra2, lista);
+    insere_Lista(palavra2, lista);
+    insere_Lista(palavra2, lista);
+    insere_Lista(palavra2, lista);
+    imprime_lista(lista);
 
-DestroiLista(lista);
-DestroiPalavra(palavra1);
-DestroiPalavra(palavra2);
-DestroiLista(lista);
-return 0;
+    destroi_Lista(lista);
+    destroi_Palavra(palavra1);
+    destroi_Palavra(palavra2);
+    destroi_Lista(lista);
+
+    return 0;
 }

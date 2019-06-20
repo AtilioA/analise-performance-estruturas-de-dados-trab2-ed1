@@ -4,35 +4,35 @@
 #include <stdlib.h>
 #include <string.h>
 
-int EstaVazia(tLista *lista)
+int esta_vazia_Lista(Lista *lista)
 {
     return lista->cabeca == NULL;
 }
 
-tCelula *CriaCelulaVazia()
+Celula *cria_Celula_vazia()
 {
-    tCelula *celulaVazia = (tCelula *)malloc(sizeof(tCelula));
+    Celula *celulaVazia = (Celula *)malloc(sizeof(Celula));
     celulaVazia->prox = NULL;
 
     return celulaVazia;
 }
 
-// int QuantidadeLista(tLista *lista)
+// int QuantidadeLista(Lista *lista)
 // {
 //     return (lista->tamanho);
 // }
 
-int ExistePalavra(tPalavra *x, tLista *lista)
+int existe_palavra(Palavra *x, Lista *lista)
 {
     if (EstaVazio(lista))
     {
         return 0;
     }
-    tCelula *atual = lista->cabeca;
+    Celula *atual = lista->cabeca;
 
     while (atual != NULL)
     {
-        if (String(x) == String(atual))
+        if (get_string(x) == get_string(atual))
         {
             return 1;
         }
@@ -41,20 +41,20 @@ int ExistePalavra(tPalavra *x, tLista *lista)
     return 0;
 }
 
-int IndicePalavra(tPalavra *x, tLista *lista)
+int indice_Palavra(Palavra *x, Lista *lista)
 {
     if (EstaVazio(lista))
     {
         printf("Lista vazia.\n");
         return -1;
     }
-    tCelula *atual = lista->cabeca;
+    Celula *atual = lista->cabeca;
 
     int i = 0;
     while (atual != NULL)
     {
-        printf("%i <- oi\n", strcmp(String(x), String(atual)));
-        if (strcmp(String(x), String(atual)) == 0)
+        printf("%i <- oi\n", strcmp(get_string(x), get_string(atual)));
+        if (strcmp(get_string(x), get_string(atual)) == 0)
         {
             printf("achei\n");
             return i;
@@ -66,14 +66,14 @@ int IndicePalavra(tPalavra *x, tLista *lista)
     return -1;
 }
 
-void Insere(tPalavra *x, tLista *lista)
+void insere_Lista_antigo(Palavra *x, Lista *lista)
 {
-    int i = 0, indicePalavra = IndicePalavra(x, lista);
+    int i = 0, indice_palavra = indice_palavra(x, lista);
     printf("Inserindo...\n");
-    if (indicePalavra == -1) // Palavra não existe na lista
+    if (indice_palavra == -1) // Palavra não existe na lista
     {
         printf("Palavra NAO existe na lista\n");
-        lista->ultimo->prox = (tCelula *)malloc(sizeof(tCelula));
+        lista->ultimo->prox = (Celula *)malloc(sizeof(Celula));
         lista->ultimo = lista->ultimo->prox;
         lista->ultimo->palavra = x;
         lista->ultimo->prox = NULL;
@@ -82,20 +82,20 @@ void Insere(tPalavra *x, tLista *lista)
     else // Palavra existe na lista
     {
         printf("Palavra existe na lista\n");
-        tCelula *atual = lista->cabeca;
-        for (i = 1; i < indicePalavra; i++) // Buscando posição da célula da palavra
+        Celula *atual = lista->cabeca;
+        for (i = 1; i < indice_palavra; i++) // Buscando posição da célula da palavra
         {
             atual = atual->prox;
         }
         atual->palavra->ocorrencias++;
-        realloc(atual->palavra->posicoes, Ocorrencias(atual) + 1);
+        realloc(atual->palavra->posicoes, get_ocorrencias(atual) + 1);
         /* atual->palavra->posicoes ... */
     }
 }
 
-void Retira(int x, tLista *lista, int *cartaRetirada)
+void retira_Lista(int x, Lista *lista, int *cartaRetirada)
 {
-    tCelula *atual, *anterior;
+    Celula *atual, *anterior;
 
     anterior = lista->cabeca;
     for (atual = lista->cabeca; atual != NULL; atual = atual->prox)
@@ -113,49 +113,49 @@ void Retira(int x, tLista *lista, int *cartaRetirada)
     // *cartaRetirada = CartaVazia();
 }
 
-void ImprimeLista(tLista *lista)
+void imprime_lista(Lista *lista)
 {
-    tCelula *aux = lista->cabeca;
+    Celula *aux = lista->cabeca;
     while (aux != NULL)
     {
-        ImprimePalavra(aux->palavra);
+        imprime_Palavra(aux->palavra);
         aux = aux->prox;
     }
 }
 
-void DestroiCelula(tCelula *celula)
+void destroi_Celula(Celula *celula)
 {
-    DestroiPalavra(celula->palavra);
+    destroi_Palavra(celula->palavra);
 }
 
-void DestroiLista(tLista *lista)
+void destroi_Lista(Lista *lista)
 {
-    tCelula *anterior, *atual;
+    Celula *anterior, *atual;
 
     atual = lista->cabeca;
     while (atual != NULL)
     {
         anterior = atual;
         atual = atual->prox;
-        DestroiCelula(anterior);
+        destroi_Celula(anterior);
     }
 
     // lista->tamanho = -1;
 }
 
 //vam ve se essa parte aqui de baixo vamo
-tLista *Cria_Lista()
+Lista *cria_Lista()
 {
-    tLista *nova = malloc(sizeof(tLista));
+    Lista *nova = malloc(sizeof(Lista));
     nova->cabeca = NULL;
     nova->ultimo = NULL;
     return nova;
 }
 
-void Insere_Lista(tPalavra *x, tLista *l)
+void insere_Lista(Palavra *x, Lista *l)
 {
-    tCelula *nova = malloc(sizeof(tCelula));
-    nova->palavra = malloc(sizeof(tPalavra));
+    Celula *nova = malloc(sizeof(Celula));
+    nova->palavra = malloc(sizeof(Palavra));
     nova->palavra->string = malloc(sizeof(char) * strlen(x->string) + 1);
     strcpy(nova->palavra->string, x->string);
     nova->palavra->ocorrencias = x->ocorrencias;
@@ -168,7 +168,7 @@ void Insere_Lista(tPalavra *x, tLista *l)
     }
     else
     {
-        tCelula *aux = l->cabeca;
+        Celula *aux = l->cabeca;
         while (aux != NULL)
         {
             if (!strcasecmp(x->string, aux->palavra->string))

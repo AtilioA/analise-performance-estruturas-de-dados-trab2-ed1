@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include "../include/Arquivos.h"
 
-int lePalavra(FILE *f, char *str, int BUFFER)
+int le_palavra(FILE *f, char *str, int BUFFER)
 {
     int i = 0;
     char caractere;
@@ -13,9 +13,9 @@ int lePalavra(FILE *f, char *str, int BUFFER)
             break;
 
     if (caractere != EOF)
-     {
+    {
         str[i++] = caractere;
-     }
+    }
     else
     {
         return 0;

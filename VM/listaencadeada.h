@@ -30,17 +30,17 @@ void FLVazia(TipoLista *Lista);
 int Vazia(TipoLista Lista);
 
 /* Insere x apos o ultimo elemento da lista */
-void Insere(Produto x, TipoLista *Lista);
+void insere_Lista_antigo(Produto x, TipoLista *Lista);
 
 /** Busca um produto pelo codigo - retornando a celula inteira*/
 TipoApontador BuscaCodigo(int codigo, TipoLista *Lista);
 
 /*Retira um elemento da lista */
-void Retira(int codigo, TipoLista *Lista, Produto *Item);
+void retira_Lista(int codigo, TipoLista *Lista, Produto *Item);
 
 
 /*Imprime a lista */
-void ImprimeLista(TipoLista Lista);
+void imprime_lista(TipoLista Lista);
 
 /*Quantidade de elementos na lista*/
 int Quantidade(TipoLista Lista);

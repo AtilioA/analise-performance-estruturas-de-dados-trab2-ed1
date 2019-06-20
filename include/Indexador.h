@@ -2,28 +2,28 @@
 #ifndef __INDEXADOR_H
 #define __INDEXADOR_H
 
-typedef struct palavra
+typedef struct Palavra
 {
     char *string;
     int ocorrencias;
     int *posicoes;
-} tPalavra;
+} Palavra;
 
+char *get_string(Palavra *palavra);
 
-char *String(tPalavra *palavra);
+int get_ocorrencias(Palavra *palavra);
 
-int Ocorrencias(tPalavra *palavra);
+int *get_posicoes(Palavra *palavra);
 
-int *Posicoes(tPalavra *palavra);
-
-void imprimePalavra(tPalavra *palavra);
-tPalavra *criaPalavra(char *string);
-tPalavra *iniciaPalavra();
+void imprimePalavra(Palavra *palavra);
+Palavra *cria_Palavra(char *string);
+Palavra *inicia_Palavra();
+void imprime_vet_h(int *vet, int tamVet);
 
 // Libera os elementos de uma palavra
-void DestroiPalavra(tPalavra *palavra);
+void destroi_Palavra(Palavra *palavra);
 
 /* Limpa a tela do terminal */
-void clrscr();
+void clr_scr();
 
 #endif

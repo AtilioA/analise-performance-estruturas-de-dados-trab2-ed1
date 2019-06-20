@@ -32,7 +32,7 @@ void Insere(Produto x, TipoLista *Lista)
     Lista->Ultimo->Prox = NULL;
 }
 
-void Retira(int codigo, TipoLista *Lista, Produto *Item)
+void retira_Lista(int codigo, TipoLista *Lista, Produto *Item)
 {
     TipoApontador p = BuscaCodigo(codigo, Lista);
     TipoApontador q;
@@ -66,7 +66,7 @@ TipoApontador BuscaCodigo(int codigo, TipoLista *Lista)
     return NULL;
 }
 
-void ImprimeLista(TipoLista Lista)
+void imprime_lista(TipoLista Lista)
 {
     TipoApontador Aux;
     Aux = Lista.Primeiro->Prox;

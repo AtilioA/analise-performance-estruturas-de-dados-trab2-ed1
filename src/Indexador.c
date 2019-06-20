@@ -3,43 +3,44 @@
 #include <string.h>
 #include "../include/Indexador.h"
 
-void imprimeVetH(int *vet, int tamVet)
+void imprime_vet_h(int *vet, int tamVet)
 {
     int i = 0;
-    
+
     for (i = 0; i < tamVet; i++)
     {
         printf("%i ", vet[i]);
     }
 }
-char *String(tPalavra *palavra)
+char *get_string(Palavra *palavra)
 {
-    if(palavra == NULL){
+    if (palavra == NULL)
+    {
         return NULL;
     }
     return palavra->string;
 }
 
-int Ocorrencias(tPalavra *palavra)
+int get_ocorrencias(Palavra *palavra)
 {
     return palavra->ocorrencias;
 }
 
-int *Posicoes(tPalavra *palavra)
+int *get_posicoes(Palavra *palavra)
 {
     return palavra->posicoes;
 }
 
-void ImprimePalavra(tPalavra *palavra)
+void imprime_Palavra(Palavra *palavra)
 {
-    printf("Palavra: %s\n", String(palavra));
+    printf("Palavra: %s\n", get_string(palavra));
     printf("Ocorrencias: %i\n\n", Ocorrencias(palavra));
     // nao vo printa vetor
 }
 
-tPalavra *criaPalavra(char *string)
+Palavra *cria_Palavra(char *string)
 {
-    tPalavra *nova = (tPalavra *)malloc(sizeof(tPalavra)); // ponteiro?
+    Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
 
     nova->string = (char *)malloc((strlen(string) + 1) * sizeof(char));
     if (nova->string == NULL)
@@ -57,9 +58,9 @@ tPalavra *criaPalavra(char *string)
     return nova;
 }
 
-tPalavra *iniciaPalavra()
+Palavra *inicia_Palavra()
 {
-    tPalavra *nova = (tPalavra *)malloc(sizeof(tPalavra)); // ponteiro?
+    Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
 
     nova->string = (char *)malloc(sizeof(char));
     if (nova->string == NULL)
@@ -76,14 +77,14 @@ tPalavra *iniciaPalavra()
     return nova;
 }
 
-void DestroiPalavra(tPalavra *palavra)
+void destroi_Palavra(Palavra *palavra)
 {
     free(palavra->string);
     free(palavra->posicoes);
     palavra->ocorrencias = -1;
 }
 
-void clrscr()
+void clr_scr()
 {
 #ifdef __unix__
     system("clear");

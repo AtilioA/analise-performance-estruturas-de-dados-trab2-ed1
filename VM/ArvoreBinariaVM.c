@@ -4,11 +4,11 @@
 
 // Já mesclada com biblioteca arvore_binaria
 
-struct NO
+struct No
 {
     int info;
-    struct NO *esq;
-    struct NO *dir;
+    struct No *esq;
+    struct No *dir;
 };
 
 ArvBin *cria_ArvBin()
@@ -19,12 +19,12 @@ ArvBin *cria_ArvBin()
     return raiz;
 }
 
-void libera_NO(struct NO *no)
+void libera_No(struct No *no)
 {
     if (no == NULL)
         return;
-    libera_NO(no->esq);
-    libera_NO(no->dir);
+    libera_No(no->esq);
+    libera_No(no->dir);
     free(no);
     no = NULL;
 }
@@ -33,7 +33,7 @@ void libera_ArvBin(ArvBin *raiz)
 {
     if (raiz == NULL)
         return;
-    libera_NO(*raiz); //libera cada n�
+    libera_No(*raiz); //libera cada n�
     free(raiz);       //libera a raiz
 }
 
@@ -42,8 +42,8 @@ int insere_ArvBin(ArvBin *raiz, int valor)
 
     if (*raiz == NULL)
     {
-        struct NO *novo;
-        novo = (struct NO *)malloc(sizeof(struct NO));
+        struct No *novo;
+        novo = (struct No *)malloc(sizeof(struct No));
         if (novo == NULL)
             return 0;
         novo->info = valor;
@@ -69,8 +69,8 @@ int remove_ArvBin(ArvBin *raiz, int valor)
 {
     if (raiz == NULL)
         return 0;
-    struct NO *ant = NULL;
-    struct NO *atual = *raiz;
+    struct No *ant = NULL;
+    struct No *atual = *raiz;
     while (atual != NULL)
     {
         if (valor == atual->info)
@@ -95,7 +95,7 @@ int remove_ArvBin(ArvBin *raiz, int valor)
     return 0;
 }
 
-int estaVazia_ArvBin(ArvBin *raiz)
+int esta_vazia_ArvBin(ArvBin *raiz)
 {
     if (raiz == NULL)
         return 1;
@@ -104,14 +104,14 @@ int estaVazia_ArvBin(ArvBin *raiz)
     return 0;
 }
 
-int totalNO_ArvBin(ArvBin *raiz)
+int total_No_ArvBin(ArvBin *raiz)
 {
     if (raiz == NULL)
         return 0;
     if (*raiz == NULL)
         return 0;
-    int alt_esq = totalNO_ArvBin(&((*raiz)->esq));
-    int alt_dir = totalNO_ArvBin(&((*raiz)->dir));
+    int alt_esq = total_No_ArvBin(&((*raiz)->esq));
+    int alt_dir = total_No_ArvBin(&((*raiz)->dir));
     return (alt_esq + alt_dir + 1);
 }
 
@@ -133,7 +133,7 @@ int consulta_ArvBin(ArvBin *raiz, int valor)
 {
     if (raiz == NULL)
         return 0;
-    struct NO *atual = *raiz;
+    struct No *atual = *raiz;
     while (atual != NULL)
     {
         if (valor == atual->info)

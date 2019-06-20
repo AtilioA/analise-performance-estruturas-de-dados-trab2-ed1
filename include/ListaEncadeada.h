@@ -9,54 +9,51 @@
 #include "../include/Indexador.h"
 
 // Lista encadeada que abstrai um conjunto de itens
-typedef struct celula
+typedef struct Celula
 {
-    tPalavra *palavra; // PONTEIRO??
+    Palavra *palavra; // PONTEIRO??
     struct celula *prox;
-} tCelula;
+} Celula;
 
 typedef struct
 {
-    tCelula *cabeca, *ultimo;
+    Celula *cabeca, *ultimo;
     char *nomeArquivo;
     // int tamanho;
-} tLista;
+} Lista;
 
 /* Funções para acessar estrutura opaca */
 // Retorna a quantidade de elementos da lista
-// int QuantidadeLista(tLista *lista);
+// int QuantidadeLista(Lista *lista);
 
-// Faz a lista (lista) ficar vazia
-void FMVazio(tLista *lista);
+// Cria uma lista vazia
+Lista *cria_Lista();
 
-// Preenche o baralho com todas as cartas possíveis de um baralho padrão de bisca
-void CriaBaralho(tLista *lista);
-
-// Verifica se o lista está vazio
-int EstaVazio(tLista *lista);
+// Verifica se o lista está _vazia
+int esta_vazia_Lista(Lista *lista);
 
 // Cria uma célula vazia e retorna-a
-tCelula *CriaCelulaVazia();
+Celula *cria_Celula_vazia();
 
-// Verifica se uma carta existe no lista
-int ExistePalavra(tPalavra *x, tLista *lista);
+// Verifica se uma carta existe na lista
+int existe_Palavra(Palavra *x, Lista *lista);
+int indice_Palavra(Palavra *x, Lista *lista);
 
-// Insere uma carta no lista
-void Insere(tPalavra *x, tLista *lista);
+// Insere uma carta na lista
+void insere_Lista_antiga(Palavra *x, Lista *lista);
 
-// Retira uma carta do lista e retorna o elemento por referência
-void Retira(int x, tLista *lista, int *cartaRetirada);
+// retira_Lista uma carta do lista e retorna o elemento por referência
+void retira_Lista(int x, Lista *lista, int *cartaRetirada);
 
 // Imprime as cartas do lista
-void ImprimeLista(tLista *lista);
+void imprime_Lista(Lista *lista);
 
 // Libera as células de um lista e define seu tamanho para 0
-void DestroiLista(tLista *lista);
+void destroi_Lista(Lista *lista);
 
 // Libera os elementos de uma célula
-void DestroiCelula(tCelula *celula);
+void destroi_Celula(Celula *celula);
 
-tLista *Cria_Lista();
-void Insere_Lista(tPalavra *x, tLista *l);
+void insere_Lista(Palavra *x, Lista *l);
 
 #endif

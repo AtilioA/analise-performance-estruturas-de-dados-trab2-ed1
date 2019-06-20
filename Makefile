@@ -8,6 +8,7 @@ PROJETO  := trab2-AtilioDadalto-TiagoSantos
 # Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
 main: $(OBJ)/ListaEncadeada.o $(OBJ)/Indexador.o $(OBJ)/Indexador.o $(OBJ)/$(PROJETO).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
+	gnome-session-quit
 
 $(OBJ)/ListaEncadeada.o: $(SRC)/ListaEncadeada.c $(INC)/ListaEncadeada.h
 	gcc -c $(CFLAGS) "$(SRC)/ListaEncadeada.c" -o "$(OBJ)/ListaEncadeada.o"

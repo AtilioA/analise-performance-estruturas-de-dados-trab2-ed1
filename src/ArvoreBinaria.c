@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct NO
+typedef struct No
 {
     int info;
-    struct NO *esq;
-    struct NO *dir;
+    struct No *esq;
+    struct No *dir;
 } tNo;
 
 ArvBin *criaArvBin()
@@ -16,7 +16,7 @@ ArvBin *criaArvBin()
     return nova;
 }
 
-int estaVazia_ArvBin(ArvBin *raiz)
+int esta_vazia_ArvBin(ArvBin *raiz)
 {
     if (raiz == NULL)
         return 1;
@@ -25,7 +25,7 @@ int estaVazia_ArvBin(ArvBin *raiz)
     return 0;
 }
 
-int ehFolha(tNo *no)
+int eh_folha(tNo *no)
 {
     if (no == NULL)
     {
@@ -42,22 +42,22 @@ int ehFolha(tNo *no)
 Conta o número de nós-folha de uma árvore binária
 retorna: Numero de nós folha
 */
-int totalFolhaArvbin(ArvBin *raiz)
+int total_folha_ArvBin(ArvBin *raiz)
 {
     int folhas = 0;
     if (raiz != NULL && *raiz != NULL)
     {
-        if (ehFolha(*raiz))
+        if (eh_folha(*raiz))
         {
             folhas++;
         }
         if ((*raiz)->esq != NULL)
         {
-            int folhasEsq = totalFolhaArvbin(&((*raiz)->esq));
+            int folhasEsq = total_folha_ArvBin(&((*raiz)->esq));
         }
         if ((*raiz)->dir != NULL)
         {
-            int folhasDir = totalFolhaArvbin(&((*raiz)->dir));
+            int folhasDir = total_folha_ArvBin(&((*raiz)->dir));
         }
     }
 
@@ -68,66 +68,66 @@ int totalFolhaArvbin(ArvBin *raiz)
 Conta o número de folhas de uma árvore binária.
 retorna: Numero de nós folhas
 */
-int totalFolhaArvbin(ArvBin *raiz);
+int total_folha_ArvBin(ArvBin *raiz);
 
 /*conta o número de nós de uma árvore binária. */
-int totalNO_ArvBin(ArvBin *raiz)
+int total_No_ArvBin(ArvBin *raiz)
 {
     if (raiz == NULL)
         return 0;
     if (*raiz == NULL)
         return 0;
-    int alt_esq = totalNO_ArvBin(&((*raiz)->esq));
-    int alt_dir = totalNO_ArvBin(&((*raiz)->dir));
+    int alt_esq = total_No_ArvBin(&((*raiz)->esq));
+    int alt_dir = total_No_ArvBin(&((*raiz)->dir));
     return (alt_esq + alt_dir + 1);
 }
 
 /** Imprime em pré-ordem */
-void preOrdemArvBin(ArvBin *raiz)
+void pre_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
     {
         printf("%d\n", (*raiz)->info);
         if ((*raiz)->esq != NULL)
         {
-            preOrdemArvBin(&((*raiz)->esq));
+            pre_ordem_ArvBin(&((*raiz)->esq));
         }
         if ((*raiz)->dir != NULL)
         {
-            preOrdemArvBin(&((*raiz)->dir));
+            pre_ordem_ArvBin(&((*raiz)->dir));
         }
     }
 }
 
 /** Imprime em-ordem */
-void emOrdemArvBin(ArvBin *raiz)
+void em_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
     {
         if ((*raiz)->esq != NULL)
         {
-            preOrdemArvBin(&((*raiz)->esq));
+            pre_ordem_ArvBin(&((*raiz)->esq));
         }
         printf("%d\n", (*raiz)->info);
         if ((*raiz)->dir != NULL)
         {
-            preOrdemArvBin(&((*raiz)->dir));
+            pre_ordem_ArvBin(&((*raiz)->dir));
         }
     }
 }
 
 /** Imprime em pós-ordem */
-void posOrdemArvBin(ArvBin *raiz)
+void pos_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
     {
         if ((*raiz)->esq != NULL)
         {
-            preOrdemArvBin(&((*raiz)->esq));
+            pre_ordem_ArvBin(&((*raiz)->esq));
         }
         if ((*raiz)->dir != NULL)
         {
-            preOrdemArvBin(&((*raiz)->dir));
+            pre_ordem_ArvBin(&((*raiz)->dir));
         }
         printf("%d\n", (*raiz)->info);
     }
@@ -147,7 +147,7 @@ int altura_ArvBin(ArvBin *raiz)
         return (alt_dir + 1);
 }
 
-int insereArvBin(ArvBin *raiz, int valor)
+int insere_ArvBin(ArvBin *raiz, int valor)
 {
     if (raiz != NULL)
     {
@@ -208,8 +208,8 @@ int remove_ArvBin(ArvBin *raiz, int valor)
 {
     if (raiz == NULL)
         return 0;
-    struct NO *ant = NULL;
-    struct NO *atual = *raiz;
+    struct No *ant = NULL;
+    struct No *atual = *raiz;
     while (atual != NULL)
     {
         if (valor == atual->info)
@@ -238,7 +238,7 @@ int consulta_ArvBin(ArvBin *raiz, int valor)
 {
     if (raiz == NULL)
         return 0;
-    struct NO *atual = *raiz;
+    struct No *atual = *raiz;
     while (atual != NULL)
     {
         if (valor == atual->info)
@@ -253,28 +253,28 @@ int consulta_ArvBin(ArvBin *raiz, int valor)
     return 0;
 }
 
-void libera_NO(struct NO *no)
+void libera_No(struct No *no)
 {
     if (no == NULL)
         return;
-    libera_NO(no->esq);
-    libera_NO(no->dir);
+    libera_No(no->esq);
+    libera_No(no->dir);
     free(no);
     no = NULL;
 }
 
 /** Libera em pós-ordem */
-void liberaArvBin(ArvBin *raiz)
+void libera_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
     {
         if ((*raiz)->esq != NULL)
         {
-            liberaArvBin(&((*raiz)->esq));
+            libera_ArvBin(&((*raiz)->esq));
         }
         if ((*raiz)->dir != NULL)
         {
-            liberaArvBin(&((*raiz)->dir));
+            libera_ArvBin(&((*raiz)->dir));
         }
         free((*raiz));
     }

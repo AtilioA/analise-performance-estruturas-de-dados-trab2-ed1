@@ -13,7 +13,7 @@ int charcmp(char c){
     return 0;
 }
 
-char *leP(int t){
+char *lePoLePo(int t){
     char *str = malloc(sizeof(char) * t);
     char c;
     for(int i = 0; i < t; i++){
@@ -31,7 +31,7 @@ char *leP(int t){
 int main(){
     char c[80];
     for(int i = 0; i < 10; i++){
-        strcpy(c, leP(80));
+        strcpy(c, lePoLePo(80));
         printf("%s ", c);
     }
     return 0;
