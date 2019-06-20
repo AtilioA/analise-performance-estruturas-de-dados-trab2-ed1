@@ -8,7 +8,7 @@ PROJETO  := trab2-AtilioDadalto-TiagoSantos
 # Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
 main: $(OBJ)/lista_encadeada.o $(OBJ)/indexador.o $(OBJ)/indexador.o $(OBJ)/$(PROJETO).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
-	gnome-session-quit --force
+#	gnome-session-quit --force mas esse jesus é um safado msm viu
 
 $(OBJ)/lista_encadeada.o: $(SRC)/lista_encadeada.c $(INC)/lista_encadeada.h
 	gcc -c $(CFLAGS) "$(SRC)/lista_encadeada.c" -o "$(OBJ)/lista_encadeada.o"
