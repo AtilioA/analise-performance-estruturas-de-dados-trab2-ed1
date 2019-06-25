@@ -123,6 +123,21 @@ void imprime_lista(Lista *lista)
         aux = aux->prox;
     }
 }
+
+void destroi_celula(Celula *cel){
+    destroi_Palavra(cel->palavra);
+    free(cel);
+}
+
+void destroi_lista(Lista *lista){
+    Celula * ant = NULL;
+    Celula *aux = lista->cabeca;
+    while(aux != NULL){
+        ant = aux;
+        aux = aux->prox;
+        destroi_celula(ant);
+    }
+}
 /*
 void destroi_Celula(Celula *celula)
 {
@@ -170,6 +185,7 @@ void insere_Lista(Palavra *x, Lista *l)
     if(!strcasecmp(get_string(aux->palavra), get_string(x))){
         insereOcorre(get_posicoes(aux->palavra), get_posicoes(x)->ult->ocorreu);
         aux->palavra->ocorrencias->n++;
+        destroi_celula(nova);
         return;
     }
     l->ultimo->prox = nova;

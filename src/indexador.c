@@ -87,9 +87,21 @@ Palavra *inicia_Palavra()
     return nova;
 }
 */
+
+void destroi_ocorrencia(tOcorrencias *ocorres){
+    tOcorre *ant = NULL;
+    tOcorre *aux = ocorres->prim;
+    while(aux != NULL){
+        ant = aux;
+        aux = aux->prox;
+        free(ant);
+    }
+}
+
 void destroi_Palavra(Palavra *palavra)
 {
-    // dps faço
+    free(palavra->string);
+    destroi_ocorrencia(palavra->ocorrencias);
 }
 
 void clr_scr()

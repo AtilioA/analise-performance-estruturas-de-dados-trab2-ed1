@@ -28,11 +28,10 @@ int main()
     insere_Lista(palavra1, lista);
     palavra1 = cria_Palavra("sim", 7);
     insere_Lista(palavra1, lista);
+    palavra1 = cria_Palavra("NãO", 10);
+    insere_Lista(palavra1, lista);
     imprime_lista(lista);
-/*
-    destroi_Palavra(palavra1);
-    destroi_Palavra(palavra2);
-    destroi_Lista(lista);
-*/
+
+    destroi_lista(lista);
     return 0;
 }

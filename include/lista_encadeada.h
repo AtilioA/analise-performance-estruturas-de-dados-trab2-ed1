@@ -44,16 +44,17 @@ void insere_Lista_antiga(Palavra *x, Lista *lista);
 
 // retira_Lista uma carta do lista e retorna o elemento por referência
 void retira_Lista(int x, Lista *lista, int *cartaRetirada);
-
+*/
 // Imprime as cartas do lista
-void imprime_Lista(Lista *lista);
+void imprime_lista(Lista *lista);
 
 // Libera as células de um lista e define seu tamanho para 0
-void destroi_Lista(Lista *lista);
+void destroi_lista(Lista *lista);
 
 // Libera os elementos de uma célula
-void destroi_Celula(Celula *celula);
-*/
+void destroi_celula(Celula *celula);
+
 void insere_Lista(Palavra *x, Lista *l);
+
 
 #endif
