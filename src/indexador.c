@@ -96,12 +96,14 @@ void destroi_ocorrencia(tOcorrencias *ocorres){
         aux = aux->prox;
         free(ant);
     }
+    free(ocorres);
 }
 
 void destroi_Palavra(Palavra *palavra)
 {
     free(palavra->string);
     destroi_ocorrencia(palavra->ocorrencias);
+    free(palavra);
 }
 
 void clr_scr()

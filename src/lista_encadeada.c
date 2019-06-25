@@ -137,6 +137,7 @@ void destroi_lista(Lista *lista){
         aux = aux->prox;
         destroi_celula(ant);
     }
+    free(lista);
 }
 /*
 void destroi_Celula(Celula *celula)
