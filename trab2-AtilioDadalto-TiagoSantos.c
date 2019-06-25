@@ -20,22 +20,19 @@ int main()
 
     printf("Boa noite. Esta quase funcionando.\n");
 
-    Palavra *palavra1 = cria_Palavra("sim");
-    Palavra *palavra2 = cria_Palavra("sim");
+    Palavra *palavra1 = cria_Palavra("sim", 2);
     insere_Lista(palavra1, lista);
+    palavra1 = cria_Palavra("sim", 4);
     insere_Lista(palavra1, lista);
-    insere_Lista(palavra2, lista);
-    insere_Lista(palavra2, lista);
-    insere_Lista(palavra2, lista);
-    insere_Lista(palavra2, lista);
-    insere_Lista(palavra2, lista);
-    insere_Lista(palavra2, lista);
+    palavra1 = cria_Palavra("não", 3);
+    insere_Lista(palavra1, lista);
+    palavra1 = cria_Palavra("sim", 7);
+    insere_Lista(palavra1, lista);
     imprime_lista(lista);
-
-    destroi_Lista(lista);
+/*
     destroi_Palavra(palavra1);
     destroi_Palavra(palavra2);
     destroi_Lista(lista);
-
+*/
     return 0;
 }

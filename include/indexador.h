@@ -2,22 +2,34 @@
 #ifndef __INDEXADOR_H
 #define __INDEXADOR_H
 
+typedef struct ocorre{
+    int ocorreu;
+    struct ocorre *prox;
+}tOcorre;
+
+typedef struct ocorrencias{
+    tOcorre *prim;
+    tOcorre *ult;
+    int n;
+}tOcorrencias;
+
+
 typedef struct Palavra
 {
     char *string;
-    int ocorrencias;
-    int *posicoes;
+    tOcorrencias *ocorrencias;
 } Palavra;
+
 
 char *get_string(Palavra *palavra);
 
 int get_ocorrencias(Palavra *palavra);
 
-int *get_posicoes(Palavra *palavra);
+tOcorrencias *get_posicoes(Palavra *palavra);
 
 void imprimePalavra(Palavra *palavra);
-Palavra *cria_Palavra(char *string);
-Palavra *inicia_Palavra();
+Palavra *cria_Palavra(char *string, int ocorre);
+//Palavra *inicia_Palavra();
 void imprime_vet_h(int *vet, int tamVet);
 
 // Libera os elementos de uma palavra

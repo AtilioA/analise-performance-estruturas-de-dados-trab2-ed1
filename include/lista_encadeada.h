@@ -28,7 +28,7 @@ typedef struct
 
 // Cria uma lista vazia
 Lista *cria_Lista();
-
+/*
 // Verifica se o lista está _vazia
 int esta_vazia_Lista(Lista *lista);
 
@@ -53,7 +53,7 @@ void destroi_Lista(Lista *lista);
 
 // Libera os elementos de uma célula
 void destroi_Celula(Celula *celula);
-
+*/
 void insere_Lista(Palavra *x, Lista *l);
 
 #endif

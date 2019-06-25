@@ -3,15 +3,7 @@
 #include <string.h>
 #include "../include/indexador.h"
 
-void imprime_vet_h(int *vet, int tamVet)
-{
-    int i = 0;
 
-    for (i = 0; i < tamVet; i++)
-    {
-        printf("%i ", vet[i]);
-    }
-}
 char *get_string(Palavra *palavra)
 {
     if (palavra == NULL)
@@ -23,41 +15,59 @@ char *get_string(Palavra *palavra)
 
 int get_ocorrencias(Palavra *palavra)
 {
-    return palavra->ocorrencias;
+    return palavra->ocorrencias->n;
 }
 
-int *get_posicoes(Palavra *palavra)
+tOcorrencias *get_posicoes(Palavra *palavra)
 {
-    return palavra->posicoes;
+    return palavra->ocorrencias;
 }
 
 void imprime_Palavra(Palavra *palavra)
 {
     printf("Palavra: %s\n", get_string(palavra));
-    printf("Ocorrencias: %i\n\n", get_ocorrencias(palavra));
-    // nao vo printa vetor
+    printf("Ocorrencias: ");
+    tOcorre *aux = get_posicoes(palavra)->prim;
+    for(int i = 0; i < get_ocorrencias(palavra); i++){
+        printf("%d ", aux->ocorreu);
+        aux = aux->prox;
+    }// mas eu vo, caralho
+    printf("\n");
 }
 
-Palavra *cria_Palavra(char *string)
+tOcorrencias *novaOcorre(){
+    tOcorrencias *novo = malloc(sizeof(tOcorrencias));
+    novo->prim = NULL;
+    novo->ult = NULL;
+    novo->n = 0;
+    return novo;
+}
+
+void insereOcorre(tOcorrencias *l, int ocorre){
+    tOcorre *nova = malloc(sizeof(tOcorre));
+    nova->prox = NULL;
+    nova->ocorreu = ocorre;
+    if(l->prim == NULL){
+        l->prim = nova;
+        l->ult = nova;
+        return;
+    }
+    l->ult->prox = nova;
+    l->ult = nova;
+    return;
+}
+
+Palavra *cria_Palavra(char *string, int ocorre)
 {
     Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
-
-    nova->string = (char *)malloc((strlen(string) + 1) * sizeof(char));
-    if (nova->string == NULL)
-    {
-        return NULL;
-    }
+    nova->string = malloc(sizeof(char)*strlen(string) + 1);
+    nova->ocorrencias = novaOcorre();
+    nova->ocorrencias->n = 1;
     strcpy(nova->string, string);
-    nova->posicoes = (int *)malloc(sizeof(int));
-    if (nova->posicoes == NULL)
-    {
-        return NULL;
-    }
-    nova->ocorrencias = 1;
-
+    insereOcorre(nova->ocorrencias, ocorre);
     return nova;
 }
-
+/*  n é a msm coisa do cria palavra?
 Palavra *inicia_Palavra()
 {
     Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
@@ -76,12 +86,10 @@ Palavra *inicia_Palavra()
 
     return nova;
 }
-
+*/
 void destroi_Palavra(Palavra *palavra)
 {
-    free(palavra->string);
-    free(palavra->posicoes);
-    palavra->ocorrencias = -1;
+    // dps faço
 }
 
 void clr_scr()

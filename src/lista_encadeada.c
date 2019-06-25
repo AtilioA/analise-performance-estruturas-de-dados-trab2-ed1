@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+/*
 int esta_vazia_Lista(Lista *lista)
 {
     return lista->cabeca == NULL;
@@ -90,7 +90,7 @@ void insere_Lista_antigo(Palavra *x, Lista *lista)
         }
         atual->palavra->ocorrencias++;
         realloc(atual->palavra->posicoes, get_ocorrencias(atual) + 1);
-        /* atual->palavra->posicoes ... */
+         atual->palavra->posicoes ...
     }
 }
 
@@ -113,7 +113,7 @@ void retira_Lista(int x, Lista *lista, int *cartaRetirada)
     }
     // *cartaRetirada = CartaVazia();
 }
-
+*/
 void imprime_lista(Lista *lista)
 {
     Celula *aux = lista->cabeca;
@@ -123,7 +123,7 @@ void imprime_lista(Lista *lista)
         aux = aux->prox;
     }
 }
-
+/*
 void destroi_Celula(Celula *celula)
 {
     destroi_Palavra(celula->palavra);
@@ -143,7 +143,7 @@ void destroi_Lista(Lista *lista)
 
     // lista->tamanho = -1;
 }
-
+*/
 //vam ve se essa parte aqui de baixo vamo
 Lista *cria_Lista()
 {
@@ -156,33 +156,23 @@ Lista *cria_Lista()
 void insere_Lista(Palavra *x, Lista *l)
 {
     Celula *nova = malloc(sizeof(Celula));
-    nova->palavra = malloc(sizeof(Palavra));
-    nova->palavra->string = malloc(sizeof(char) * strlen(x->string) + 1);
-    strcpy(nova->palavra->string, x->string);
-    nova->palavra->ocorrencias = x->ocorrencias;
+    nova->palavra = x; //passa o endereço
     nova->prox = NULL;
-    if (l->cabeca == NULL)
-    {
+    if(l->cabeca == NULL){
         l->cabeca = nova;
         l->ultimo = nova;
         return;
     }
-    else
-    {
-        Celula *aux = l->cabeca;
-        while (aux != NULL)
-        {
-            if (!strcasecmp(x->string, aux->palavra->string))
-            {
-                printf("PALAVRA JÁ EXISTE\n");
-                aux->palavra->ocorrencias++;
-                free(nova->palavra->string);
-                free(nova->palavra);
-                free(nova);
-                return;
-            }
-            aux = aux->prox;
-        }
-        l->ultimo->prox = nova;
+    Celula *aux = l->cabeca;
+    while(aux->prox != NULL && strcasecmp(get_string(aux->palavra), get_string(x))){
+        aux = aux->prox;
     }
+    if(!strcasecmp(get_string(aux->palavra), get_string(x))){
+        insereOcorre(get_posicoes(aux->palavra), get_posicoes(x)->ult->ocorreu);
+        aux->palavra->ocorrencias->n++;
+        return;
+    }
+    l->ultimo->prox = nova;
+    l->ultimo = nova;
+    return;
 }
