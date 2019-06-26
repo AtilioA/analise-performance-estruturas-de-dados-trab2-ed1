@@ -28,8 +28,7 @@ int main(int argc, char *argv[])
     int pos = 0;
     while(!feof(f)){
         fscanf(f, "%s", strat);
-        if(rand()%2 && pos < k){
-            printf("%d ", pos);
+        if(rand()%3 == 2 && pos < k){
             strcpy(vet[pos], strat);
             pos++;
         }

@@ -105,7 +105,11 @@ void destroi_Palavra(Palavra *palavra)
     destroi_ocorrencia(palavra->ocorrencias);
     free(palavra);
 }
-
+/*
+tSentRandPal *newRandpal(){
+    tSentRandPal *novo = malloc(sizeof()) 
+}
+*/
 void clr_scr()
 {
 #ifdef __unix__

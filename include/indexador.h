@@ -19,8 +19,18 @@ typedef struct Palavra
     char *string;
     tOcorrencias *ocorrencias;
 } Palavra;
+/*
+// pra pesquisar aleatoriamente
+typedef struct pal_rand{
+    char *string;
+    struct pal_rand *prox;
+}tRandPal;
 
-
+typedef struct set_pal_rand{
+    tRandPal *prim;
+    tRandPal *ult;
+}tSetRandPal;
+*/
 char *get_string(Palavra *palavra);
 
 int get_ocorrencias(Palavra *palavra);
