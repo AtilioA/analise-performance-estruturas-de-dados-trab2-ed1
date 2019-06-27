@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
 {
     clr_scr();
 
-    Lista *lista = cria_Lista();
+    //Lista *lista = cria_Lista();
+    ArvBin *arvere = criaArvBin();
     tSentRandPal *pal_al = newRandpal(); //lista de busca
     Palavra *pal;
     char strat[80];
@@ -26,18 +27,20 @@ int main(int argc, char *argv[])
     char vet[k][80]; //vetor de busca
     srand(time(NULL));
     while(!feof(f)){
-        fscanf(f, "%s", strat);
+        fscanf(f, "%s", strat); // vo usar o fscanf de placeholder até a gnt fazer uma função de leitura de palavras descente
         insereRandPal(strat, pal_al);
         kkkeae = ftell(f) - strlen(strat) + 1;
         pal = cria_Palavra(strat, kkkeae);
-        insere_Lista(pal, lista);
+        insere_ArvBin(arvere, pal);
+        //insere_Lista(pal, lista);
     }
     for(int i = 0; i < k; i++){
         strcpy(vet[i], buscaRandPal(rand()%(pal_al->qtd), pal_al)); //carrega o vetor com palavras aleatórias da lista
     }
+    em_ordem_ArvBin(arvere);
     for(int i = 0; i < k; i++){
-        int meu = busca_Lista(vet[i], lista);
-        if(meu){
+        Palavra* meu = consulta_ArvBin(arvere, vet[i]);
+        if(meu != NULL){
             printf("A palavra %s foi encontrada\n", vet[i]);
         }
     }
@@ -45,6 +48,7 @@ int main(int argc, char *argv[])
     destroiRandPal(pal_al);
     //imprime_lista(lista);
     fclose(f);
-    destroi_lista(lista);
+    libera_ArvBin(arvere);
+    //destroi_lista(lista);
     return 0;
 }

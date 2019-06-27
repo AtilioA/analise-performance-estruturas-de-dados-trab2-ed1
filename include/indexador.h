@@ -38,8 +38,14 @@ int get_ocorrencias(Palavra *palavra);
 
 tOcorrencias *get_posicoes(Palavra *palavra);
 
-void imprimePalavra(Palavra *palavra);
+tOcorrencias *novaOcorre();
+
+void insereOcorre(tOcorrencias *l, int ocorre);
+
+void imprime_Palavra(Palavra *palavra);
+
 Palavra *cria_Palavra(char *string, int ocorre);
+
 //Palavra *inicia_Palavra();
 void imprime_vet_h(int *vet, int tamVet);
 

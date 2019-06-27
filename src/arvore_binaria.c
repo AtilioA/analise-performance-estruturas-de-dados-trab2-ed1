@@ -1,6 +1,8 @@
 #include "../include/arvore_binaria.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "../include/indexador.h"
+
 
 ArvBin *criaArvBin()
 {
@@ -74,8 +76,8 @@ int total_No_ArvBin(ArvBin *raiz)
     int alt_dir = total_No_ArvBin(&((*raiz)->dir));
     return (alt_esq + alt_dir + 1);
 }
-
-/** Imprime em pré-ordem */
+/*
+* Imprime em pré-ordem /
 void pre_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
@@ -91,25 +93,25 @@ void pre_ordem_ArvBin(ArvBin *raiz)
         }
     }
 }
-
-/** Imprime em-ordem */
+*/
+// Imprime em-ordem 
 void em_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
     {
         if ((*raiz)->esq != NULL)
         {
-            pre_ordem_ArvBin(&((*raiz)->esq));
+            em_ordem_ArvBin(&((*raiz)->esq));
         }
-        printf("%d\n", (*raiz)->info);
+        imprime_Palavra((*raiz)->pal);
         if ((*raiz)->dir != NULL)
         {
-            pre_ordem_ArvBin(&((*raiz)->dir));
+            em_ordem_ArvBin(&((*raiz)->dir));
         }
     }
 }
 
-/** Imprime em pós-ordem */
+/** Imprime em pós-ordem /
 void pos_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
@@ -139,15 +141,15 @@ int altura_ArvBin(ArvBin *raiz)
     else
         return (alt_dir + 1);
 }
-
-int insere_ArvBin(ArvBin *raiz, int valor)
+*/
+int insere_ArvBin(ArvBin *raiz, Palavra *pal)
 {
     if (raiz != NULL)
     {
-        No *novo = malloc(sizeof(tNo));
+        No *novo = malloc(sizeof(No));
         novo->esq = NULL;
         novo->dir = NULL;
-        novo->info = valor;
+        novo->pal = pal;
         No *aux = (*raiz);
 
         if ((*raiz) == NULL)
@@ -158,7 +160,7 @@ int insere_ArvBin(ArvBin *raiz, int valor)
 
         while (aux->esq != NULL || aux->dir != NULL)
         {
-            if (valor < aux->info)
+            if (strcasecmp(pal->string, aux->pal->string) < 0)
             {
                 if (aux->esq == NULL)
                 {
@@ -166,7 +168,7 @@ int insere_ArvBin(ArvBin *raiz, int valor)
                 }
                 aux = aux->esq;
             }
-            else if (valor > aux->info)
+            else if (strcasecmp(pal->string, aux->pal->string) > 0)
             {
                 if (aux->dir == NULL)
                 {
@@ -176,16 +178,19 @@ int insere_ArvBin(ArvBin *raiz, int valor)
             }
             else
             {
+                insereOcorre(aux->pal->ocorrencias, pal->ocorrencias->prim->ocorreu);
+                aux->pal->ocorrencias->n++;
+                libera_No(novo);
                 return 0; // Valor já presente na árvore
             }
         }
 
-        if (valor < aux->info)
+        if (strcasecmp(pal->string, aux->pal->string) < 0)
         {
             aux->esq = novo;
             return 1;
         }
-        else if (valor > aux->info)
+        else if (strcasecmp(pal->string, aux->pal->string) > 0)
         {
             aux->dir = novo;
             return 1;
@@ -196,7 +201,7 @@ int insere_ArvBin(ArvBin *raiz, int valor)
         return 0;
     }
 }
-
+/*
 int remove_ArvBin(ArvBin *raiz, int valor)
 {
     if (raiz == NULL)
@@ -226,49 +231,42 @@ int remove_ArvBin(ArvBin *raiz, int valor)
     }
     return 0;
 }
-
-int consulta_ArvBin(ArvBin *raiz, int valor)
+*/
+Palavra *consulta_ArvBin(ArvBin *raiz, char *strat)
 {
     if (raiz == NULL)
         return 0;
     struct No *atual = *raiz;
     while (atual != NULL)
     {
-        if (valor == atual->info)
+        if (!strcasecmp(atual->pal->string, strat))
         {
-            return 1;
+            return atual->pal;
         }
-        if (valor > atual->info)
+        if (strcasecmp(strat, atual->pal->string) > 0)
             atual = atual->dir;
         else
             atual = atual->esq;
     }
-    return 0;
+    return NULL;
 }
 
 void libera_No(struct No *no)
 {
     if (no == NULL)
         return;
+    destroi_Palavra(no->pal);
     libera_No(no->esq);
     libera_No(no->dir);
     free(no);
-    no = NULL;
 }
 
 /** Libera em pós-ordem */
 void libera_ArvBin(ArvBin *raiz)
 {
-    if (raiz != NULL)
-    {
-        if ((*raiz)->esq != NULL)
-        {
-            libera_ArvBin(&((*raiz)->esq));
-        }
-        if ((*raiz)->dir != NULL)
-        {
-            libera_ArvBin(&((*raiz)->dir));
-        }
-        free((*raiz));
+    if(raiz == NULL){
+        return;
     }
+    libera_No(*raiz);
+    free(raiz);
 }

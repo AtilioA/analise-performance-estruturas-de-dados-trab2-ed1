@@ -193,17 +193,17 @@ void insere_Lista(Palavra *x, Lista *l)
     l->ultimo = nova;
     return;
 }
-int busca_Lista(char *strat, Lista *l){
+Palavra *busca_Lista(char *strat, Lista *l){
     Celula *aux = l->cabeca;
     printf("Buscando %s em lista\n", strat);
     while(aux != NULL && strcasecmp(get_string(aux->palavra), strat)){
         aux = aux->prox;
     }
     if(aux == NULL){
-        return 0;
+        return NULL;
     }
     if(!strcasecmp(get_string(aux->palavra), strat)){
-        return 1;
+        return aux->palavra;
     }
-    return 0;
+    return NULL;
 }

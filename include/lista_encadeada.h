@@ -56,5 +56,5 @@ void destroi_celula(Celula *celula);
 
 void insere_Lista(Palavra *x, Lista *l);
 
-int busca_Lista(char *strat, Lista *l);
+Palavra *busca_Lista(char *strat, Lista *l);
 #endif

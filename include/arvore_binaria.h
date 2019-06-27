@@ -5,10 +5,12 @@
 // Guard para evitar dupla inclusão
 #ifndef __ARVORE_BINARIA_H
 #define __ARVORE_BINARIA_H
+#include "../include/indexador.h"
+
 
 typedef struct No
 {
-    int info;
+    Palavra *pal;
     struct No *esq;
     struct No *dir;
 } No;
@@ -30,14 +32,14 @@ Insere 'valor' na árvore utilizando a regra que o filho esquerdo é menor que a
 
 Retorna: 1 em caso de sucesso.
 */
-int insere_ArvBin(ArvBin *raiz, int valor);
+int insere_ArvBin(ArvBin *raiz, Palavra *pal);
 int remove_ArvBin(ArvBin *raiz, int valor);
 
 /**
 Pesquisa um valor a partir da árvore raiz
 retorna 1 se encontrar o valor e 0 caso não encontre
 */
-int consulta_ArvBin(ArvBin *raiz, int valor);
+Palavra* consulta_ArvBin(ArvBin *raiz, char *strat);
 
 /**
 Verifica se a árvore está vazia
