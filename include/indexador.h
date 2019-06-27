@@ -19,7 +19,7 @@ typedef struct Palavra
     char *string;
     tOcorrencias *ocorrencias;
 } Palavra;
-/*
+
 // pra pesquisar aleatoriamente
 typedef struct pal_rand{
     char *string;
@@ -29,8 +29,9 @@ typedef struct pal_rand{
 typedef struct set_pal_rand{
     tRandPal *prim;
     tRandPal *ult;
-}tSetRandPal;
-*/
+    int qtd;
+}tSentRandPal;
+
 char *get_string(Palavra *palavra);
 
 int get_ocorrencias(Palavra *palavra);
@@ -47,5 +48,13 @@ void destroi_Palavra(Palavra *palavra);
 
 /* Limpa a tela do terminal */
 void clr_scr();
+
+tSentRandPal *newRandpal();
+
+void insereRandPal(char *strat, tSentRandPal *l);
+
+char *buscaRandPal(int indice, tSentRandPal *l);
+
+void destroiRandPal(tSentRandPal* l);
 
 #endif

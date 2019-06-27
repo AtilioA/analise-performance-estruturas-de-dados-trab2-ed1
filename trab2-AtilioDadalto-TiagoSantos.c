@@ -17,32 +17,33 @@ int main(int argc, char *argv[])
     clr_scr();
 
     Lista *lista = cria_Lista();
+    tSentRandPal *pal_al = newRandpal(); //lista de busca
     Palavra *pal;
     char strat[80];
     int kkkeae;
     FILE *f = fopen(argv[1], "r");
     int k = atoi(argv[2]);
-    char vet[k][80];
-    printf("Boa noite. Esta quase funcionando.\n");
+    char vet[k][80]; //vetor de busca
     srand(time(NULL));
-    int pos = 0;
     while(!feof(f)){
         fscanf(f, "%s", strat);
-        if(rand()%3 == 2 && pos < k){
-            strcpy(vet[pos], strat);
-            pos++;
-        }
+        insereRandPal(strat, pal_al);
         kkkeae = ftell(f) - strlen(strat) + 1;
         pal = cria_Palavra(strat, kkkeae);
         insere_Lista(pal, lista);
     }
-    printf("%s\n", vet[pos - 1]);
-    imprime_lista(lista);
     for(int i = 0; i < k; i++){
-        if(busca_Lista(vet[i], lista)){
+        strcpy(vet[i], buscaRandPal(rand()%(pal_al->qtd), pal_al)); //carrega o vetor com palavras aleatórias da lista
+    }
+    for(int i = 0; i < k; i++){
+        int meu = busca_Lista(vet[i], lista);
+        if(meu){
             printf("A palavra %s foi encontrada\n", vet[i]);
         }
     }
+    printf("\n");
+    destroiRandPal(pal_al);
+    //imprime_lista(lista);
     fclose(f);
     destroi_lista(lista);
     return 0;

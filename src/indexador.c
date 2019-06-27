@@ -105,11 +105,50 @@ void destroi_Palavra(Palavra *palavra)
     destroi_ocorrencia(palavra->ocorrencias);
     free(palavra);
 }
-/*
+
 tSentRandPal *newRandpal(){
-    tSentRandPal *novo = malloc(sizeof()) 
+    tSentRandPal *novo = malloc(sizeof(tSentRandPal));
+    novo->prim = NULL;
+    novo->ult = NULL;
+    novo->qtd = 0;
+    return novo;
 }
-*/
+
+void insereRandPal(char *strat, tSentRandPal *l){
+    tRandPal *pal = malloc(sizeof(tRandPal));
+    pal->string = malloc(sizeof(char) * strlen(strat) + 1);
+    strcpy(pal->string, strat);
+    pal->prox = NULL;
+    if(l->prim == NULL){
+        l->prim = pal;
+        l->ult = pal;
+        return;
+    }
+    l->ult->prox = pal;
+    l->ult = l->ult->prox;
+    l->qtd++;
+}
+
+void destroiRandPal(tSentRandPal* l){
+    tRandPal *ant;
+    tRandPal *aux = l->prim;
+    while(aux != NULL){
+        ant = aux;
+        aux = aux->prox;
+        free(ant->string);
+        free(ant);
+    }
+    free(l);
+}
+
+char *buscaRandPal(int indice, tSentRandPal *l){
+    tRandPal *aux = l->prim;
+    for(int i = 0; i < indice && i < l->qtd; i++){
+        aux = aux->prox;
+    }
+    return aux->string;
+}
+
 void clr_scr()
 {
 #ifdef __unix__
