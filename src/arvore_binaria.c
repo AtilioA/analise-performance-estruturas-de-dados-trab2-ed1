@@ -151,15 +151,16 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
         novo->dir = NULL;
         novo->pal = pal;
         No *aux = (*raiz);
-
         if ((*raiz) == NULL)
         {
             (*raiz) = novo;
+            aux = (*raiz);
             return 1;
         }
 
         while (aux->esq != NULL || aux->dir != NULL)
         {
+
             if (strcasecmp(pal->string, aux->pal->string) < 0)
             {
                 if (aux->esq == NULL)
@@ -194,6 +195,12 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
         {
             aux->dir = novo;
             return 1;
+        }else
+        {
+            insereOcorre(aux->pal->ocorrencias, pal->ocorrencias->prim->ocorreu);
+            aux->pal->ocorrencias->n++;
+            libera_No(novo);
+            return 0; // Valor já presente na árvore
         }
     }
     else
@@ -259,6 +266,7 @@ void libera_No(struct No *no)
     libera_No(no->esq);
     libera_No(no->dir);
     free(no);
+    no = NULL;
 }
 
 /** Libera em pós-ordem */

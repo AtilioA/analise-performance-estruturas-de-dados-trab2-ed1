@@ -38,8 +38,10 @@ int main(int argc, char *argv[])
         strcpy(vet[i], buscaRandPal(rand()%(pal_al->qtd), pal_al)); //carrega o vetor com palavras aleatórias da lista
     }
     em_ordem_ArvBin(arvere);
+    //imprime_lista(lista);
     for(int i = 0; i < k; i++){
-        Palavra* meu = consulta_ArvBin(arvere, vet[i]);
+        //Palavra* meu = busca_Lista(vet[i], lista);
+        Palavra *meu = consulta_ArvBin(arvere, vet[i]);
         if(meu != NULL){
             printf("A palavra %s foi encontrada\n", vet[i]);
         }
