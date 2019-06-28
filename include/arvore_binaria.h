@@ -13,6 +13,7 @@ typedef struct No
     Palavra *pal;
     struct No *esq;
     struct No *dir;
+    int altura;
 } No;
 
 

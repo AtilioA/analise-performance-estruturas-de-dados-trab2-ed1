@@ -6,7 +6,7 @@ EXE 	 := indexador
 PROJETO  := trab2-AtilioDadalto-TiagoSantos
 
 # Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
-main: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/indexador.o $(OBJ)/$(PROJETO).o
+main: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/indexador.o $(OBJ)/$(PROJETO).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
 #	gnome-session-quit --force mas esse jesus é um safado msm viu
 
@@ -18,6 +18,10 @@ $(OBJ)/indexador.o: $(SRC)/indexador.c $(INC)/indexador.h
 
 $(OBJ)/arvore_binaria.o: $(SRC)/arvore_binaria.c $(INC)/arvore_binaria.h
 	gcc -c $(CFLAGS) "$(SRC)/arvore_binaria.c" -o "$(OBJ)/arvore_binaria.o"
+
+$(OBJ)/arvore_AVL.o: $(SRC)/arvore_AVL.c $(INC)/arvore_AVL.h
+	gcc -c $(CFLAGS) "$(SRC)/arvore_AVL.c" -o "$(OBJ)/arvore_AVL.o"
+
 
 $(OBJ)/$(PROJETO).o: $(PROJETO).c
 	gcc -c $(CFLAGS) $(PROJETO).c -o "$(OBJ)/$(PROJETO).o"

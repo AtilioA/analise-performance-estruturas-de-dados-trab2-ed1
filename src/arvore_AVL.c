@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "arvore_AVL.h" //inclui os Prot�tipos
+#include "../include/arvore_AVL.h" //inclui os Prot�tipos
 
 ArvAVL *cria_ArvAVL()
 {
@@ -11,7 +11,7 @@ ArvAVL *cria_ArvAVL()
         *raiz = NULL;
     return raiz;
 }
-
+/*
 void libera_No(struct No *no)
 {
     if (no == NULL)
@@ -21,7 +21,7 @@ void libera_No(struct No *no)
     free(no);
     no = NULL;
 }
-
+*/
 void libera_ArvAVL(ArvAVL *raiz)
 {
     if (raiz == NULL)
@@ -93,7 +93,8 @@ void pre_ordem_ArvAVL(ArvAVL *raiz)
     {
         //printf("%d\n",(*raiz)->info);
         //printf("No %d: %d\n",(*raiz)->info,fator_balanceamento_No(*raiz));
-        printf("No %d: %d\n", (*raiz)->info, altura_No(*raiz));
+        //printf("No %d: %d\n", (*raiz)->info, altura_No(*raiz));
+        imprime_Palavra((*raiz)->pal);
         pre_ordem_ArvAVL(&((*raiz)->esq));
         pre_ordem_ArvAVL(&((*raiz)->dir));
     }
@@ -107,7 +108,7 @@ void em_ordem_ArvAVL(ArvAVL *raiz)
     {
         em_ordem_ArvAVL(&((*raiz)->esq));
         //printf("%d\n",(*raiz)->info);
-        printf("No %d: H(%d) fb(%d)\n", (*raiz)->info, altura_No(*raiz), fator_balanceamento_No(*raiz));
+        imprime_Palavra((*raiz)->pal);
         em_ordem_ArvAVL(&((*raiz)->dir));
     }
 }
@@ -120,27 +121,27 @@ void pos_ordem_ArvAVL(ArvAVL *raiz)
     {
         pos_ordem_ArvAVL(&((*raiz)->esq));
         pos_ordem_ArvAVL(&((*raiz)->dir));
-        printf("%d\n", (*raiz)->info);
+        imprime_Palavra((*raiz)->pal);
     }
 }
 
-int consulta_ArvAVL(ArvAVL *raiz, int valor)
+Palavra *consulta_ArvAVL(ArvAVL *raiz, char* strat)
 {
     if (raiz == NULL)
         return 0;
     struct No *atual = *raiz;
     while (atual != NULL)
     {
-        if (valor == atual->info)
+        if (!strcasecmp(atual->pal->string, strat))
         {
-            return 1;
+            return atual->pal;
         }
-        if (valor > atual->info)
+        if (strcasecmp(strat, atual->pal->string) > 0)
             atual = atual->dir;
         else
             atual = atual->esq;
     }
-    return 0;
+    return NULL;
 }
 
 //=================================
@@ -180,7 +181,7 @@ void rotacao_RL(ArvAVL *A)
     rotacao_RR(A);
 }
 
-int insere_ArvAVL(ArvAVL *raiz, int valor)
+int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
 {
     int res;
     if (*raiz == NULL)
@@ -190,7 +191,7 @@ int insere_ArvAVL(ArvAVL *raiz, int valor)
         if (novo == NULL)
             return 0;
 
-        novo->info = valor;
+        novo->pal = pal;
         novo->altura = 0;
         novo->esq = NULL;
         novo->dir = NULL;
@@ -199,13 +200,13 @@ int insere_ArvAVL(ArvAVL *raiz, int valor)
     }
 
     struct No *atual = *raiz;
-    if (valor < atual->info)
+    if (strcasecmp(pal->string, atual->pal->string) < 0)
     {
-        if ((res = insere_ArvAVL(&(atual->esq), valor)) == 1)
+        if ((res = insere_ArvAVL(&(atual->esq), pal)) == 1)
         {
             if (fator_balanceamento_No(atual) >= 2)
             {
-                if (valor < (*raiz)->esq->info)
+                if (strcasecmp(pal->string, atual->esq->pal->string) < 0)
                 {
                     rotacao_LL(raiz);
                 }
@@ -218,13 +219,13 @@ int insere_ArvAVL(ArvAVL *raiz, int valor)
     }
     else
     {
-        if (valor > atual->info)
+        if (strcasecmp(pal->string, atual->pal->string) > 0)
         {
-            if ((res = insere_ArvAVL(&(atual->dir), valor)) == 1)
+            if ((res = insere_ArvAVL(&(atual->dir), pal)) == 1)
             {
                 if (fator_balanceamento_No(atual) >= 2)
                 {
-                    if ((*raiz)->dir->info < valor)
+                    if (strcasecmp((*raiz)->dir->pal->string, pal->string) < 0)
                     {
                         rotacao_RR(raiz);
                     }
@@ -237,6 +238,9 @@ int insere_ArvAVL(ArvAVL *raiz, int valor)
         }
         else
         {
+            insereOcorre(atual->pal->ocorrencias, pal->ocorrencias->prim->ocorreu);
+            atual->pal->ocorrencias->n++;
+            destroi_Palavra(pal);
             //  printf("Valor duplicado!!\n");
             return 0;
         }
@@ -258,7 +262,7 @@ struct No *procura_menor(struct No *atual)
     }
     return no1;
 }
-
+/*
 int remove_ArvAVL(ArvAVL *raiz, int valor)
 {
     if (*raiz == NULL)
@@ -328,4 +332,4 @@ int remove_ArvAVL(ArvAVL *raiz, int valor)
     (*raiz)->altura = maior(altura_No((*raiz)->esq), altura_No((*raiz)->dir)) + 1;
 
     return res;
-}
+}*/
