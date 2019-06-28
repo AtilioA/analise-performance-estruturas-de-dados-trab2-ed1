@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     char vet[k][80]; //vetor de busca
     srand(time(NULL));
     while(!feof(f)){
-        fscanf(f, "%s", strat); // vo usar o fscanf de placeholder até a gnt fazer uma função de leitura de palavras descente
+        fscanf(f, "%s", strat); // vo usar o fscanf de placeholder até a gnt fazer uma função de leitura de palavras decente
         insereRandPal(strat, pal_al);
         kkkeae = ftell(f) - strlen(strat) + 1;
         pal = cria_Palavra(strat, kkkeae);
