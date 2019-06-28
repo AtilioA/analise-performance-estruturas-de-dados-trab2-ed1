@@ -4,242 +4,1036 @@
 ARVORE BINARIA (em ordem)
 
 
-Palavra: 4
-Ocorrencias: 74 
+Palavra: (inversores
+Ocorrencias: 1308 
 Palavra: A
-Ocorrencias: 32 40 82 344 
-Palavra: ABATE
-Ocorrencias: 310 
-Palavra: AI
+Ocorrencias: 1 1139 1401 
+Palavra: abaixo
+Ocorrencias: 696 1083 
+Palavra: alunos
+Ocorrencias: 115 427 1262 
+Palavra: AND
+Ocorrencias: 1304 
+Palavra: Ao
+Ocorrencias: 89 
+Palavra: aperfeiçoar
+Ocorrencias: 167 
+Palavra: aplicou
+Ocorrencias: 450 
+Palavra: aprenderam,
+Ocorrencias: 434 
+Palavra: aprenderiam
 Ocorrencias: 122 
-Palavra: AINDA
+Palavra: aquáticos
+Ocorrencias: 639 835 970 
+Palavra: aula
+Ocorrencias: 621 817 952 
+Palavra: aula,
+Ocorrencias: 223 
+Palavra: Boole
+Ocorrencias: 156 
+Palavra: Boole,
+Ocorrencias: 325 
+Palavra: Boole.
+Ocorrencias: 1127 
+Palavra: Boole;
+Ocorrencias: 740 
+Palavra: Boole?
+Ocorrencias: 1415 1416 
+Palavra: booleanas
+Ocorrencias: 363 
+Palavra: calculasse
+Ocorrencias: 1205 
+Palavra: capacidade
+Ocorrencias: 184 
+Palavra: circuito
+Ocorrencias: 1184 
+Palavra: circuitos
+Ocorrencias: 386 
+Palavra: Ciência
+Ocorrencias: 63 
+Palavra: com
+Ocorrencias: 43 
+Palavra: como
+Ocorrencias: 1346 
+Palavra: Computação.
+Ocorrencias: 75 
+Palavra: congelou
+Ocorrencias: 474 
+Palavra: conseguiria
+Ocorrencias: 1364 
+Palavra: da
+Ocorrencias: 72 
+Palavra: das
+Ocorrencias: 99 
+Palavra: de
+Ocorrencias: 10 60 153 195 270 322 348 383 626 703 725 737 757 780 822 957 1007 1039 1090 1112 1124 1282 1412 
+Palavra: der
+Ocorrencias: 617 813 948 
+Palavra: desafio:
+Ocorrencias: 527 
+Palavra: descongelado
+Ocorrencias: 548 
+Palavra: descongelado.
+Ocorrencias: 1235 
+Palavra: descongelar
+Ocorrencias: 1376 
+Palavra: dispor
+Ocorrencias: 1275 
+Palavra: Dumbledore
+Ocorrencias: 564 886 
+Palavra: e
+Ocorrencias: 142 373 665 793 922 1052 1298 
+Palavra: ele
+Ocorrencias: 446 
+Palavra: em
+Ocorrencias: 287 583 910 
+Palavra: então
+Ocorrencias: 502 
+Palavra: escola
+Ocorrencias: 3 
+Palavra: estiver
+Ocorrencias: 575 902 
+Palavra: exercício
+Ocorrencias: 714 1101 
+Palavra: explicou
 Ocorrencias: 246 
-Palavra: AMOR
-Ocorrencias: 11 
-Palavra: APRENDE
-Ocorrencias: 24 
-Palavra: BEM
-Ocorrencias: 208 
-Palavra: BUCETINHA
-Ocorrencias: 84 198 
-Palavra: CARA
-Ocorrencias: 1 
-Palavra: CHUPA
-Ocorrencias: 76 
-Palavra: COLA
-Ocorrencias: 161 
-Palavra: COLOCA
-Ocorrencias: 60 316 
-Palavra: COLOCANDO
-Ocorrencias: 185 
-Palavra: COM
-Ocorrencias: 138 
-Palavra: CORRE
-Ocorrencias: 297 
-Palavra: CUZINHO
-Ocorrencias: 114 
-Palavra: DE
-Ocorrencias: 16 71 170 323 
-Palavra: DEIXANDO
-Ocorrencias: 362 
-Palavra: DELA
-Ocorrencias: 94 282 
-Palavra: DENTRO
-Ocorrencias: 355 
-Palavra: DEPOIS
-Ocorrencias: 154 287 
-Palavra: DEUS
-Ocorrencias: 19 
-Palavra: DEVAGA
-Ocorrencias: 212 
-Palavra: E
-Ocorrencias: 334 
-Palavra: ECITADA
-Ocorrencias: 238 
-Palavra: ELA
-Ocorrencias: 67 125 166 224 371 
-Palavra: EMPURRA
-Ocorrencias: 336 
-Palavra: FALANDO
-Ocorrencias: 256 
-Palavra: FICA
-Ocorrencias: 133 228 
-Palavra: FUDER
-Ocorrencias: 34 
-Palavra: INICIANTE
-Ocorrencias: 50 
-Palavra: LADINHO
-Ocorrencias: 173 326 
-Palavra: LAMBENDO
-Ocorrencias: 103 
-Palavra: LOGO
-Ocorrencias: 149 
-Palavra: LOUCA
-Ocorrencias: 375 376 
-Palavra: MAIS
-Ocorrencias: 233 
-Palavra: MINA
-Ocorrencias: 42 
-Palavra: NA
-Ocorrencias: 195 
-Palavra: NO
-Ocorrencias: 272 
-Palavra: O
-Ocorrencias: 112 308 
-Palavra: OUVIDO
-Ocorrencias: 275 
-Palavra: PARA
-Ocorrencias: 219 303 
-Palavra: PELO
-Ocorrencias: 6 
-Palavra: PRA
+Palavra: expressões
 Ocorrencias: 351 
-Palavra: PUTARIA
-Ocorrencias: 264 
-Palavra: ROLA
-Ocorrencias: 346 
-Palavra: SO
-Ocorrencias: 294 
-Palavra: TESÃO
-Ocorrencias: 142 
-Palavra: VAI
-Ocorrencias: 129 
-Palavra: VEM
-Ocorrencias: 99 252 
-Palavra: VER
-Ocorrencias: 181 
-Palavra: É
-Ocorrencias: 47 
+Palavra: feitiço
+Ocorrencias: 461 
+Palavra: feitiços
+Ocorrencias: 629 825 960 
+Palavra: foi
+Ocorrencias: 28 
+Palavra: for
+Ocorrencias: 870 
+Palavra: formalização
+Ocorrencias: 255 
+Palavra: férias,
+Ocorrencias: 103 
+Palavra: Harry
+Ocorrencias: 760 1010 1351 
+Palavra: Hermione
+Ocorrencias: 667 1054 
+Palavra: Hogwarts
+Ocorrencias: 19 586 913 
+Palavra: implementar
+Ocorrencias: 1169 
+Palavra: irão
+Ocorrencias: 1269 
+Palavra: isso
+Ocorrencias: 1254 
+Palavra: jogo
+Ocorrencias: 775 1034 
+Palavra: linguagem
+Ocorrencias: 290 
+Palavra: Lógica
+Ocorrencias: 134 
+Palavra: lógico
+Ocorrencias: 1193 
+Palavra: lógicos.
+Ocorrencias: 396 
+Palavra: magia
+Ocorrencias: 13 
+Palavra: Na
+Ocorrencias: 211 
+Palavra: natural
+Ocorrencias: 300 
+Palavra: nesse
+Ocorrencias: 650 846 981 
+Palavra: no
+Ocorrencias: 711 1098 
+Palavra: nota
+Ocorrencias: 691 1078 
+Palavra: novo
+Ocorrencias: 231 
+Palavra: não
+Ocorrencias: 676 865 897 943 1063 
+Palavra: o
+Ocorrencias: 229 490 516 598 750 773 795 924 1000 1023 
+Palavra: OR
+Ocorrencias: 1295 
+Palavra: os
+Ocorrencias: 112 424 1259 
+Palavra: ou
+Ocorrencias: 595 747 862 997 
+Palavra: para
+Ocorrencias: 162 308 406 1134 1249 
+Palavra: passou
+Ocorrencias: 509 
+Palavra: Pergunta-se:
+Ocorrencias: 1333 
+Palavra: porta
+Ocorrencias: 1289 
+Palavra: Potter
+Ocorrencias: 1357 
+Palavra: preciso
+Ocorrencias: 1161 
+Palavra: primeira
+Ocorrencias: 214 
+Palavra: professo
+Ocorrencias: 797 
+Palavra: professor
+Ocorrencias: 50 236 492 600 926 
+Palavra: projeto
+Ocorrencias: 375 
+Palavra: proposições
+Ocorrencias: 273 
+Palavra: próximo
+Ocorrencias: 1025 
+Palavra: quadribol
+Ocorrencias: 783 1042 
+Palavra: quando
+Ocorrencias: 1216 
+Palavra: que
+Ocorrencias: 470 882 1201 
+Palavra: raciocínio.
+Ocorrencias: 198 
+Palavra: reforçada
+Ocorrencias: 32 
+Palavra: Ronie
+Ocorrencias: 536 1223 1388 
+Palavra: Ronie.
+Ocorrencias: 483 
+Palavra: se
+Ocorrencias: 421 561 
+Palavra: seguinte
+Ocorrencias: 518 
+Palavra: semestre
+Ocorrencias: 656 
+Palavra: semestre;
+Ocorrencias: 852 987 
+Palavra: seria
+Ocorrencias: 1155 1229 
+Palavra: será
+Ocorrencias: 542 
+Palavra: sete
+Ocorrencias: 706 1093 
+Palavra: Severo
+Ocorrencias: 610 806 936 
+Palavra: simplificação
+Ocorrencias: 332 
+Palavra: sua
+Ocorrencias: 180 
+Palavra: time
+Ocorrencias: 752 1002 
+Palavra: tirar
+Ocorrencias: 681 1068 
+Palavra: um
+Ocorrencias: 47 458 1181 
+Palavra: uma
+Ocorrencias: 687 1074 1285 1300 
+Palavra: usando
+Ocorrencias: 1394 
+Palavra: vencer
+Ocorrencias: 766 1016 
+Palavra: verdade
+Ocorrencias: 874 
+Palavra: verificar
+Ocorrencias: 411 
+Palavra: verificação
+Ocorrencias: 1141 
+Palavra: voltar
+Ocorrencias: 92 
+Palavra: vontade).
+Ocorrencias: 1323 
+Palavra: Álgebra
+Ocorrencias: 144 
+Palavra: à
+Ocorrencias: 1320 
+Palavra: álgebra
+Ocorrencias: 313 728 1115 1403 
+
+
+
+ARVORE AVL (em ordem)
+
+
+Palavra: (inversores
+Ocorrencias: 1308 
+Palavra: A
+Ocorrencias: 1 1139 1401 
+Palavra: abaixo
+Ocorrencias: 696 1083 
+Palavra: alunos
+Ocorrencias: 115 427 1262 
+Palavra: AND
+Ocorrencias: 1304 
+Palavra: Ao
+Ocorrencias: 89 
+Palavra: aperfeiçoar
+Ocorrencias: 167 
+Palavra: aplicou
+Ocorrencias: 450 
+Palavra: aprenderam,
+Ocorrencias: 434 
+Palavra: aprenderiam
+Ocorrencias: 122 
+Palavra: aquáticos
+Ocorrencias: 639 835 970 
+Palavra: aula
+Ocorrencias: 621 817 952 
+Palavra: aula,
+Ocorrencias: 223 
+Palavra: Boole
+Ocorrencias: 156 
+Palavra: Boole,
+Ocorrencias: 325 
+Palavra: Boole.
+Ocorrencias: 1127 
+Palavra: Boole;
+Ocorrencias: 740 
+Palavra: Boole?
+Ocorrencias: 1415 1416 
+Palavra: booleanas
+Ocorrencias: 363 
+Palavra: calculasse
+Ocorrencias: 1205 
+Palavra: capacidade
+Ocorrencias: 184 
+Palavra: circuito
+Ocorrencias: 1184 
+Palavra: circuitos
+Ocorrencias: 386 
+Palavra: Ciência
+Ocorrencias: 63 
+Palavra: com
+Ocorrencias: 43 
+Palavra: como
+Ocorrencias: 1346 
+Palavra: Computação.
+Ocorrencias: 75 
+Palavra: congelou
+Ocorrencias: 474 
+Palavra: conseguiria
+Ocorrencias: 1364 
+Palavra: da
+Ocorrencias: 72 
+Palavra: das
+Ocorrencias: 99 
+Palavra: de
+Ocorrencias: 10 60 153 195 270 322 348 383 626 703 725 737 757 780 822 957 1007 1039 1090 1112 1124 1282 1412 
+Palavra: der
+Ocorrencias: 617 813 948 
+Palavra: desafio:
+Ocorrencias: 527 
+Palavra: descongelado
+Ocorrencias: 548 
+Palavra: descongelado.
+Ocorrencias: 1235 
+Palavra: descongelar
+Ocorrencias: 1376 
+Palavra: dispor
+Ocorrencias: 1275 
+Palavra: Dumbledore
+Ocorrencias: 564 886 
+Palavra: e
+Ocorrencias: 142 373 665 793 922 1052 1298 
+Palavra: ele
+Ocorrencias: 446 
+Palavra: em
+Ocorrencias: 287 583 910 
+Palavra: então
+Ocorrencias: 502 
+Palavra: escola
+Ocorrencias: 3 
+Palavra: estiver
+Ocorrencias: 575 902 
+Palavra: exercício
+Ocorrencias: 714 1101 
+Palavra: explicou
+Ocorrencias: 246 
+Palavra: expressões
+Ocorrencias: 351 
+Palavra: feitiço
+Ocorrencias: 461 
+Palavra: feitiços
+Ocorrencias: 629 825 960 
+Palavra: foi
+Ocorrencias: 28 
+Palavra: for
+Ocorrencias: 870 
+Palavra: formalização
+Ocorrencias: 255 
+Palavra: férias,
+Ocorrencias: 103 
+Palavra: Harry
+Ocorrencias: 760 1010 1351 
+Palavra: Hermione
+Ocorrencias: 667 1054 
+Palavra: Hogwarts
+Ocorrencias: 19 586 913 
+Palavra: implementar
+Ocorrencias: 1169 
+Palavra: irão
+Ocorrencias: 1269 
+Palavra: isso
+Ocorrencias: 1254 
+Palavra: jogo
+Ocorrencias: 775 1034 
+Palavra: linguagem
+Ocorrencias: 290 
+Palavra: Lógica
+Ocorrencias: 134 
+Palavra: lógico
+Ocorrencias: 1193 
+Palavra: lógicos.
+Ocorrencias: 396 
+Palavra: magia
+Ocorrencias: 13 
+Palavra: Na
+Ocorrencias: 211 
+Palavra: natural
+Ocorrencias: 300 
+Palavra: nesse
+Ocorrencias: 650 846 981 
+Palavra: no
+Ocorrencias: 711 1098 
+Palavra: nota
+Ocorrencias: 691 1078 
+Palavra: novo
+Ocorrencias: 231 
+Palavra: não
+Ocorrencias: 676 865 897 943 1063 
+Palavra: o
+Ocorrencias: 229 490 516 598 750 773 795 924 1000 1023 
+Palavra: OR
+Ocorrencias: 1295 
+Palavra: os
+Ocorrencias: 112 424 1259 
+Palavra: ou
+Ocorrencias: 595 747 862 997 
+Palavra: para
+Ocorrencias: 162 308 406 1134 1249 
+Palavra: passou
+Ocorrencias: 509 
+Palavra: Pergunta-se:
+Ocorrencias: 1333 
+Palavra: porta
+Ocorrencias: 1289 
+Palavra: Potter
+Ocorrencias: 1357 
+Palavra: preciso
+Ocorrencias: 1161 
+Palavra: primeira
+Ocorrencias: 214 
+Palavra: professo
+Ocorrencias: 797 
+Palavra: professor
+Ocorrencias: 50 236 492 600 926 
+Palavra: projeto
+Ocorrencias: 375 
+Palavra: proposições
+Ocorrencias: 273 
+Palavra: próximo
+Ocorrencias: 1025 
+Palavra: quadribol
+Ocorrencias: 783 1042 
+Palavra: quando
+Ocorrencias: 1216 
+Palavra: que
+Ocorrencias: 470 882 1201 
+Palavra: raciocínio.
+Ocorrencias: 198 
+Palavra: reforçada
+Ocorrencias: 32 
+Palavra: Ronie
+Ocorrencias: 536 1223 1388 
+Palavra: Ronie.
+Ocorrencias: 483 
+Palavra: se
+Ocorrencias: 421 561 
+Palavra: seguinte
+Ocorrencias: 518 
+Palavra: semestre
+Ocorrencias: 656 
+Palavra: semestre;
+Ocorrencias: 852 987 
+Palavra: seria
+Ocorrencias: 1155 1229 
+Palavra: será
+Ocorrencias: 542 
+Palavra: sete
+Ocorrencias: 706 1093 
+Palavra: Severo
+Ocorrencias: 610 806 936 
+Palavra: simplificação
+Ocorrencias: 332 
+Palavra: sua
+Ocorrencias: 180 
+Palavra: time
+Ocorrencias: 752 1002 
+Palavra: tirar
+Ocorrencias: 681 1068 
+Palavra: um
+Ocorrencias: 47 458 1181 
+Palavra: uma
+Ocorrencias: 687 1074 1285 1300 
+Palavra: usando
+Ocorrencias: 1394 
+Palavra: vencer
+Ocorrencias: 766 1016 
+Palavra: verdade
+Ocorrencias: 874 
+Palavra: verificar
+Ocorrencias: 411 
+Palavra: verificação
+Ocorrencias: 1141 
+Palavra: voltar
+Ocorrencias: 92 
+Palavra: vontade).
+Ocorrencias: 1323 
+Palavra: Álgebra
+Ocorrencias: 144 
+Palavra: à
+Ocorrencias: 1320 
+Palavra: álgebra
+Ocorrencias: 313 728 1115 1403 
 
 
 
 LISTA ENCADEADA
 
 
-Palavra: CARA
-Ocorrencias: 1 
-Palavra: PELO
-Ocorrencias: 6 
-Palavra: AMOR
-Ocorrencias: 11 
-Palavra: DE
-Ocorrencias: 16 71 170 323 
-Palavra: DEUS
-Ocorrencias: 19 
-Palavra: APRENDE
-Ocorrencias: 24 
 Palavra: A
-Ocorrencias: 32 40 82 344 
-Palavra: FUDER
-Ocorrencias: 34 
-Palavra: MINA
-Ocorrencias: 42 
-Palavra: É
-Ocorrencias: 47 
-Palavra: INICIANTE
-Ocorrencias: 50 
-Palavra: COLOCA
-Ocorrencias: 60 316 
-Palavra: ELA
-Ocorrencias: 67 125 166 224 371 
-Palavra: 4
-Ocorrencias: 74 
-Palavra: CHUPA
-Ocorrencias: 76 
-Palavra: BUCETINHA
-Ocorrencias: 84 198 
-Palavra: DELA
-Ocorrencias: 94 282 
-Palavra: VEM
-Ocorrencias: 99 252 
-Palavra: LAMBENDO
+Ocorrencias: 1 1139 1401 
+Palavra: escola
+Ocorrencias: 3 
+Palavra: de
+Ocorrencias: 10 60 153 195 270 322 348 383 626 703 725 737 757 780 822 957 1007 1039 1090 1112 1124 1282 1412 
+Palavra: magia
+Ocorrencias: 13 
+Palavra: Hogwarts
+Ocorrencias: 19 586 913 
+Palavra: foi
+Ocorrencias: 28 
+Palavra: reforçada
+Ocorrencias: 32 
+Palavra: com
+Ocorrencias: 43 
+Palavra: um
+Ocorrencias: 47 458 1181 
+Palavra: professor
+Ocorrencias: 50 236 492 600 926 
+Palavra: Ciência
+Ocorrencias: 63 
+Palavra: da
+Ocorrencias: 72 
+Palavra: Computação.
+Ocorrencias: 75 
+Palavra: Ao
+Ocorrencias: 89 
+Palavra: voltar
+Ocorrencias: 92 
+Palavra: das
+Ocorrencias: 99 
+Palavra: férias,
 Ocorrencias: 103 
-Palavra: O
-Ocorrencias: 112 308 
-Palavra: CUZINHO
-Ocorrencias: 114 
-Palavra: AI
+Palavra: os
+Ocorrencias: 112 424 1259 
+Palavra: alunos
+Ocorrencias: 115 427 1262 
+Palavra: aprenderiam
 Ocorrencias: 122 
-Palavra: VAI
-Ocorrencias: 129 
-Palavra: FICA
-Ocorrencias: 133 228 
-Palavra: COM
-Ocorrencias: 138 
-Palavra: TESÃO
-Ocorrencias: 142 
-Palavra: LOGO
-Ocorrencias: 149 
-Palavra: DEPOIS
-Ocorrencias: 154 287 
-Palavra: COLA
-Ocorrencias: 161 
-Palavra: LADINHO
-Ocorrencias: 173 326 
-Palavra: VER
-Ocorrencias: 181 
-Palavra: COLOCANDO
-Ocorrencias: 185 
-Palavra: NA
-Ocorrencias: 195 
-Palavra: BEM
-Ocorrencias: 208 
-Palavra: DEVAGA
-Ocorrencias: 212 
-Palavra: PARA
-Ocorrencias: 219 303 
-Palavra: MAIS
-Ocorrencias: 233 
-Palavra: ECITADA
-Ocorrencias: 238 
-Palavra: AINDA
+Palavra: Lógica
+Ocorrencias: 134 
+Palavra: e
+Ocorrencias: 142 373 665 793 922 1052 1298 
+Palavra: Álgebra
+Ocorrencias: 144 
+Palavra: Boole
+Ocorrencias: 156 
+Palavra: para
+Ocorrencias: 162 308 406 1134 1249 
+Palavra: aperfeiçoar
+Ocorrencias: 167 
+Palavra: sua
+Ocorrencias: 180 
+Palavra: capacidade
+Ocorrencias: 184 
+Palavra: raciocínio.
+Ocorrencias: 198 
+Palavra: Na
+Ocorrencias: 211 
+Palavra: primeira
+Ocorrencias: 214 
+Palavra: aula,
+Ocorrencias: 223 
+Palavra: o
+Ocorrencias: 229 490 516 598 750 773 795 924 1000 1023 
+Palavra: novo
+Ocorrencias: 231 
+Palavra: explicou
 Ocorrencias: 246 
-Palavra: FALANDO
-Ocorrencias: 256 
-Palavra: PUTARIA
-Ocorrencias: 264 
-Palavra: NO
-Ocorrencias: 272 
-Palavra: OUVIDO
-Ocorrencias: 275 
-Palavra: SO
-Ocorrencias: 294 
-Palavra: CORRE
-Ocorrencias: 297 
-Palavra: ABATE
-Ocorrencias: 310 
-Palavra: E
-Ocorrencias: 334 
-Palavra: EMPURRA
-Ocorrencias: 336 
-Palavra: ROLA
-Ocorrencias: 346 
-Palavra: PRA
+Palavra: formalização
+Ocorrencias: 255 
+Palavra: proposições
+Ocorrencias: 273 
+Palavra: em
+Ocorrencias: 287 583 910 
+Palavra: linguagem
+Ocorrencias: 290 
+Palavra: natural
+Ocorrencias: 300 
+Palavra: álgebra
+Ocorrencias: 313 728 1115 1403 
+Palavra: Boole,
+Ocorrencias: 325 
+Palavra: simplificação
+Ocorrencias: 332 
+Palavra: expressões
 Ocorrencias: 351 
-Palavra: DENTRO
-Ocorrencias: 355 
-Palavra: DEIXANDO
-Ocorrencias: 362 
-Palavra: LOUCA
-Ocorrencias: 375 376 
-A palavra DEIXANDO foi encontrada na arvore
-A palavra DEIXANDO foi encontrada na lista
-A palavra PARA foi encontrada na arvore
-A palavra PARA foi encontrada na lista
-A palavra LAMBENDO foi encontrada na arvore
-A palavra LAMBENDO foi encontrada na lista
-A palavra DEPOIS foi encontrada na arvore
-A palavra DEPOIS foi encontrada na lista
-A palavra DEUS foi encontrada na arvore
-A palavra DEUS foi encontrada na lista
-A palavra NA foi encontrada na arvore
-A palavra NA foi encontrada na lista
-A palavra EMPURRA foi encontrada na arvore
-A palavra EMPURRA foi encontrada na lista
-A palavra COLOCANDO foi encontrada na arvore
-A palavra COLOCANDO foi encontrada na lista
-A palavra FALANDO foi encontrada na arvore
-A palavra FALANDO foi encontrada na lista
-A palavra PARA foi encontrada na arvore
-A palavra PARA foi encontrada na lista
+Palavra: booleanas
+Ocorrencias: 363 
+Palavra: projeto
+Ocorrencias: 375 
+Palavra: circuitos
+Ocorrencias: 386 
+Palavra: lógicos.
+Ocorrencias: 396 
+Palavra: verificar
+Ocorrencias: 411 
+Palavra: se
+Ocorrencias: 421 561 
+Palavra: aprenderam,
+Ocorrencias: 434 
+Palavra: ele
+Ocorrencias: 446 
+Palavra: aplicou
+Ocorrencias: 450 
+Palavra: feitiço
+Ocorrencias: 461 
+Palavra: que
+Ocorrencias: 470 882 1201 
+Palavra: congelou
+Ocorrencias: 474 
+Palavra: Ronie.
+Ocorrencias: 483 
+Palavra: então
+Ocorrencias: 502 
+Palavra: passou
+Ocorrencias: 509 
+Palavra: seguinte
+Ocorrencias: 518 
+Palavra: desafio:
+Ocorrencias: 527 
+Palavra: Ronie
+Ocorrencias: 536 1223 1388 
+Palavra: será
+Ocorrencias: 542 
+Palavra: descongelado
+Ocorrencias: 548 
+Palavra: Dumbledore
+Ocorrencias: 564 886 
+Palavra: estiver
+Ocorrencias: 575 902 
+Palavra: ou
+Ocorrencias: 595 747 862 997 
+Palavra: Severo
+Ocorrencias: 610 806 936 
+Palavra: der
+Ocorrencias: 617 813 948 
+Palavra: aula
+Ocorrencias: 621 817 952 
+Palavra: feitiços
+Ocorrencias: 629 825 960 
+Palavra: aquáticos
+Ocorrencias: 639 835 970 
+Palavra: nesse
+Ocorrencias: 650 846 981 
+Palavra: semestre
+Ocorrencias: 656 
+Palavra: Hermione
+Ocorrencias: 667 1054 
+Palavra: não
+Ocorrencias: 676 865 897 943 1063 
+Palavra: tirar
+Ocorrencias: 681 1068 
+Palavra: uma
+Ocorrencias: 687 1074 1285 1300 
+Palavra: nota
+Ocorrencias: 691 1078 
+Palavra: abaixo
+Ocorrencias: 696 1083 
+Palavra: sete
+Ocorrencias: 706 1093 
+Palavra: no
+Ocorrencias: 711 1098 
+Palavra: exercício
+Ocorrencias: 714 1101 
+Palavra: Boole;
+Ocorrencias: 740 
+Palavra: time
+Ocorrencias: 752 1002 
+Palavra: Harry
+Ocorrencias: 760 1010 1351 
+Palavra: vencer
+Ocorrencias: 766 1016 
+Palavra: jogo
+Ocorrencias: 775 1034 
+Palavra: quadribol
+Ocorrencias: 783 1042 
+Palavra: professo
+Ocorrencias: 797 
+Palavra: semestre;
+Ocorrencias: 852 987 
+Palavra: for
+Ocorrencias: 870 
+Palavra: verdade
+Ocorrencias: 874 
+Palavra: próximo
+Ocorrencias: 1025 
+Palavra: Boole.
+Ocorrencias: 1127 
+Palavra: verificação
+Ocorrencias: 1141 
+Palavra: seria
+Ocorrencias: 1155 1229 
+Palavra: preciso
+Ocorrencias: 1161 
+Palavra: implementar
+Ocorrencias: 1169 
+Palavra: circuito
+Ocorrencias: 1184 
+Palavra: lógico
+Ocorrencias: 1193 
+Palavra: calculasse
+Ocorrencias: 1205 
+Palavra: quando
+Ocorrencias: 1216 
+Palavra: descongelado.
+Ocorrencias: 1235 
+Palavra: isso
+Ocorrencias: 1254 
+Palavra: irão
+Ocorrencias: 1269 
+Palavra: dispor
+Ocorrencias: 1275 
+Palavra: porta
+Ocorrencias: 1289 
+Palavra: OR
+Ocorrencias: 1295 
+Palavra: AND
+Ocorrencias: 1304 
+Palavra: (inversores
+Ocorrencias: 1308 
+Palavra: à
+Ocorrencias: 1320 
+Palavra: vontade).
+Ocorrencias: 1323 
+Palavra: Pergunta-se:
+Ocorrencias: 1333 
+Palavra: como
+Ocorrencias: 1346 
+Palavra: Potter
+Ocorrencias: 1357 
+Palavra: conseguiria
+Ocorrencias: 1364 
+Palavra: descongelar
+Ocorrencias: 1376 
+Palavra: usando
+Ocorrencias: 1394 
+Palavra: Boole?
+Ocorrencias: 1415 1416 
+A palavra feitiços foi encontrada na arvore
+A palavra feitiços foi encontrada na lista
+A palavra feitiços foi encontrada na arvore avl
+A palavra capacidade foi encontrada na arvore
+A palavra capacidade foi encontrada na lista
+A palavra capacidade foi encontrada na arvore avl
+A palavra professor foi encontrada na arvore
+A palavra professor foi encontrada na lista
+A palavra professor foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra à foi encontrada na arvore
+A palavra à foi encontrada na lista
+A palavra à foi encontrada na arvore avl
+A palavra verdade foi encontrada na arvore
+A palavra verdade foi encontrada na lista
+A palavra verdade foi encontrada na arvore avl
+A palavra lógicos. foi encontrada na arvore
+A palavra lógicos. foi encontrada na lista
+A palavra lógicos. foi encontrada na arvore avl
+A palavra Computação. foi encontrada na arvore
+A palavra Computação. foi encontrada na lista
+A palavra Computação. foi encontrada na arvore avl
+A palavra aquáticos foi encontrada na arvore
+A palavra aquáticos foi encontrada na lista
+A palavra aquáticos foi encontrada na arvore avl
+A palavra semestre; foi encontrada na arvore
+A palavra semestre; foi encontrada na lista
+A palavra semestre; foi encontrada na arvore avl
+A palavra professor foi encontrada na arvore
+A palavra professor foi encontrada na lista
+A palavra professor foi encontrada na arvore avl
+A palavra feitiços foi encontrada na arvore
+A palavra feitiços foi encontrada na lista
+A palavra feitiços foi encontrada na arvore avl
+A palavra os foi encontrada na arvore
+A palavra os foi encontrada na lista
+A palavra os foi encontrada na arvore avl
+A palavra ou foi encontrada na arvore
+A palavra ou foi encontrada na lista
+A palavra ou foi encontrada na arvore avl
+A palavra der foi encontrada na arvore
+A palavra der foi encontrada na lista
+A palavra der foi encontrada na arvore avl
+A palavra Ronie foi encontrada na arvore
+A palavra Ronie foi encontrada na lista
+A palavra Ronie foi encontrada na arvore avl
+A palavra com foi encontrada na arvore
+A palavra com foi encontrada na lista
+A palavra com foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra o foi encontrada na arvore
+A palavra o foi encontrada na lista
+A palavra o foi encontrada na arvore avl
+A palavra Hogwarts foi encontrada na arvore
+A palavra Hogwarts foi encontrada na lista
+A palavra Hogwarts foi encontrada na arvore avl
+A palavra simplificação foi encontrada na arvore
+A palavra simplificação foi encontrada na lista
+A palavra simplificação foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra aperfeiçoar foi encontrada na arvore
+A palavra aperfeiçoar foi encontrada na lista
+A palavra aperfeiçoar foi encontrada na arvore avl
+A palavra projeto foi encontrada na arvore
+A palavra projeto foi encontrada na lista
+A palavra projeto foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra descongelado. foi encontrada na arvore
+A palavra descongelado. foi encontrada na lista
+A palavra descongelado. foi encontrada na arvore avl
+A palavra se foi encontrada na arvore
+A palavra se foi encontrada na lista
+A palavra se foi encontrada na arvore avl
+A palavra e foi encontrada na arvore
+A palavra e foi encontrada na lista
+A palavra e foi encontrada na arvore avl
+A palavra professor foi encontrada na arvore
+A palavra professor foi encontrada na lista
+A palavra professor foi encontrada na arvore avl
+A palavra à foi encontrada na arvore
+A palavra à foi encontrada na lista
+A palavra à foi encontrada na arvore avl
+A palavra em foi encontrada na arvore
+A palavra em foi encontrada na lista
+A palavra em foi encontrada na arvore avl
+A palavra explicou foi encontrada na arvore
+A palavra explicou foi encontrada na lista
+A palavra explicou foi encontrada na arvore avl
+A palavra das foi encontrada na arvore
+A palavra das foi encontrada na lista
+A palavra das foi encontrada na arvore avl
+A palavra para foi encontrada na arvore
+A palavra para foi encontrada na lista
+A palavra para foi encontrada na arvore avl
+A palavra para foi encontrada na arvore
+A palavra para foi encontrada na lista
+A palavra para foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra Para foi encontrada na arvore
+A palavra Para foi encontrada na lista
+A palavra Para foi encontrada na arvore avl
+A palavra estiver foi encontrada na arvore
+A palavra estiver foi encontrada na lista
+A palavra estiver foi encontrada na arvore avl
+A palavra Boole; foi encontrada na arvore
+A palavra Boole; foi encontrada na lista
+A palavra Boole; foi encontrada na arvore avl
+A palavra OR foi encontrada na arvore
+A palavra OR foi encontrada na lista
+A palavra OR foi encontrada na arvore avl
+A palavra álgebra foi encontrada na arvore
+A palavra álgebra foi encontrada na lista
+A palavra álgebra foi encontrada na arvore avl
+A palavra O foi encontrada na arvore
+A palavra O foi encontrada na lista
+A palavra O foi encontrada na arvore avl
+A palavra ou foi encontrada na arvore
+A palavra ou foi encontrada na lista
+A palavra ou foi encontrada na arvore avl
+A palavra em foi encontrada na arvore
+A palavra em foi encontrada na lista
+A palavra em foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra nesse foi encontrada na arvore
+A palavra nesse foi encontrada na lista
+A palavra nesse foi encontrada na arvore avl
+A palavra sete foi encontrada na arvore
+A palavra sete foi encontrada na lista
+A palavra sete foi encontrada na arvore avl
+A palavra alunos foi encontrada na arvore
+A palavra alunos foi encontrada na lista
+A palavra alunos foi encontrada na arvore avl
+A palavra Álgebra foi encontrada na arvore
+A palavra Álgebra foi encontrada na lista
+A palavra Álgebra foi encontrada na arvore avl
+A palavra aquáticos foi encontrada na arvore
+A palavra aquáticos foi encontrada na lista
+A palavra aquáticos foi encontrada na arvore avl
+A palavra seguinte foi encontrada na arvore
+A palavra seguinte foi encontrada na lista
+A palavra seguinte foi encontrada na arvore avl
+A palavra professor foi encontrada na arvore
+A palavra professor foi encontrada na lista
+A palavra professor foi encontrada na arvore avl
+A palavra for foi encontrada na arvore
+A palavra for foi encontrada na lista
+A palavra for foi encontrada na arvore avl
+A palavra abaixo foi encontrada na arvore
+A palavra abaixo foi encontrada na lista
+A palavra abaixo foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra raciocínio. foi encontrada na arvore
+A palavra raciocínio. foi encontrada na lista
+A palavra raciocínio. foi encontrada na arvore avl
+A palavra passou foi encontrada na arvore
+A palavra passou foi encontrada na lista
+A palavra passou foi encontrada na arvore avl
+A palavra Para foi encontrada na arvore
+A palavra Para foi encontrada na lista
+A palavra Para foi encontrada na arvore avl
+A palavra Boole foi encontrada na arvore
+A palavra Boole foi encontrada na lista
+A palavra Boole foi encontrada na arvore avl
+A palavra uma foi encontrada na arvore
+A palavra uma foi encontrada na lista
+A palavra uma foi encontrada na arvore avl
+A palavra para foi encontrada na arvore
+A palavra para foi encontrada na lista
+A palavra para foi encontrada na arvore avl
+A palavra álgebra foi encontrada na arvore
+A palavra álgebra foi encontrada na lista
+A palavra álgebra foi encontrada na arvore avl
+A palavra o foi encontrada na arvore
+A palavra o foi encontrada na lista
+A palavra o foi encontrada na arvore avl
+A palavra time foi encontrada na arvore
+A palavra time foi encontrada na lista
+A palavra time foi encontrada na arvore avl
+A palavra para foi encontrada na arvore
+A palavra para foi encontrada na lista
+A palavra para foi encontrada na arvore avl
+A palavra o foi encontrada na arvore
+A palavra o foi encontrada na lista
+A palavra o foi encontrada na arvore avl
+A palavra Harry foi encontrada na arvore
+A palavra Harry foi encontrada na lista
+A palavra Harry foi encontrada na arvore avl
+A palavra será foi encontrada na arvore
+A palavra será foi encontrada na lista
+A palavra será foi encontrada na arvore avl
+A palavra magia foi encontrada na arvore
+A palavra magia foi encontrada na lista
+A palavra magia foi encontrada na arvore avl
+A palavra Hogwarts foi encontrada na arvore
+A palavra Hogwarts foi encontrada na lista
+A palavra Hogwarts foi encontrada na arvore avl
+A palavra os foi encontrada na arvore
+A palavra os foi encontrada na lista
+A palavra os foi encontrada na arvore avl
+A palavra AND foi encontrada na arvore
+A palavra AND foi encontrada na lista
+A palavra AND foi encontrada na arvore avl
+A palavra como foi encontrada na arvore
+A palavra como foi encontrada na lista
+A palavra como foi encontrada na arvore avl
+A palavra um foi encontrada na arvore
+A palavra um foi encontrada na lista
+A palavra um foi encontrada na arvore avl
+A palavra que foi encontrada na arvore
+A palavra que foi encontrada na lista
+A palavra que foi encontrada na arvore avl
+A palavra estiver foi encontrada na arvore
+A palavra estiver foi encontrada na lista
+A palavra estiver foi encontrada na arvore avl
+A palavra isso foi encontrada na arvore
+A palavra isso foi encontrada na lista
+A palavra isso foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra uma foi encontrada na arvore
+A palavra uma foi encontrada na lista
+A palavra uma foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra (inversores foi encontrada na arvore
+A palavra (inversores foi encontrada na lista
+A palavra (inversores foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra novo foi encontrada na arvore
+A palavra novo foi encontrada na lista
+A palavra novo foi encontrada na arvore avl
+A palavra conseguiria foi encontrada na arvore
+A palavra conseguiria foi encontrada na lista
+A palavra conseguiria foi encontrada na arvore avl
+A palavra raciocínio. foi encontrada na arvore
+A palavra raciocínio. foi encontrada na lista
+A palavra raciocínio. foi encontrada na arvore avl
+A palavra aula, foi encontrada na arvore
+A palavra aula, foi encontrada na lista
+A palavra aula, foi encontrada na arvore avl
+A palavra Álgebra foi encontrada na arvore
+A palavra Álgebra foi encontrada na lista
+A palavra Álgebra foi encontrada na arvore avl
+A palavra sete foi encontrada na arvore
+A palavra sete foi encontrada na lista
+A palavra sete foi encontrada na arvore avl
+A palavra lógico foi encontrada na arvore
+A palavra lógico foi encontrada na lista
+A palavra lógico foi encontrada na arvore avl
+A palavra Boole, foi encontrada na arvore
+A palavra Boole, foi encontrada na lista
+A palavra Boole, foi encontrada na arvore avl
+A palavra preciso foi encontrada na arvore
+A palavra preciso foi encontrada na lista
+A palavra preciso foi encontrada na arvore avl
+A palavra no foi encontrada na arvore
+A palavra no foi encontrada na lista
+A palavra no foi encontrada na arvore avl
+A palavra de foi encontrada na arvore
+A palavra de foi encontrada na lista
+A palavra de foi encontrada na arvore avl
+A palavra será foi encontrada na arvore
+A palavra será foi encontrada na lista
+A palavra será foi encontrada na arvore avl
+A palavra formalização foi encontrada na arvore
+A palavra formalização foi encontrada na lista
+A palavra formalização foi encontrada na arvore avl
+A palavra circuitos foi encontrada na arvore
+A palavra circuitos foi encontrada na lista
+A palavra circuitos foi encontrada na arvore avl
+A palavra Boole? foi encontrada na arvore
+A palavra Boole? foi encontrada na lista
+A palavra Boole? foi encontrada na arvore avl
+A palavra Ronie. foi encontrada na arvore
+A palavra Ronie. foi encontrada na lista
+A palavra Ronie. foi encontrada na arvore avl
+A palavra um foi encontrada na arvore
+A palavra um foi encontrada na lista
+A palavra um foi encontrada na arvore avl
+A palavra Hermione foi encontrada na arvore
+A palavra Hermione foi encontrada na lista
+A palavra Hermione foi encontrada na arvore avl
 
