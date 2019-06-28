@@ -195,7 +195,6 @@ void insere_Lista(Palavra *x, Lista *l)
 }
 Palavra *busca_Lista(char *strat, Lista *l){
     Celula *aux = l->cabeca;
-    printf("Buscando %s em lista\n", strat);
     while(aux != NULL && strcasecmp(get_string(aux->palavra), strat)){
         aux = aux->prox;
     }

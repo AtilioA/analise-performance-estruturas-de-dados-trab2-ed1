@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
     clr_scr();
 
-    //Lista *lista = cria_Lista();
+    Lista *lista = cria_Lista();
     ArvBin *arvere = criaArvBin();
     tSentRandPal *pal_al = newRandpal(); //lista de busca
     Palavra *pal;
@@ -32,18 +32,26 @@ int main(int argc, char *argv[])
         kkkeae = ftell(f) - strlen(strat) + 1;
         pal = cria_Palavra(strat, kkkeae);
         insere_ArvBin(arvere, pal);
-        //insere_Lista(pal, lista);
+        pal = cria_Palavra(strat, kkkeae);
+        insere_Lista(pal, lista);
     }
     for(int i = 0; i < k; i++){
         strcpy(vet[i], buscaRandPal(rand()%(pal_al->qtd), pal_al)); //carrega o vetor com palavras aleatórias da lista
     }
+    
+    printf("\n\n\nARVORE BINARIA (em ordem)\n\n\n");
     em_ordem_ArvBin(arvere);
-    //imprime_lista(lista);
+    
+    printf("\n\n\nLISTA ENCADEADA\n\n\n");
+    imprime_lista(lista);
     for(int i = 0; i < k; i++){
-        //Palavra* meu = busca_Lista(vet[i], lista);
+        Palavra* seu = busca_Lista(vet[i], lista);
         Palavra *meu = consulta_ArvBin(arvere, vet[i]);
         if(meu != NULL){
-            printf("A palavra %s foi encontrada\n", vet[i]);
+            printf("A palavra %s foi encontrada na arvore\n", vet[i]);
+        }
+        if(seu != NULL){
+            printf("A palavra %s foi encontrada na lista\n", vet[i]);
         }
     }
     printf("\n");
@@ -51,6 +59,6 @@ int main(int argc, char *argv[])
     //imprime_lista(lista);
     fclose(f);
     libera_ArvBin(arvere);
-    //destroi_lista(lista);
+    destroi_lista(lista);
     return 0;
 }
