@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 {
     //clr_scr();
 
+    struct timeval t;
     Lista *lista = cria_Lista();
     ArvBin *arvere = criaArvBin();
     ArvAVL *arvl = cria_ArvAVL();
@@ -27,7 +28,10 @@ int main(int argc, char *argv[])
     FILE *f = fopen(argv[1], "r");
     int k = atoi(argv[2]);
     char vet[k][80]; //vetor de busca
-    srand(time(NULL));
+
+    gettimeofday(&t, NULL);
+    srand((unsigned int)t.tv_usec);
+
     while(!feof(f)){
         fscanf(f, "%s", strat); // vo usar o fscanf de placeholder até a gnt fazer uma função de leitura de palavras decente
         insereRandPal(strat, pal_al);
@@ -42,7 +46,7 @@ int main(int argc, char *argv[])
     for(int i = 0; i < k; i++){
         strcpy(vet[i], buscaRandPal(rand()%(pal_al->qtd), pal_al)); //carrega o vetor com palavras aleatórias da lista
     }
-    
+
     printf("\n\n\nARVORE BINARIA (em ordem)\n\n\n");
     em_ordem_ArvBin(arvere);
     printf("\n\n\nARVORE AVL (em ordem)\n\n\n");
