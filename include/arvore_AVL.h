@@ -9,7 +9,7 @@ typedef struct No *ArvAVL;
 ArvAVL *cria_ArvAVL();
 void libera_ArvAVL(ArvAVL *raiz);
 int insere_ArvAVL(ArvAVL *raiz, Palavra *pal);
-int remove_ArvAVL(ArvAVL *raiz, int valor);
+//int remove_ArvAVL(ArvAVL *raiz, int valor);
 int esta_vazia_ArvAVL(ArvAVL *raiz);
 int altura_ArvAVL(ArvAVL *raiz);
 int total_No_ArvAVL(ArvAVL *raiz);
