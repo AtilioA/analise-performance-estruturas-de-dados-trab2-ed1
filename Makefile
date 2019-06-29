@@ -21,6 +21,9 @@ $(OBJ)/arvore_binaria.o: $(SRC)/arvore_binaria.c $(INC)/arvore_binaria.h
 $(OBJ)/arvore_AVL.o: $(SRC)/arvore_AVL.c $(INC)/arvore_AVL.h
 	gcc -c $(CFLAGS) "$(SRC)/arvore_AVL.c" -o "$(OBJ)/arvore_AVL.o"
 
+# $(OBJ)/tabela_hash.o: $(SRC)/tabela_hash.c $(INC)/tabela_hash.h
+# 	gcc -c $(CFLAGS) "$(SRC)/tabela_hash.c" -o "$(OBJ)/tabela_hash.o"
+
 $(OBJ)/arquivos.o: $(SRC)/arquivos.c $(INC)/arquivos.h
 	gcc -c $(CFLAGS) "$(SRC)/arquivos.c" -o "$(OBJ)/arquivos.o"
 
