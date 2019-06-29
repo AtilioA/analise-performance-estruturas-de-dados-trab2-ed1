@@ -4,7 +4,10 @@
 #include "include/indexador.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
+#include <sys/time.h>
+
 /*
  * CONVENÇÕES PARA O TRABALINDO:
  * Constantes em CAPS: UNUSED, TRUE, FALSE.

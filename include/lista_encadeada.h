@@ -11,15 +11,14 @@
 // Lista encadeada que abstrai um conjunto de itens
 typedef struct Celula
 {
-    Palavra *palavra; // PONTEIRO??
+    Palavra *palavra;
     struct celula *prox;
 } Celula;
 
 typedef struct
 {
-    Celula *cabeca, *ultimo;
+    Celula *primeiro, *ultimo;
     char *nomeArquivo;
-    // int tamanho;
 } Lista;
 
 /* Funções para acessar estrutura opaca */

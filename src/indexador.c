@@ -15,10 +15,10 @@ char *get_string(Palavra *palavra)
 
 int get_ocorrencias(Palavra *palavra)
 {
-    return palavra->ocorrencias->n;
+    return palavra->ocorrencias->qtd;
 }
 
-tOcorrencias *get_posicoes(Palavra *palavra)
+ListaOcorrencias *get_posicoes(Palavra *palavra)
 {
     return palavra->ocorrencias;
 }
@@ -27,7 +27,7 @@ void imprime_Palavra(Palavra *palavra)
 {
     printf("Palavra: %s\n", get_string(palavra));
     printf("Ocorrencias: ");
-    tOcorre *aux = get_posicoes(palavra)->prim;
+    tOcorre *aux = get_posicoes(palavra)->primeiro;
     for(int i = 0; i < get_ocorrencias(palavra); i++){
         printf("%d ", aux->ocorreu);
         aux = aux->prox;
@@ -35,25 +35,25 @@ void imprime_Palavra(Palavra *palavra)
     printf("\n");
 }
 
-tOcorrencias *novaOcorre(){
-    tOcorrencias *novo = malloc(sizeof(tOcorrencias));
-    novo->prim = NULL;
-    novo->ult = NULL;
-    novo->n = 0;
+ListaOcorrencias *novaOcorre(){
+    ListaOcorrencias *novo = malloc(sizeof(ListaOcorrencias));
+    novo->primeiro = NULL;
+    novo->ultimo = NULL;
+    novo->qtd = 0;
     return novo;
 }
 
-void insereOcorre(tOcorrencias *l, int ocorre){
+void insereOcorre(ListaOcorrencias *l, int ocorre){
     tOcorre *nova = malloc(sizeof(tOcorre));
     nova->prox = NULL;
     nova->ocorreu = ocorre;
-    if(l->prim == NULL){
-        l->prim = nova;
-        l->ult = nova;
+    if(l->primeiro == NULL){
+        l->primeiro = nova;
+        l->ultimo = nova;
         return;
     }
-    l->ult->prox = nova;
-    l->ult = nova;
+    l->ultimo->prox = nova;
+    l->ultimo = nova;
     return;
 }
 
@@ -62,7 +62,7 @@ Palavra *cria_Palavra(char *string, int ocorre)
     Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
     nova->string = malloc(sizeof(char)*strlen(string) + 1);
     nova->ocorrencias = novaOcorre();
-    nova->ocorrencias->n = 1;
+    nova->ocorrencias->qtd = 1;
     strcpy(nova->string, string);
     insereOcorre(nova->ocorrencias, ocorre);
     return nova;
@@ -88,9 +88,9 @@ Palavra *inicia_Palavra()
 }
 */
 
-void destroi_ocorrencia(tOcorrencias *ocorres){
+void destroi_ocorrencia(ListaOcorrencias *ocorres){
     tOcorre *ant = NULL;
-    tOcorre *aux = ocorres->prim;
+    tOcorre *aux = ocorres->primeiro;
     while(aux != NULL){
         ant = aux;
         aux = aux->prox;
@@ -108,8 +108,8 @@ void destroi_Palavra(Palavra *palavra)
 
 tSentRandPal *newRandpal(){
     tSentRandPal *novo = malloc(sizeof(tSentRandPal));
-    novo->prim = NULL;
-    novo->ult = NULL;
+    novo->primeiro = NULL;
+    novo->ultimo = NULL;
     novo->qtd = 0;
     return novo;
 }
@@ -119,19 +119,19 @@ void insereRandPal(char *strat, tSentRandPal *l){
     pal->string = malloc(sizeof(char) * strlen(strat) + 1);
     strcpy(pal->string, strat);
     pal->prox = NULL;
-    if(l->prim == NULL){
-        l->prim = pal;
-        l->ult = pal;
+    if(l->primeiro == NULL){
+        l->primeiro = pal;
+        l->ultimo = pal;
         return;
     }
-    l->ult->prox = pal;
-    l->ult = l->ult->prox;
+    l->ultimo->prox = pal;
+    l->ultimo = l->ultimo->prox;
     l->qtd++;
 }
 
 void destroiRandPal(tSentRandPal* l){
     tRandPal *ant;
-    tRandPal *aux = l->prim;
+    tRandPal *aux = l->primeiro;
     while(aux != NULL){
         ant = aux;
         aux = aux->prox;
@@ -142,7 +142,7 @@ void destroiRandPal(tSentRandPal* l){
 }
 
 char *buscaRandPal(int indice, tSentRandPal *l){
-    tRandPal *aux = l->prim;
+    tRandPal *aux = l->primeiro;
     for(int i = 0; i < indice && i < l->qtd; i++){
         aux = aux->prox;
     }

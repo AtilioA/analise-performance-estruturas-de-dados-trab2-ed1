@@ -94,7 +94,7 @@ void pre_ordem_ArvBin(ArvBin *raiz)
     }
 }
 */
-// Imprime em-ordem 
+// Imprime em-ordem
 void em_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
@@ -179,8 +179,8 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
             }
             else
             {
-                insereOcorre(aux->pal->ocorrencias, pal->ocorrencias->prim->ocorreu);
-                aux->pal->ocorrencias->n++;
+                insereOcorre(aux->pal->ocorrencias, pal->ocorrencias->primeiro->ocorreu);
+                aux->pal->ocorrencias->qtd++;
                 libera_No(novo);
                 return 0; // Valor já presente na árvore
             }
@@ -197,8 +197,8 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
             return 1;
         }else
         {
-            insereOcorre(aux->pal->ocorrencias, pal->ocorrencias->prim->ocorreu);
-            aux->pal->ocorrencias->n++;
+            insereOcorre(aux->pal->ocorrencias, pal->ocorrencias->primeiro->ocorreu);
+            aux->pal->ocorrencias->qtd++;
             libera_No(novo);
             return 0; // Valor já presente na árvore
         }

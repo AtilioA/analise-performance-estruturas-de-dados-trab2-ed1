@@ -6,7 +6,7 @@
 /*
 int esta_vazia_Lista(Lista *lista)
 {
-    return lista->cabeca == NULL;
+    return lista->primeiro == NULL;
 }
 
 Celula *cria_Celula_vazia()
@@ -28,7 +28,7 @@ int existe_palavra(Palavra *x, Lista *lista)
     {
         return 0;
     }
-    Celula *atual = lista->cabeca;
+    Celula *atual = lista->primeiro;
 
     while (atual != NULL)
     {
@@ -48,7 +48,7 @@ int indice_Palavra(Palavra *x, Lista *lista)
         printf("Lista vazia.\n");
         return -1;
     }
-    Celula *atual = lista->cabeca;
+    Celula *atual = lista->primeiro;
 
     int i = 0;
     while (atual != NULL)
@@ -83,7 +83,7 @@ void insere_Lista_antigo(Palavra *x, Lista *lista)
     else // Palavra existe na lista
     {
         printf("Palavra existe na lista\n");
-        Celula *atual = lista->cabeca;
+        Celula *atual = lista->primeiro;
         for (i = 1; i < indicePalavra; i++) // Buscando posição da célula da palavra
         {
             atual = atual->prox;
@@ -98,8 +98,8 @@ void retira_Lista(int x, Lista *lista, int *cartaRetirada)
 {
     Celula *atual, *anterior;
 
-    anterior = lista->cabeca;
-    for (atual = lista->cabeca; atual != NULL; atual = atual->prox)
+    anterior = lista->primeiro;
+    for (atual = lista->primeiro; atual != NULL; atual = atual->prox)
     {
         // if ((Valor(Carta(atual)) == Valor(x)) && (Naipe(Carta(atual)) == Naipe(x)))
         // {
@@ -116,7 +116,7 @@ void retira_Lista(int x, Lista *lista, int *cartaRetirada)
 */
 void imprime_lista(Lista *lista)
 {
-    Celula *aux = lista->cabeca;
+    Celula *aux = lista->primeiro;
     while (aux != NULL)
     {
         imprime_Palavra(aux->palavra);
@@ -131,7 +131,7 @@ void destroi_celula(Celula *cel){
 
 void destroi_lista(Lista *lista){
     Celula * ant = NULL;
-    Celula *aux = lista->cabeca;
+    Celula *aux = lista->primeiro;
     while(aux != NULL){
         ant = aux;
         aux = aux->prox;
@@ -149,7 +149,7 @@ void destroi_Lista(Lista *lista)
 {
     Celula *anterior, *atual;
 
-    atual = lista->cabeca;
+    atual = lista->primeiro;
     while (atual != NULL)
     {
         anterior = atual;
@@ -164,7 +164,7 @@ void destroi_Lista(Lista *lista)
 Lista *cria_Lista()
 {
     Lista *nova = malloc(sizeof(Lista));
-    nova->cabeca = NULL;
+    nova->primeiro = NULL;
     nova->ultimo = NULL;
     return nova;
 }
@@ -174,18 +174,18 @@ void insere_Lista(Palavra *x, Lista *l)
     Celula *nova = malloc(sizeof(Celula));
     nova->palavra = x; //passa o endereço
     nova->prox = NULL;
-    if(l->cabeca == NULL){
-        l->cabeca = nova;
+    if(l->primeiro == NULL){
+        l->primeiro = nova;
         l->ultimo = nova;
         return;
     }
-    Celula *aux = l->cabeca;
+    Celula *aux = l->primeiro;
     while(aux->prox != NULL && strcasecmp(get_string(aux->palavra), get_string(x))){
         aux = aux->prox;
     }
     if(!strcasecmp(get_string(aux->palavra), get_string(x))){
-        insereOcorre(get_posicoes(aux->palavra), get_posicoes(x)->ult->ocorreu);
-        aux->palavra->ocorrencias->n++;
+        insereOcorre(get_posicoes(aux->palavra), get_posicoes(x)->ultimo->ocorreu);
+        aux->palavra->ocorrencias->qtd++;
         destroi_celula(nova);
         return;
     }
@@ -194,7 +194,7 @@ void insere_Lista(Palavra *x, Lista *l)
     return;
 }
 Palavra *busca_Lista(char *strat, Lista *l){
-    Celula *aux = l->cabeca;
+    Celula *aux = l->primeiro;
     while(aux != NULL && strcasecmp(get_string(aux->palavra), strat)){
         aux = aux->prox;
     }
