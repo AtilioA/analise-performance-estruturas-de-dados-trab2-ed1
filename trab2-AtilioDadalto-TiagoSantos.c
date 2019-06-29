@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
     printf("Lendo arquivo...\n");
     while (!feof(f))
     {
-        fscanf(f, "%s", strat); // vo usar o fscanf de placeholder até a gnt fazer uma função de leitura de palavras decente
+        fscanf(f, "%80s", strat); // vo usar o fscanf de placeholder até a gnt fazer uma função de leitura de palavras decente
         insereRandPal(strat, pal_al);
         posicao = ftell(f) - strlen(strat) + 1;
         pal = cria_Palavra(strat, posicao);
