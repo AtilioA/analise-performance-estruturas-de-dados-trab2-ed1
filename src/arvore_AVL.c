@@ -125,7 +125,7 @@ void pos_ordem_ArvAVL(ArvAVL *raiz)
     }
 }
 
-Palavra *consulta_ArvAVL(ArvAVL *raiz, char* strat)
+Palavra *consulta_ArvAVL(ArvAVL *raiz, char *strat)
 {
     if (raiz == NULL)
         return 0;

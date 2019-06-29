@@ -7,7 +7,6 @@
 #define __ARVORE_BINARIA_H
 #include "../include/indexador.h"
 
-
 typedef struct No
 {
     Palavra *pal;
@@ -16,11 +15,10 @@ typedef struct No
     int altura;
 } No;
 
-
 /**
 Contem um inteiro e dois apontadores (esquerda/direita)
 */
-typedef struct No* ArvBin;
+typedef struct No *ArvBin;
 
 /**
 Inicializa a árvore e deixa a raiz NULL
@@ -40,7 +38,7 @@ int remove_ArvBin(ArvBin *raiz, int valor);
 Pesquisa um valor a partir da árvore raiz
 retorna 1 se encontrar o valor e 0 caso não encontre
 */
-Palavra* consulta_ArvBin(ArvBin *raiz, char *strat);
+Palavra *consulta_ArvBin(ArvBin *raiz, char *strat);
 
 /**
 Verifica se a árvore está vazia

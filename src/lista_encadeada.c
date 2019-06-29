@@ -124,21 +124,25 @@ void imprime_lista(Lista *lista)
     }
 }
 
-void destroi_celula(Celula *cel){
+void destroi_celula(Celula *cel)
+{
     destroi_Palavra(cel->palavra);
     free(cel);
 }
 
-void destroi_lista(Lista *lista){
-    Celula * ant = NULL;
+void destroi_lista(Lista *lista)
+{
+    Celula *ant = NULL;
     Celula *aux = lista->primeiro;
-    while(aux != NULL){
+    while (aux != NULL)
+    {
         ant = aux;
         aux = aux->prox;
         destroi_celula(ant);
     }
     free(lista);
 }
+
 /*
 void destroi_Celula(Celula *celula)
 {
@@ -160,6 +164,7 @@ void destroi_Lista(Lista *lista)
     // lista->tamanho = -1;
 }
 */
+
 //vam ve se essa parte aqui de baixo vamo
 Lista *cria_Lista()
 {
@@ -174,16 +179,19 @@ void insere_Lista(Palavra *x, Lista *l)
     Celula *nova = malloc(sizeof(Celula));
     nova->palavra = x; //passa o endereço
     nova->prox = NULL;
-    if(l->primeiro == NULL){
+    if (l->primeiro == NULL)
+    {
         l->primeiro = nova;
         l->ultimo = nova;
         return;
     }
     Celula *aux = l->primeiro;
-    while(aux->prox != NULL && strcasecmp(get_string(aux->palavra), get_string(x))){
+    while (aux->prox != NULL && strcasecmp(get_string(aux->palavra), get_string(x)))
+    {
         aux = aux->prox;
     }
-    if(!strcasecmp(get_string(aux->palavra), get_string(x))){
+    if (!strcasecmp(get_string(aux->palavra), get_string(x)))
+    {
         insereOcorre(get_posicoes(aux->palavra), get_posicoes(x)->ultimo->ocorreu);
         aux->palavra->ocorrencias->qtd++;
         destroi_celula(nova);
@@ -193,15 +201,19 @@ void insere_Lista(Palavra *x, Lista *l)
     l->ultimo = nova;
     return;
 }
-Palavra *busca_Lista(char *strat, Lista *l){
+Palavra *busca_Lista(char *strat, Lista *l)
+{
     Celula *aux = l->primeiro;
-    while(aux != NULL && strcasecmp(get_string(aux->palavra), strat)){
+    while (aux != NULL && strcasecmp(get_string(aux->palavra), strat))
+    {
         aux = aux->prox;
     }
-    if(aux == NULL){
+    if (aux == NULL)
+    {
         return NULL;
     }
-    if(!strcasecmp(get_string(aux->palavra), strat)){
+    if (!strcasecmp(get_string(aux->palavra), strat))
+    {
         return aux->palavra;
     }
     return NULL;

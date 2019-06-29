@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include "../include/indexador.h"
 
-
 ArvBin *criaArvBin()
 {
     ArvBin *nova = (ArvBin *)malloc(sizeof(ArvBin));
@@ -195,7 +194,8 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
         {
             aux->dir = novo;
             return 1;
-        }else
+        }
+        else
         {
             insereOcorre(aux->pal->ocorrencias, pal->ocorrencias->primeiro->ocorreu);
             aux->pal->ocorrencias->qtd++;
@@ -272,7 +272,8 @@ void libera_No(struct No *no)
 /** Libera em pós-ordem */
 void libera_ArvBin(ArvBin *raiz)
 {
-    if(raiz == NULL){
+    if (raiz == NULL)
+    {
         return;
     }
     libera_No(*raiz);

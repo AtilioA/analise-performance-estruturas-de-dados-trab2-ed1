@@ -2,17 +2,18 @@
 #ifndef __INDEXADOR_H
 #define __INDEXADOR_H
 
-typedef struct ocorre{
+typedef struct ocorre
+{
     int ocorreu;
     struct ocorre *prox;
 } tOcorre;
 
-typedef struct ocorrencias{
+typedef struct ocorrencias
+{
     tOcorre *primeiro;
     tOcorre *ultimo;
     int qtd;
 } ListaOcorrencias;
-
 
 typedef struct Palavra
 {
@@ -21,12 +22,14 @@ typedef struct Palavra
 } Palavra;
 
 // pra pesquisar aleatoriamente
-typedef struct pal_rand{
+typedef struct pal_rand
+{
     char *string;
     struct pal_rand *prox;
 } tRandPal;
 
-typedef struct set_pal_rand{
+typedef struct set_pal_rand
+{
     tRandPal *primeiro;
     tRandPal *ultimo;
     int qtd;
@@ -61,6 +64,6 @@ void insereRandPal(char *strat, tSentRandPal *l);
 
 char *buscaRandPal(int indice, tSentRandPal *l);
 
-void destroiRandPal(tSentRandPal* l);
+void destroiRandPal(tSentRandPal *l);
 
 #endif
