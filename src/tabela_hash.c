@@ -4,6 +4,74 @@
 #include <string.h>
 #include "../include/tabela_hash.h"
 
+//uma implementação diferenciada
+
+TabelaHash *criaHash(){
+    TabelaHash *nova = malloc(sizeof(TabelaHash));
+    for(int i = 0; i < TAM_HASH; i++){
+        nova->hash[i] = cria_ArvAVL();
+    }
+    nova->colisoes = 0;
+    nova->qtd = 0;
+    nova->pesos = lista_Pesos();
+    return nova;
+}
+
+int *lista_Pesos(){
+    int *lista_p = malloc(sizeof(int) * 80);
+    srand(time(NULL));
+    for(int i = 0; i < 80; i++){
+        lista_p[i] = rand()%10000;
+    }
+    return lista_p;
+}
+
+int calc_Hash(int* peso, char* strat){
+    int sum = 0;
+    for(int i = 0; i < strlen(strat); i++){
+        sum += ((int) peso[i]) * strat[i];
+    }
+    return sum%TAM_HASH;
+}
+
+void insere_Hash(Palavra *pal, TabelaHash *tab){
+    int indice = calc_Hash(tab->pesos, pal->string);
+    if(indice < 0){
+        indice = (-1)*indice;
+    }
+    if( *(tab->hash[indice]) != NULL){
+        tab->colisoes++;
+    }
+    insere_ArvAVL(tab->hash[indice], pal);
+    tab->qtd++;
+}
+
+void printar_Hash(TabelaHash *tab){
+    for(int i = 0; i < TAM_HASH; i++){
+        if(*(tab->hash[i]) != NULL){
+            printf("\n\nIndice da arvore: %d\n\n", i);
+            em_ordem_ArvAVL(tab->hash[i]);
+        }
+    }
+}
+
+Palavra *busca_Hash(char* strat, TabelaHash *tab){
+    int indice = calc_Hash(tab->pesos, strat);
+    if(indice < 0){
+        indice = (-1)*indice;
+    }
+    return consulta_ArvAVL(tab->hash[indice], strat);
+}
+
+void libera_Hash(TabelaHash *tab){
+    for(int i = 0; i < TAM_HASH; i++){
+        libera_ArvAVL(tab->hash[i]);
+    }
+    free(tab->pesos);
+    free(tab);
+}
+
+/*
 void cria_ListaHash(ListaHash *lista)
 {
     lista->primeiro = (Celula *)malloc(sizeof(Celula));
@@ -35,7 +103,7 @@ void Ins(Palavra x, ListaHash *lista)
 }
 
 void Ret(Celula *p, ListaHash *lista, Palavra *palavra)
-{ /* -- Obs.: o item a ser retirado o seguinte ao apontado por p -- */
+{ -- Obs.: o item a ser retirado o seguinte ao apontado por p -- 
     Celula *q;
     if (Vazia(lista) || p == NULL || p->prox == NULL)
     {
@@ -56,13 +124,13 @@ void Ret(Celula *p, ListaHash *lista, Palavra *palavra)
 }
 
 void GeraPesos(TipoPesos p)
-{ /* Gera valores randomicos entre 1 e 10.000 */
+{  Gera valores randomicos entre 1 e 10.000 
     int i, j;
     struct timeval semente;
-    /* Utilizar o tempo como semente para a funcao srand() */
+     Utilizar o tempo como semente para a funcao srand() 
     //gettimeofday(&semente, NULL);
     //srand((int)(semente.tv_sec + 1000000 * semente.tv_usec));
-    /* Usando semente fixa para garantir resultados iguais*/
+     Usando semente fixa para garantir resultados iguais
     srand(1000);
     for (i = 0; i < N; i++)
         for (j = 0; j < TAMALFABETO; j++)
@@ -86,7 +154,7 @@ unsigned long hash(unsigned char *str)
 
     while (c = *str++)
     {
-        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+        hash = ((hash << 5) + hash) + c;  hash * 33 + c
     }
 
     return hash;
@@ -208,3 +276,4 @@ float carga_pesada(TipoDicionario tabela)
 
     return (float)qtd / M;
 }
+*/
