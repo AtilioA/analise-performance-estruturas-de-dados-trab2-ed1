@@ -1,41 +1,12 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include "../include/arquivos.h"
-#define _STRING_BUFFER_ 80
-#define UNUSED " \n^´"
 
-int charcmp(char c)
-{
-    for (int i = 0; i < strlen(UNUSED); i++)
-    {
-        if (c == UNUSED[i])
-        {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-char *lePoLePo(int t)
-{
-    char *str = malloc(sizeof(char) * t);
-    char c;
-    for (int i = 0; i < t; i++)
-    {
-        scanf("%c", &c);
-        if (!charcmp(c))
-        {
-            str[i] = c;
-        }
-        else
-        {
-            str[i] = '\0';
-            break;
-        }
-    }
-    return str;
-}
+#define TAMSTRING 80
+#define _STRING_BUFFER_ TAMSTRING
+#define UNUSED ".,!? \n^´"
 
 FILE *le_arquivo(char *string)
 {
@@ -48,6 +19,42 @@ FILE *le_arquivo(char *string)
     }
 
     return f;
+}
+
+int eh_valido(char c)
+{
+    for (int i = 0; i < strlen(UNUSED); i++)
+    {
+        if (c != UNUSED[i])
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+// pqp
+char *le_palavra_file(FILE *f)
+{
+    char *str = malloc(2 * sizeof(char));
+    char c;
+    int i = 0;
+
+    while ((c = fgetc(f)) != EOF)
+    {
+        if (eh_valido(c))
+        {
+            str[i] = c;
+        }
+        else
+        {
+            str[i] = '\0';
+            return str;
+        }
+        i++;
+
+        printf("%c", c);
+    }
 }
 
 //dps a gnt faz outra
@@ -80,12 +87,23 @@ int le_palavra(FILE *f, char *str)
 }
 
 /*
-int main(){
-    char c[80];
-    for(int i = 0; i < 10; i++){
-        strcpy(c, lePoLePo(80));
-        printf("%s ", c);
-    }
+int main()
+{
+    char *string = malloc(sizeof(char *) * TAMSTRING);
+
+    // printf("pqp");
+    FILE *f = le_arquivo("../lorem-ipsum.txt");
+    string = le_palavra_file(f);
+    printf("\n\nString lida. Printando:\n%s\n", string);
+    // for(int i = 0; i < 10; i++){
+    // strcpy(c, le_palavra_file(TAMSTRING));
+    // printf("%s \n", c);
+    // }
+
+    free(string);
+    fclose(f);
+
     return 0;
 }
-*/
+
+ */

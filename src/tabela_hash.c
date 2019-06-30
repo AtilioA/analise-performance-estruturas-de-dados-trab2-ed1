@@ -4,6 +4,8 @@
 #include <string.h>
 #include "../include/tabela_hash.h"
 
+//uma implementação diferenciada
+
 TabelaHash *criaHash(){
     TabelaHash *nova = malloc(sizeof(TabelaHash));
     for(int i = 0; i < TAM_HASH; i++){
@@ -47,6 +49,7 @@ void insere_Hash(Palavra *pal, TabelaHash *tab){
 void printar_Hash(TabelaHash *tab){
     for(int i = 0; i < TAM_HASH; i++){
         if(*(tab->hash[i]) != NULL){
+            printf("\n\nIndice da arvore: %d\n\n", i);
             em_ordem_ArvAVL(tab->hash[i]);
         }
     }
@@ -142,6 +145,31 @@ Indice h(TipoChave Chave, TipoPesos p)
     for (i = 0; i < comp; i++)
         Soma += p[i][(unsigned int)Chave[i]];
     return (Soma % M);
+}
+
+unsigned long hash(unsigned char *str)
+{
+    unsigned long hash = 5381; // Número primo grande
+    int c;
+
+    while (c = *str++)
+    {
+        hash = ((hash << 5) + hash) + c;  hash * 33 + c
+    }
+
+    return hash;
+}
+
+unsigned hash2(unsigned char *str)
+{
+    int hash = 7;
+
+    for (int i = 0; i < strlen(str); i++)
+    {
+        hash = hash * 31 + charAt(i);
+    }
+
+    return hash;
 }
 
 void Inicializa(TipoDicionario T)

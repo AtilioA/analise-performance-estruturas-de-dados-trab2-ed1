@@ -1,3 +1,7 @@
+/* Esta biblioteca contém o código que implementa funções mais básicas
+ * relevantes ao TAD árvore binária balanceada para o indexador de arquivos.
+ */
+
 // Guard para evitar dupla inclusão
 #ifndef __ARVORE_AVL_H
 #define __ARVORE_AVL_H
