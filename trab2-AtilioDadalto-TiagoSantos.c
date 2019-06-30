@@ -9,6 +9,8 @@
 #include <time.h>
 #include <sys/time.h>
 
+#define TAMSTRING 80
+
 /*
  * CONVENÇÕES PARA O TRABALINDO:
  * Constantes em CAPS: UNUSED, TRUE, FALSE.
@@ -19,10 +21,13 @@
 
 int main(int argc, char *argv[])
 {
+    struct timeval t;
+    char strTexto[TAMSTRING]; // vetor para armazenamento temporário de strings do texto
+    int posicao;
+
     clr_scr();
 
     printf("Criando estruturas...\n");
-    struct timeval t;
     Lista *lista = cria_Lista();
     ArvBin *arvere = criaArvBin();
     ArvAVL *arvl = cria_ArvAVL();
@@ -30,8 +35,6 @@ int main(int argc, char *argv[])
 
     tSentRandPal *pal_al = newRandpal(); // lista de busca de palavras
     Palavra *pal;
-    char strat[80];
-    int posicao;
     printf("Lista de busca de palavras criada com sucesso.\n");
 
     FILE *f = le_arquivo(argv[1]);
@@ -48,9 +51,10 @@ int main(int argc, char *argv[])
         printf("Numero de buscas invalido.\n");
         exit(1);
     }
-    printf("Arquivo aberto com sucesso.\n");
 
-    char vet[nBuscas][80]; // vetor de busca
+    printf("Arquivo aberto com sucesso.\n");
+    char vetBusca[nBuscas][80]; // vetor de busca de palavras
+
 
     gettimeofday(&t, NULL);
     srand((unsigned int)t.tv_usec);
@@ -58,20 +62,20 @@ int main(int argc, char *argv[])
     printf("Lendo arquivo...\n");
     while (!feof(f))
     {
-        fscanf(f, "%80s", strat); // vo usar o fscanf de placeholder até a gnt fazer uma função de leitura de palavras decente
-        insereRandPal(strat, pal_al);
-        posicao = ftell(f) - strlen(strat) + 1;
-        pal = cria_Palavra(strat, posicao);
+        le_palavra(f, strTexto);
+        insereRandPal(strTexto, pal_al);
+        posicao = ftell(f) - strlen(strTexto) + 1;
+        pal = cria_Palavra(strTexto, posicao);
         insere_ArvBin(arvere, pal);
-        pal = cria_Palavra(strat, posicao);
+        pal = cria_Palavra(strTexto, posicao);
         insere_Lista(pal, lista);
-        pal = cria_Palavra(strat, posicao);
+        pal = cria_Palavra(strTexto, posicao);
         insere_ArvAVL(arvl, pal);
     }
 
     for (int i = 0; i < nBuscas; i++)
     {
-        strcpy(vet[i], buscaRandPal(rand() % (pal_al->qtd), pal_al)); // carrega o vetor com palavras aleatórias da lista
+        strcpy(vetBusca[i], buscaRandPal(rand() % (pal_al->qtd), pal_al)); // carrega o vetor com palavras aleatórias da lista
     }
 
     printf("\n\nLEITURA CONCLUIDA. IMPRIMINDO RESULTADOS:");
@@ -84,20 +88,20 @@ int main(int argc, char *argv[])
     imprime_lista(lista);
     for (int i = 0; i < nBuscas; i++)
     {
-        Palavra *palavraLista = busca_Lista(vet[i], lista);
-        Palavra *palavraArvore = consulta_ArvBin(arvere, vet[i]);
-        Palavra *palavraAVL = consulta_ArvAVL(arvl, vet[i]);
+        Palavra *palavraLista = busca_Lista(vetBusca[i], lista);
+        Palavra *palavraArvore = consulta_ArvBin(arvere, vetBusca[i]);
+        Palavra *palavraAVL = consulta_ArvAVL(arvl, vetBusca[i]);
         if (palavraLista != NULL)
         {
-            printf("A palavra %s foi encontrada na lista.\n", vet[i]);
+            printf("A palavra %s foi encontrada na lista.\n", vetBusca[i]);
         }
         if (palavraArvore != NULL)
         {
-            printf("A palavra %s foi encontrada na arvore.\n", vet[i]);
+            printf("A palavra %s foi encontrada na arvore.\n", vetBusca[i]);
         }
         if (palavraAVL != NULL)
         {
-            printf("A palavra %s foi encontrada na arvore AVL.\n", vet[i]);
+            printf("A palavra %s foi encontrada na arvore AVL.\n", vetBusca[i]);
         }
     }
 
@@ -109,7 +113,7 @@ int main(int argc, char *argv[])
     libera_ArvAVL(arvl);
     destroi_lista(lista);
 
-    printf("Estruturas liberadas com sucesso... talvez... eu não assumo o BO do valgrind!\n");
+    printf("Estruturas liberadas com sucesso... talvez... eu nao assumo o BO do valgrind!\n");
 
     return 0;
 }
