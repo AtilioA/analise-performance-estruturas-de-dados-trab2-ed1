@@ -5,6 +5,7 @@
 // Guard para evitar dupla inclusão
 #ifndef __ARVORE_BINARIA_H
 #define __ARVORE_BINARIA_H
+
 #include "../include/indexador.h"
 
 typedef struct No
