@@ -6,7 +6,7 @@ EXE 	 := indexador
 PROJETO  := trab2-AtilioDadalto-TiagoSantos
 
 # Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
-main: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETO).o
+main: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/tabela_hash.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETO).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
 
 $(OBJ)/indexador.o: $(SRC)/indexador.c $(INC)/indexador.h
@@ -21,8 +21,8 @@ $(OBJ)/arvore_binaria.o: $(SRC)/arvore_binaria.c $(INC)/arvore_binaria.h
 $(OBJ)/arvore_AVL.o: $(SRC)/arvore_AVL.c $(INC)/arvore_AVL.h
 	gcc -c $(CFLAGS) "$(SRC)/arvore_AVL.c" -o "$(OBJ)/arvore_AVL.o"
 
-# $(OBJ)/tabela_hash.o: $(SRC)/tabela_hash.c $(INC)/tabela_hash.h
-# 	gcc -c $(CFLAGS) "$(SRC)/tabela_hash.c" -o "$(OBJ)/tabela_hash.o"
+$(OBJ)/tabela_hash.o: $(SRC)/tabela_hash.c $(INC)/tabela_hash.h
+	gcc -c $(CFLAGS) "$(SRC)/tabela_hash.c" -o "$(OBJ)/tabela_hash.o"
 
 $(OBJ)/arquivos.o: $(SRC)/arquivos.c $(INC)/arquivos.h
 	gcc -c $(CFLAGS) "$(SRC)/arquivos.c" -o "$(OBJ)/arquivos.o"

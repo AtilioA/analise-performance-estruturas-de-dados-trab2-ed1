@@ -2,6 +2,35 @@
  * relevantes à estrutura tabela hash.
  */
 
+
+#ifndef _TABELA_HASH_
+#define _TABELA_HASH_
+#define TAM_HASH 20
+#include "../include/arvore_AVL.h"
+#include "../include/indexador.h"
+
+typedef struct tabelahash{
+    ArvAVL *hash[TAM_HASH];
+    int colisoes;
+    int qtd;
+    int *pesos;
+}TabelaHash;
+
+TabelaHash *criaHash();
+
+void insere_Hash(Palavra *pal, TabelaHash *tab);
+
+int *lista_Pesos();
+
+void printar_Hash(TabelaHash *tab);
+
+Palavra *busca_Hash(char* strat, TabelaHash *tab);
+
+void libera_Hash(TabelaHash *tab);
+
+#endif
+
+/*
 // Guard para evitar dupla inclusão
 #ifndef __TABELA_HASH_H_
 #define __TABELA_HASH_H_
@@ -17,7 +46,7 @@
 #define N 30            // tamanho máximo da string
 #define TAMALFABETO 256 // vmzice?
 
-/* typedef unsigned int  TipoPesos[n]; */
+ typedef unsigned int  TipoPesos[n]; 
 
 typedef unsigned int Indice;
 typedef unsigned TipoPesos[N][TAMALFABETO];
@@ -63,4 +92,4 @@ int n_elementos(TipoDicionario tabela);
 int n_colisoes(TipoDicionario tabela);
 float carga_pesada(TipoDicionario tabela);
 
-#endif
+#endif*/

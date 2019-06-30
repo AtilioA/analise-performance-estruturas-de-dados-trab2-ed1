@@ -1,6 +1,7 @@
 #include "include/lista_encadeada.h"
 #include "include/arvore_binaria.h"
 #include "include/arvore_AVL.h"
+#include "include/tabela_hash.h"
 #include "include/indexador.h"
 #include "include/arquivos.h"
 #include <stdio.h>
@@ -26,6 +27,7 @@ int main(int argc, char *argv[])
     Lista *lista = cria_Lista();
     ArvBin *arvere = criaArvBin();
     ArvAVL *arvl = cria_ArvAVL();
+    TabelaHash *tabela = criaHash();
     printf("Estruturas criadas com sucesso.\n");
 
     tSentRandPal *pal_al = newRandpal(); // lista de busca de palavras
@@ -67,6 +69,8 @@ int main(int argc, char *argv[])
         insere_Lista(pal, lista);
         pal = cria_Palavra(strat, posicao);
         insere_ArvAVL(arvl, pal);
+        pal = cria_Palavra(strat, posicao);
+        insere_Hash(pal, tabela);
     }
 
     for (int i = 0; i < nBuscas; i++)
@@ -82,11 +86,14 @@ int main(int argc, char *argv[])
     em_ordem_ArvAVL(arvl);
     printf("\n\n\nLISTA ENCADEADA\n\n\n");
     imprime_lista(lista);
+    printf("\n\n\nTABELA HASH COM AVL (em ordem)\n\n\n");
+    printar_Hash(tabela);
     for (int i = 0; i < nBuscas; i++)
     {
         Palavra *palavraLista = busca_Lista(vet[i], lista);
         Palavra *palavraArvore = consulta_ArvBin(arvere, vet[i]);
         Palavra *palavraAVL = consulta_ArvAVL(arvl, vet[i]);
+        Palavra *palavraHash = busca_Hash(vet[i], tabela);
         if (palavraLista != NULL)
         {
             printf("A palavra %s foi encontrada na lista.\n", vet[i]);
@@ -99,6 +106,10 @@ int main(int argc, char *argv[])
         {
             printf("A palavra %s foi encontrada na arvore AVL.\n", vet[i]);
         }
+        if(palavraHash != NULL)
+        {
+            printf("A palavra %s foi encontrada na tabela hash.\n", vet[i]);
+        }
     }
 
     printf("\nFim da leitura. Liberando estruturas...\n");
@@ -108,8 +119,8 @@ int main(int argc, char *argv[])
     libera_ArvBin(arvere);
     libera_ArvAVL(arvl);
     destroi_lista(lista);
-
-    printf("Estruturas liberadas com sucesso... talvez... eu não assumo o BO do valgrind!\n");
+    libera_Hash(tabela);
+    printf("Estruturas liberadas com sucesso.\n");
 
     return 0;
 }
