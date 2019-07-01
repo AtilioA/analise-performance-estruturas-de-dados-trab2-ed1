@@ -40,7 +40,7 @@ void retira_Lista(int codigo, TipoLista *Lista, Produto *Item);
 
 
 /*Imprime a lista */
-void imprime_lista(TipoLista Lista);
+void imprime_Lista(TipoLista Lista);
 
 /*Quantidade de elementos na lista*/
 int Quantidade(TipoLista Lista);

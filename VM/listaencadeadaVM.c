@@ -66,7 +66,7 @@ TipoApontador BuscaCodigo(int codigo, TipoLista *Lista)
     return NULL;
 }
 
-void imprime_lista(TipoLista Lista)
+void imprime_Lista(TipoLista Lista)
 {
     TipoApontador Aux;
     Aux = Lista.Primeiro->Prox;

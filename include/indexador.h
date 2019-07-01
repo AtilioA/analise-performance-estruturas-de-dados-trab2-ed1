@@ -33,7 +33,7 @@ typedef struct set_pal_rand
     tRandPal *primeiro;
     tRandPal *ultimo;
     int qtd;
-} tSentRandPal;
+} SentRandPal;
 
 char *get_string(Palavra *palavra);
 
@@ -41,9 +41,9 @@ int get_ocorrencias(Palavra *palavra);
 
 ListaOcorrencias *get_posicoes(Palavra *palavra);
 
-ListaOcorrencias *novaOcorre();
+ListaOcorrencias *nova_Ocorre();
 
-void insereOcorre(ListaOcorrencias *l, int ocorre);
+void insere_Ocorrencias(ListaOcorrencias *l, int ocorre);
 
 void imprime_Palavra(Palavra *palavra);
 
@@ -58,12 +58,12 @@ void destroi_Palavra(Palavra *palavra);
 /* Limpa a tela do terminal */
 void clr_scr();
 
-tSentRandPal *newRandpal();
+SentRandPal *cria_RandPal();
 
-void insereRandPal(char *strat, tSentRandPal *l);
+void insere_RandPal(char *strat, SentRandPal *l);
 
-char *buscaRandPal(int indice, tSentRandPal *l);
+char *busca_RandPal(int indice, SentRandPal *l);
 
-void destroiRandPal(tSentRandPal *l);
+void destroi_RandPal(SentRandPal *l);
 
 #endif

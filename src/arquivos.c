@@ -80,33 +80,3 @@ int le_palavra(FILE *f, char *str)
     posicao = ftell(f) - strlen(str) + 1;
     return posicao;
 }
-
-/*
-int main()
-{
-    printf("\nabriu a main\n\n");
-    char *string = malloc(sizeof(char *) * TAMSTRING);
-    printf("\nmallocou a string\n\n");
-
-    FILE *f = le_arquivo("lorem-ipsum.txt");
-    printf("\nabriu o arquivo\n\n");
-
-    string = le_palavra_file(f);
-    printf("\nleu uma palavrita!\n\n");
-    printf("%s string fodástica!\n", string);
-    int k = 0;
-
-    while ((string = le_palavra_file(f)) != NULL)
-    {
-        k++;
-        printf("String %i: %s\n", k, string);
-        // FAÇA A COPIA DA SUA ESTRUTURA AQUI
-        free(string);
-    }
-
-    free(string);
-    fclose(f);
-
-    return 0;
-}
-*/

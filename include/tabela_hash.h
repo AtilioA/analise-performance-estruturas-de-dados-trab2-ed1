@@ -16,7 +16,7 @@ typedef struct tabelahash{
     int *pesos;
 }TabelaHash;
 
-TabelaHash *criaHash();
+TabelaHash *cria_Hash();
 
 void insere_Hash(Palavra *pal, TabelaHash *tab);
 
@@ -46,7 +46,7 @@ void libera_Hash(TabelaHash *tab);
 #define N 30            // tamanho máximo da string
 #define TAMALFABETO 256 // vmzice?
 
- typedef unsigned int  TipoPesos[n]; 
+ typedef unsigned int  TipoPesos[n];
 
 typedef unsigned int Indice;
 typedef unsigned TipoPesos[N][TAMALFABETO];

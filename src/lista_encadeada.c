@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 /*
 int esta_vazia_Lista(Lista *lista)
 {
@@ -16,11 +17,6 @@ Celula *cria_Celula_vazia()
 
     return celulaVazia;
 }
-
-// int QuantidadeLista(Lista *lista)
-// {
-//     return (lista->tamanho);
-// }
 
 int existe_palavra(Palavra *x, Lista *lista)
 {
@@ -66,55 +62,12 @@ int indice_Palavra(Palavra *x, Lista *lista)
     return -1;
 }
 
-void insere_Lista_antigo(Palavra *x, Lista *lista)
+void destroi_Celula(Celula *celula)
 {
-    int i = 0;
-    int indicePalavra = indice_Palavra(x, lista);
-    printf("Inserindo...\n");
-    if (indicePalavra == -1) // Palavra não existe na lista
-    {
-        printf("Palavra NAO existe na lista\n");
-        lista->ultimo->prox = (Celula *)malloc(sizeof(Celula));
-        lista->ultimo = lista->ultimo->prox;
-        lista->ultimo->palavra = x;
-        lista->ultimo->prox = NULL;
-        // lista->tamanho++;
-    }
-    else // Palavra existe na lista
-    {
-        printf("Palavra existe na lista\n");
-        Celula *atual = lista->primeiro;
-        for (i = 1; i < indicePalavra; i++) // Buscando posição da célula da palavra
-        {
-            atual = atual->prox;
-        }
-        atual->palavra->ocorrencias++;
-        realloc(atual->palavra->posicoes, get_ocorrencias(atual) + 1);
-         atual->palavra->posicoes ...
-    }
-}
-
-void retira_Lista(int x, Lista *lista, int *cartaRetirada)
-{
-    Celula *atual, *anterior;
-
-    anterior = lista->primeiro;
-    for (atual = lista->primeiro; atual != NULL; atual = atual->prox)
-    {
-        // if ((Valor(Carta(atual)) == Valor(x)) && (Naipe(Carta(atual)) == Naipe(x)))
-        // {
-        //     *cartaRetirada = Carta(atual);
-        //     anterior->prox = atual->prox;
-        //     free(atual);
-        // lista->tamanho--;
-        //     return;
-        // }
-        anterior = atual;
-    }
-    // *cartaRetirada = CartaVazia();
+    destroi_Palavra(celula->palavra);
 }
 */
-void imprime_lista(Lista *lista)
+void imprime_Lista(Lista *lista)
 {
     Celula *aux = lista->primeiro;
     while (aux != NULL)
@@ -124,13 +77,13 @@ void imprime_lista(Lista *lista)
     }
 }
 
-void destroi_celula(Celula *cel)
+void destroi_Celula(Celula *cel)
 {
     destroi_Palavra(cel->palavra);
     free(cel);
 }
 
-void destroi_lista(Lista *lista)
+void destroi_Lista(Lista *lista)
 {
     Celula *ant = NULL;
     Celula *aux = lista->primeiro;
@@ -138,34 +91,11 @@ void destroi_lista(Lista *lista)
     {
         ant = aux;
         aux = aux->prox;
-        destroi_celula(ant);
+        destroi_Celula(ant);
     }
     free(lista);
 }
 
-/*
-void destroi_Celula(Celula *celula)
-{
-    destroi_Palavra(celula->palavra);
-}
-
-void destroi_Lista(Lista *lista)
-{
-    Celula *anterior, *atual;
-
-    atual = lista->primeiro;
-    while (atual != NULL)
-    {
-        anterior = atual;
-        atual = atual->prox;
-        destroi_Celula(anterior);
-    }
-
-    // lista->tamanho = -1;
-}
-*/
-
-//vam ve se essa parte aqui de baixo vamo
 Lista *cria_Lista()
 {
     Lista *nova = malloc(sizeof(Lista));
@@ -174,6 +104,7 @@ Lista *cria_Lista()
     return nova;
 }
 
+// modularizar essa bagaceira
 void insere_Lista(Palavra *x, Lista *l)
 {
     Celula *nova = malloc(sizeof(Celula));
@@ -192,15 +123,16 @@ void insere_Lista(Palavra *x, Lista *l)
     }
     if (!strcasecmp(get_string(aux->palavra), get_string(x)))
     {
-        insereOcorre(get_posicoes(aux->palavra), get_posicoes(x)->ultimo->ocorreu);
+        insere_Ocorrencias(get_posicoes(aux->palavra), get_posicoes(x)->ultimo->ocorreu);
         aux->palavra->ocorrencias->qtd++;
-        destroi_celula(nova);
+        destroi_Celula(nova);
         return;
     }
     l->ultimo->prox = nova;
     l->ultimo = nova;
     return;
 }
+
 Palavra *busca_Lista(char *strat, Lista *l)
 {
     Celula *aux = l->primeiro;

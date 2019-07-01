@@ -35,7 +35,7 @@ void imprime_Palavra(Palavra *palavra)
     printf("\n");
 }
 
-ListaOcorrencias *novaOcorre()
+ListaOcorrencias *nova_Ocorrencias()
 {
     ListaOcorrencias *novo = malloc(sizeof(ListaOcorrencias));
     novo->primeiro = NULL;
@@ -44,7 +44,7 @@ ListaOcorrencias *novaOcorre()
     return novo;
 }
 
-void insereOcorre(ListaOcorrencias *l, int ocorre)
+void insere_Ocorrencias(ListaOcorrencias *l, int ocorre)
 {
     tOcorre *nova = malloc(sizeof(tOcorre));
     nova->prox = NULL;
@@ -64,34 +64,14 @@ Palavra *cria_Palavra(char *string, int ocorre)
 {
     Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
     nova->string = malloc(sizeof(char) * strlen(string) + 1);
-    nova->ocorrencias = novaOcorre();
+    nova->ocorrencias = nova_Ocorrencias();
     nova->ocorrencias->qtd = 1;
     strcpy(nova->string, string);
-    insereOcorre(nova->ocorrencias, ocorre);
+    insere_Ocorrencias(nova->ocorrencias, ocorre);
     return nova;
 }
-/*  n é a msm coisa do cria palavra?
-Palavra *inicia_Palavra()
-{
-    Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
 
-    nova->string = (char *)malloc(sizeof(char));
-    if (nova->string == NULL)
-    {
-        return NULL;
-    }
-    nova->posicoes = (int *)malloc(sizeof(int));
-    if (nova->posicoes == NULL)
-    {
-        return NULL;
-    }
-    nova->ocorrencias = 0;
-
-    return nova;
-}
-*/
-
-void destroi_ocorrencia(ListaOcorrencias *ocorres)
+void destroi_Ocorrencias(ListaOcorrencias *ocorres)
 {
     tOcorre *ant = NULL;
     tOcorre *aux = ocorres->primeiro;
@@ -107,20 +87,20 @@ void destroi_ocorrencia(ListaOcorrencias *ocorres)
 void destroi_Palavra(Palavra *palavra)
 {
     free(palavra->string);
-    destroi_ocorrencia(palavra->ocorrencias);
+    destroi_Ocorrencias(palavra->ocorrencias);
     free(palavra);
 }
 
-tSentRandPal *newRandpal()
+SentRandPal *cria_RandPal()
 {
-    tSentRandPal *novo = malloc(sizeof(tSentRandPal));
+    SentRandPal *novo = malloc(sizeof(SentRandPal));
     novo->primeiro = NULL;
     novo->ultimo = NULL;
     novo->qtd = 0;
     return novo;
 }
 
-void insereRandPal(char *strat, tSentRandPal *l)
+void insere_RandPal(char *strat, SentRandPal *l)
 {
     tRandPal *pal = malloc(sizeof(tRandPal));
     pal->string = malloc(sizeof(char) * strlen(strat) + 1);
@@ -137,7 +117,7 @@ void insereRandPal(char *strat, tSentRandPal *l)
     l->qtd++;
 }
 
-void destroiRandPal(tSentRandPal *l)
+void destroi_RandPal(SentRandPal *l)
 {
     tRandPal *ant;
     tRandPal *aux = l->primeiro;
@@ -151,7 +131,7 @@ void destroiRandPal(tSentRandPal *l)
     free(l);
 }
 
-char *buscaRandPal(int indice, tSentRandPal *l)
+char *busca_RandPal(int indice, SentRandPal *l)
 {
     tRandPal *aux = l->primeiro;
     for (int i = 0; i < indice && i < l->qtd; i++)
