@@ -46,7 +46,7 @@ void libera_Trie(ArvTrie *raiz)
         free(*raiz);
     }
 }
-
+/*
 // imprime_pre_ordem
 void imprime_pre_ordem_Trie(ArvTrie *trie)
 {
@@ -64,7 +64,7 @@ void imprime_pre_ordem_Trie(ArvTrie *trie)
         imprime_pre_ordem_Trie(&((*trie)->filhos[i]));
     }
 }
-
+*/
 NoTrie *cria_no(){
     NoTrie *novo = malloc(sizeof(NoTrie));
     novo->pal = NULL;
