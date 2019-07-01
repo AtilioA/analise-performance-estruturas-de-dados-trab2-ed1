@@ -15,13 +15,13 @@
 typedef struct NoTrie
 {
     char letra;
-    Lista *indices;
     struct NoTrie *filhos[TAM_TRIE]; // ponteiro?
+    Palavra *pal;
 } NoTrie;
 
 typedef NoTrie *ArvTrie; // raiz
 
-
+void insere_trie(Palavra *pal, ArvTrie *raiz);
 
 ArvTrie *cria_ArvTrie();
 void libera_ArvTrie(ArvTrie *raiz);
