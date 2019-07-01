@@ -96,9 +96,9 @@ int main(int argc, char *argv[])
     printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
 
     printf("\n\n\nARVORE BINARIA (em ordem)\n\n\n");
-    imprime_pre_ordem_ArvBin(arvBin);
+    imprime_em_ordem_ArvBin(arvBin);
     printf("\n\n\nARVORE AVL (em ordem)\n\n\n");
-    imprime_pre_ordem_ArvAVL(arvAVL);
+    imprime_em_ordem_ArvAVL(arvAVL);
     printf("\n\n\nLISTA ENCADEADA\n\n\n");
     imprime_Lista(lista);
     printf("\n\n\nTABELA HASH COM AVL (em ordem)\n\n\n");
