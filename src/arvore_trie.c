@@ -4,10 +4,19 @@
 #include <ctype.h>
 #include "../include/arvore_trie.h"
 
+NoTrie *cria_no(){
+    NoTrie *novo = malloc(sizeof(NoTrie));
+    novo->pal = NULL;
+    for(int i = 0; i < TAM_TRIE; i++){
+        novo->filhos[i] = NULL;
+    }
+    return novo;
+}
+
 ArvTrie *cria_ArvTrie()
 {
     ArvTrie *nova = (ArvTrie *)malloc(sizeof(ArvTrie));
-    *nova = NULL;
+    *nova = cria_no();
     return nova;
 }
 
@@ -65,32 +74,24 @@ void imprime_pre_ordem_Trie(ArvTrie *trie)
     }
 }
 */
-NoTrie *cria_no(){
-    NoTrie *novo = malloc(sizeof(NoTrie));
-    novo->pal = NULL;
-    for(int i = 0; i < TAM_TRIE; i++){
-        novo->filhos[i] = NULL;
-    }
-    return novo;
-}
+
 
 
 void insere_trie(Palavra *pal, ArvTrie *raiz){
-    if((*raiz) == NULL){
-        (*raiz) = cria_no();
-        (*raiz)->letra = pal->string[0];
-        int k = strlen(pal->string);
-        NoTrie *aux = (*raiz);
-        for(int i = 1; i < k; i++){
-            int ind = indice(pal->string[i]);
+    NoTrie *aux = (*raiz);
+    int k = strlen(pal->string); 
+    for(int i = 0; i < k; i++){
+        int ind = indice(pal->string[i]);
+        if(aux->filhos[ind] == NULL){
             aux->filhos[ind] = cria_no();
-            aux->letra = pal->string[i];
-            aux = aux->filhos[ind];
         }
+        aux = aux->filhos[ind];
+        aux->letra = pal->string[i];
+    }
+    if(aux->pal == NULL){
         aux->pal = pal;
         return;
     }
-    NoTrie *aux = (*raiz);
-    
-
+    insere_Ocorrencias(aux->pal->ocorrencias, pal->ocorrencias->ultimo->ocorreu);
+    aux->pal->ocorrencias->qtd++;
 }

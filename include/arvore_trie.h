@@ -25,6 +25,7 @@ void insere_trie(Palavra *pal, ArvTrie *raiz);
 
 ArvTrie *cria_ArvTrie();
 void libera_ArvTrie(ArvTrie *raiz);
+void insere_trie(Palavra *pal, ArvTrie *raiz);
 // int insere_ArvTrie(ArvTrie *raiz, Palavra *pal);
 // Palavra *consulta_ArvTrie(ArvTrie *raiz, char *strat);
 // void imprime_pre_ordem_ArvTrie(ArvTrie *raiz);
