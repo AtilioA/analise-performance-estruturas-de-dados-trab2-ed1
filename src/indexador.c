@@ -17,7 +17,7 @@ int get_ocorrencias(Palavra *palavra)
     return palavra->ocorrencias->qtd;
 }
 
-ListaOcorrencias *get_posicoes(Palavra *palavra)
+ListaOcorr *get_posicoes(Palavra *palavra)
 {
     return palavra->ocorrencias;
 }
@@ -26,7 +26,7 @@ void imprime_Palavra(Palavra *palavra)
 {
     printf("Palavra: %s\n", get_string(palavra));
     printf("Ocorrencias: ");
-    tOcorre *aux = get_posicoes(palavra)->primeiro;
+    CelulaOcorr *aux = get_posicoes(palavra)->primeiro;
     for (int i = 0; i < get_ocorrencias(palavra); i++)
     {
         printf("%d ", aux->ocorreu);
@@ -35,18 +35,18 @@ void imprime_Palavra(Palavra *palavra)
     printf("\n");
 }
 
-ListaOcorrencias *nova_Ocorrencias()
+ListaOcorr *nova_Ocorrencias()
 {
-    ListaOcorrencias *novo = malloc(sizeof(ListaOcorrencias));
+    ListaOcorr *novo = malloc(sizeof(ListaOcorr));
     novo->primeiro = NULL;
     novo->ultimo = NULL;
     novo->qtd = 0;
     return novo;
 }
 
-void insere_Ocorrencias(ListaOcorrencias *l, int ocorre)
+void insere_Ocorrencias(ListaOcorr *l, int ocorre)
 {
-    tOcorre *nova = malloc(sizeof(tOcorre));
+    CelulaOcorr *nova = malloc(sizeof(CelulaOcorr));
     nova->prox = NULL;
     nova->ocorreu = ocorre;
     if (l->primeiro == NULL)
@@ -71,10 +71,10 @@ Palavra *cria_Palavra(char *string, int ocorre)
     return nova;
 }
 
-void destroi_Ocorrencias(ListaOcorrencias *ocorres)
+void destroi_Ocorrencias(ListaOcorr *ocorres)
 {
-    tOcorre *ant = NULL;
-    tOcorre *aux = ocorres->primeiro;
+    CelulaOcorr *ant = NULL;
+    CelulaOcorr *aux = ocorres->primeiro;
     while (aux != NULL)
     {
         ant = aux;
@@ -102,7 +102,7 @@ SentRandPal *cria_RandPal()
 
 void insere_RandPal(char *strat, SentRandPal *l)
 {
-    tRandPal *pal = malloc(sizeof(tRandPal));
+    CelulaRandPal *pal = malloc(sizeof(CelulaRandPal));
     pal->string = malloc(sizeof(char) * strlen(strat) + 1);
     strcpy(pal->string, strat);
     pal->prox = NULL;
@@ -119,8 +119,8 @@ void insere_RandPal(char *strat, SentRandPal *l)
 
 void destroi_RandPal(SentRandPal *l)
 {
-    tRandPal *ant;
-    tRandPal *aux = l->primeiro;
+    CelulaRandPal *ant;
+    CelulaRandPal *aux = l->primeiro;
     while (aux != NULL)
     {
         ant = aux;
@@ -133,7 +133,7 @@ void destroi_RandPal(SentRandPal *l)
 
 char *busca_RandPal(int indice, SentRandPal *l)
 {
-    tRandPal *aux = l->primeiro;
+    CelulaRandPal *aux = l->primeiro;
     for (int i = 0; i < indice && i < l->qtd; i++)
     {
         aux = aux->prox;

@@ -6,32 +6,32 @@ typedef struct ocorre
 {
     int ocorreu;
     struct ocorre *prox;
-} tOcorre;
+} CelulaOcorr;
 
 typedef struct ocorrencias
 {
-    tOcorre *primeiro;
-    tOcorre *ultimo;
+    CelulaOcorr *primeiro;
+    CelulaOcorr *ultimo;
     int qtd;
-} ListaOcorrencias;
+} ListaOcorr;
 
 typedef struct Palavra
 {
     char *string;
-    ListaOcorrencias *ocorrencias;
+    ListaOcorr *ocorrencias;
 } Palavra;
 
 // pra pesquisar aleatoriamente
-typedef struct pal_rand
+typedef struct celula_pal_rand
 {
     char *string;
     struct pal_rand *prox;
-} tRandPal;
+} CelulaRandPal;
 
-typedef struct set_pal_rand
+typedef struct sent_pal_rand
 {
-    tRandPal *primeiro;
-    tRandPal *ultimo;
+    CelulaRandPal *primeiro;
+    CelulaRandPal *ultimo;
     int qtd;
 } SentRandPal;
 
@@ -39,11 +39,11 @@ char *get_string(Palavra *palavra);
 
 int get_ocorrencias(Palavra *palavra);
 
-ListaOcorrencias *get_posicoes(Palavra *palavra);
+ListaOcorr *get_posicoes(Palavra *palavra);
 
-ListaOcorrencias *nova_Ocorre();
+ListaOcorr *nova_Ocorre();
 
-void insere_Ocorrencias(ListaOcorrencias *l, int ocorre);
+void insere_Ocorrencias(ListaOcorr *l, int ocorre);
 
 void imprime_Palavra(Palavra *palavra);
 
