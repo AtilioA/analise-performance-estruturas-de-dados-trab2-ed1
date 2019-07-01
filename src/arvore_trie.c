@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include "../include/lista_encadeada.h"
 #include "../include/arvore_binaria.h"
 #include "../include/arvore_trie.h"
 
@@ -9,11 +11,17 @@ ArvTrie *cria_ArvTrie()
     ArvTrie *nova = (ArvTrie *)malloc(sizeof(ArvTrie));
     *nova = NULL;
 
-    // ???
-    // (*nova)->letra = NULL;
-    // (*(*nova)->filhoss) = NULL;
-
     return nova;
+}
+
+void to_lower_string(char *string)
+{
+    int i = 0;
+
+    for (i = 0; i < strlen(string); i++)
+    {
+        string[i] = tolower(string[i]);
+    }
 }
 
 void libera_Trie(ArvTrie *raiz)
@@ -29,7 +37,7 @@ void libera_Trie(ArvTrie *raiz)
 
         // percorreL_int((*raiz)->indices, liberaL_int_celula, 0);
 
-        libera_Lista((*raiz)->indices);
+        // libera_Lista((*raiz)->indices);
         free(*raiz);
     }
 }

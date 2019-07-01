@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
     char strTexto[TAM_STRING]; // Vetor para armazenamento temporário de strings do texto
     int posicao;
 
-
     printf("Criando estruturas...\n");
     Lista *lista = cria_Lista();
     ArvBin *arvBin = criaArvBin();
@@ -131,7 +130,7 @@ int main(int argc, char *argv[])
     char ProcString[80];
     printf("Digite uma palavra para procurar. ");
     scanf("%s", ProcString);
-    
+
     Palavra *palavraLista = busca_Lista(ProcString, lista);
     Palavra *palavraArvore = consulta_ArvBin(arvBin, ProcString);
     Palavra *palavraAVL = consulta_ArvAVL(arvAVL, ProcString);
