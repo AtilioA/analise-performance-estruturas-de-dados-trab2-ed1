@@ -71,7 +71,7 @@ Palavra *cria_Palavra(char *string, int ocorre)
     return nova;
 }
 
-void destroi_Ocorrencias(ListaOcorr *ocorres)
+void libera_Ocorrencias(ListaOcorr *ocorres)
 {
     CelulaOcorr *ant = NULL;
     CelulaOcorr *aux = ocorres->primeiro;
@@ -84,10 +84,10 @@ void destroi_Ocorrencias(ListaOcorr *ocorres)
     free(ocorres);
 }
 
-void destroi_Palavra(Palavra *palavra)
+void libera_Palavra(Palavra *palavra)
 {
     free(palavra->string);
-    destroi_Ocorrencias(palavra->ocorrencias);
+    libera_Ocorrencias(palavra->ocorrencias);
     free(palavra);
 }
 
@@ -117,7 +117,7 @@ void insere_RandPal(char *strat, SentRandPal *l)
     l->qtd++;
 }
 
-void destroi_RandPal(SentRandPal *l)
+void libera_RandPal(SentRandPal *l)
 {
     CelulaRandPal *ant;
     CelulaRandPal *aux = l->primeiro;

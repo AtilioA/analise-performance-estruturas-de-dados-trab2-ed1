@@ -62,9 +62,9 @@ int indice_Palavra(Palavra *x, Lista *lista)
     return -1;
 }
 
-void destroi_Celula(Celula *celula)
+void libera_Celula(Celula *celula)
 {
-    destroi_Palavra(celula->palavra);
+    libera_Palavra(celula->palavra);
 }
 */
 void imprime_Lista(Lista *lista)
@@ -77,13 +77,13 @@ void imprime_Lista(Lista *lista)
     }
 }
 
-void destroi_Celula(Celula *cel)
+void libera_Celula(Celula *cel)
 {
-    destroi_Palavra(cel->palavra);
+    libera_Palavra(cel->palavra);
     free(cel);
 }
 
-void destroi_Lista(Lista *lista)
+void libera_Lista(Lista *lista)
 {
     Celula *ant = NULL;
     Celula *aux = lista->primeiro;
@@ -91,7 +91,7 @@ void destroi_Lista(Lista *lista)
     {
         ant = aux;
         aux = aux->prox;
-        destroi_Celula(ant);
+        libera_Celula(ant);
     }
     free(lista);
 }
@@ -125,7 +125,7 @@ void insere_Lista(Palavra *x, Lista *l)
     {
         insere_Ocorrencias(get_posicoes(aux->palavra), get_posicoes(x)->ultimo->ocorreu);
         aux->palavra->ocorrencias->qtd++;
-        destroi_Celula(nova);
+        libera_Celula(nova);
         return;
     }
     l->ultimo->prox = nova;

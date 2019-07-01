@@ -10,13 +10,13 @@
 #include <time.h>
 #include <sys/time.h>
 
-#define TAMSTRING 80
+#define TAM_STRING 80
 
 /*
  * CONVENÇÕES PARA O TRABALINDO:
  * Constantes em CAPS: UNUSED, TRUE, FALSE.
  * Structs e typedefs em CamelCase: ArvBin, Lista.
- * Funções em snake_case: pre_ordem_ArvBin(), insere_lista().
+ * Funções em snake_case: imprime_pre_ordem_ArvBin(), insere_lista().
  * Ponteiros com asterisco do lado do nome da variável: ArvBin *foo, int *bar.
  */
 
@@ -24,20 +24,20 @@ int main(int argc, char *argv[])
 {
     clr_scr();
 
-    struct timeval t;
-    char strTexto[TAMSTRING]; // vetor para armazenamento temporário de strings do texto
+    struct timeval t; // Para gerar semente do srand
+    char strTexto[TAM_STRING]; // Vetor para armazenamento temporário de strings do texto
     int posicao;
 
 
     printf("Criando estruturas...\n");
     Lista *lista = cria_Lista();
-    ArvBin *arvere = criaArvBin();
-    ArvAVL *arvl = cria_ArvAVL();
+    ArvBin *arvBin = criaArvBin();
+    ArvAVL *arvAVL = cria_ArvAVL();
     TabelaHash *tabela = cria_Hash();
     printf("Estruturas criadas com sucesso.\n");
 
-    SentRandPal *pal_al = cria_RandPal(); // lista de busca de palavras
-    Palavra *pal;
+    SentRandPal *palavrasAleatorias = cria_RandPal(); // Lista para busca de palavras
+    Palavra *palavra;
     printf("Lista de busca de palavras criada com sucesso.\n");
 
     FILE *f = le_arquivo(argv[1]);
@@ -56,9 +56,9 @@ int main(int argc, char *argv[])
     }
 
     printf("Arquivo aberto com sucesso.\n");
-    char vetBusca[nBuscas][80]; // vetor de busca de palavras
+    char vetBusca[nBuscas][80]; // Vetor para busca de palavras
 
-    gettimeofday(&t, NULL);
+    gettimeofday(&t, NULL); // Para gerar semente do srand
     srand((unsigned int)t.tv_usec);
 
     printf("Lendo arquivo...\n");
@@ -66,33 +66,39 @@ int main(int argc, char *argv[])
     {
         le_palavra(f, strTexto);
 
-        insere_RandPal(strTexto, pal_al);
+        /* Preenchendo lista encadeada de palavras aleatórias */
+        insere_RandPal(strTexto, palavrasAleatorias);
         posicao = ftell(f) - strlen(strTexto) + 1;
 
-        pal = cria_Palavra(strTexto, posicao);
-        insere_ArvBin(arvere, pal);
+        /* Preenchendo estruturas de dados do projeto */
+        palavra = cria_Palavra(strTexto, posicao);
+        insere_Lista(palavra, lista);
 
-        pal = cria_Palavra(strTexto, posicao);
-        insere_Lista(pal, lista);
+        palavra = cria_Palavra(strTexto, posicao);
+        insere_ArvBin(arvBin, palavra);
 
-        pal = cria_Palavra(strTexto, posicao);
-        insere_ArvAVL(arvl, pal);
+        palavra = cria_Palavra(strTexto, posicao);
+        insere_ArvAVL(arvAVL, palavra);
 
-        pal = cria_Palavra(strTexto, posicao);
-        insere_Hash(pal, tabela);
+        // palavra = cria_Palavra(strTexto, posicao);
+        // insere_ArvTRIE(arvTrie, palavra);
+
+        palavra = cria_Palavra(strTexto, posicao);
+        insere_Hash(palavra, tabela);
     }
 
     for (int i = 0; i < nBuscas; i++)
     {
-        strcpy(vetBusca[i], busca_RandPal(rand() % (pal_al->qtd), pal_al)); // carrega o vetor com palavras aleatórias da lista
+        /* Carregando o vetor com palavras aleatórias da lista */
+        strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
     }
 
-    printf("\n\nLEITURA CONCLUIDA. IMPRIMINDO RESULTADOS:");
+    printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
 
     printf("\n\n\nARVORE BINARIA (em ordem)\n\n\n");
-    em_ordem_ArvBin(arvere);
+    imprime_pre_ordem_ArvBin(arvBin);
     printf("\n\n\nARVORE AVL (em ordem)\n\n\n");
-    em_ordem_ArvAVL(arvl);
+    imprime_pre_ordem_ArvAVL(arvAVL);
     printf("\n\n\nLISTA ENCADEADA\n\n\n");
     imprime_Lista(lista);
     printf("\n\n\nTABELA HASH COM AVL (em ordem)\n\n\n");
@@ -101,8 +107,8 @@ int main(int argc, char *argv[])
     for (int i = 0; i < nBuscas; i++)
     {
         Palavra *palavraLista = busca_Lista(vetBusca[i], lista);
-        Palavra *palavraArvore = consulta_ArvBin(arvere, vetBusca[i]);
-        Palavra *palavraAVL = consulta_ArvAVL(arvl, vetBusca[i]);
+        Palavra *palavraArvore = consulta_ArvBin(arvBin, vetBusca[i]);
+        Palavra *palavraAVL = consulta_ArvAVL(arvAVL, vetBusca[i]);
         Palavra *palavraHash = busca_Hash(vetBusca[i], tabela);
 
         if (palavraLista != NULL)
@@ -124,11 +130,11 @@ int main(int argc, char *argv[])
     }
 
     printf("\nFim da leitura. Liberando estruturas...\n");
-    destroi_RandPal(pal_al);
+    libera_RandPal(palavrasAleatorias);
     fclose(f);
-    libera_ArvBin(arvere);
-    libera_ArvAVL(arvl);
-    destroi_Lista(lista);
+    libera_ArvBin(arvBin);
+    libera_ArvAVL(arvAVL);
+    libera_Lista(lista);
     libera_Hash(tabela);
     printf("Estruturas liberadas com sucesso. Talvez. hehe\n");
 

@@ -2,10 +2,12 @@
  * relevantes à estrutura tabela hash.
  */
 
+// Guard para evitar dupla inclusão
+#ifndef __TABELA_HASH_H_
+#define __TABELA_HASH_H_
 
-#ifndef _TABELA_HASH_
-#define _TABELA_HASH_
 #define TAM_HASH 20
+
 #include "../include/arvore_AVL.h"
 #include "../include/indexador.h"
 
@@ -31,16 +33,6 @@ void libera_Hash(TabelaHash *tab);
 #endif
 
 /*
-// Guard para evitar dupla inclusão
-#ifndef __TABELA_HASH_H_
-#define __TABELA_HASH_H_
-
-#include <stdio.h>
-#include "lista_encadeada.h"
-
-// #include <stdlib.h>
-// #include <sys/time.h>
-// #include <string.h>
 
 #define M 97            // número primo alto placeholderson
 #define N 30            // tamanho máximo da string

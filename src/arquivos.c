@@ -4,9 +4,9 @@
 #include <ctype.h>
 #include "../include/arquivos.h"
 
-#define TAMSTRING 80
-#define _STRING_BUFFER_ TAMSTRING
-#define UNUSED ".,!? \n^´"
+#define TAM_STRING 80
+#define _STRING_BUFFER_ TAM_STRING
+#define UNUSED ".,!? "
 
 FILE *le_arquivo(char *string)
 {
@@ -43,9 +43,13 @@ char *le_palavra_file(FILE *f, char *str)
     while (((c = fgetc(f)) != EOF) && !isalpha(c));
 
     if (c != EOF)
+    {
         str[i++] = c;
+    }
     else
+    {
         return NULL;
+    }
 
     while (((c = fgetc(f)) != EOF) && isalpha(c))
     {
@@ -67,14 +71,24 @@ int le_palavra(FILE *f, char *str)
     while ((c = fgetc(f)) != EOF)
     {
         if (isalpha(c) || isdigit(c))
+        {
             break;
+        }
     }
+
     if (c == EOF)
+    {
         return 0;
+    }
     else
+    {
         str[i++] = c;
-    while (i < TAMSTRING - 1 && (c = fgetc(f)) != EOF && (isalpha(c) || isdigit(c)))
+    }
+
+    while (i < TAM_STRING - 1 && (c = fgetc(f)) != EOF && (isalpha(c) || isdigit(c)))
+    {
         str[i++] = c;
+    }
     str[i] = '\0';
 
     posicao = ftell(f) - strlen(str) + 1;

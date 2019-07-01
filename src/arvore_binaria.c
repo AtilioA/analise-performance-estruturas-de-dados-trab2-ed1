@@ -1,7 +1,7 @@
-#include "../include/arvore_binaria.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/indexador.h"
+#include "../include/arvore_binaria.h"
 
 ArvBin *criaArvBin()
 {
@@ -31,8 +31,7 @@ int eh_folha(No *no)
     }
 }
 
-// Calma, tô implementando
-/*
+/* Não lembro se está funcionando
 Conta o número de nós-folha de uma árvore binária
 retorna: Numero de nós folha
 */
@@ -77,56 +76,57 @@ int total_No_ArvBin(ArvBin *raiz)
 }
 /*
 * Imprime em pré-ordem /
-void pre_ordem_ArvBin(ArvBin *raiz)
+void imprime_pre_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
     {
         printf("%d\n", (*raiz)->info);
         if ((*raiz)->esq != NULL)
         {
-            pre_ordem_ArvBin(&((*raiz)->esq));
+            imprime_pre_ordem_ArvBin(&((*raiz)->esq));
         }
         if ((*raiz)->dir != NULL)
         {
-            pre_ordem_ArvBin(&((*raiz)->dir));
+            imprime_pre_ordem_ArvBin(&((*raiz)->dir));
         }
     }
 }
 */
 // Imprime em-ordem
-void em_ordem_ArvBin(ArvBin *raiz)
+void imprime_em_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
     {
         if ((*raiz)->esq != NULL)
         {
-            em_ordem_ArvBin(&((*raiz)->esq));
+            imprime_em_ordem_ArvBin(&((*raiz)->esq));
         }
         imprime_Palavra((*raiz)->pal);
         if ((*raiz)->dir != NULL)
         {
-            em_ordem_ArvBin(&((*raiz)->dir));
+            imprime_em_ordem_ArvBin(&((*raiz)->dir));
         }
     }
 }
 
-/** Imprime em pós-ordem /
-void pos_ordem_ArvBin(ArvBin *raiz)
+/*Imprime em pós-ordem
+void imprime_pos_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
     {
         if ((*raiz)->esq != NULL)
         {
-            pre_ordem_ArvBin(&((*raiz)->esq));
+            imprime_pos_ordem_ArvBin(&((*raiz)->esq));
         }
         if ((*raiz)->dir != NULL)
         {
-            pre_ordem_ArvBin(&((*raiz)->dir));
+            imprime_pos_ordem_ArvBin(&((*raiz)->dir));
         }
         printf("%d\n", (*raiz)->info);
     }
 }
 
+/*
 int altura_ArvBin(ArvBin *raiz)
 {
     if (raiz == NULL)
@@ -141,6 +141,7 @@ int altura_ArvBin(ArvBin *raiz)
         return (alt_dir + 1);
 }
 */
+
 int insere_ArvBin(ArvBin *raiz, Palavra *pal)
 {
     if (raiz != NULL)
@@ -208,37 +209,7 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
         return 0;
     }
 }
-/*
-int remove_ArvBin(ArvBin *raiz, int valor)
-{
-    if (raiz == NULL)
-        return 0;
-    struct No *ant = NULL;
-    struct No *atual = *raiz;
-    while (atual != NULL)
-    {
-        if (valor == atual->info)
-        {
-            if (atual == *raiz)
-                *raiz = remove_atual(atual);
-            else
-            {
-                if (ant->dir == atual)
-                    ant->dir = remove_atual(atual);
-                else
-                    ant->esq = remove_atual(atual);
-            }
-            return 1;
-        }
-        ant = atual;
-        if (valor > atual->info)
-            atual = atual->dir;
-        else
-            atual = atual->esq;
-    }
-    return 0;
-}
-*/
+
 Palavra *consulta_ArvBin(ArvBin *raiz, char *strat)
 {
     if (raiz == NULL)
@@ -262,7 +233,7 @@ void libera_No(struct No *no)
 {
     if (no == NULL)
         return;
-    destroi_Palavra(no->pal);
+    libera_Palavra(no->pal);
     libera_No(no->esq);
     libera_No(no->dir);
     free(no);

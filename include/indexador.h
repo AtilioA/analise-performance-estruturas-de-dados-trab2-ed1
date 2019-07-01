@@ -1,7 +1,12 @@
+/* Esta biblioteca contém o código que implementa funções mais básicas
+ * relevantes ao TAD lista encadeada para o indexador de arquivos.
+ */
+
 // Guard para evitar dupla inclusão
 #ifndef __INDEXADOR_H
 #define __INDEXADOR_H
 
+/* Lista encadeada para armazenar ocorrências */
 typedef struct ocorre
 {
     int ocorreu;
@@ -15,13 +20,7 @@ typedef struct ocorrencias
     int qtd;
 } ListaOcorr;
 
-typedef struct Palavra
-{
-    char *string;
-    ListaOcorr *ocorrencias;
-} Palavra;
-
-// pra pesquisar aleatoriamente
+// Lista encadeada para pesquisar palavras aleatoriamente (?)
 typedef struct celula_pal_rand
 {
     char *string;
@@ -34,6 +33,13 @@ typedef struct sent_pal_rand
     CelulaRandPal *ultimo;
     int qtd;
 } SentRandPal;
+
+/* Estrutura de dados que abstrai uma palavra do texto */
+typedef struct Palavra
+{
+    char *string;
+    ListaOcorr *ocorrencias;
+} Palavra;
 
 char *get_string(Palavra *palavra);
 
@@ -49,14 +55,11 @@ void imprime_Palavra(Palavra *palavra);
 
 Palavra *cria_Palavra(char *string, int ocorre);
 
-//Palavra *inicia_Palavra();
 void imprime_vet_h(int *vet, int tamVet);
 
 // Libera os elementos de uma palavra
-void destroi_Palavra(Palavra *palavra);
+void libera_Palavra(Palavra *palavra);
 
-/* Limpa a tela do terminal */
-void clr_scr();
 
 SentRandPal *cria_RandPal();
 
@@ -64,6 +67,9 @@ void insere_RandPal(char *strat, SentRandPal *l);
 
 char *busca_RandPal(int indice, SentRandPal *l);
 
-void destroi_RandPal(SentRandPal *l);
+void libera_RandPal(SentRandPal *l);
+
+/* Limpa a tela do terminal */
+void clr_scr();
 
 #endif

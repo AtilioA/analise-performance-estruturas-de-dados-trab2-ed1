@@ -15,7 +15,7 @@ typedef struct Celula
     struct celula *prox;
 } Celula;
 
-typedef struct
+typedef struct Lista
 {
     Celula *primeiro, *ultimo;
     char *nomeArquivo;
@@ -40,18 +40,16 @@ int indice_Palavra(Palavra *x, Lista *lista);
 
 // Insere uma carta na lista
 void insere_Lista_antiga(Palavra *x, Lista *lista);
-
-// retira_Lista uma carta do lista e retorna o elemento por referência
-void retira_Lista(int x, Lista *lista, int *cartaRetirada);
 */
+
 // Imprime as cartas do lista
 void imprime_Lista(Lista *lista);
 
 // Libera as células de um lista e define seu tamanho para 0
-void destroi_Lista(Lista *lista);
+void libera_Lista(Lista *lista);
 
 // Libera os elementos de uma célula
-void destroi_Celula(Celula *celula);
+void libera_Celula(Celula *celula);
 
 void insere_Lista(Palavra *x, Lista *l);
 
