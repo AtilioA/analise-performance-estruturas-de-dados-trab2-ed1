@@ -64,13 +64,13 @@ int total_folha_ArvBin(ArvBin *raiz);
 int total_No_ArvBin(ArvBin *raiz);
 
 /** Imprime em pre-ordem */
-void imprime_pre_ordem_arv_bin(ArvBin *raiz);
+// void imprime_pre_ordem_ArvBin(ArvBin *raiz);
 
 /** Imprime em-ordem */
-void em_ordem_ArvBin(ArvBin *raiz);
+// void imprime_em_ordem_ArvBin(ArvBin *raiz);
 
 /** Imprime em pós-ordem */
-void pos_ordem_ArvBin(ArvBin *raiz);
+void imprime_pos_ordem_ArvBin(ArvBin *raiz);
 
 /**
 Libera a árvore binária da memória

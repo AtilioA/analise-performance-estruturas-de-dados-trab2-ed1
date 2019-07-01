@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-#include "../include/arvore_AVL.h" //inclui os Prot�tipos
+#include "../include/arvore_AVL.h"
 
 ArvAVL *cria_ArvAVL()
 {
@@ -11,6 +10,7 @@ ArvAVL *cria_ArvAVL()
         *raiz = NULL;
     return raiz;
 }
+
 /*
 void libera_No(struct No *no)
 {
@@ -22,6 +22,7 @@ void libera_No(struct No *no)
     no = NULL;
 }
 */
+
 void libera_ArvAVL(ArvAVL *raiz)
 {
     if (raiz == NULL)
@@ -85,42 +86,40 @@ int altura_ArvAVL(ArvAVL *raiz)
         return (alt_dir + 1);
 }
 
-void pre_ordem_ArvAVL(ArvAVL *raiz)
+void imprime_pre_ordem_ArvAVL(ArvAVL *raiz)
 {
     if (raiz == NULL)
         return;
     if (*raiz != NULL)
     {
-        //printf("%d\n",(*raiz)->info);
         //printf("No %d: %d\n",(*raiz)->info,fator_balanceamento_No(*raiz));
         //printf("No %d: %d\n", (*raiz)->info, altura_No(*raiz));
         imprime_Palavra((*raiz)->pal);
-        pre_ordem_ArvAVL(&((*raiz)->esq));
-        pre_ordem_ArvAVL(&((*raiz)->dir));
+        imprime_pre_ordem_ArvAVL(&((*raiz)->esq));
+        imprime_pre_ordem_ArvAVL(&((*raiz)->dir));
     }
 }
 
-void em_ordem_ArvAVL(ArvAVL *raiz)
+void imprime_em_ordem_ArvAVL(ArvAVL *raiz)
 {
     if (raiz == NULL)
         return;
     if (*raiz != NULL)
     {
-        em_ordem_ArvAVL(&((*raiz)->esq));
-        //printf("%d\n",(*raiz)->info);
+        imprime_em_ordem_ArvAVL(&((*raiz)->esq));
         imprime_Palavra((*raiz)->pal);
-        em_ordem_ArvAVL(&((*raiz)->dir));
+        imprime_em_ordem_ArvAVL(&((*raiz)->dir));
     }
 }
 
-void pos_ordem_ArvAVL(ArvAVL *raiz)
+void imprime_pos_ordem_ArvAVL(ArvAVL *raiz)
 {
     if (raiz == NULL)
         return;
     if (*raiz != NULL)
     {
-        pos_ordem_ArvAVL(&((*raiz)->esq));
-        pos_ordem_ArvAVL(&((*raiz)->dir));
+        imprime_pos_ordem_ArvAVL(&((*raiz)->esq));
+        imprime_pos_ordem_ArvAVL(&((*raiz)->dir));
         imprime_Palavra((*raiz)->pal);
     }
 }
@@ -144,10 +143,16 @@ Palavra *consulta_ArvAVL(ArvAVL *raiz, char *strat)
     return NULL;
 }
 
-//=================================
-void rotacao_LL(ArvAVL *A)
-{ //LL
-    //printf("rotacao_LL\n");
+
+/* LR = Left rotation
+ * RL = Right rotation
+ * LRR = Left-right rotation
+ * RLR = Right-left rotation
+ */
+
+void rotacao_LR(ArvAVL *A)
+{
+    //printf("rotacao_LR\n");
     struct No *B;
     B = (*A)->esq;
     (*A)->esq = B->dir;
@@ -158,7 +163,7 @@ void rotacao_LL(ArvAVL *A)
 }
 
 void rotacao_RR(ArvAVL *A)
-{ //RR
+{
     //printf("rotacao_RR\n");
     struct No *B;
     B = (*A)->dir;
@@ -169,15 +174,15 @@ void rotacao_RR(ArvAVL *A)
     (*A) = B;
 }
 
-void rotacao_LR(ArvAVL *A)
-{ //LR
+void rotacao_LRR(ArvAVL *A)
+{
     rotacao_RR(&(*A)->esq);
-    rotacao_LL(A);
+    rotacao_LR(A);
 }
 
-void rotacao_RL(ArvAVL *A)
+void rotacao_RLR(ArvAVL *A)
 { //RL
-    rotacao_LL(&(*A)->dir);
+    rotacao_LR(&(*A)->dir);
     rotacao_RR(A);
 }
 
@@ -208,11 +213,11 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
             {
                 if (strcasecmp(pal->string, atual->esq->pal->string) < 0)
                 {
-                    rotacao_LL(raiz);
+                    rotacao_LR(raiz);
                 }
                 else
                 {
-                    rotacao_LR(raiz);
+                    rotacao_LRR(raiz);
                 }
             }
         }
@@ -231,7 +236,7 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
                     }
                     else
                     {
-                        rotacao_RL(raiz);
+                        rotacao_RLR(raiz);
                     }
                 }
             }
@@ -240,7 +245,7 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
         {
             insere_Ocorrencias(atual->pal->ocorrencias, pal->ocorrencias->primeiro->ocorreu);
             atual->pal->ocorrencias->qtd++;
-            destroi_Palavra(pal);
+            libera_Palavra(pal);
             //  printf("Valor duplicado!!\n");
             return 0;
         }
@@ -262,74 +267,3 @@ struct No *procura_menor(struct No *atual)
     }
     return no1;
 }
-/*
-int remove_ArvAVL(ArvAVL *raiz, int valor)
-{
-    if (*raiz == NULL)
-    { // valor n�o existe
-        printf("valor n�o existe!!\n");
-        return 0;
-    }
-
-    int res;
-    if (valor < (*raiz)->info)
-    {
-        if ((res = remove_ArvAVL(&(*raiz)->esq, valor)) == 1)
-        {
-            if (fator_balanceamento_No(*raiz) >= 2)
-            {
-                if (altura_No((*raiz)->dir->esq) <= altura_No((*raiz)->dir->dir))
-                    rotacao_RR(raiz);
-                else
-                    rotacao_RL(raiz);
-            }
-        }
-    }
-
-    if ((*raiz)->info < valor)
-    {
-        if ((res = remove_ArvAVL(&(*raiz)->dir, valor)) == 1)
-        {
-            if (fator_balanceamento_No(*raiz) >= 2)
-            {
-                if (altura_No((*raiz)->esq->dir) <= altura_No((*raiz)->esq->esq))
-                    rotacao_LL(raiz);
-                else
-                    rotacao_LR(raiz);
-            }
-        }
-    }
-
-    if ((*raiz)->info == valor)
-    {
-        if (((*raiz)->esq == NULL || (*raiz)->dir == NULL))
-        { // n� tem 1 filho ou nenhum
-            struct No *oldNode = (*raiz);
-            if ((*raiz)->esq != NULL)
-                *raiz = (*raiz)->esq;
-            else
-                *raiz = (*raiz)->dir;
-            free(oldNode);
-        }
-        else
-        { // n� tem 2 filhos
-            struct No *temp = procura_menor((*raiz)->dir);
-            (*raiz)->info = temp->info;
-            remove_ArvAVL(&(*raiz)->dir, (*raiz)->info);
-            if (fator_balanceamento_No(*raiz) >= 2)
-            {
-                if (altura_No((*raiz)->esq->dir) <= altura_No((*raiz)->esq->esq))
-                    rotacao_LL(raiz);
-                else
-                    rotacao_LR(raiz);
-            }
-        }
-        if (*raiz != NULL)
-            (*raiz)->altura = maior(altura_No((*raiz)->esq), altura_No((*raiz)->dir)) + 1;
-        return 1;
-    }
-
-    (*raiz)->altura = maior(altura_No((*raiz)->esq), altura_No((*raiz)->dir)) + 1;
-
-    return res;
-}*/
