@@ -44,7 +44,7 @@ int calc_Hash(int *peso, char *strat)
 
     for (int i = 0; i < strlen(strat); i++)
     {
-        sum += ((int)peso[i]) * strat[i];
+        sum += peso[i] * tolower(strat[i]);
     }
     return sum % TAM_HASH;
 }

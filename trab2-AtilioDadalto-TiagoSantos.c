@@ -128,7 +128,43 @@ int main(int argc, char *argv[])
             printf("A palavra %s foi encontrada na tabela hash.\n", vetBusca[i]);
         }
     }
+    char ProcString[80];
+    printf("Digite uma palavra para procurar. ");
+    scanf("%s", ProcString);
+    
+    Palavra *palavraLista = busca_Lista(ProcString, lista);
+    Palavra *palavraArvore = consulta_ArvBin(arvBin, ProcString);
+    Palavra *palavraAVL = consulta_ArvAVL(arvAVL, ProcString);
+    Palavra *palavraHash = busca_Hash(ProcString, tabela);
 
+    if (palavraLista != NULL)
+    {
+        printf("A palavra %s foi encontrada na lista.\n", ProcString);
+        imprime_Palavra(palavraLista);
+    }else{
+        printf("Não encontrado na lista.\n");
+    }
+    if (palavraArvore != NULL)
+    {
+        printf("A palavra %s foi encontrada na arvore.\n", ProcString);
+        imprime_Palavra(palavraArvore);
+    }else{
+        printf("Não encontrado na binária.\n");
+    }
+    if (palavraAVL != NULL)
+    {
+        printf("A palavra %s foi encontrada na arvore AVL.\n", ProcString);
+        imprime_Palavra(palavraAVL);
+    }else{
+        printf("Não encontrado na avl.\n");
+    }
+    if(palavraHash != NULL)
+    {
+        printf("A palavra %s foi encontrada na tabela hash.\n", ProcString);
+        imprime_Palavra(palavraHash);
+    }else{
+        printf("Não encontrado na hash.\n");
+    }
     printf("\nFim da leitura. Liberando estruturas...\n");
     libera_RandPal(palavrasAleatorias);
     fclose(f);
