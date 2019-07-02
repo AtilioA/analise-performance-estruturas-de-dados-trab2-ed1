@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     Lista *lista = cria_Lista();
     ArvBin *arvBin = criaArvBin();
     ArvAVL *arvAVL = cria_ArvAVL();
-    // ArvTrie *arvTrie = cria_ArvTrie();
+    ArvTrie *arvTrie = cria_ArvTrie();
     TabelaHash *tabela = cria_Hash();
     printf("Estruturas criadas com sucesso.\n");
 
@@ -81,8 +81,8 @@ int main(int argc, char *argv[])
         palavra = cria_Palavra(strTexto, posicao);
         insere_ArvAVL(arvAVL, palavra);
 
-        // palavra = cria_Palavra(strTexto, posicao);
-        // insere_ArvTrie(arvTrie, palavra);
+        palavra = cria_Palavra(strTexto, posicao);
+        insere_ArvTrie(palavra, arvTrie);
 
         palavra = cria_Palavra(strTexto, posicao);
         insere_Hash(palavra, tabela);
@@ -104,13 +104,14 @@ int main(int argc, char *argv[])
     imprime_Lista(lista);
     printf("\n\n\nTABELA HASH COM AVL (em ordem)\n\n\n");
     printar_Hash(tabela);
-
+    printf("\n\n\nTRIE\n\n\n");
+    imprime_ArvTrie(arvTrie);
     for (int i = 0; i < nBuscas; i++)
     {
         Palavra *palavraLista = busca_Lista(vetBusca[i], lista);
         Palavra *palavraArvore = busca_ArvBin(arvBin, vetBusca[i]);
         Palavra *palavraAVL = busca_ArvAVL(arvAVL, vetBusca[i]);
-        // Palavra *palavraTrie = busca_ArvTrie(arvTrie, vetBusca[i]);
+        Palavra *palavraTrie = busca_ArvTrie(arvTrie, vetBusca[i]);
         Palavra *palavraHash = busca_Hash(vetBusca[i], tabela);
 
         if (palavraLista != NULL)
@@ -125,12 +126,12 @@ int main(int argc, char *argv[])
         {
             printf("A palavra %s foi encontrada na arvore AVL.\n", vetBusca[i]);
         }
-        /*
+        
         if (palavraTrie != NULL)
         {
             printf("A palavra %s foi encontrada na arvore trie.\n", vetBusca[i]);
         }
-        */
+        
         if (palavraHash != NULL)
         {
             printf("A palavra %s foi encontrada na tabela hash.\n", vetBusca[i]);
@@ -144,7 +145,7 @@ int main(int argc, char *argv[])
     Palavra *palavraLista = busca_Lista(stringBuscada, lista);
     Palavra *palavraArvore = busca_ArvBin(arvBin, stringBuscada);
     Palavra *palavraAVL = busca_ArvAVL(arvAVL, stringBuscada);
-    // Palavra *palavraTrie = busca_ArvTrie(arvTrie, stringBuscada);
+    Palavra *palavraTrie = busca_ArvTrie(arvTrie, stringBuscada);
     Palavra *palavraHash = busca_Hash(stringBuscada, tabela);
 
     if (palavraLista != NULL)
@@ -174,7 +175,7 @@ int main(int argc, char *argv[])
     {
         printf("A palavra nao foi encontrada na arvore AVL.\n");
     }
-    /*
+    
     if (palavraTrie != NULL)
     {
         printf("A palavra \"%s\" foi encontrada na arvore trie.\n", stringBuscada);
@@ -184,7 +185,7 @@ int main(int argc, char *argv[])
     {
         printf("A palavra nao foi encontrada na arvore trie.\n");
     }
-    */
+    
     if (palavraHash != NULL)
     {
         printf("A palavra \"%s\" foi encontrada na tabela hash.\n", stringBuscada);
@@ -201,7 +202,8 @@ int main(int argc, char *argv[])
     libera_Lista(lista);
     libera_ArvBin(arvBin);
     libera_ArvAVL(arvAVL);
-    // libera_ArvTrie(arvAVL);
+    libera_ArvTrie(arvTrie);
+    free(arvTrie);
     libera_Hash(tabela);
     printf("Estruturas liberadas com sucesso. Talvez. hehe\n");
 

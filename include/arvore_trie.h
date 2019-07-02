@@ -26,6 +26,6 @@ void insere_trie(Palavra *palavra, ArvTrie *raiz);
 ArvTrie *cria_ArvTrie();
 void libera_ArvTrie(ArvTrie *raiz);
 void insere_trie(Palavra *palavra, ArvTrie *raiz);
-// Palavra *busca_ArvTrie(ArvTrie *raiz, char *strat);
+Palavra *busca_ArvTrie(ArvTrie *raiz, char *strat);
 
 #endif

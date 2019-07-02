@@ -126,7 +126,7 @@ void imprime_pos_ordem_ArvBin(ArvBin *raiz)
     }
 }
 
-/*
+
 int altura_ArvBin(ArvBin *raiz)
 {
     if (raiz == NULL)
