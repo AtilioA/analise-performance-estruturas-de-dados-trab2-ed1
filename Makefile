@@ -4,9 +4,19 @@ INC      := include
 CFLAGS   := -g -w -O3
 EXE 	 := indexador
 PROJETO  := trab2-AtilioDadalto-TiagoSantos
+PROJETOZOADO  := trab3-AtilioDadalto-TiagoSantos
+PROJETOLISTA  := trab4-AtilioDadalto-TiagoSantos
+
+
 
 # Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
 main: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/tabela_hash.o $(OBJ)/arvore_trie.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETO).o
+	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
+
+zoado: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/tabela_hash.o $(OBJ)/arvore_trie.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETOZOADO).o
+	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
+
+lista: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/tabela_hash.o $(OBJ)/arvore_trie.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETOLISTA).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
 
 $(OBJ)/indexador.o: $(SRC)/indexador.c $(INC)/indexador.h
@@ -33,6 +43,12 @@ $(OBJ)/arquivos.o: $(SRC)/arquivos.c $(INC)/arquivos.h
 
 $(OBJ)/$(PROJETO).o: $(PROJETO).c
 	gcc -c $(CFLAGS) $(PROJETO).c -o "$(OBJ)/$(PROJETO).o"
+
+$(OBJ)/$(PROJETOZOADO).o: $(PROJETOZOADO).c
+	gcc -c $(CFLAGS) $(PROJETOZOADO).c -o "$(OBJ)/$(PROJETOZOADO).o"
+
+$(OBJ)/$(PROJETOLISTA).o: $(PROJETOLISTA).c
+	gcc -c $(CFLAGS) $(PROJETOLISTA).c -o "$(OBJ)/$(PROJETOLISTA).o"
 
 # Executa o programa
 run:
