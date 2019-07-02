@@ -4,6 +4,15 @@
 #include <ctype.h>
 #include "../include/arvore_trie.h"
 
+ArvTrie *cria_ArvTrie()
+{
+    ArvTrie *nova = (ArvTrie *)malloc(sizeof(ArvTrie));
+
+    *nova = cria_no();
+
+    return nova;
+}
+
 NoTrie *cria_no()
 {
     NoTrie *novo = malloc(sizeof(NoTrie));
@@ -17,17 +26,26 @@ NoTrie *cria_no()
     return novo;
 }
 
-void libera_NoTrie(NoTrie *no)
+void libera_NosTrie(ArvTrie *raiz)
 {
-    libera_Palavra(no->palavra);
-    free(no);
+    if ((*raiz) != NULL && raiz != NULL)
+    {
+        for (int i = 0; i < TAM_TRIE; i++)
+        {
+            libera_NosTrie(&((*raiz)->filhos[i]));
+        }
+        if ((*raiz)->palavra != NULL)
+        {
+            libera_Palavra((*raiz)->palavra);
+        }
+        free(*raiz);
+    }
 }
 
-ArvTrie *cria_ArvTrie()
+void libera_ArvTrie(ArvTrie *raiz)
 {
-    ArvTrie *nova = (ArvTrie *)malloc(sizeof(ArvTrie));
-    *nova = cria_no();
-    return nova;
+    libera_NosTrie(raiz);
+    free(raiz);
 }
 
 int indice_ArvTrie(char c)
@@ -50,24 +68,6 @@ void to_lower_string(char *string)
     {
         string[i] = tolower(string[i]);
     }
-}
-
-// zoadão
-void libera_ArvTrie(ArvTrie *raiz)
-{
-    if((*raiz) == NULL){
-        return;
-    }
-    if(raiz == NULL){
-        return;
-    }
-    for(int i = 0; i < TAM_TRIE; i++){
-        libera_ArvTrie(&((*raiz)->filhos[i]));
-    }
-    if((*raiz)->palavra != NULL){
-        libera_Palavra((*raiz)->palavra);
-    }
-    free(*raiz);
 }
 
 void insere_ArvTrie(Palavra *palavra, ArvTrie *raiz)
@@ -98,34 +98,41 @@ void insere_ArvTrie(Palavra *palavra, ArvTrie *raiz)
     }
 }
 
-Palavra *busca_ArvTrie(ArvTrie *raiz, char *strat){
+Palavra *busca_ArvTrie(ArvTrie *raiz, char *strat)
+{
     NoTrie *aux = (*raiz);
     int tamPalavra = strlen(strat);
-    for(int i = 0; i < tamPalavra; i++){
+
+    for (int i = 0; i < tamPalavra; i++)
+    {
         int ind = indice_ArvTrie(strat[i]);
         aux = aux->filhos[ind];
-        if(aux == NULL){
+        if (aux == NULL)
+        {
             break;
         }
     }
-    if(aux == NULL){
+    if (aux == NULL)
+    {
         return NULL;
     }
-    return aux->palavra;
-    
+    else
+    {
+        return aux->palavra;
+    }
 }
 
-void imprime_ArvTrie(ArvTrie *raiz){
-    if((*raiz) == NULL){
-        return;
-    }
-    if(raiz == NULL){
-        return;
-    }
-    for(int i = 0; i < TAM_TRIE; i++){
-        imprime_ArvTrie(&((*raiz)->filhos[i]));
-    }
-    if((*raiz)->palavra != NULL){
-        imprime_Palavra((*raiz)->palavra);
+void imprime_ArvTrie(ArvTrie *raiz)
+{
+    if ((*raiz) != NULL && raiz == NULL)
+    {
+        for (int i = 0; i < TAM_TRIE; i++)
+        {
+            imprime_ArvTrie(&((*raiz)->filhos[i]));
+        }
+        if ((*raiz)->palavra != NULL)
+        {
+            imprime_Palavra((*raiz)->palavra);
+        }
     }
 }

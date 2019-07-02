@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
     printf("\n\n\nLISTA ENCADEADA\n\n\n");
     imprime_Lista(lista);
     printf("\n\n\nTABELA HASH COM AVL (em ordem)\n\n\n");
-    printar_Hash(tabela);
+    imprime_Hash(tabela);
     printf("\n\n\nTRIE\n\n\n");
     imprime_ArvTrie(arvTrie);
     for (int i = 0; i < nBuscas; i++)
@@ -126,12 +126,12 @@ int main(int argc, char *argv[])
         {
             printf("A palavra %s foi encontrada na arvore AVL.\n", vetBusca[i]);
         }
-        
+
         if (palavraTrie != NULL)
         {
             printf("A palavra %s foi encontrada na arvore trie.\n", vetBusca[i]);
         }
-        
+
         if (palavraHash != NULL)
         {
             printf("A palavra %s foi encontrada na tabela hash.\n", vetBusca[i]);
@@ -175,7 +175,7 @@ int main(int argc, char *argv[])
     {
         printf("A palavra nao foi encontrada na arvore AVL.\n");
     }
-    
+
     if (palavraTrie != NULL)
     {
         printf("A palavra \"%s\" foi encontrada na arvore trie.\n", stringBuscada);
@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
     {
         printf("A palavra nao foi encontrada na arvore trie.\n");
     }
-    
+
     if (palavraHash != NULL)
     {
         printf("A palavra \"%s\" foi encontrada na tabela hash.\n", stringBuscada);
@@ -203,7 +203,6 @@ int main(int argc, char *argv[])
     libera_ArvBin(arvBin);
     libera_ArvAVL(arvAVL);
     libera_ArvTrie(arvTrie);
-    free(arvTrie);
     libera_Hash(tabela);
     printf("Estruturas liberadas com sucesso. Talvez. hehe\n");
 

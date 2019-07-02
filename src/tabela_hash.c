@@ -65,7 +65,7 @@ void insere_Hash(Palavra *pal, TabelaHash *tab)
     tab->qtd++;
 }
 
-void printar_Hash(TabelaHash *tab)
+void imprime_Hash(TabelaHash *tab)
 {
     for (int i = 0; i < TAM_HASH; i++)
     {

@@ -1,5 +1,5 @@
 /* Esta biblioteca contém o código que implementa funções mais básicas
- * relevantes ao TAD árvore binária trie para o indexador de arquivos.
+ * relevantes ao TAD árvore trie para o indexador de arquivos.
  */
 
 // Guard para evitar dupla inclusão
@@ -24,6 +24,8 @@ typedef NoTrie *ArvTrie; // raiz
 void insere_trie(Palavra *palavra, ArvTrie *raiz);
 
 ArvTrie *cria_ArvTrie();
+NoTrie *cria_no();
+void libera_NosTrie(ArvTrie *raiz);
 void libera_ArvTrie(ArvTrie *raiz);
 void insere_trie(Palavra *palavra, ArvTrie *raiz);
 Palavra *busca_ArvTrie(ArvTrie *raiz, char *strat);
