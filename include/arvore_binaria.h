@@ -25,7 +25,7 @@ typedef struct No *ArvBin;
 Inicializa a árvore e deixa a raiz NULL
 retorna: Raiz alocada e apontada para NULL
 */
-ArvBin *criaArvBin();
+ArvBin *cria_ArvBin();
 
 /**
 Insere 'valor' na árvore utilizando a regra que o filho esquerdo é menor que a raiz que é menor o filho direito.

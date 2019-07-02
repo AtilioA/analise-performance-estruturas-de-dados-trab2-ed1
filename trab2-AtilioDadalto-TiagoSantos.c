@@ -1,3 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <sys/time.h>
 #include "include/lista_encadeada.h"
 #include "include/arvore_binaria.h"
 #include "include/arvore_AVL.h"
@@ -5,11 +10,6 @@
 #include "include/tabela_hash.h"
 #include "include/indexador.h"
 #include "include/arquivos.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <sys/time.h>
 
 #define TAM_STRING 80
 
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     printf("Criando estruturas...\n");
     Lista *lista = cria_Lista();
-    ArvBin *arvBin = criaArvBin();
+    ArvBin *arvBin = cria_ArvBin();
     ArvAVL *arvAVL = cria_ArvAVL();
     ArvTrie *arvTrie = cria_ArvTrie();
     TabelaHash *tabela = cria_Hash();

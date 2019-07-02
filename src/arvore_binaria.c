@@ -3,7 +3,7 @@
 #include "../include/indexador.h"
 #include "../include/arvore_binaria.h"
 
-ArvBin *criaArvBin()
+ArvBin *cria_ArvBin()
 {
     ArvBin *nova = (ArvBin *)malloc(sizeof(ArvBin));
     (*nova) = NULL;

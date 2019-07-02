@@ -11,12 +11,14 @@
 #include "../include/arvore_AVL.h"
 #include "../include/indexador.h"
 
-typedef struct tabelahash{
+typedef struct tabelahash
+{
     ArvAVL *hash[TAM_HASH];
     int colisoes;
     int qtd;
     int *pesos;
-}TabelaHash;
+    char *nomeArquivo;
+} TabelaHash;
 
 TabelaHash *cria_Hash();
 
