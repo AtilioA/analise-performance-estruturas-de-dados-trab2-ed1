@@ -37,7 +37,7 @@ int totalFolha_Arvbin(ArvBin *raiz);
 int altura_ArvBin(ArvBin *raiz);
 /*função que conta o número de nós de uma árvore binária. */
 int total_No_ArvBin(ArvBin *raiz);
-int consulta_ArvBin(ArvBin *raiz, int valor);
+int busca_ArvBin(ArvBin *raiz, int valor);
 void preOrdem_ArvBin(ArvBin *raiz);
 void emOrdem_ArvBin(ArvBin *raiz);
 void posOrdem_ArvBin(ArvBin *raiz);

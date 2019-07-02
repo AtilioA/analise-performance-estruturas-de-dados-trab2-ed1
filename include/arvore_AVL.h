@@ -16,7 +16,7 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal);
 int esta_vazia_ArvAVL(ArvAVL *raiz);
 int altura_ArvAVL(ArvAVL *raiz);
 int total_No_ArvAVL(ArvAVL *raiz);
-Palavra *consulta_ArvAVL(ArvAVL *raiz, char *strat);
+Palavra *busca_ArvAVL(ArvAVL *raiz, char *strat);
 void imprime_pre_ordem_ArvAVL(ArvAVL *raiz);
 void imprime_em_ordem_ArvAVL(ArvAVL *raiz);
 void imprime_pos_ordem_ArvAVL(ArvAVL *raiz);

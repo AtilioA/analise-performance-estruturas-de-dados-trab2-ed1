@@ -210,7 +210,7 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
     }
 }
 
-Palavra *consulta_ArvBin(ArvBin *raiz, char *strat)
+Palavra *busca_ArvBin(ArvBin *raiz, char *strat)
 {
     if (raiz == NULL)
         return 0;

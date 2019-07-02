@@ -84,7 +84,7 @@ Palavra *busca_Hash(char *strat, TabelaHash *tab)
     {
         indice = (-1) * indice;
     }
-    return consulta_ArvAVL(tab->hash[indice], strat);
+    return busca_ArvAVL(tab->hash[indice], strat);
 }
 
 void libera_Hash(TabelaHash *tab)

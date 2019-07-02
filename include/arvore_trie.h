@@ -15,21 +15,17 @@
 typedef struct NoTrie
 {
     char letra;
+    Palavra *palavra;
     struct NoTrie *filhos[TAM_TRIE]; // ponteiro?
-    Palavra *pal;
 } NoTrie;
 
 typedef NoTrie *ArvTrie; // raiz
 
-void insere_trie(Palavra *pal, ArvTrie *raiz);
+void insere_trie(Palavra *palavra, ArvTrie *raiz);
 
 ArvTrie *cria_ArvTrie();
 void libera_ArvTrie(ArvTrie *raiz);
-void insere_trie(Palavra *pal, ArvTrie *raiz);
-// int insere_ArvTrie(ArvTrie *raiz, Palavra *pal);
-// Palavra *consulta_ArvTrie(ArvTrie *raiz, char *strat);
-// void imprime_pre_ordem_ArvTrie(ArvTrie *raiz);
-// void imprime_pre_ordem_ArvTrie(ArvTrie *raiz);
-// void pos_ordem_ArvTrie(ArvTrie *raiz);
+void insere_trie(Palavra *palavra, ArvTrie *raiz);
+// Palavra *busca_ArvTrie(ArvTrie *raiz, char *strat);
 
 #endif

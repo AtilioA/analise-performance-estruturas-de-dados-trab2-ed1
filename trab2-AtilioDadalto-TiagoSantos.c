@@ -1,6 +1,7 @@
 #include "include/lista_encadeada.h"
 #include "include/arvore_binaria.h"
 #include "include/arvore_AVL.h"
+#include "include/arvore_trie.h"
 #include "include/tabela_hash.h"
 #include "include/indexador.h"
 #include "include/arquivos.h"
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
 {
     clr_scr();
 
-    struct timeval t; // Para gerar semente do srand
+    struct timeval t;          // Para gerar semente do srand
     char strTexto[TAM_STRING]; // Vetor para armazenamento temporário de strings do texto
     int posicao;
 
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
     Lista *lista = cria_Lista();
     ArvBin *arvBin = criaArvBin();
     ArvAVL *arvAVL = cria_ArvAVL();
+    // ArvTrie *arvTrie = cria_ArvTrie();
     TabelaHash *tabela = cria_Hash();
     printf("Estruturas criadas com sucesso.\n");
 
@@ -55,7 +57,7 @@ int main(int argc, char *argv[])
     }
 
     printf("Arquivo aberto com sucesso.\n");
-    char vetBusca[nBuscas][80]; // Vetor para busca de palavras
+    char vetBusca[nBuscas][TAM_STRING]; // Vetor para busca de palavras
 
     gettimeofday(&t, NULL); // Para gerar semente do srand
     srand((unsigned int)t.tv_usec);
@@ -80,7 +82,7 @@ int main(int argc, char *argv[])
         insere_ArvAVL(arvAVL, palavra);
 
         // palavra = cria_Palavra(strTexto, posicao);
-        // insere_ArvTRIE(arvTrie, palavra);
+        // insere_ArvTrie(arvTrie, palavra);
 
         palavra = cria_Palavra(strTexto, posicao);
         insere_Hash(palavra, tabela);
@@ -106,8 +108,9 @@ int main(int argc, char *argv[])
     for (int i = 0; i < nBuscas; i++)
     {
         Palavra *palavraLista = busca_Lista(vetBusca[i], lista);
-        Palavra *palavraArvore = consulta_ArvBin(arvBin, vetBusca[i]);
-        Palavra *palavraAVL = consulta_ArvAVL(arvAVL, vetBusca[i]);
+        Palavra *palavraArvore = busca_ArvBin(arvBin, vetBusca[i]);
+        Palavra *palavraAVL = busca_ArvAVL(arvAVL, vetBusca[i]);
+        // Palavra *palavraTrie = busca_ArvTrie(arvTrie, vetBusca[i]);
         Palavra *palavraHash = busca_Hash(vetBusca[i], tabela);
 
         if (palavraLista != NULL)
@@ -122,54 +125,83 @@ int main(int argc, char *argv[])
         {
             printf("A palavra %s foi encontrada na arvore AVL.\n", vetBusca[i]);
         }
-        if(palavraHash != NULL)
+        /*
+        if (palavraTrie != NULL)
+        {
+            printf("A palavra %s foi encontrada na arvore trie.\n", vetBusca[i]);
+        }
+        */
+        if (palavraHash != NULL)
         {
             printf("A palavra %s foi encontrada na tabela hash.\n", vetBusca[i]);
         }
     }
-    char ProcString[80];
-    printf("Digite uma palavra para procurar. ");
-    scanf("%s", ProcString);
 
-    Palavra *palavraLista = busca_Lista(ProcString, lista);
-    Palavra *palavraArvore = consulta_ArvBin(arvBin, ProcString);
-    Palavra *palavraAVL = consulta_ArvAVL(arvAVL, ProcString);
-    Palavra *palavraHash = busca_Hash(ProcString, tabela);
+    char stringBuscada[TAM_STRING];
+    printf("\nDigite uma palavra para procurar no(s) arquivo(s): ");
+    scanf("%79s", stringBuscada); // Lê no máximo TAM_STRING - 1
+
+    Palavra *palavraLista = busca_Lista(stringBuscada, lista);
+    Palavra *palavraArvore = busca_ArvBin(arvBin, stringBuscada);
+    Palavra *palavraAVL = busca_ArvAVL(arvAVL, stringBuscada);
+    // Palavra *palavraTrie = busca_ArvTrie(arvTrie, stringBuscada);
+    Palavra *palavraHash = busca_Hash(stringBuscada, tabela);
 
     if (palavraLista != NULL)
     {
-        printf("A palavra %s foi encontrada na lista.\n", ProcString);
+        printf("A palavra \"%s\" foi encontrada na lista.\n", stringBuscada);
         imprime_Palavra(palavraLista);
-    }else{
-        printf("Não encontrado na lista.\n");
+    }
+    else
+    {
+        printf("A palavra nao foi encontrada na lista.\n");
     }
     if (palavraArvore != NULL)
     {
-        printf("A palavra %s foi encontrada na arvore.\n", ProcString);
+        printf("A palavra \"%s\" foi encontrada na arvore binaria.\n", stringBuscada);
         imprime_Palavra(palavraArvore);
-    }else{
-        printf("Não encontrado na binária.\n");
+    }
+    else
+    {
+        printf("A palavra nao foi encontrada na arvore binária.\n");
     }
     if (palavraAVL != NULL)
     {
-        printf("A palavra %s foi encontrada na arvore AVL.\n", ProcString);
+        printf("A palavra \"%s\" foi encontrada na arvore AVL.\n", stringBuscada);
         imprime_Palavra(palavraAVL);
-    }else{
-        printf("Não encontrado na avl.\n");
     }
-    if(palavraHash != NULL)
+    else
     {
-        printf("A palavra %s foi encontrada na tabela hash.\n", ProcString);
-        imprime_Palavra(palavraHash);
-    }else{
-        printf("Não encontrado na hash.\n");
+        printf("A palavra nao foi encontrada na arvore AVL.\n");
     }
+    /*
+    if (palavraTrie != NULL)
+    {
+        printf("A palavra \"%s\" foi encontrada na arvore trie.\n", stringBuscada);
+        imprime_Palavra(palavraTrie);
+    }
+    else
+    {
+        printf("A palavra nao foi encontrada na arvore trie.\n");
+    }
+    */
+    if (palavraHash != NULL)
+    {
+        printf("A palavra \"%s\" foi encontrada na tabela hash.\n", stringBuscada);
+        imprime_Palavra(palavraHash);
+    }
+    else
+    {
+        printf("A palavra nao foi encontrada na hash.\n");
+    }
+
     printf("\nFim da leitura. Liberando estruturas...\n");
     libera_RandPal(palavrasAleatorias);
     fclose(f);
+    libera_Lista(lista);
     libera_ArvBin(arvBin);
     libera_ArvAVL(arvAVL);
-    libera_Lista(lista);
+    // libera_ArvTrie(arvAVL);
     libera_Hash(tabela);
     printf("Estruturas liberadas com sucesso. Talvez. hehe\n");
 

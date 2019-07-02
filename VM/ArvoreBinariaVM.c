@@ -129,7 +129,7 @@ int altura_ArvBin(ArvBin *raiz)
         return (alt_dir + 1);
 }
 
-int consulta_ArvBin(ArvBin *raiz, int valor)
+int busca_ArvBin(ArvBin *raiz, int valor)
 {
     if (raiz == NULL)
         return 0;

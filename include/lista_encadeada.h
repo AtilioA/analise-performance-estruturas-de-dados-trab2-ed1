@@ -51,7 +51,7 @@ void libera_Lista(Lista *lista);
 // Libera os elementos de uma célula
 void libera_Celula(Celula *celula);
 
-void insere_Lista(Palavra *x, Lista *l);
+void insere_Lista(Palavra *x, Lista *lista);
 
-Palavra *busca_Lista(char *strat, Lista *l);
+Palavra *busca_Lista(char *strat, Lista *lista);
 #endif

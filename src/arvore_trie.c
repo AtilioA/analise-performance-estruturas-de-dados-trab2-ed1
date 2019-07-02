@@ -4,13 +4,23 @@
 #include <ctype.h>
 #include "../include/arvore_trie.h"
 
-NoTrie *cria_no(){
+NoTrie *cria_no()
+{
     NoTrie *novo = malloc(sizeof(NoTrie));
-    novo->pal = NULL;
-    for(int i = 0; i < TAM_TRIE; i++){
+
+    novo->palavra = NULL;
+    for (int i = 0; i < TAM_TRIE; i++)
+    {
         novo->filhos[i] = NULL;
     }
+
     return novo;
+}
+
+void libera_NoTrie(NoTrie *no)
+{
+    libera_Palavra(no->palavra);
+    free(no);
 }
 
 ArvTrie *cria_ArvTrie()
@@ -20,10 +30,14 @@ ArvTrie *cria_ArvTrie()
     return nova;
 }
 
-int indice(char c){
-    if(isalpha(c)){
+int indice_ArvTrie(char c)
+{
+    if (isalpha(c))
+    {
         return tolower(c) - 'a';
-    }else{
+    }
+    else
+    {
         return c - 22;
     }
 }
@@ -38,7 +52,8 @@ void to_lower_string(char *string)
     }
 }
 
-void libera_Trie(ArvTrie *raiz)
+// zoadão
+void libera_ArvTrie(ArvTrie *raiz)
 {
     if (raiz != NULL && *raiz != NULL)
     {
@@ -46,52 +61,39 @@ void libera_Trie(ArvTrie *raiz)
 
         for (i = 0; i < TAM_TRIE; i++)
         {
-            libera_Trie(&((*raiz)->filhos[i]));
+            libera_ArvTrie(&((*raiz)->filhos[i]));
+            libera_NoTrie(*raiz);
         }
 
         // percorreL_int((*raiz)->indices, liberaL_int_celula, 0);
 
-        // libera_Lista((*raiz)->indices);
-        free(*raiz);
+        libera_NoTrie(*raiz);
     }
 }
-/*
-// imprime_pre_ordem
-void imprime_pre_ordem_Trie(ArvTrie *trie)
+
+void insere_ArvTrie(Palavra *palavra, ArvTrie *raiz)
 {
-    if (trie == NULL)
-        return;
-
-    if (*trie == NULL)
-        return;
-
-    int i = 0;
-
-    printf("%c\n", (*trie)->letra);
-    for (i = 0; i < TAM_TRIE; i++)
-    {
-        imprime_pre_ordem_Trie(&((*trie)->filhos[i]));
-    }
-}
-*/
-
-
-
-void insere_trie(Palavra *pal, ArvTrie *raiz){
     NoTrie *aux = (*raiz);
-    int k = strlen(pal->string); 
-    for(int i = 0; i < k; i++){
-        int ind = indice(pal->string[i]);
-        if(aux->filhos[ind] == NULL){
+    int tamPalavra = strlen(palavra->string);
+
+    for (int i = 0; i < tamPalavra; i++)
+    {
+        int ind = indice_ArvTrie(palavra->string[i]);
+        if (aux->filhos[ind] == NULL)
+        {
             aux->filhos[ind] = cria_no();
         }
         aux = aux->filhos[ind];
-        aux->letra = pal->string[i];
+        aux->letra = palavra->string[i];
     }
-    if(aux->pal == NULL){
-        aux->pal = pal;
-        return;
+
+    if (aux->palavra == NULL)
+    {
+        aux->palavra = palavra;
     }
-    insere_Ocorrencias(aux->pal->ocorrencias, pal->ocorrencias->ultimo->ocorreu);
-    aux->pal->ocorrencias->qtd++;
+    else
+    {
+        insere_Ocorrencias(aux->palavra->ocorrencias, palavra->ocorrencias->ultimo->ocorreu);
+        aux->palavra->ocorrencias->qtd++;
+    }
 }
