@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 
     char vetBusca[nBuscas][TAM_STRING]; // Vetor para busca de palavras
     FILE *fs;
-    Lista *listas[nArquivos];
+    Lista *listas;
     SentRandPal *palavrasAleatorias = cria_RandPal(); // Lista para busca de palavras
     Palavra *palavra;
     printf("Lista de busca de palavras criada com sucesso.\n");
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     {
         fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
         printf("%io arquivo aberto com sucesso.\n", i + 1);
-        listas[i] = cria_Lista();
+        listas = cria_Lista();
         printf("%ia estrutura criada com sucesso.\n", i + 1);
 
         printf("Lendo %io arquivo...\n", i + 1);
@@ -69,8 +69,8 @@ int main(int argc, char *argv[])
             posicao = ftell(fs) - strlen(strTexto) + 1;
 
             /* Preenchendo estruturas de dados do projeto */
-            palavra = cria_Palavra(strTexto, posicao);
-            insere_Lista(palavra, listas[i]);
+            palavra = cria_Palavra(argv[i + 2],strTexto, posicao);
+            insere_Lista(palavra, listas);
         }
     }
     printf("\nEstruturas criadas com sucesso.\n");
@@ -81,23 +81,22 @@ int main(int argc, char *argv[])
         strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
     }
 
-    for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
-    {
-        imprime_Lista(listas[i]);
-    }
+    imprime_Lista(listas);
 
     printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
     printf("\n\n\nLISTA ENCADEADA\n\n\n");
     for (int i = 0; i < nBuscas; i++)
     {
-        for (int j = 0; j < nArquivos; j++)
-        {
-            palavraAleatoria = busca_Lista(vetBusca[i], listas[j]);
+        palavraAleatoria = busca_Lista(vetBusca[i], listas);
 
-            if (palavraAleatoria != NULL)
-            {
-                printf("A palavra %s foi encontrada no arquivo %s.\n", vetBusca[i], argv[j + 2]);
-            }
+        if (palavraAleatoria != NULL)
+        {
+            printf("PALAVRA ENCONTRADA.\n");
+            imprime_Palavra(palavraAleatoria);
+        }
+        else
+        {
+            printf("Palavra %s não encontrada.\n", vetBusca[i]);
         }
         printf("\n");
     }
@@ -105,26 +104,20 @@ int main(int argc, char *argv[])
     char stringBuscada[TAM_STRING];
     printf("\nDigite uma palavra para procurar no(s) arquivo(s): ");
     scanf("%79s", stringBuscada); // Lê no máximo TAM_STRING - 1
-
-    for (i = 0; i < nArquivos; i++)
+    palavraBusca = busca_Lista(stringBuscada, listas);
+    if (palavraBusca != NULL)
     {
-        palavraBusca = busca_Lista(stringBuscada, listas[i]);
-        if (palavraBusca != NULL)
-        {
-            printf("A palavra \"%s\" foi encontrada nas listas.\n", stringBuscada);
-            imprime_Palavra(palavraBusca);
-        }
-        else
-        {
-            printf("A palavra nao foi encontrada nas listas.\n");
-        }
+        printf("PALAVRA ENCONTRADA.\n");
+        imprime_Palavra(palavraBusca);
     }
+    else
+    {
+        printf("A palavra nao foi encontrada nas listas.\n");
+    }
+    
 
     printf("\nFim da leitura. Liberando estruturas...\n");
-    for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
-    {
-        libera_Lista(listas[i]);
-    }
+    libera_Lista(listas);
 
     libera_RandPal(palavrasAleatorias);
     fclose(fs);

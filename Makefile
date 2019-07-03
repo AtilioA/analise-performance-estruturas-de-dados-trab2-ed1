@@ -9,13 +9,13 @@ PROJETOLISTA  := trab4-AtilioDadalto-TiagoSantos
 
 
 # Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
-main: clean $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/tabela_hash.o $(OBJ)/arvore_trie.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETO).o
+main: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/tabela_hash.o $(OBJ)/arvore_trie.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETO).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
 
-zoado: clean $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/tabela_hash.o $(OBJ)/arvore_trie.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETOZOADO).o
+zoado: $(OBJ)/lista_encadeada.o $(OBJ)/arvore_binaria.o $(OBJ)/arvore_AVL.o $(OBJ)/tabela_hash.o $(OBJ)/arvore_trie.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETOZOADO).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
 
-lista: clean $(OBJ)/lista_encadeada.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETOLISTA).o
+lista: $(OBJ)/lista_encadeada.o $(OBJ)/indexador.o $(OBJ)/arquivos.o $(OBJ)/$(PROJETOLISTA).o
 	gcc $(OBJ)/*.o -o $(EXE) $(CFLAGS)
 
 $(OBJ)/indexador.o: $(SRC)/indexador.c $(INC)/indexador.h
