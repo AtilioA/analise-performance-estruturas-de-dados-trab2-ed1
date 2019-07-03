@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
 {
     clr_scr();
 
+    clock_t Ticks[2];
+    Ticks[0] = clock();
     struct timeval t;          // Para gerar semente do srand
     char strTexto[TAM_STRING]; // Vetor para armazenamento temporário de strings do texto
     int nArquivos = argc - 2, posicao = 0, i = 0;
@@ -52,7 +54,7 @@ int main(int argc, char *argv[])
     srand((unsigned int)t.tv_usec);
 
     printf("Criando estruturas...\n");
-    
+
     listas = cria_Lista();
     for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
     {
@@ -84,10 +86,10 @@ int main(int argc, char *argv[])
 
 
     printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
-     
+
     printf("\n\n\nLISTA ENCADEADA\n\n\n");
     imprime_Lista(listas);
-    
+
     for (int i = 0; i < nBuscas; i++)
     {
         palavraAleatoria = busca_Lista(vetBusca[i], listas);
@@ -103,7 +105,7 @@ int main(int argc, char *argv[])
         }
         printf("\n");
     }
-
+    /*/
     char stringBuscada[TAM_STRING];
     printf("\nDigite uma palavra para procurar no(s) arquivo(s): ");
     scanf("%79s", stringBuscada); // Lê no máximo TAM_STRING - 1
@@ -114,16 +116,38 @@ int main(int argc, char *argv[])
         imprime_Palavra(palavraBusca);
     }
     else
+        palavraBusca = busca_Lista(stringBuscada, listas[i]);
+        if (palavraBusca != NULL)
+        {
+                printf("A palavra %s foi encontrada no arquivo %s.\n", stringBuscada, argv[i + 2]);
+
+            imprime_Palavra(palavraBusca);
+        }
+        else
+        {
+            printf("A palavra nao foi encontrada nas listas.\n");
+        }
+    }
+    */
+
+    printf("\nFim da leitura. Liberando estruturas...\n");
+    for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
     {
         printf("A palavra nao foi encontrada nas listas.\n");
     }
-    
+
 
     printf("\nFim da leitura. Liberando estruturas...\n");
     libera_Lista(listas);
 
     libera_RandPal(palavrasAleatorias);
     printf("Estruturas liberadas com sucesso. Talvez. hehe\n");
+
+    Ticks[1] = clock();
+    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+    double TempoSegundos = Tempo / 1000;
+    printf("Tempo gasto: %g s.", TempoSegundos);
+    printf("\n");
 
     return 0;
 }
