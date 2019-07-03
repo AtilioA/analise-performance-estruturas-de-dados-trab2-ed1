@@ -34,11 +34,22 @@ typedef struct sent_pal_rand
     int qtd;
 } SentRandPal;
 
+typedef struct Arq{
+    char *nomeArquivo;
+    ListaOcorr *ocorrencias;
+    struct Arq *prox;
+}tArq;
+
+typedef struct listaArq{
+    tArq *primeiro;
+    tArq *ultimo;
+}tListaArq;
+
 /* Estrutura de dados que abstrai uma palavra do texto */
 typedef struct Palavra
 {
     char *string;
-    ListaOcorr *ocorrencias;
+    tListaArq *arquivos;
 } Palavra;
 
 char *get_string(Palavra *palavra);
@@ -53,7 +64,7 @@ void insere_Ocorrencias(ListaOcorr *l, int ocorre);
 
 void imprime_Palavra(Palavra *palavra);
 
-Palavra *cria_Palavra(char *string, int ocorre);
+Palavra *cria_Palavra(char *nomeArquivo, char *string, int ocorre);
 
 void imprime_vet_h(int *vet, int tamVet);
 
