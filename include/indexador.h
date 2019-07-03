@@ -51,11 +51,11 @@ typedef struct Palavra
     char *string;
     tListaArq *arquivos;
 } Palavra;
-
+/*
 char *get_string(Palavra *palavra);
 
 int get_ocorrencias(Palavra *palavra);
-
+*/
 ListaOcorr *get_posicoes(Palavra *palavra);
 
 ListaOcorr *nova_Ocorre();

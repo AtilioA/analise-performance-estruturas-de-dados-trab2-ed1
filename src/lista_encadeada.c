@@ -127,9 +127,7 @@ void insere_Lista(Palavra *x, Lista *l)
     }
     if (!strcasecmp(get_string(aux->palavra), get_string(x)))
     {
-        insere_Ocorrencias(get_posicoes(aux->palavra), get_posicoes(x)->ultimo->ocorreu);
-        aux->palavra->ocorrencias->qtd++;
-        libera_Celula(nova);
+        insere_Arq(x->arquivos->primeiro->nomeArquivo, aux->palavra->arquivos, x->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
         return;
     }
     l->ultimo->prox = nova;

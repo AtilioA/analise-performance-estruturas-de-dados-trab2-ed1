@@ -11,7 +11,7 @@ char *get_string(Palavra *palavra)
     }
     return palavra->string;
 }
-
+/*
 int get_ocorrencias(Palavra *palavra)
 {
     return palavra->ocorrencias->qtd;
@@ -21,18 +21,22 @@ ListaOcorr *get_posicoes(Palavra *palavra)
 {
     return palavra->ocorrencias;
 }
-
+*/
 void imprime_Palavra(Palavra *palavra)
 {
     printf("Palavra: %s\n", get_string(palavra));
-    printf("Ocorrencias: ");
-    CelulaOcorr *aux = get_posicoes(palavra)->primeiro;
-    for (int i = 0; i < get_ocorrencias(palavra); i++)
-    {
-        printf("%d ", aux->ocorreu);
+    tArq *aux = palavra->arquivos->primeiro;
+    while(aux != NULL){
+        printf("Arquivo: %s\n", aux->nomeArquivo);
+        CelulaOcorr *ocorres = aux->ocorrencias->primeiro;
+        printf("Ocorrencias: ");
+        while(ocorres != NULL){
+            printf("%d ", ocorres->ocorreu);
+            ocorres = ocorres->prox;
+        }
         aux = aux->prox;
-    } // mas eu vo, caralho
-    printf("\n");
+        printf("\n");
+    }
 }
 
 ListaOcorr *nova_Ocorrencias()
@@ -74,28 +78,43 @@ Palavra *cria_Palavra(char *nomeArquivo, char* string, int ocorre){
     nova->string = malloc(sizeof(char) * strlen(string) + 1);
     strcpy(nova->string, string);
     nova->arquivos = cria_Arq();
+    insere_Arq(nomeArquivo, nova->arquivos, ocorre);
     return nova;
 }
 
 void insere_Arq(char *nomeArquivo, tListaArq *arquivos, int ocorre){
     tArq *aux = arquivos->primeiro;
-    if(aux == NULL){
-        arquivo->primeiro = malloc(sizeof(tArq));
-        arquivo->primeiro->nomeArquivo = nomeArquivo;
-        arquivo->primeiro->ocorrencias = nova_Ocorrecias();
-        insere_Ocorrencias(arquivo->primeiro->ocorrencias, ocorre);
+    if(aux == NULL)
+    {
+        arquivos->primeiro = malloc(sizeof(tArq));
+        arquivos->primeiro->nomeArquivo = nomeArquivo;
+        arquivos->primeiro->ocorrencias = nova_Ocorrencias();
+        insere_Ocorrencias(arquivos->primeiro->ocorrencias, ocorre);
+        arquivos->primeiro->prox = NULL;
+        arquivos->ultimo = arquivos->primeiro;
         return;
     }
     
     tArq *ant = NULL;
-    while(aux != NULL && strcmp(nomeArquivo, aux->nomeArquivo)){
-        ant = aux;
+    while(aux != NULL && strcmp(nomeArquivo, aux->nomeArquivo))
+    {
+        printf("%s\n", aux->nomeArquivo);
         aux = aux->prox;
     }
-    if(aux == NULL){
-        
+    if(aux == NULL)
+    {
+        arquivos->ultimo->prox = malloc(sizeof(tArq));
+        arquivos->ultimo = arquivos->ultimo->prox;
+        arquivos->ultimo->nomeArquivo = nomeArquivo;
+        arquivos->ultimo->prox = NULL;
+        arquivos->ultimo->ocorrencias = nova_Ocorrencias();
+        insere_Ocorrencias(arquivos->ultimo->ocorrencias, ocorre);
+        return;
     }
+    insere_Ocorrencias(aux->ocorrencias, ocorre);
 }
+
+
 
 /*
 Palavra *cria_Palavra(char *string, int ocorre)
@@ -122,10 +141,21 @@ void libera_Ocorrencias(ListaOcorr *ocorres)
     free(ocorres);
 }
 
+void libera_Arqs(tListaArq *arquivos){
+    tArq *aux = arquivos->primeiro;
+    tArq *ant = NULL;
+    while(aux != NULL){
+        ant = aux;
+        aux = aux->prox;
+        libera_Ocorrencias(ant->ocorrencias);
+    }
+    free(arquivos);
+}
+
 void libera_Palavra(Palavra *palavra)
 {
     free(palavra->string);
-    libera_Ocorrencias(palavra->ocorrencias);
+    libera_Arqs(palavra->arquivos);
     free(palavra);
 }
 
