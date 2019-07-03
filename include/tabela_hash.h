@@ -17,7 +17,6 @@ typedef struct tabelahash
     int colisoes;
     int qtd;
     int *pesos;
-    char *nomeArquivo;
 } TabelaHash;
 
 TabelaHash *cria_Hash();

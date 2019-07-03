@@ -63,17 +63,14 @@ int main(int argc, char *argv[])
     for (i = 2; i < nArquivos + 2; i++)
     {
         printf("Criando estruturas...\n");
-        fs = le_arquivo(argv[i]);
+        fs = le_arquivo(argv[i + 2]);
         printf("Arquivo aberto com sucesso.\n");
         printf("Lendo arquivo...\n");
         listas[i] = cria_Lista();
-        // strcpy(listas[i]->nomeArquivo, argv[i]);
         arvoresBin[i] = cria_ArvBin();
         arvoresAVL[i] = cria_ArvAVL();
         arvoresTrie[i] = cria_ArvTrie();
-        // strcpy(arvoresTrie[i]->nomeArquivo, argv[i]);
         tabelas[i] = cria_Hash();
-        // strcpy(tabelas[i]->nomeArquivo, argv[i]);
         printf("Estruturas criadas com sucesso.\n");
 
         while (!feof(fs))
