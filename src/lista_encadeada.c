@@ -87,22 +87,24 @@ void libera_Lista(Lista *lista)
 {
     Celula *ant = NULL;
     Celula *aux = lista->primeiro;
+
     while (aux != NULL)
     {
         ant = aux;
         aux = aux->prox;
         libera_Celula(ant);
     }
-    free(lista->nomeArquivo);
+
     free(lista);
 }
 
 Lista *cria_Lista()
 {
     Lista *nova = malloc(sizeof(Lista));
+
     nova->primeiro = NULL;
     nova->ultimo = NULL;
-    nova->nomeArquivo = (char *)malloc(sizeof(char) * 80);
+
     return nova;
 }
 

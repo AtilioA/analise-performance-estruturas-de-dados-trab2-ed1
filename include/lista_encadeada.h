@@ -18,7 +18,6 @@ typedef struct Celula
 typedef struct Lista
 {
     Celula *primeiro, *ultimo;
-    char *nomeArquivo;
 } Lista;
 
 /* Funções para acessar estrutura opaca */

@@ -17,7 +17,6 @@ typedef struct NoTrie
     char letra;
     Palavra *palavra;
     struct NoTrie *filhos[TAM_TRIE]; // ponteiro?
-    // char *nomeArquivo;
 } NoTrie;
 
 typedef NoTrie *ArvTrie; // raiz
