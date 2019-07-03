@@ -53,13 +53,51 @@ void insere_Ocorrencias(ListaOcorr *l, int ocorre)
     {
         l->primeiro = nova;
         l->ultimo = nova;
+        l->qtd = 1;
         return;
     }
     l->ultimo->prox = nova;
     l->ultimo = nova;
+    l->qtd++;
     return;
 }
 
+tListaArq *cria_Arq(){
+    tListaArq *novo = malloc(sizeof(tListaArq));
+    novo->primeiro = NULL;
+    novo->ultimo = NULL;
+    return novo;
+}
+
+Palavra *cria_Palavra(char *nomeArquivo, char* string, int ocorre){
+    Palavra *nova = malloc(sizeof(Palavra));
+    nova->string = malloc(sizeof(char) * strlen(string) + 1);
+    strcpy(nova->string, string);
+    nova->arquivos = cria_Arq();
+    return nova;
+}
+
+void insere_Arq(char *nomeArquivo, tListaArq *arquivos, int ocorre){
+    tArq *aux = arquivos->primeiro;
+    if(aux == NULL){
+        arquivo->primeiro = malloc(sizeof(tArq));
+        arquivo->primeiro->nomeArquivo = nomeArquivo;
+        arquivo->primeiro->ocorrencias = nova_Ocorrecias();
+        insere_Ocorrencias(arquivo->primeiro->ocorrencias, ocorre);
+        return;
+    }
+    
+    tArq *ant = NULL;
+    while(aux != NULL && strcmp(nomeArquivo, aux->nomeArquivo)){
+        ant = aux;
+        aux = aux->prox;
+    }
+    if(aux == NULL){
+        
+    }
+}
+
+/*
 Palavra *cria_Palavra(char *string, int ocorre)
 {
     Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
@@ -70,7 +108,7 @@ Palavra *cria_Palavra(char *string, int ocorre)
     insere_Ocorrencias(nova->ocorrencias, ocorre);
     return nova;
 }
-
+*/
 void libera_Ocorrencias(ListaOcorr *ocorres)
 {
     CelulaOcorr *ant = NULL;
