@@ -93,6 +93,7 @@ void libera_Lista(Lista *lista)
         aux = aux->prox;
         libera_Celula(ant);
     }
+    free(lista->nomeArquivo);
     free(lista);
 }
 
