@@ -9,7 +9,6 @@
 #include <stdio.h>
 
 FILE *le_arquivo(char *string);
-int lePalavra(FILE *f, char *str, int BUFFER);
 int le_palavra(FILE *f, char *str);
 
 #endif
