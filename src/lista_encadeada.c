@@ -121,11 +121,12 @@ void insere_Lista(Palavra *x, Lista *l)
         return;
     }
     Celula *aux = l->primeiro;
-    while (aux->prox != NULL && strcasecmp(get_string(aux->palavra), get_string(x)))
+    int casecmp = strcasecmp(get_string(aux->palavra), get_string(x));
+    while (aux->prox != NULL && casecmp )
     {
         aux = aux->prox;
     }
-    if (!strcasecmp(get_string(aux->palavra), get_string(x)))
+    if (!casecmp)
     {
         insere_Arq(x->arquivos->primeiro->nomeArquivo, aux->palavra->arquivos, x->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
         libera_Celula(nova);
