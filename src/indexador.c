@@ -25,7 +25,7 @@ ListaOcorr *get_posicoes(Palavra *palavra)
 void imprime_Palavra(Palavra *palavra)
 {
     printf("\nPalavra: %s\n", get_string(palavra));
-    tArq *aux = palavra->arquivos->primeiro;
+    Arq *aux = palavra->arquivos->primeiro;
     while(aux != NULL){
         printf("Arquivo: %s\n", aux->nomeArquivo);
         CelulaOcorr *ocorres = aux->ocorrencias->primeiro;
@@ -67,8 +67,8 @@ void insere_Ocorrencias(ListaOcorr *l, int ocorre)
     return;
 }
 
-tListaArq *cria_Arq(){
-    tListaArq *novo = malloc(sizeof(tListaArq));
+ListaArq *cria_Arq(){
+    ListaArq *novo = malloc(sizeof(ListaArq));
     novo->primeiro = NULL;
     novo->ultimo = NULL;
     return novo;
@@ -83,11 +83,11 @@ Palavra *cria_Palavra(char *nomeArquivo, char* string, int ocorre){
     return nova;
 }
 
-void insere_Arq(char *nomeArquivo, tListaArq *arquivos, int ocorre){
-    tArq *aux = arquivos->primeiro;
+void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre){
+    Arq *aux = arquivos->primeiro;
     if(aux == NULL)
     {
-        arquivos->primeiro = malloc(sizeof(tArq));
+        arquivos->primeiro = malloc(sizeof(Arq));
         arquivos->primeiro->nomeArquivo = nomeArquivo;
         arquivos->primeiro->ocorrencias = nova_Ocorrencias();
         insere_Ocorrencias(arquivos->primeiro->ocorrencias, ocorre);
@@ -95,15 +95,15 @@ void insere_Arq(char *nomeArquivo, tListaArq *arquivos, int ocorre){
         arquivos->ultimo = arquivos->primeiro;
         return;
     }
-    
-    tArq *ant = NULL;
+
+    Arq *ant = NULL;
     while(aux != NULL && strcmp(nomeArquivo, aux->nomeArquivo))
     {
         aux = aux->prox;
     }
     if(aux == NULL)
     {
-        arquivos->ultimo->prox = malloc(sizeof(tArq));
+        arquivos->ultimo->prox = malloc(sizeof(Arq));
         arquivos->ultimo = arquivos->ultimo->prox;
         arquivos->ultimo->nomeArquivo = nomeArquivo;
         arquivos->ultimo->prox = NULL;
@@ -141,9 +141,9 @@ void libera_Ocorrencias(ListaOcorr *ocorres)
     free(ocorres);
 }
 
-void libera_Arqs(tListaArq *arquivos){
-    tArq *aux = arquivos->primeiro;
-    tArq *ant = NULL;
+void libera_Arqs(ListaArq *arquivos){
+    Arq *aux = arquivos->primeiro;
+    Arq *ant = NULL;
     while(aux != NULL){
         ant = aux;
         aux = aux->prox;
@@ -171,17 +171,17 @@ SentRandPal *cria_RandPal()
 
 void insere_RandPal(char *strat, SentRandPal *l)
 {
-    CelulaRandPal *pal = malloc(sizeof(CelulaRandPal));
-    pal->string = malloc(sizeof(char) * strlen(strat) + 1);
-    strcpy(pal->string, strat);
-    pal->prox = NULL;
+    CelulaRandPal *palavra = malloc(sizeof(CelulaRandPal));
+    palavra->string = malloc(sizeof(char) * strlen(strat) + 1);
+    strcpy(palavra->string, strat);
+    palavra->prox = NULL;
     if (l->primeiro == NULL)
     {
-        l->primeiro = pal;
-        l->ultimo = pal;
+        l->primeiro = palavra;
+        l->ultimo = palavra;
         return;
     }
-    l->ultimo->prox = pal;
+    l->ultimo->prox = palavra;
     l->ultimo = l->ultimo->prox;
     l->qtd++;
 }

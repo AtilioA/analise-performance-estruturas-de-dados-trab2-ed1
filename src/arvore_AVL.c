@@ -94,7 +94,7 @@ void imprime_pre_ordem_ArvAVL(ArvAVL *raiz)
     {
         //printf("No %d: %d\n",(*raiz)->info,fator_balanceamento_No(*raiz));
         //printf("No %d: %d\n", (*raiz)->info, altura_No(*raiz));
-        imprime_Palavra((*raiz)->pal);
+        imprime_Palavra((*raiz)->palavra);
         imprime_pre_ordem_ArvAVL(&((*raiz)->esq));
         imprime_pre_ordem_ArvAVL(&((*raiz)->dir));
     }
@@ -107,7 +107,7 @@ void imprime_em_ordem_ArvAVL(ArvAVL *raiz)
     if (*raiz != NULL)
     {
         imprime_em_ordem_ArvAVL(&((*raiz)->esq));
-        imprime_Palavra((*raiz)->pal);
+        imprime_Palavra((*raiz)->palavra);
         imprime_em_ordem_ArvAVL(&((*raiz)->dir));
     }
 }
@@ -120,7 +120,7 @@ void imprime_pos_ordem_ArvAVL(ArvAVL *raiz)
     {
         imprime_pos_ordem_ArvAVL(&((*raiz)->esq));
         imprime_pos_ordem_ArvAVL(&((*raiz)->dir));
-        imprime_Palavra((*raiz)->pal);
+        imprime_Palavra((*raiz)->palavra);
     }
 }
 
@@ -131,11 +131,11 @@ Palavra *busca_ArvAVL(ArvAVL *raiz, char *strat)
     struct No *atual = *raiz;
     while (atual != NULL)
     {
-        if (!strcasecmp(atual->pal->string, strat))
+        if (!strcasecmp(atual->palavra->string, strat))
         {
-            return atual->pal;
+            return atual->palavra;
         }
-        if (strcasecmp(strat, atual->pal->string) > 0)
+        if (strcasecmp(strat, atual->palavra->string) > 0)
             atual = atual->dir;
         else
             atual = atual->esq;
@@ -186,7 +186,7 @@ void rotacao_RLR(ArvAVL *A)
     rotacao_RR(A);
 }
 
-int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
+int insere_ArvAVL(ArvAVL *raiz, Palavra *palavra)
 {
     int res;
     if (*raiz == NULL)
@@ -196,7 +196,7 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
         if (novo == NULL)
             return 0;
 
-        novo->pal = pal;
+        novo->palavra = palavra;
         novo->altura = 0;
         novo->esq = NULL;
         novo->dir = NULL;
@@ -205,13 +205,13 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
     }
 
     struct No *atual = *raiz;
-    if (strcasecmp(pal->string, atual->pal->string) < 0)
+    if (strcasecmp(palavra->string, atual->palavra->string) < 0)
     {
-        if ((res = insere_ArvAVL(&(atual->esq), pal)) == 1)
+        if ((res = insere_ArvAVL(&(atual->esq), palavra)) == 1)
         {
             if (fator_balanceamento_No(atual) >= 2)
             {
-                if (strcasecmp(pal->string, atual->esq->pal->string) < 0)
+                if (strcasecmp(palavra->string, atual->esq->palavra->string) < 0)
                 {
                     rotacao_LR(raiz);
                 }
@@ -224,13 +224,13 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
     }
     else
     {
-        if (strcasecmp(pal->string, atual->pal->string) > 0)
+        if (strcasecmp(palavra->string, atual->palavra->string) > 0)
         {
-            if ((res = insere_ArvAVL(&(atual->dir), pal)) == 1)
+            if ((res = insere_ArvAVL(&(atual->dir), palavra)) == 1)
             {
                 if (fator_balanceamento_No(atual) >= 2)
                 {
-                    if (strcasecmp((*raiz)->dir->pal->string, pal->string) < 0)
+                    if (strcasecmp((*raiz)->dir->palavra->string, palavra->string) < 0)
                     {
                         rotacao_RR(raiz);
                     }
@@ -243,8 +243,8 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
         }
         else
         {
-            insere_Arq(pal->arquivos->primeiro->nomeArquivo, atual->pal->arquivos, pal->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
-            libera_Palavra(pal);
+            insere_Arq(palavra->arquivos->primeiro->nomeArquivo, atual->palavra->arquivos, palavra->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
+            libera_Palavra(palavra);
             //  printf("Valor duplicado!!\n");
             return 0;
         }
