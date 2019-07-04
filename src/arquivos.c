@@ -91,6 +91,6 @@ int le_palavra(FILE *f, char *str)
     }
     str[i] = '\0';
 
-    posicao = ftell(f) - strlen(str) + 1;
+    posicao = ftell(f) - strlen(str);
     return posicao;
 }

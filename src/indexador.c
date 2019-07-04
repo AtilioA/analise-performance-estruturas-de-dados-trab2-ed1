@@ -24,7 +24,7 @@ ListaOcorr *get_posicoes(Palavra *palavra)
 */
 void imprime_Palavra(Palavra *palavra)
 {
-    printf("Palavra: %s\n", get_string(palavra));
+    printf("\nPalavra: %s\n", get_string(palavra));
     tArq *aux = palavra->arquivos->primeiro;
     while(aux != NULL){
         printf("Arquivo: %s\n", aux->nomeArquivo);
@@ -37,6 +37,7 @@ void imprime_Palavra(Palavra *palavra)
         aux = aux->prox;
         printf("\n");
     }
+    printf("\n\n");
 }
 
 ListaOcorr *nova_Ocorrencias()
@@ -98,7 +99,6 @@ void insere_Arq(char *nomeArquivo, tListaArq *arquivos, int ocorre){
     tArq *ant = NULL;
     while(aux != NULL && strcmp(nomeArquivo, aux->nomeArquivo))
     {
-        printf("%s\n", aux->nomeArquivo);
         aux = aux->prox;
     }
     if(aux == NULL)
@@ -148,6 +148,7 @@ void libera_Arqs(tListaArq *arquivos){
         ant = aux;
         aux = aux->prox;
         libera_Ocorrencias(ant->ocorrencias);
+        free(ant);
     }
     free(arquivos);
 }
