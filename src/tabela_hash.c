@@ -49,9 +49,9 @@ int calc_Hash(int *peso, char *strat)
     return sum % TAM_HASH;
 }
 
-void insere_Hash(Palavra *pal, TabelaHash *tab)
+void insere_Hash(Palavra *palavra, TabelaHash *tab)
 {
-    int indice = calc_Hash(tab->pesos, pal->string);
+    int indice = calc_Hash(tab->pesos, palavra->string);
 
     if (indice < 0)
     {
@@ -61,7 +61,7 @@ void insere_Hash(Palavra *pal, TabelaHash *tab)
     {
         tab->colisoes++;
     }
-    insere_ArvAVL(tab->hash[indice], pal);
+    insere_ArvAVL(tab->hash[indice], palavra);
     tab->qtd++;
 }
 

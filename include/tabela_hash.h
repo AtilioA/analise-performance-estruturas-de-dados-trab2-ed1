@@ -21,7 +21,7 @@ typedef struct tabelahash
 
 TabelaHash *cria_Hash();
 
-void insere_Hash(Palavra *pal, TabelaHash *tab);
+void insere_Hash(Palavra *palavra, TabelaHash *tab);
 
 int *lista_Pesos();
 
