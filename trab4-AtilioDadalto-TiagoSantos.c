@@ -52,26 +52,27 @@ int main(int argc, char *argv[])
     srand((unsigned int)t.tv_usec);
 
     printf("Criando estruturas...\n");
+    
+    listas = cria_Lista();
     for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
     {
         fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
         printf("%io arquivo aberto com sucesso.\n", i + 1);
-        listas = cria_Lista();
         printf("%ia estrutura criada com sucesso.\n", i + 1);
 
         printf("Lendo %io arquivo...\n", i + 1);
         while (!feof(fs))
         {
-            le_palavra(fs, strTexto);
+            posicao = le_palavra(fs, strTexto);
 
             /* Preenchendo listas[i] de palavras aleatórias */
             insere_RandPal(strTexto, palavrasAleatorias);
-            posicao = ftell(fs) - strlen(strTexto) + 1;
 
             /* Preenchendo estruturas de dados do projeto */
             palavra = cria_Palavra(argv[i + 2],strTexto, posicao);
             insere_Lista(palavra, listas);
         }
+        fclose(fs);
     }
     printf("\nEstruturas criadas com sucesso.\n");
 
@@ -81,9 +82,11 @@ int main(int argc, char *argv[])
         strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
     }
 
-    imprime_Lista(listas);
 
     printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
+    
+    imprime_Lista(listas);
+    
     printf("\n\n\nLISTA ENCADEADA\n\n\n");
     for (int i = 0; i < nBuscas; i++)
     {
@@ -120,7 +123,6 @@ int main(int argc, char *argv[])
     libera_Lista(listas);
 
     libera_RandPal(palavrasAleatorias);
-    fclose(fs);
     printf("Estruturas liberadas com sucesso. Talvez. hehe\n");
 
     return 0;
