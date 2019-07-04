@@ -67,7 +67,7 @@ int total_No_ArvBin(ArvBin *raiz);
 // void imprime_pre_ordem_ArvBin(ArvBin *raiz);
 
 /** Imprime em-ordem */
-// void imprime_em_ordem_ArvBin(ArvBin *raiz);
+void imprime_em_ordem_ArvBin(ArvBin *raiz);
 
 /** Imprime em pós-ordem */
 void imprime_pos_ordem_ArvBin(ArvBin *raiz);

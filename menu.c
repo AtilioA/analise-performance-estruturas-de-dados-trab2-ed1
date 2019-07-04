@@ -5,6 +5,9 @@
 #include <sys/time.h>
 #include "include/lista_encadeada.h"
 #include "include/arvore_binaria.h"
+#include "include/arvore_AVL.h"
+#include "include/arvore_trie.h"
+#include "include/tabela_hash.h"
 #include "include/indexador.h"
 #include "include/arquivos.h"
 
@@ -15,15 +18,15 @@
 #define AVL 3
 #define TRIE 4
 #define HASH 5
-
+#define TODAS 6
 
 void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 {
-    struct timeval t;          // Para gerar semente do srand
+    clock_t t;                 // Para estimar tempo de execução
+    struct timeval time;       // Para gerar semente do srand
     char strTexto[TAM_STRING]; // Vetor para armazenamento temporário de strings do texto
     int nArquivos = argc - 2, posicao = 0, i = 0;
     Palavra *palavraAleatoria, *palavraBusca;
-
 
     char vetBusca[n][TAM_STRING]; // Vetor para busca de palavras
     FILE *fs;
@@ -31,21 +34,22 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
     Palavra *palavra;
     printf("Lista de busca de palavras criada com sucesso.\n");
 
-    gettimeofday(&t, NULL); // Para gerar semente do srand
-    srand((unsigned int)t.tv_usec);
+    gettimeofday(&time, NULL); // Para gerar semente do srand
+    srand((unsigned int)time.tv_usec);
 
     printf("AVALIA DESEMPENHO\n");
     printf("Criando estrutura...\n");
     if (estrutura == LISTA)
     {
         printf("AVALIA DESEMPENHO LISTA\n");
+        t = clock();
         Lista *lista;
         lista = cria_Lista();
+        printf("\nEstrutura criada com sucesso.\n");
         for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
         {
             fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
             printf("%io arquivo aberto com sucesso.\n", i + 1);
-            printf("%ia estrutura criada com sucesso.\n", i + 1);
 
             printf("Lendo %io arquivo...\n", i + 1);
             while (!feof(fs))
@@ -61,7 +65,8 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             }
             fclose(fs);
         }
-        printf("\nEstruturas criadas com sucesso.\n");
+        t = clock() - t;
+        double tempoInsercaoLista = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
         for (i = 0; i < n; i++)
         {
@@ -69,12 +74,12 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
         }
 
-
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
+        printf("\n\nLISTA ENCADEADA\n\n\n");
+        // imprime_Lista(lista);
 
-        imprime_Lista(lista);
-
-        printf("\n\n\nLISTA ENCADEADA\n\n\n");
+        printf("BUSCAS ALEATORIAS:\n");
+        t = clock();
         for (int i = 0; i < n; i++)
         {
             palavraAleatoria = busca_Lista(vetBusca[i], lista);
@@ -82,7 +87,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             if (palavraAleatoria != NULL)
             {
                 printf("PALAVRA ENCONTRADA.\n");
-                imprime_Palavra(palavraAleatoria);
+                // imprime_Palavra(palavraAleatoria);
             }
             else
             {
@@ -90,54 +95,61 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             }
             printf("\n");
         }
+        t = clock() - t;
+        double tempoBuscaLista = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+        printf("\nTEMPO DE INSERCAO LISTA: %f\n", tempoInsercaoLista);
+        printf("TEMPO DE BUSCA LISTA: %f\n\n", tempoBuscaLista);
     }
-        if (estrutura == ARVORE)
+    else if (estrutura == ARVORE)
     {
         printf("AVALIA DESEMPENHO ARVORE\n");
-        A *arvore;
-        lista = cria_Lista();
+        t = clock();
+        ArvBin *arvore;
+        arvore = cria_ArvBin();
+        printf("\nEstrutura criada com sucesso.\n");
         for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
         {
             fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
             printf("%io arquivo aberto com sucesso.\n", i + 1);
-            printf("%ia estrutura criada com sucesso.\n", i + 1);
 
             printf("Lendo %io arquivo...\n", i + 1);
             while (!feof(fs))
             {
                 posicao = le_palavra(fs, strTexto);
 
-                // Preenchendo lista de palavras aleatórias
+                // Preenchendo arvore de palavras aleatórias
                 insere_RandPal(strTexto, palavrasAleatorias);
 
                 // Preenchendo estruturas de dados do projeto
                 palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_Lista(palavra, lista);
+                insere_ArvBin(arvore, palavra);
             }
             fclose(fs);
         }
-        printf("\nEstruturas criadas com sucesso.\n");
+        t = clock() - t;
+        double tempoInsercaoArvore = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
         for (i = 0; i < n; i++)
         {
-            // Carregando o vetor com palavras aleatórias da lista
+            // Carregando o vetor com palavras aleatórias da arvore
             strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
         }
 
-
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
+        printf("\n\nARVORE BINARIA\n\n\n");
+        // imprime_em_ordem_ArvBin(arvore);
 
-        imprime_Lista(lista);
-
-        printf("\n\n\nLISTA ENCADEADA\n\n\n");
+        printf("BUSCA ALEATORIA:\n");
+        t = clock();
         for (int i = 0; i < n; i++)
         {
-            palavraAleatoria = busca_Lista(vetBusca[i], lista);
+            palavraAleatoria = busca_ArvBin(arvore, vetBusca[i]);
 
             if (palavraAleatoria != NULL)
             {
                 printf("PALAVRA ENCONTRADA.\n");
-                imprime_Palavra(palavraAleatoria);
+                // imprime_Palavra(palavraAleatoria);
             }
             else
             {
@@ -145,13 +157,204 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             }
             printf("\n");
         }
+        t = clock() - t;
+        double tempoBuscaArvore = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+        printf("\nTEMPO DE INSERCAO ARVORE: %f\n", tempoInsercaoArvore);
+        printf("TEMPO DE BUSCA ARVORE: %f\n\n", tempoBuscaArvore);
+    }
+    else if (estrutura == AVL)
+    {
+        printf("AVALIA DESEMPENHO ARVORE AVL\n");
+        t = clock();
+        ArvAVL *avl;
+        avl = cria_ArvAVL();
+        printf("\nEstrutura criada com sucesso.\n");
+        for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
+        {
+            fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
+            printf("%io arquivo aberto com sucesso.\n", i + 1);
+
+            printf("Lendo %io arquivo...\n", i + 1);
+            while (!feof(fs))
+            {
+                posicao = le_palavra(fs, strTexto);
+
+                // Preenchendo avl de palavras aleatórias
+                insere_RandPal(strTexto, palavrasAleatorias);
+
+                // Preenchendo estruturas de dados do projeto
+                palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
+                insere_ArvAVL(avl, palavra);
+            }
+            fclose(fs);
+        }
+        t = clock() - t;
+        double tempoInsercaoAVL = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+        for (i = 0; i < n; i++)
+        {
+            // Carregando o vetor com palavras aleatórias da avl
+            strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
+        }
+
+        printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
+        printf("\n\nARVORE AVL\n\n\n");
+        // imprime_em_ordem_ArvAVL(avl);
+
+        t = clock();
+        printf("BUSCA ALEATORIA:\n");
+        for (int i = 0; i < n; i++)
+        {
+            palavraAleatoria = busca_ArvAVL(avl, vetBusca[i]);
+
+            if (palavraAleatoria != NULL)
+            {
+                printf("PALAVRA ENCONTRADA.\n");
+                // imprime_Palavra(palavraAleatoria);
+            }
+            else
+            {
+                printf("Palavra %s nao encontrada.\n", vetBusca[i]);
+            }
+            printf("\n");
+        }
+        t = clock() - t;
+        double tempoBuscaAVL = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+        printf("\nTEMPO DE INSERCAO AVL: %f\n", tempoInsercaoAVL);
+        printf("\nTEMPO DE BUSCA AVL: %f\n", tempoBuscaAVL);
+    }
+    else if (estrutura == TRIE)
+    {
+        printf("AVALIA DESEMPENHO ARVORE TRIE\n");
+        t = clock();
+        ArvTrie *trie;
+        trie = cria_ArvTrie();
+        printf("\nEstrutura criada com sucesso.\n");
+        for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
+        {
+            fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
+            printf("%io arquivo aberto com sucesso.\n", i + 1);
+
+            printf("Lendo %io arquivo...\n", i + 1);
+            while (!feof(fs))
+            {
+                posicao = le_palavra(fs, strTexto);
+
+                // Preenchendo trie de palavras aleatórias
+                insere_RandPal(strTexto, palavrasAleatorias);
+
+                // Preenchendo estruturas de dados do projeto
+                palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
+                insere_ArvTrie(palavra, trie);
+            }
+            fclose(fs);
+        }
+        t = clock() - t;
+        double tempoInsercaoTrie = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+        for (i = 0; i < n; i++)
+        {
+            // Carregando o vetor com palavras aleatórias da trie
+            strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
+        }
+
+        printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
+        printf("\n\nARVORE TRIE\n\n\n");
+        // imprime_ArvTrie(trie);
+
+        printf("BUSCA ALEATORIA:\n");
+        t = clock();
+        for (int i = 0; i < n; i++)
+        {
+            palavraAleatoria = busca_ArvTrie(trie, vetBusca[i]);
+
+            if (palavraAleatoria != NULL)
+            {
+                printf("PALAVRA ENCONTRADA.\n");
+                // imprime_Palavra(palavraAleatoria);
+            }
+            else
+            {
+                printf("Palavra %s nao encontrada.\n", vetBusca[i]);
+            }
+            printf("\n");
+        }
+        t = clock() - t;
+        double tempoBuscaTrie = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+        printf("TEMPO DE INSERCAO ARVORE TRIE: %f\n\n", tempoInsercaoTrie);
+        printf("TEMPO DE BUSCA ARVORE TRIE: %f\n\n", tempoBuscaTrie);
+    }
+    else if (estrutura == HASH)
+    {
+        printf("AVALIA DESEMPENHO TABELA HASH\n");
+        t = clock();
+        TabelaHash *tabela;
+        tabela = cria_Hash();
+        printf("\nEstrutura criada com sucesso.\n");
+        for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
+        {
+            fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
+            printf("%io arquivo aberto com sucesso.\n", i + 1);
+
+            printf("Lendo %io arquivo...\n", i + 1);
+            while (!feof(fs))
+            {
+                posicao = le_palavra(fs, strTexto);
+
+                // Preenchendo tabela de palavras aleatórias
+                insere_RandPal(strTexto, palavrasAleatorias);
+
+                // Preenchendo estruturas de dados do projeto
+                palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
+                insere_Hash(palavra, tabela);
+            }
+            fclose(fs);
+        }
+        t = clock() - t;
+        double tempoInsercaoHash = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+        for (i = 0; i < n; i++)
+        {
+            // Carregando o vetor com palavras aleatórias da tabela
+            strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
+        }
+
+        printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
+        printf("\n\nTABELA HASH\n\n\n");
+        // imprime_Hash(tabela);
+
+        printf("BUSCA ALEATORIA:\n");
+        t = clock();
+        for (int i = 0; i < n; i++)
+        {
+            palavraAleatoria = busca_Hash(vetBusca[i], tabela);
+
+            if (palavraAleatoria != NULL)
+            {
+                printf("PALAVRA ENCONTRADA.\n");
+                // imprime_Palavra(palavraAleatoria);
+            }
+            else
+            {
+                printf("Palavra %s nao encontrada.\n", vetBusca[i]);
+            }
+            printf("\n");
+        }
+        t = clock() - t;
+        double tempoBuscaHash = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+        printf("TEMPO DE INSERCAO TABELA HASH: %f\n\n", tempoInsercaoHash);
+        printf("TEMPO DE BUSCA TABELA HASH: %f\n\n", tempoBuscaHash);
     }
 }
 
 void menu(int argc, char *argv[])
 {
     /* inicialização do programa */
-    int listaInserida = 0, arvoreInserida = 0, arvoreAVLInserida = 0,
+    int listaInserida = 0, arvoreBinariaInserida = 0, arvoreAVLInserida = 0,
         arvoreTrieInserida = 0, hashInserida = 0;
     int nArquivos = argc - 2;
     int nBuscasAleatorias = 0;
@@ -165,7 +368,7 @@ void menu(int argc, char *argv[])
     printf("Informe a quantidade de buscas aleatorias a serem realizadas:\n");
     scanf("%i", &nBuscasAleatorias);
 
-    while (escolha != 0)
+    while (escolha != 0 && (listaInserida != 1 && arvoreBinariaInserida != 1 && arvoreAVLInserida != 1 && arvoreTrieInserida != 1 && hashInserida != 1))
     {
         printf("Informe em qual estrutura deseja indexar os arquivos:\n");
         printf("1 - LISTA ENCADEADA\n");
@@ -173,7 +376,7 @@ void menu(int argc, char *argv[])
         printf("3 - ÁRVORE AVL\n");
         printf("4 - ÁRVORE TRIE\n");
         printf("5 - TABELA HASH\n");
-        printf("0 - COMECAR BUSCAS\n");
+        printf("\n6 - INSERIR EM TODAS AS ESTRUTURAS\n");
         scanf("%i", &escolha);
 
         switch (escolha)
@@ -190,12 +393,12 @@ void menu(int argc, char *argv[])
             {
                 printf("\nArquivos ja indexados na lista.\n\n");
             }
-                break;
+            break;
 
         case 2:
-            if (arvoreInserida == 0)
+            if (arvoreBinariaInserida == 0)
             {
-                arvoreInserida = 1;
+                arvoreBinariaInserida = 1;
                 AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
             }
             else
@@ -238,21 +441,45 @@ void menu(int argc, char *argv[])
             {
                 printf("\nArquivos ja indexados na tabela hash.\n\n");
             }
+            break;
 
+        case 6:
+            if (listaInserida == 0)
+            {
+                listaInserida = 1;
+                AvaliaDesempenho(nBuscasAleatorias, 1, argc, argv);
+            }
+            if (arvoreBinariaInserida == 0)
+            {
+                arvoreBinariaInserida = 1;
+                AvaliaDesempenho(nBuscasAleatorias, 2, argc, argv);
+            }
+            if (arvoreAVLInserida == 0)
+            {
+                arvoreAVLInserida = 1;
+                AvaliaDesempenho(nBuscasAleatorias, 3, argc, argv);
+            }
+            if (arvoreTrieInserida == 0)
+            {
+                arvoreTrieInserida = 1;
+                AvaliaDesempenho(nBuscasAleatorias, 4, argc, argv);
+            }
+            if (hashInserida == 0)
+            {
+                hashInserida = 1;
+                AvaliaDesempenho(nBuscasAleatorias, 5, argc, argv);
+            }
             break;
 
         default:
             printf("Opcao invalida. Tente novamente.\n");
             break;
-
         }
     }
 }
 
-
 int main(int argc, char *argv[])
 {
     menu(argc, argv);
-    printf("\n\n");
     return 0;
 }
