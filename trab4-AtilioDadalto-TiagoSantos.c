@@ -84,10 +84,10 @@ int main(int argc, char *argv[])
 
 
     printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
-    
+     
+    printf("\n\n\nLISTA ENCADEADA\n\n\n");
     imprime_Lista(listas);
     
-    printf("\n\n\nLISTA ENCADEADA\n\n\n");
     for (int i = 0; i < nBuscas; i++)
     {
         palavraAleatoria = busca_Lista(vetBusca[i], listas);
