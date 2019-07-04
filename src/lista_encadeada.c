@@ -121,7 +121,7 @@ void insere_Lista(Palavra *x, Lista *l)
         return;
     }
     Celula *aux = l->primeiro;
-    int casecmp = strcasecmp(get_string(aux->palavra), get_string(x));
+    int casecmp = strcasecmp(aux->palavra->string, x->string);
     while (aux->prox != NULL && casecmp )
     {
         aux = aux->prox;
@@ -140,7 +140,7 @@ void insere_Lista(Palavra *x, Lista *l)
 Palavra *busca_Lista(char *strat, Lista *l)
 {
     Celula *aux = l->primeiro;
-    while (aux != NULL && strcasecmp(get_string(aux->palavra), strat))
+    while (aux != NULL && strcasecmp(aux->palavra->string, strat))
     {
         aux = aux->prox;
     }
@@ -148,7 +148,7 @@ Palavra *busca_Lista(char *strat, Lista *l)
     {
         return NULL;
     }
-    if (!strcasecmp(get_string(aux->palavra), strat))
+    if (!strcasecmp(aux->palavra->string, strat))
     {
         return aux->palavra;
     }
