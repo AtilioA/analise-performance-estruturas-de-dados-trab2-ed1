@@ -243,8 +243,7 @@ int insere_ArvAVL(ArvAVL *raiz, Palavra *pal)
         }
         else
         {
-            insere_Ocorrencias(atual->pal->ocorrencias, pal->ocorrencias->primeiro->ocorreu);
-            atual->pal->ocorrencias->qtd++;
+            insere_Arq(x->arquivos->primeiro->nomeArquivo, aux->palavra->arquivos, x->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
             libera_Palavra(pal);
             //  printf("Valor duplicado!!\n");
             return 0;

@@ -92,8 +92,7 @@ void insere_ArvTrie(Palavra *palavra, ArvTrie *raiz)
     }
     else
     {
-        insere_Ocorrencias(aux->palavra->ocorrencias, palavra->ocorrencias->ultimo->ocorreu);
-        aux->palavra->ocorrencias->qtd++;
+        insere_Arq(palavra->arquivos->primeiro->nomeArquivo, aux->palavra->arquivos, palavra->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
         libera_Palavra(palavra);
     }
 }

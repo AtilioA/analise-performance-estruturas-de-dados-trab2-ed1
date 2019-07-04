@@ -179,8 +179,7 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
             }
             else
             {
-                insere_Ocorrencias(aux->pal->ocorrencias, pal->ocorrencias->primeiro->ocorreu);
-                aux->pal->ocorrencias->qtd++;
+                insere_Arq(x->arquivos->primeiro->nomeArquivo, aux->palavra->arquivos, x->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
                 libera_No(novo);
                 return 0; // Valor já presente na árvore
             }
@@ -197,9 +196,8 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
             return 1;
         }
         else
-        {
-            insere_Ocorrencias(aux->pal->ocorrencias, pal->ocorrencias->primeiro->ocorreu);
-            aux->pal->ocorrencias->qtd++;
+        { 
+            insere_Arq(x->arquivos->primeiro->nomeArquivo, aux->palavra->arquivos, x->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
             libera_No(novo);
             return 0; // Valor já presente na árvore
         }
