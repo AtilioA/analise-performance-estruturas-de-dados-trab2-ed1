@@ -6,7 +6,7 @@
 #ifndef __TABELA_HASH_H_
 #define __TABELA_HASH_H_
 
-#define TAM_HASH 97
+#define TAM_HASH 997
 
 #include "../include/arvore_AVL.h"
 #include "../include/indexador.h"
