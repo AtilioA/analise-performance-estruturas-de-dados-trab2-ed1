@@ -22,9 +22,7 @@ int main(int argc, char *argv[])
 {
     clr_scr();
 
-    clock_t Ticks[2];
-    Ticks[0] = clock();
-    struct timeval t;          // Para gerar semente do srand
+    struct timeval time;          // Para gerar semente do srand
     char strTexto[TAM_STRING]; // Vetor para armazenamento temporário de strings do texto
     int nArquivos = argc - 2, posicao = 0, i = 0;
     Palavra *palavraAleatoria, *palavraBusca;
@@ -50,9 +48,11 @@ int main(int argc, char *argv[])
     Palavra *palavra;
     printf("Lista de busca de palavras criada com sucesso.\n");
 
-    gettimeofday(&t, NULL); // Para gerar semente do srand
-    srand((unsigned int)t.tv_usec);
+    gettimeofday(&time, NULL); // Para gerar semente do srand
+    srand((unsigned int)time.tv_usec);
 
+    clock_t t;
+    t = clock();
     printf("Criando estruturas...\n");
     for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
     {
@@ -76,18 +76,24 @@ int main(int argc, char *argv[])
         }
     }
     printf("\nEstruturas criadas com sucesso.\n");
+    t = clock() - t;
+    double tempoInsercao = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
+    t = clock();
     for (i = 0; i < nBuscas; i++)
     {
         /* Carregando o vetor com palavras aleatórias da listas[i] */
         strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
     }
+    t = clock() - t;
+    double tempoAleatorio = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
     for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
     {
         imprime_Lista(listas[i]);
     }
 
+    t = clock();
     printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
     printf("\n\n\nLISTA ENCADEADA\n\n\n");
     for (int i = 0; i < nBuscas; i++)
@@ -103,6 +109,13 @@ int main(int argc, char *argv[])
         }
         printf("\n");
     }
+    t = clock() - t;
+    double tempoBusca = ((double)t) / CLOCKS_PER_SEC; // in seconds
+
+    printf("Tempos:\n");
+    printf("Criacao de vetor palavras aleatorias: %fs\n", tempoAleatorio);
+    printf("Busca: %f\n", tempoBusca);
+    printf("Insercao: %f ", tempoInsercao);
     /*/
     char stringBuscada[TAM_STRING];
     printf("\nDigite uma palavra para procurar no(s) arquivo(s): ");
@@ -134,11 +147,11 @@ int main(int argc, char *argv[])
     fclose(fs);
     printf("Estruturas liberadas com sucesso. Talvez. hehe\n");
 
-    Ticks[1] = clock();
-    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
-    double TempoSegundos = Tempo / 1000;
-    printf("Tempo gasto: %g s.", TempoSegundos);
-    printf("\n");
+    // Ticks[1] = clock();
+    // double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+    // double TempoSegundos = Tempo / 1000;
+    // printf("Tempo gasto: %g s.", TempoSegundos);
+    // printf("\n");
 
     return 0;
 }
