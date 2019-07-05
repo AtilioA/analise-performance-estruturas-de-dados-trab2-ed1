@@ -1,0 +1,464 @@
+[33mcommit b4c92f3e59dead80b3769e83e85fa189500e91bd[m[33m ([m[1;36mHEAD -> [m[1;32mpalavracomarquivo[m[33m, [m[1;31morigin/palavracomarquivo[m[33m)[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Thu Jul 4 00:12:55 2019 -0300
+
+    palavra com arquivo pronta e lista adaptada para palavra com arquivo
+
+[33mcommit 51cc1e09a78a15511d5826a368d3a3e15d817335[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Wed Jul 3 19:17:34 2019 -0300
+
+    calma q to chegando lá
+
+[33mcommit 6a87b0e6af37295e9cf48272afacd9ad02639929[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Wed Jul 3 16:47:45 2019 -0300
+
+    palavra com arquivo
+
+[33mcommit cc06dafc540ff2912f5ba9f1f745c168fc445c07[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Wed Jul 3 11:19:52 2019 -0300
+
+    Make clean antes de compilar pra não bugar o rolê
+
+[33mcommit ef77c36ac992ad823a984a3ac4f5e205cf70b366[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Wed Jul 3 11:05:18 2019 -0300
+
+    Listas encadeadas recebendo múltiplos arquivos
+
+[33mcommit c7c26417cb134e13fd8744e115c84991c1495261[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Wed Jul 3 10:44:21 2019 -0300
+
+    Brota arquivada
+
+[33mcommit 8981f78f544aed6b2d2d7149341380e5cd376574[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Wed Jul 3 01:56:50 2019 -0300
+
+    correção de uma falha
+
+[33mcommit 5100bb78fa5f1ad1b667b1d3974b28fba2a649c1[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Tue Jul 2 18:34:05 2019 -0300
+
+    infinity
+
+[33mcommit 8f1230c4601a88738aded9e1ede0222cd4385af6[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Tue Jul 2 16:06:42 2019 -0300
+
+    biblia satanica e contrabalanceada
+
+[33mcommit 342cc107228f3f30b3bf72e814f2944c7d2d9ad0[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Tue Jul 2 14:11:54 2019 -0300
+
+    AAAAAAAAAAAAAAAAAAAAAAAAAA ESSA BOSTA
+
+[33mcommit 7e61a0cb912aa08265b056b610287a0a98c2f980[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Tue Jul 2 14:11:47 2019 -0300
+
+    Aquele update humilde
+
+[33mcommit cc2bb5947fb65363c6b94cc297e1b78556a44de6[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Tue Jul 2 10:57:43 2019 -0300
+
+    free() dentro da libera_ArvTrie()
+
+[33mcommit dbc08c56aa8f670146096e981b755fdf962a2b6a[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Mon Jul 1 23:47:39 2019 -0300
+
+    trie pronta
+
+[33mcommit 28ac80e74a8acdef87035a8ff9f3da232a9c6da3[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Mon Jul 1 21:30:27 2019 -0300
+
+    Hypando árvore trie
+
+[33mcommit 41dc626567ca56c2cc9b4688ae8a7dfca4dce2cd[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Mon Jul 1 19:10:07 2019 -0300
+
+    insere supostamente funcionando (não testada)
+
+[33mcommit 26735732611ceab3a201b0bd2f953d6ddbb220c5[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Mon Jul 1 16:52:01 2019 -0300
+
+    em produção
+
+[33mcommit c2546e3acbdc4913ef4cf44c487d5a010d246f08[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Mon Jul 1 16:34:55 2019 -0300
+
+    insere_trie em produção
+
+[33mcommit fcd8add8f88b274e37b129a97476fd7ae99887c5[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Mon Jul 1 15:26:20 2019 -0300
+
+    to_lower_string
+
+[33mcommit 1aae86731768cfeee87338dce61c5297820c7127[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Mon Jul 1 15:11:42 2019 -0300
+
+    AutoPush
+
+[33mcommit 2441653cf6f66f3e0d37ce8fe607a0de50194616[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Mon Jul 1 15:10:41 2019 -0300
+
+    AutoPush
+
+[33mcommit f6a8a7543b345c67125098c384a1dd34aa5055f1[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Mon Jul 1 13:12:14 2019 -0300
+
+    manoq?
+
+[33mcommit df7e2f7f65cd6a076eb59f170f4abb011f73d5fe[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Mon Jul 1 12:42:30 2019 -0300
+
+    Começo da Trie, buguei (facilmente) a AVL
+
+[33mcommit bf8d20082a4497912a08974d52adbdc5eb5aae7f[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Mon Jul 1 12:41:24 2019 -0300
+
+    Mudançaszinhas
+
+[33mcommit eba56454411312226594e9615cea78dbba4c609d[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sun Jun 30 21:30:45 2019 -0300
+
+    Alterando nomes
+
+[33mcommit f3e5934e1a6f63ce4ee2eb714cd8a7fd33f884ff[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sun Jun 30 21:22:50 2019 -0300
+
+    Licença que a tia quer passar pano
+
+[33mcommit d94d7b3d81eddf08dbd82f9d35dfc3c0c7df6051[m
+Merge: 799c641 3f8b2b1
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sun Jun 30 20:58:19 2019 -0300
+
+    Merge sereno
+
+[33mcommit 799c641dcea4a59080d747e92f0d3e6db953505e[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sun Jun 30 20:56:11 2019 -0300
+
+    Lendo strings epicamente!
+
+[33mcommit 3f8b2b18740035dfdee0d47f1d6c9e6e38fea301[m
+Merge: 6b424d3 827d609
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Sun Jun 30 20:39:17 2019 -0300
+
+    TAbela HASH
+
+[33mcommit 6b424d33b3fa7fc58a1726e5f77697246a0a0554[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Sun Jun 30 20:28:45 2019 -0300
+
+    hash completa
+
+[33mcommit 827d609360f4aa20217f57181164995b906265e1[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sun Jun 30 16:33:22 2019 -0300
+
+    Tentando ler arquivo, sem sucesso
+
+[33mcommit cc0b4aafe0a36c9887a95d13d110049fd34a3ab9[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sun Jun 30 16:30:43 2019 -0300
+
+    Começando árvore TRIE...
+
+[33mcommit cebecf6a342821d8a680d9e96231648dcee3af85[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sun Jun 30 16:30:33 2019 -0300
+
+    Update
+
+[33mcommit cd69060402502b80cc218827da343ec9a65fb5ca[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Sat Jun 29 19:58:43 2019 -0300
+
+    MEU PAU DE ASA EU SOU UM GÊNIO
+
+[33mcommit 199c21a9f77090c16b79634f4f813a3aa7dda304[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sat Jun 29 18:20:28 2019 -0300
+
+    Update
+
+[33mcommit 81dfb6bc8403ca09839d0f7e18c4342d3de9c2f3[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sat Jun 29 18:20:07 2019 -0300
+
+    Começando a implementação de tabela hash
+
+[33mcommit f9e37acf76b8579a3effeb6669ca1229e7bb1c52[m
+Merge: c4f05c0 9cc4b17
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sat Jun 29 17:30:56 2019 -0300
+
+    Merge
+
+[33mcommit c4f05c03e900ee2cea6397b263866b606cdf4a93[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sat Jun 29 17:30:39 2019 -0300
+
+    Organizaçãozinha da main
+
+[33mcommit 1869b518e7e5420b1a8e0d2aad92d56a9b941e92[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sat Jun 29 17:30:19 2019 -0300
+
+    Função para abertura de arquivo
+
+[33mcommit 9cc4b17fee8f5e9f8f6498031b73ef49dbcfc8e1[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Sat Jun 29 17:28:23 2019 -0300
+
+    uma pequena correção
+
+[33mcommit f9f78ae0071fee5086c0e4e50c6e5c2ae249e0ba[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sat Jun 29 17:27:01 2019 -0300
+
+    Alterando arquivos .txt
+
+[33mcommit 338609e5b27f1379a23e65b910b883251d77b80b[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sat Jun 29 17:26:33 2019 -0300
+
+    Update
+
+[33mcommit 412039a0256a60d68698dee139144faf35879f38[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Sat Jun 29 16:40:59 2019 -0300
+
+    Indo para o Lixus
+
+[33mcommit 24922921087669802d3a4a1a05553b334e5e2d85[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Fri Jun 28 15:56:12 2019 -0300
+
+    srand augmentado
+
+[33mcommit 8cb10a9acc4db242c856965997cc0d0bdf265832[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Fri Jun 28 15:21:36 2019 -0300
+
+    god d+
+
+[33mcommit cfa08c3afd214043164582f043e391815c2983c7[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Fri Jun 28 15:18:06 2019 -0300
+
+    AutoPush
+
+[33mcommit 41156b6473ae00e7b71bedb92b2ac766f87ad9a3[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Fri Jun 28 15:14:59 2019 -0300
+
+    caralho eu sou um deus. avl funcionando
+
+[33mcommit 6e65e39b6e6879217ae7a70aff1cfc66a2d11a59[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Thu Jun 27 21:09:08 2019 -0300
+
+    tudo ao msm tempo
+
+[33mcommit 86924de26616589f3a95c6d7ea33106f0e1d3b3b[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Thu Jun 27 21:02:12 2019 -0300
+
+    AutoPush
+
+[33mcommit 028cbb536f3b61a4f79d246ed746a5195b7ddb5e[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Thu Jun 27 17:45:36 2019 -0300
+
+    acertei essa caralha
+
+[33mcommit 667281e000a01e8940e0f55d51490ec6cecee3e8[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Thu Jun 27 15:20:02 2019 -0300
+
+    AutoPush
+
+[33mcommit cc9617421f56f5b28e5e61c2044877c37d503763[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Thu Jun 27 00:14:19 2019 -0300
+
+    tamo quase lá
+
+[33mcommit ac9aeb53c722e648e06a7623dcf64e0572cf74df[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Wed Jun 26 18:46:22 2019 -0300
+
+    AutoPush
+
+[33mcommit f8f6af8045569b6c2e266ce2980f872ba3aa58df[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Wed Jun 26 18:13:34 2019 -0300
+
+    AutoPush
+
+[33mcommit daa4bf53a916502f166e7164858a31e513abddbb[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Tue Jun 25 18:24:14 2019 -0300
+
+    aopa
+
+[33mcommit e3ed88b372a0f37ff6dc9637e6df0b7b0dd7ca4b[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Tue Jun 25 18:15:55 2019 -0300
+
+    liberação incompleta mas ta ai
+
+[33mcommit 4a74182513b7bde2dd7f23dc3c211dfa8673eaee[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Tue Jun 25 16:48:56 2019 -0300
+
+    AutoPush
+
+[33mcommit 88a63ebc8eb40038229c57e78159047c92154318[m
+Author: Tiago da Cruz Santos <tiago.unity.cruz@gmail.com>
+Date:   Thu Jun 20 18:24:16 2019 -0300
+
+    mas tu é um pilantra msm viu
+
+[33mcommit 6aa680448962b5d0f2b75ad781c7605851b75b21[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Thu Jun 20 16:55:31 2019 -0300
+
+    Compilando
+
+[33mcommit c6e74989bc8babe37b0e5d6da6002c45e87eddf7[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Thu Jun 20 16:02:33 2019 -0300
+
+    Botando ordem na casa
+
+[33mcommit 0333d4d43d348f5dcfe02bb580a56bbeeaeb2d8c[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Thu Jun 20 15:38:11 2019 -0300
+
+    Estruturas funcionando epicamente
+
+[33mcommit 61ce4b77c6475eb004f4ee3bac5780ffd0169061[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Thu Jun 20 15:34:51 2019 -0300
+
+    Códigos do VM
+
+[33mcommit 3002de80b75200d3957d06617bedb98d1a85bd56[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Tue Jun 18 19:10:52 2019 -0300
+
+    Tá pronto
+
+[33mcommit 645c5a17ef2e374c0c1dd8384b37aaee06ff7fa0[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Tue Jun 18 19:09:24 2019 -0300
+
+    AutoPush
+
+[33mcommit 7769151f12651f1c8e4938b550ff3aff602e7b56[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Tue Jun 18 17:50:50 2019 -0300
+
+    AutoPush
+
+[33mcommit b7f60dd890d096ff77a5077be0fdc1eacbc1b850[m
+Author: Tiago Cruz <tiago.unity.cruz@gmail.com>
+Date:   Tue Jun 18 17:10:47 2019 -0300
+
+    AutoPush
+
+[33mcommit 114a6906fa0d96c3df7c9c14bcd8016288371537[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Thu Jun 13 14:35:34 2019 -0300
+
+    deus
+
+[33mcommit 0011292b97f32083e6a0e68d5bd4bec7a946537d[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Wed Jun 12 09:46:56 2019 -0300
+
+    AAAAAAAAAA (tentando inserir sem repetição)
+
+[33mcommit f63161de31ba7d5907b2bf9241d0eac5cf0383c2[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Tue Jun 11 22:44:13 2019 -0300
+
+    Struct tPalavra, começo de implementação de LE
+
+[33mcommit d597a21295cfa7b04c565813699d44b30c32a70a[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Tue Jun 11 22:43:39 2019 -0300
+
+    Biblioteca de arquivos, guards, etc
+
+[33mcommit bfcf26767e651b1ee774b81e0d1e18e9cb13f61d[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Tue Jun 11 11:58:01 2019 -0300
+
+    Adição de arquivos, organização
+
+[33mcommit 63246677199cb3260f2760ea8ad62df607858aea[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Mon Jun 10 23:33:17 2019 -0300
+
+    maciota
+
+[33mcommit fc37c172f51ffe52e10180479bae0f8420f53634[m
+Author: Atílio Antônio <atiliodadalto@hotmail.com>
+Date:   Mon Jun 10 17:59:45 2019 -0300
+
+    Relatório pronto. Para ser começado.
+
+[33mcommit 7f5feb750d9b2da5ab23dd3372bda149fddca135[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Mon Jun 10 17:55:58 2019 -0300
+
+    Vai, Brasil
+
+[33mcommit 9e62339778adcc4e33f743d5a709b20948de9fd2[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Mon Jun 10 17:33:15 2019 -0300
+
+    Iniciando relatório
+
+[33mcommit 8251052a9af48f07afcffff9ca7631e06c9332b7[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Wed Jun 5 09:56:00 2019 -0300
+
+    Diretórios
+
+[33mcommit 4a5c799c078c81a6b98dda6e564f4895ad2d9d65[m
+Author: AtilioA <atiliodadalto@hotmail.com>
+Date:   Wed Jun 5 09:19:43 2019 -0300
+
+    Primeiro commit
+
+[33mcommit 0ecec1b8fcc1d6264ef1b608fff3a369025d5d31[m
+Author: Atílio Antônio <atiliodadalto@hotmail.com>
+Date:   Wed Jun 5 09:15:10 2019 -0300
+
+    Initial commit

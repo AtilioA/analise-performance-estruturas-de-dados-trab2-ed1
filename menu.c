@@ -77,7 +77,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nLISTA ENCADEADA\n\n\n");
-        // imprime_Lista(lista);
+        imprime_Lista(lista);
 
         printf("BUSCAS ALEATORIAS:\n");
         t = clock();
