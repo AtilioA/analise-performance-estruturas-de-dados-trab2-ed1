@@ -34,11 +34,6 @@ void libera_Hash(TabelaHash *tab);
 #endif
 
 /*
-#define M 97            // número primo alto placeholderson
-#define N 30            // tamanho máximo da string
-#define TAMALFABETO 256 // vmzice?
-
-
 int n_elementos(TipoDicionario tabela);
 int n_colisoes(TipoDicionario tabela);
 float carga_pesada(TipoDicionario tabela);

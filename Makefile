@@ -6,7 +6,7 @@ EXE 	 := indexador
 PROJETO  := trab2-AtilioDadalto-TiagoSantos
 PROJETOZOADO  := trab3-AtilioDadalto-TiagoSantos
 PROJETOLISTA  := trab4-AtilioDadalto-TiagoSantos
-MENU  := menu
+MENU  := menu-trab2-AtilioDadalto-TiagoSantos
 
 
 # Cria objetos de todos os arquivos de código-fonte para então linká-los no programa final
