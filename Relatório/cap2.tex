@@ -1,13 +1,130 @@
-\chapter{Implementação}
-\label{sec-implementacao}
+\chapter{Implementação e funcionamento}\label{cap:implementacao-funcionamento}
+
+Para a implementação do indexador, foram utilizadas diversas estruturas vistas no curso, desde listas encadeadas até tabelas de dispersão. Nas seções que se seguem, é discorrido acerca da composição dessas estruturas. O projeto conta com um total de 7 bibliotecas, sendo 5 focadas nas estruturas e 2 no indexador propriamente dito.
+
+\section{Palavra}
+Primeiramente, a estrutura que possivelmente seja a mais importante do projeto, a Palavra, é definida a seguir:
+\begin{lstlisting}
+/* Estrutura de dados para guardar nomes de arquivos e ocorrências de palavras nestes arquivos */
+typedef struct Arq
+{
+    char *nomeArquivo;
+    ListaOcorr *ocorrencias;
+    struct Arq *prox;
+} Arq;
+
+typedef struct ListaArq
+{
+    Arq *primeiro;
+    Arq *ultimo;
+} ListaArq;
+
+/* Estrutura de dados que abstrai uma palavra do texto */
+typedef struct Palavra
+{
+    char *string;
+    ListaArq *arquivos;
+} Palavra;
+\end{lstlisting}
+
+Com ela, podemos armazenar um vetor de caracteres, que será uma palavra do texto, o nome do arquivo em que a palavra se encontra e as posições das ocorrências neste arquivo. Dessa forma, podemos ter conhecimento de ocorrências de uma palavra em um arquivo, além de suas posições, tudo em uma mesma estrutura. O TAD Palavra foi utilizado para todas as cinco estruturas de dados de indexação principais e conta com uma lista encadeada de nomes de arquivos, em que cada célula da lista carrega o nome de arquivo e uma lista encadeada de ocorrências da palavra no arquivo.
+
+\section{Listas encadeadas}
+Primeiramente, uma das nossas estruturas mais simples, a lista encadeada, é definida a seguir:
+\begin{lstlisting}
+// Lista encadeada que abstrai um conjunto de itens
+    typedef struct Celula
+    {
+        Palavra *palavra;
+        struct celula *prox;
+    } Celula;
+    
+    typedef struct Lista
+    {
+        Celula *primeiro, *ultimo;
+    } Lista
+\end{lstlisting}
+
+O ponto forte da lista encadeada de indexação seriam suas inserções $O(1)$. Mais tarde, no entanto, veremos que sua inserção é $O(n)$. Além dessa implementação, temos algumas outras variações, criadas para suportar a busca aleatória de palavras, além da utilizada para nomes de arquivos na estrutura Palavra:
+
+\begin{lstlisting}
+/* Lista encadeada para armazenar ocorrências */
+typedef struct ocorre
+{
+    int ocorreu;
+    struct ocorre *prox;
+} CelulaOcorr;
+
+typedef struct ocorrencias
+{
+    CelulaOcorr *primeiro;
+    CelulaOcorr *ultimo;
+    int qtd;
+} ListaOcorr;
+
+// Lista encadeada para pesquisar palavras aleatoriamente
+typedef struct celula_pal_rand
+{
+    char *string;
+    struct pal_rand *prox;
+} CelulaRandPal;
+
+typedef struct sent_pal_rand
+{
+    CelulaRandPal *primeiro;
+    CelulaRandPal *ultimo;
+    int qtd;
+} SentRandPal;
+\end{lstlisting}
 
 
-Descrição sobre a implementação dos algoritmos, incluíndo o algoritmo de Huffman. Deve ser detalhada a estrutura de dados utilizada (de preferência com diagramas ilustrativos), o funcionamento dos algoritmos, e decisões tomadas relativas aos detalhes de especificação que porventura estejam omissos no enunciado.
+\section{Árvores Binárias Não Balanceadas}\label{tadArvBin}
+\begin{lstlisting}
+typedef struct No
+{
+    Palavra *palavra;
+    struct No *esq;
+    struct No *dir;
+    int altura;
+} No;
+
+typedef struct No *ArvBin;
+\end{lstlisting}
+
+Para a árvore binária não balanceada, guardamos uma palavra em cada nó, além dos nós esquerda e direita. A raiz é definida como um ponteiro de No.
+
+\section{Árvores Binárias Balanceadas}\label{tadAVL}
+Como já visto no curso, a árvore binária balanceada é definida da mesma forma que a não balanceada:
+\begin{lstlisting}
+typedef struct No *ArvAVL;
+\end{lstlisting}
+
+No entanto, as duas se diferem quanto ao balanceamento. Na árvore AVL, ela é constantemente balanceada ao inserir nós com Palavras.
+
+\section{Árvores de prefixo (trie)}\label{tadTrie}
+\begin{lstlisting}
+typedef struct NoTrie
+{
+    char letra;
+    Palavra *palavra;
+    struct NoTrie *filhos[TAM_TRIE]; // ponteiro?
+} NoTrie;
+\end{lstlisting}
+
+A árvore trie foi implementada armazenando-se uma letra e uma Palavra em cada nó, além de um vetor de nós de filhos do tamanho estipulado \texttt{TAM\_TRIE}, cujo valor é 36 (26 letras do alfabeto + 10 algarismos).
 
 
-O pacote \texttt{listings}, incluído neste template, permite a inclusão de listagens de código.  A Listagem NÃO mostra um exemplo de listagem com especificação da linguagem utilizada no código. O pacote \texttt{listings} reconhece algumas linguagens\footnote{Veja a lista de linguagens suportadas em \url{http://en.wikibooks.org/wiki/LaTeX/Source\_Code\_Listings\#Supported_languages}.} e faz ``coloração'' de código (na verdade, usa \textbf{negrito} e não cores) de acordo com a linguagem. O parâmetro \texttt{float=htpb} incluído em ambos os exemplos impede que a listagem seja quebrada em diferentes páginas.
+\section{Tabelas de dispersão (tabela hash)}
+\begin{lstlisting}
+typedef struct tabelahash
+{
+    ArvAVL *hash[TAM_HASH];
+    int colisoes;
+    int qtd;
+    int *pesos;
+} TabelaHash;
+\end{lstlisting}
+Por fim, temos a tabela hash, com quantidade de colisões, de elementos e o vetor de pesos. Em nossa implementação, optamos por utilizar árvore binárias balanceadas para guardar elementos, visto que é uma estrutura de armazenamento muito eficiente, como notado na elaboração do laboratório 11 da disciplina. \texttt{TAM\_HASH} foi definido como 997, um número primo grande, escolhido após testes com arquivos grandes e pequenos.
 
-Importante notar que não se deve incluir TODO o código do seu trabalho. Inclua apenas trechos que julgue necessário que sejam discutidos no relatório.
-
-
-% \lstinputlisting[label=lst-intro-exemplo, caption=Exemplo de código C especificando linguagem utilizada., language=C, float=htpb]{codigos/lst-exemplo.c}
+\section{Funcionamento}
+Após compilar o projeto, o usuário deve fornecer o número de buscas e os arquivos de entrada como argumento no terminal, nesta ordem, como explicado na Introdução. Com o programa em execução, será solicitado ao usuário informar qual estrutura de dados será utilizada para indexação dos arquivos. O usuário pode escolher quais quiser, uma por pedido, ou requisitar que todas sejam utilizadas de uma vez (em sequência). Após carregar os arquivos para a memória e realizar a busca randômica, será solicitado ao usuário que entre com uma palavra para ser buscada na(s) estrutura(s). O programa retornará os dados conforme a existência ou não da palavra no texto e, por fim, informará ao usuário os tempos de inserção, busca aleatória e busca do usuário.

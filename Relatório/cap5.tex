@@ -1,5 +1,20 @@
-\chapter{Conclusão}
-\label{sec-conclusao}
+\chapter*{CONCLUSÃO}\label{cap-conclusao}
+\addcontentsline{toc}{chapter}{CONCLUSÃO}
 
+Com os dados levantados e a análise feita, podemos então discutir os resultados de uma forma geral. Apesar de uma amostra de 20 iterações não ser ideal, é o suficiente para tomarmos conclusões sobre os desempenhos.
 
-Discutir as conclusões e limitações do seu trabalho.
+% por conta de sua inserção que percorre a lista toda em busca de um elemento que seja igual ao elemento a ser inserido 
+% Mesmo que as inserções das árvores possuam complexidade computacional grande, estas possuem uma buscas mais velozes que a da lista, por exemplo.
+Sendo assim, a lista encadeada, como mostrado no Capítulo~\ref{cap-analise-resultado}, é a estrutura mais lenta dentre todas do projeto, possuindo custo $O(n)$ em vez do $O(1)$ usual para inserções de listas encadeadas. Apesar de tudo, a implementação da lista também é extremamente mais simples comparada às implementações das árvores, o que não ajuda apenas a construção inicial de um projeto, mas também sua manutenção.
+
+A árvore binária sem balanceamento... comparar com outras estruturas
+
+A árvore binária balanceada, por sua vez, demonstrou o desempenho mais equilibrado dentre as cinco estruturas; sua inserção é levemente mais lenta que a da lista encadeada, porém a busca consegue ser extremamente mais rápida, com complexidade $O(\log{n})$ no pior caso. Por conta de seu equilíbrio, foi escolhida para acomodar Palavras na tabela hash.
+
+A árvore de prefixos, ou trie, teve o melhor desempenho de todos para buscas... sera mesmo?¿
+
+Por fim, a tabela hash...
+
+Portanto, cabe ao idealizador de um projeto determinar qual estrutura é mais adequada ao problema em questão, analisando, se possível, a razão entre inserção e busca e também se a solução não é complexa demais para o objetivo proposto. Para um projeto diminuto, a lista encadeada poderia ser utilizada sem problemas notáveis de performance, ainda sendo válido destacar sua simples implementação; no caso de um indexador, no entanto, ela representou a pior estrutura. Como visto na seção... a melhor estrutura para inserções, neste caso, foi a .... Já a melhor para buscas foi a ... (trie?). A estrutura X se demonstrou equilibrada quando inserções e buscas são levadas em consideração em conjunto. Para um projeto como este de um indexador de palavras, os autores consideram a estrutura x como a mais capacitada para o empreendimento.
+
+\lipsum[10]

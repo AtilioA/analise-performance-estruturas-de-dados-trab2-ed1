@@ -17,6 +17,7 @@
 \usepackage[scaled]{helvet}
 \usepackage{fancyhdr}
 \usepackage{lmodern}
+\usepackage{lipsum}
 
 
 %%% Definição de variáveis. %%%
@@ -36,6 +37,28 @@
 \newcommand{\versao}{2.0}
 \newcommand{\subtitulo}{Anteprojeto}
 
+
+%--- Configurações do environment lstlisting ---
+\newfontfamily{\consolas}{Consolas.ttf}
+
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+
+\lstset{
+  language=C,
+  basicstyle=\footnotesize\consolas,
+  numbers=left,
+  numberstyle=\tiny,
+  frame=tb,
+  tabsize=4,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  columns=fixed,
+  showstringspaces=false,
+  showtabs=false,
+  keepspaces,
+  commentstyle=\color{gray},
+  keywordstyle=\color{blue}
+}
 
 % Macros específicas do trabalho.
 % (*) Inclua aqui termos que são utilizados muitas vezes e que demandam formatação especial.
@@ -103,7 +126,7 @@
 %\end{siglas}
 
 % Índice de capítulos.
-% \tableofcontents*
+\tableofcontents*
 
 
 %%% Início da parte de conteúdo do documento. %%%

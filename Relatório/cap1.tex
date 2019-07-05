@@ -1,6 +1,16 @@
-\chapter{Introdução}
-\label{sec-intro}
+\chapter*[Introdução]{Introdução}\label{cap-introducao} % Basicamente pronta. Voltar quando trabalho estiver quase terminado
+\addcontentsline{toc}{chapter}{Introdução}
 
+Neste projeto, buscamos analisar o desempenho de inúmeras estruturas de dados em um projeto de um indexador de arquivos. Para indexar as palavras de livros, por exemplo, precisamos carregar, para a memória, todos os seus conteúdos, tarefa essa que pode exigir grande poder computacional dependendo dos arquivos de entrada e das estruturas utilizadas. 
 
-Apresenta descrição do problema a ser resolvido e visão geral sobre o funcionamento do programa.
+Dessa forma, implementamos os TADs lista encadeada, árvore binária não balanceada, árvore binária balanceada (AVL), árvores de prefixos (TRIE) e tabela hash e analisamos o desempenho de cada um nas atividades de indexação de arquivos, comparando seus resultados e assinalando seus pontos fracos e fortes no Capítulo~\ref{cap-analise-resultado}.
+
+A entrada dos arquivos deve ser dada pelo terminal, pelo comando (em Linux)
+
+\texttt{\$ ./indexador [número de buscas] [arquivo1] ... [arquivoN]}.
+
+\noindent O número de buscas se refere à quantidade de palavras aleatórias que serão utilizadas para buscas nas estruturas de dados, busca essa que abrange todos os arquivos de entrada dados.
+
+Este relatório documenta a trajetória da construção desse indexador de arquivos através de diversas estruturas de dados, pontuando os resultados de performance e comentários acerca da implementação, bem como os testes efetuados, fazendo um apanhado geral das peculiaridades de cada estrutura neste contexto.
+
 % Exemplos de como usar referência: \citeonline{guarino-et-al:hobook09} (in-line) ou~\cite{guarino-et-al:hobook09}.
