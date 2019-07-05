@@ -143,7 +143,6 @@ Palavra *busca_ArvAVL(ArvAVL *raiz, char *strat)
     return NULL;
 }
 
-
 /* LR = Left rotation
  * RL = Right rotation
  * LRR = Left-right rotation

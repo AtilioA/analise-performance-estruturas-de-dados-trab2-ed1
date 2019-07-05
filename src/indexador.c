@@ -11,26 +11,18 @@ char *get_string(Palavra *palavra)
     }
     return palavra->string;
 }
-/*
-int get_ocorrencias(Palavra *palavra)
-{
-    return palavra->ocorrencias->qtd;
-}
 
-ListaOcorr *get_posicoes(Palavra *palavra)
-{
-    return palavra->ocorrencias;
-}
-*/
 void imprime_Palavra(Palavra *palavra)
 {
     printf("\nPalavra: %s\n", get_string(palavra));
     Arq *aux = palavra->arquivos->primeiro;
-    while(aux != NULL){
+    while (aux != NULL)
+    {
         printf("Arquivo: %s\n", aux->nomeArquivo);
         CelulaOcorr *ocorres = aux->ocorrencias->primeiro;
         printf("Ocorrencias: ");
-        while(ocorres != NULL){
+        while (ocorres != NULL)
+        {
             printf("%d ", ocorres->ocorreu);
             ocorres = ocorres->prox;
         }
@@ -67,14 +59,16 @@ void insere_Ocorrencias(ListaOcorr *l, int ocorre)
     return;
 }
 
-ListaArq *cria_Arq(){
+ListaArq *cria_Arq()
+{
     ListaArq *novo = malloc(sizeof(ListaArq));
     novo->primeiro = NULL;
     novo->ultimo = NULL;
     return novo;
 }
 
-Palavra *cria_Palavra(char *nomeArquivo, char* string, int ocorre){
+Palavra *cria_Palavra(char *nomeArquivo, char *string, int ocorre)
+{
     Palavra *nova = malloc(sizeof(Palavra));
     nova->string = malloc(sizeof(char) * strlen(string) + 1);
     strcpy(nova->string, string);
@@ -83,9 +77,10 @@ Palavra *cria_Palavra(char *nomeArquivo, char* string, int ocorre){
     return nova;
 }
 
-void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre){
+void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre)
+{
     Arq *aux = arquivos->primeiro;
-    if(aux == NULL)
+    if (aux == NULL)
     {
         arquivos->primeiro = malloc(sizeof(Arq));
         arquivos->primeiro->nomeArquivo = nomeArquivo;
@@ -97,11 +92,11 @@ void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre){
     }
 
     Arq *ant = NULL;
-    while(aux != NULL && strcmp(nomeArquivo, aux->nomeArquivo))
+    while (aux != NULL && strcmp(nomeArquivo, aux->nomeArquivo))
     {
         aux = aux->prox;
     }
-    if(aux == NULL)
+    if (aux == NULL)
     {
         arquivos->ultimo->prox = malloc(sizeof(Arq));
         arquivos->ultimo = arquivos->ultimo->prox;
@@ -113,8 +108,6 @@ void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre){
     }
     insere_Ocorrencias(aux->ocorrencias, ocorre);
 }
-
-
 
 /*
 Palavra *cria_Palavra(char *string, int ocorre)
@@ -141,10 +134,12 @@ void libera_Ocorrencias(ListaOcorr *ocorres)
     free(ocorres);
 }
 
-void libera_Arqs(ListaArq *arquivos){
+void libera_Arqs(ListaArq *arquivos)
+{
     Arq *aux = arquivos->primeiro;
     Arq *ant = NULL;
-    while(aux != NULL){
+    while (aux != NULL)
+    {
         ant = aux;
         aux = aux->prox;
         libera_Ocorrencias(ant->ocorrencias);

@@ -15,7 +15,7 @@ FILE *le_arquivo(char *string)
     if (f == NULL)
     {
         printf("Erro na leitura do arquivo.\n");
-        exit(1);
+        return NULL;
     }
 
     return f;

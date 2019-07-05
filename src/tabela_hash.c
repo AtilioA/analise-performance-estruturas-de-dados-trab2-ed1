@@ -98,7 +98,6 @@ void libera_Hash(TabelaHash *tab)
     free(tab);
 }
 
-
 /*
 void Imprime(TipoDicionario Tabela)
 {
