@@ -19,7 +19,7 @@
 #define TRIE 4
 #define HASH 5
 #define TODAS 6
-#define MENOSLISTA 7
+#define EXCETO_LISTA 7
 
 void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 {
@@ -28,12 +28,12 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
     struct timeval time;       // Para gerar semente do srand
     char strTexto[TAM_STRING]; // Vetor para armazenamento temporário de strings do texto
     int nArquivos = argc - 2, posicao = 0, i = 0;
-    Palavra *palavraAleatoria, *palavraBusca;
+    Palavra *palavraAleatoria;
 
     char vetBusca[n][TAM_STRING]; // Vetor para busca de palavras
     FILE *fs;
     SentRandPal *palavrasAleatorias = cria_RandPal(); // Lista para busca de palavras
-    Palavra *palavra;
+    Palavra *palavraInserida;
     printf("Lista de busca de palavras criada com sucesso.\n");
 
     gettimeofday(&time, NULL); // Para gerar semente do srand
@@ -51,21 +51,32 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
         {
             fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
-            printf("%io arquivo aberto com sucesso.\n", i + 1);
-
-            printf("Lendo %io arquivo...\n", i + 1);
-            while (!feof(fs))
+            if (fs == NULL) // se não conseguir ler o arquivo, fs será NULL
             {
-                posicao = le_palavra(fs, strTexto);
-
-                // Preenchendo lista de palavras aleatórias
-                insere_RandPal(strTexto, palavrasAleatorias);
-
-                // Preenchendo estruturas de dados do projeto
-                palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_Lista(palavra, lista);
+                libera_Lista(lista);
+                libera_RandPal(palavrasAleatorias);
+                printf("\nERRO NA ABERTURA DE ARQUIVO (ARQUIVO PROVAVELMENTE NAO EXISTE)\n");
+                printf("LIBERANDO ESTRUTURAS E ENCERRANDO EXECUCAO DO PROGRAMA.\n");
+                exit(1);
             }
-            printf("%io arquivo lido.\n", i + 1);
+            if (fs != NULL)
+            {
+                printf("%io arquivo aberto com sucesso.\n", i + 1);
+
+                printf("Lendo %io arquivo...\n", i + 1);
+                while (!feof(fs))
+                {
+                    posicao = le_palavra(fs, strTexto);
+
+                    // Preenchendo lista de palavras aleatórias
+                    insere_RandPal(strTexto, palavrasAleatorias);
+
+                    // Preenchendo estruturas de dados do projeto
+                    palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                    insere_Lista(palavraInserida, lista);
+                }
+                printf("%io arquivo lido.\n", i + 1);
+            }
             fclose(fs);
         }
         t = clock() - t;
@@ -142,6 +153,15 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
         {
             fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
+            if (fs == NULL) // se não conseguir ler o arquivo, fs será NULL
+            {
+                libera_ArvBin(arvore);
+                libera_RandPal(palavrasAleatorias);
+                printf("\nERRO NA ABERTURA DE ARQUIVO (ARQUIVO PROVAVELMENTE NAO EXISTE)\n");
+                printf("LIBERANDO ESTRUTURAS E ENCERRANDO EXECUCAO DO PROGRAMA.\n");
+                exit(1);
+            }
+
             printf("%io arquivo aberto com sucesso.\n", i + 1);
 
             printf("Lendo %io arquivo...\n", i + 1);
@@ -153,8 +173,8 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 insere_RandPal(strTexto, palavrasAleatorias);
 
                 // Preenchendo estruturas de dados do projeto
-                palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_ArvBin(arvore, palavra);
+                palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                insere_ArvBin(arvore, palavraInserida);
             }
             printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
@@ -233,6 +253,14 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
         {
             fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
+            if (fs == NULL) // se não conseguir ler o arquivo, fs será NULL
+            {
+                libera_ArvAVL(avl);
+                libera_RandPal(palavrasAleatorias);
+                printf("\nERRO NA ABERTURA DE ARQUIVO (ARQUIVO PROVAVELMENTE NAO EXISTE)\n");
+                printf("LIBERANDO ESTRUTURAS E ENCERRANDO EXECUCAO DO PROGRAMA.\n");
+                exit(1);
+            }
             printf("%io arquivo aberto com sucesso.\n", i + 1);
 
             printf("Lendo %io arquivo...\n", i + 1);
@@ -244,8 +272,8 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 insere_RandPal(strTexto, palavrasAleatorias);
 
                 // Preenchendo estruturas de dados do projeto
-                palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_ArvAVL(avl, palavra);
+                palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                insere_ArvAVL(avl, palavraInserida);
             }
             printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
@@ -324,6 +352,14 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
         {
             fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
+            if (fs == NULL) // se não conseguir ler o arquivo, fs será NULL
+            {
+                libera_ArvTrie(trie);
+                libera_RandPal(palavrasAleatorias);
+                printf("\nERRO NA ABERTURA DE ARQUIVO (ARQUIVO PROVAVELMENTE NAO EXISTE)\n");
+                printf("LIBERANDO ESTRUTURAS E ENCERRANDO EXECUCAO DO PROGRAMA.\n");
+                exit(1);
+            }
             printf("%io arquivo aberto com sucesso.\n", i + 1);
 
             printf("Lendo %io arquivo...\n", i + 1);
@@ -335,8 +371,8 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 insere_RandPal(strTexto, palavrasAleatorias);
 
                 // Preenchendo estruturas de dados do projeto
-                palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_ArvTrie(palavra, trie);
+                palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                insere_ArvTrie(palavraInserida, trie);
             }
             printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
@@ -413,6 +449,14 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (i = 0; i < nArquivos; i++) // 0 até agrc - 2
         {
             fs = le_arquivo(argv[i + 2]); // se não conseguir ler algum, liberar estrutura
+            if (fs == NULL) // se não conseguir ler o arquivo, fs será NULL
+            {
+                libera_Hash(tabela);
+                libera_RandPal(palavrasAleatorias);
+                printf("\nERRO NA ABERTURA DE ARQUIVO (ARQUIVO PROVAVELMENTE NAO EXISTE)\n");
+                printf("LIBERANDO ESTRUTURAS E ENCERRANDO EXECUCAO DO PROGRAMA.\n");
+                exit(1);
+            }
             printf("%io arquivo aberto com sucesso.\n", i + 1);
 
             printf("Lendo %io arquivo...\n", i + 1);
@@ -424,8 +468,8 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 insere_RandPal(strTexto, palavrasAleatorias);
 
                 // Preenchendo estruturas de dados do projeto
-                palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_Hash(palavra, tabela);
+                palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                insere_Hash(palavraInserida, tabela);
             }
             printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
@@ -489,15 +533,13 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 
         libera_Hash(tabela);
     }
-    sleep(1);
-    // libera_RandPal(palavrasAleatorias);
+    libera_RandPal(palavrasAleatorias);
 }
 
 void menu(int argc, char *argv[])
 {
+    clr_scr();
     /* inicialização do programa */
-    int listaInserida = 0, arvoreBinariaInserida = 0, arvoreAVLInserida = 0,
-        arvoreTrieInserida = 0, hashInserida = 0;
     int nArquivos = argc - 2;
     int nBuscasAleatorias = atoi(argv[1]);
     int i = 0, escolha = -1;
@@ -507,24 +549,25 @@ void menu(int argc, char *argv[])
     {
         printf("%s\n", argv[i + 2]);
     }
-    // printf("Informe a quantidade de buscas aleatorias a serem realizadas:\n");
-    // scanf("%i", &nBuscasAleatorias);
 
-    while (escolha != 0 && (listaInserida != 1 && arvoreBinariaInserida != 1 && arvoreAVLInserida != 1 && arvoreTrieInserida != 1 && hashInserida != 1))
+    while (escolha != 0)
     {
-        printf("OPCOES:\n");
+        printf("OPCOES PARA INDEXACAO:\n");
         printf("1 - LISTA ENCADEADA\n");
         printf("2 - ÁRVORE BINÁRIA (NÃO BALANCEADA)\n");
         printf("3 - ÁRVORE AVL\n");
         printf("4 - ÁRVORE TRIE\n");
         printf("5 - TABELA HASH\n");
-        printf("\n6 - INDEXAR EM TODAS AS ESTRUTURAS\n");
-        printf("7 - INDEXAR EM TODAS AS ESTRUTURAS, MENOS LISTA\n");
-        printf("Informe em qual estrutura deseja indexar os arquivos:\n");
-        while (escolha < 0 || escolha > 7)
+        printf("----------------------------------\n");
+        printf("6 - INDEXAR EM TODAS AS ESTRUTURAS\n");
+        printf("7 - INDEXAR EM TODAS AS ESTRUTURAS, EXCETO LISTA\n");
+        printf("8 - MUDAR NUMERO DE BUSCAS\n");
+        printf("0 - SAIR\n\n");
+        printf("Informe a opcao:\n");
+        while (escolha < 0 || escolha > 8)
         {
             scanf("%i", &escolha);
-            while (getchar() != '\n');
+            while (getchar() != '\n'); // Validando entrada
         }
         printf("\n\n");
 
@@ -533,85 +576,49 @@ void menu(int argc, char *argv[])
         case 0:
             break;
         case 1:
-            if (listaInserida == 0)
-            {
-                listaInserida = 1;
-                AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
-            }
-            else
-            {
-                printf("\nArquivos ja indexados na lista.\n\n");
-            }
+            AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
+            escolha = -1;
             break;
 
         case 2:
-            if (arvoreBinariaInserida == 0)
-            {
-                arvoreBinariaInserida = 1;
-                AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
-            }
-            else
-            {
-                printf("\nArquivos ja indexados na arvore binaria.\n\n");
-            }
+            AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
+            escolha = -1;
             break;
 
         case 3:
-            if (arvoreAVLInserida == 0)
-            {
-                arvoreAVLInserida = 1;
-                AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
-            }
-            else
-            {
-                printf("\nArquivos ja indexados na arvore AVL.\n\n");
-            }
+            AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
+            escolha = -1;
             break;
 
         case 4:
-            if (arvoreTrieInserida == 0)
-            {
-                arvoreTrieInserida = 1;
-                AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
-            }
-            else
-            {
-                printf("\nArquivos ja indexados na arvore trie.\n\n");
-            }
+            AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
+            escolha = -1;
             break;
 
         case 5:
-            if (hashInserida == 0)
-            {
-                hashInserida = 1;
-                AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
-            }
-            else
-            {
-                printf("\nArquivos ja indexados na tabela hash.\n\n");
-            }
+            AvaliaDesempenho(nBuscasAleatorias, escolha, argc, argv);
+            escolha = -1;
             break;
 
         case 6:
             AvaliaDesempenho(nBuscasAleatorias, TODAS, argc, argv);
-            listaInserida = 1;
-            arvoreBinariaInserida = 1;
-            arvoreAVLInserida = 1;
-            arvoreTrieInserida = 1;
-            hashInserida = 1;
-            printf("Todas as estruturas indexaram arquivos. Fim do programa.\n");
+            escolha = -1;
             break;
 
         case 7:
-            AvaliaDesempenho(nBuscasAleatorias, MENOSLISTA, argc, argv);
-            arvoreBinariaInserida = 1;
-            arvoreAVLInserida = 1;
-            arvoreTrieInserida = 1;
-            hashInserida = 1;
+            AvaliaDesempenho(nBuscasAleatorias, EXCETO_LISTA, argc, argv);
+            escolha = -1;
+            break;
+
+        case 8:
+            printf("Informe a nova quantidade de buscas aleatorias a serem realizadas:\n");
+            scanf("%i", &nBuscasAleatorias);
+            escolha = -1;
             break;
 
         default:
             printf("Opcao invalida. Tente novamente.\n");
+            escolha = -1;
             break;
         }
     }

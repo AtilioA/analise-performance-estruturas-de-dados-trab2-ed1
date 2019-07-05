@@ -6,7 +6,7 @@
 #ifndef __TABELA_HASH_H_
 #define __TABELA_HASH_H_
 
-#define TAM_HASH 997
+#define TAM_HASH 100003 // número primo grande
 
 #include "../include/arvore_AVL.h"
 #include "../include/indexador.h"
@@ -27,7 +27,7 @@ int *lista_Pesos();
 
 void imprime_Hash(TabelaHash *tab);
 
-Palavra *busca_Hash(char* strat, TabelaHash *tab);
+Palavra *busca_Hash(char *strat, TabelaHash *tab);
 
 void libera_Hash(TabelaHash *tab);
 
