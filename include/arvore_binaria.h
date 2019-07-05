@@ -10,7 +10,7 @@
 
 typedef struct No
 {
-    Palavra *pal;
+    Palavra *palavra;
     struct No *esq;
     struct No *dir;
     int altura;
@@ -32,7 +32,7 @@ Insere 'valor' na árvore utilizando a regra que o filho esquerdo é menor que a
 
 Retorna: 1 em caso de sucesso.
 */
-int insere_ArvBin(ArvBin *raiz, Palavra *pal);
+int insere_ArvBin(ArvBin *raiz, Palavra *palavra);
 int remove_ArvBin(ArvBin *raiz, int valor);
 
 /**

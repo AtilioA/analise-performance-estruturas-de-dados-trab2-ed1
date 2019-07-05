@@ -101,7 +101,7 @@ void imprime_em_ordem_ArvBin(ArvBin *raiz)
         {
             imprime_em_ordem_ArvBin(&((*raiz)->esq));
         }
-        imprime_Palavra((*raiz)->pal);
+        imprime_Palavra((*raiz)->palavra);
         if ((*raiz)->dir != NULL)
         {
             imprime_em_ordem_ArvBin(&((*raiz)->dir));
@@ -142,14 +142,14 @@ int altura_ArvBin(ArvBin *raiz)
 }
 */
 
-int insere_ArvBin(ArvBin *raiz, Palavra *pal)
+int insere_ArvBin(ArvBin *raiz, Palavra *palavra)
 {
     if (raiz != NULL)
     {
         No *novo = malloc(sizeof(No));
         novo->esq = NULL;
         novo->dir = NULL;
-        novo->pal = pal;
+        novo->palavra = palavra;
         No *aux = (*raiz);
         if ((*raiz) == NULL)
         {
@@ -161,7 +161,7 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
         while (aux->esq != NULL || aux->dir != NULL)
         {
 
-            if (strcasecmp(pal->string, aux->pal->string) < 0)
+            if (strcasecmp(palavra->string, aux->palavra->string) < 0)
             {
                 if (aux->esq == NULL)
                 {
@@ -169,7 +169,7 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
                 }
                 aux = aux->esq;
             }
-            else if (strcasecmp(pal->string, aux->pal->string) > 0)
+            else if (strcasecmp(palavra->string, aux->palavra->string) > 0)
             {
                 if (aux->dir == NULL)
                 {
@@ -179,25 +179,25 @@ int insere_ArvBin(ArvBin *raiz, Palavra *pal)
             }
             else
             {
-                insere_Arq(pal->arquivos->primeiro->nomeArquivo, aux->pal->arquivos, pal->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
+                insere_Arq(palavra->arquivos->primeiro->nomeArquivo, aux->palavra->arquivos, palavra->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
                 libera_No(novo);
                 return 0; // Valor já presente na árvore
             }
         }
 
-        if (strcasecmp(pal->string, aux->pal->string) < 0)
+        if (strcasecmp(palavra->string, aux->palavra->string) < 0)
         {
             aux->esq = novo;
             return 1;
         }
-        else if (strcasecmp(pal->string, aux->pal->string) > 0)
+        else if (strcasecmp(palavra->string, aux->palavra->string) > 0)
         {
             aux->dir = novo;
             return 1;
         }
         else
-        { 
-            insere_Arq(pal->arquivos->primeiro->nomeArquivo, aux->pal->arquivos, pal->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
+        {
+            insere_Arq(palavra->arquivos->primeiro->nomeArquivo, aux->palavra->arquivos, palavra->arquivos->primeiro->ocorrencias->primeiro->ocorreu);
             libera_No(novo);
             return 0; // Valor já presente na árvore
         }
@@ -215,11 +215,11 @@ Palavra *busca_ArvBin(ArvBin *raiz, char *strat)
     struct No *atual = *raiz;
     while (atual != NULL)
     {
-        if (!strcasecmp(atual->pal->string, strat))
+        if (!strcasecmp(atual->palavra->string, strat))
         {
-            return atual->pal;
+            return atual->palavra;
         }
-        if (strcasecmp(strat, atual->pal->string) > 0)
+        if (strcasecmp(strat, atual->palavra->string) > 0)
             atual = atual->dir;
         else
             atual = atual->esq;
@@ -231,7 +231,7 @@ void libera_No(struct No *no)
 {
     if (no == NULL)
         return;
-    libera_Palavra(no->pal);
+    libera_Palavra(no->palavra);
     libera_No(no->esq);
     libera_No(no->dir);
     free(no);

@@ -34,23 +34,27 @@ typedef struct sent_pal_rand
     int qtd;
 } SentRandPal;
 
-typedef struct Arq{
+/* Estrutura de dados para guardar nomes de arquivos e ocorrências de palavras nestes arquivos */
+typedef struct Arq
+{
     char *nomeArquivo;
     ListaOcorr *ocorrencias;
     struct Arq *prox;
-}tArq;
+} Arq;
 
-typedef struct listaArq{
-    tArq *primeiro;
-    tArq *ultimo;
-}tListaArq;
+typedef struct ListaArq
+{
+    Arq *primeiro;
+    Arq *ultimo;
+} ListaArq;
 
 /* Estrutura de dados que abstrai uma palavra do texto */
 typedef struct Palavra
 {
     char *string;
-    tListaArq *arquivos;
+    ListaArq *arquivos;
 } Palavra;
+
 /*
 char *get_string(Palavra *palavra);
 
@@ -70,7 +74,6 @@ void imprime_vet_h(int *vet, int tamVet);
 
 // Libera os elementos de uma palavra
 void libera_Palavra(Palavra *palavra);
-
 
 SentRandPal *cria_RandPal();
 
