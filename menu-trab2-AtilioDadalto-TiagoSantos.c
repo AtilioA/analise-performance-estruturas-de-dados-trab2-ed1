@@ -39,7 +39,6 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
     srand((unsigned int)time.tv_usec);
 
     printf("AVALIA DESEMPENHO\n");
-    printf("Criando estrutura...\n");
     if (estrutura == LISTA)
     {
         printf("AVALIA DESEMPENHO LISTA\n");
@@ -64,20 +63,23 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
                 insere_Lista(palavra, lista);
             }
+            printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
         }
         t = clock() - t;
         double tempoInsercaoLista = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
+        printf("Preenchendo vetor de palavras aleatorias para busca...\n");
         for (i = 0; i < n; i++)
         {
             // Carregando o vetor com palavras aleatórias da lista
             strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
         }
+        printf("Vetor de palavras aleatorias preenchido.\n");
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nLISTA ENCADEADA\n\n\n");
-        imprime_Lista(lista);
+        // imprime_Lista(lista);
 
         printf("BUSCAS ALEATORIAS:\n");
         t = clock();
@@ -128,16 +130,19 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
                 insere_ArvBin(arvore, palavra);
             }
+            printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
         }
         t = clock() - t;
         double tempoInsercaoArvore = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
+        printf("Preenchendo vetor de palavras aleatorias para busca...\n");
         for (i = 0; i < n; i++)
         {
             // Carregando o vetor com palavras aleatórias da arvore
             strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
         }
+        printf("Vetor de palavras aleatorias preenchido.\n");
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nARVORE BINARIA\n\n\n");
@@ -192,16 +197,19 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
                 insere_ArvAVL(avl, palavra);
             }
+            printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
         }
         t = clock() - t;
         double tempoInsercaoAVL = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
+        printf("Preenchendo vetor de palavras aleatorias para busca...\n");
         for (i = 0; i < n; i++)
         {
             // Carregando o vetor com palavras aleatórias da avl
             strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
         }
+        printf("Vetor de palavras aleatorias preenchido.\n");
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nARVORE AVL\n\n\n");
@@ -256,16 +264,19 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
                 insere_ArvTrie(palavra, trie);
             }
+            printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
         }
         t = clock() - t;
         double tempoInsercaoTrie = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
+        printf("Preenchendo vetor de palavras aleatorias para busca...\n");
         for (i = 0; i < n; i++)
         {
             // Carregando o vetor com palavras aleatórias da trie
             strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
         }
+        printf("Vetor de palavras aleatorias preenchido.\n");
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nARVORE TRIE\n\n\n");
@@ -320,16 +331,19 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 palavra = cria_Palavra(argv[i + 2], strTexto, posicao);
                 insere_Hash(palavra, tabela);
             }
+            printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
         }
         t = clock() - t;
         double tempoInsercaoHash = ((double)t) / CLOCKS_PER_SEC; // in seconds
 
+        printf("Preenchendo vetor de palavras aleatorias para busca...\n");
         for (i = 0; i < n; i++)
         {
             // Carregando o vetor com palavras aleatórias da tabela
             strcpy(vetBusca[i], busca_RandPal(rand() % (palavrasAleatorias->qtd), palavrasAleatorias));
         }
+        printf("Vetor de palavras aleatorias preenchido.\n");
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nTABELA HASH\n\n\n");
