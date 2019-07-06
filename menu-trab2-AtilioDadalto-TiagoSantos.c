@@ -92,7 +92,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nLISTA ENCADEADA\n\n\n");
-        imprime_Lista(lista);
+        // imprime_Lista(lista);
 
         printf("BUSCAS ALEATORIAS:\n");
         t = clock();
@@ -192,7 +192,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nARVORE BINARIA\n\n\n");
-        imprime_em_ordem_ArvBin(arvore);
+        // imprime_em_ordem_ArvBin(arvore);
 
         printf("BUSCA ALEATORIA:\n");
         t = clock();
@@ -291,7 +291,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nARVORE AVL\n\n\n");
-        imprime_em_ordem_ArvAVL(avl);
+        // imprime_em_ordem_ArvAVL(avl);
 
         t = clock();
         printf("BUSCA ALEATORIA:\n");
@@ -390,7 +390,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nARVORE TRIE\n\n\n");
-        imprime_ArvTrie(trie);
+        // imprime_ArvTrie(trie);
 
         printf("BUSCA ALEATORIA:\n");
         t = clock();
@@ -487,7 +487,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 
         printf("\n\nLEITURA CONCLUIDA! IMPRIMINDO RESULTADOS:");
         printf("\n\nTABELA HASH\n\n\n");
-        imprime_Hash(tabela);
+        // imprime_Hash(tabela);
 
         printf("BUSCA ALEATORIA:\n");
         t = clock();
