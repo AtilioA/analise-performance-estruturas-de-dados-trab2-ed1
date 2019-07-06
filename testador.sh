@@ -34,8 +34,8 @@ tester_repeat(){
     # $3 = arquivos (serão carregados no argv juntos)
     # $4 = n de repetições para cada execução do programa
 
-    for busca in $1; do
-        for id in $2; do
+    for id in $2; do
+        for busca in $1; do
             echo -e "\n--------  BUSCA = $busca, ID = $id, ARQUIVOS = "$3", REPETIÇÕES = $4  --------\n"
             tester $busca $id "$3" $4
         done
