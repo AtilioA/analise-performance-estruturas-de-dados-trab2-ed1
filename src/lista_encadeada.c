@@ -1,8 +1,8 @@
-#include "../include/lista_encadeada.h"
-#include "../include/indexador.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../include/lista_encadeada.h"
+#include "../include/indexador.h"
 
 Lista *cria_Lista()
 {

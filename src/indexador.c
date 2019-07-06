@@ -91,7 +91,6 @@ void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre)
         return;
     }
 
-    Arq *ant = NULL;
     while (aux != NULL && strcmp(nomeArquivo, aux->nomeArquivo))
     {
         aux = aux->prox;
