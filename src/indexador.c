@@ -19,7 +19,7 @@ void imprime_Palavra(Palavra *palavra)
     while (aux != NULL)
     {
         printf("Arquivo: %s\n", aux->nomeArquivo);
-        CelulaOcorr *ocorres = aux->ocorrencias->primeiro;
+        CelulaOcorre *ocorres = aux->ocorrencias->primeiro;
         printf("Ocorrencias: ");
         while (ocorres != NULL)
         {
@@ -32,18 +32,18 @@ void imprime_Palavra(Palavra *palavra)
     printf("\n\n");
 }
 
-ListaOcorr *nova_Ocorrencias()
+ListaOcorre *nova_Ocorrencias()
 {
-    ListaOcorr *novo = malloc(sizeof(ListaOcorr));
+    ListaOcorre *novo = malloc(sizeof(ListaOcorre));
     novo->primeiro = NULL;
     novo->ultimo = NULL;
     novo->qtd = 0;
     return novo;
 }
 
-void insere_Ocorrencias(ListaOcorr *l, int ocorre)
+void insere_Ocorrencias(ListaOcorre *l, int ocorre)
 {
-    CelulaOcorr *nova = malloc(sizeof(CelulaOcorr));
+    CelulaOcorre *nova = malloc(sizeof(CelulaOcorre));
     nova->prox = NULL;
     nova->ocorreu = ocorre;
     if (l->primeiro == NULL)
@@ -109,10 +109,10 @@ void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre)
     insere_Ocorrencias(aux->ocorrencias, ocorre);
 }
 
-void libera_Ocorrencias(ListaOcorr *ocorres)
+void libera_Ocorrencias(ListaOcorre *ocorres)
 {
-    CelulaOcorr *ant = NULL;
-    CelulaOcorr *aux = ocorres->primeiro;
+    CelulaOcorre *ant = NULL;
+    CelulaOcorre *aux = ocorres->primeiro;
     while (aux != NULL)
     {
         ant = aux;
@@ -143,16 +143,16 @@ void libera_Palavra(Palavra *palavra)
     free(palavra);
 }
 
-SentRandPal *cria_RandPal()
+ListaRandPal *cria_RandPal()
 {
-    SentRandPal *novo = malloc(sizeof(SentRandPal));
+    ListaRandPal *novo = malloc(sizeof(ListaRandPal));
     novo->primeiro = NULL;
     novo->ultimo = NULL;
     novo->qtd = 0;
     return novo;
 }
 
-void insere_RandPal(char *strat, SentRandPal *l)
+void insere_RandPal(char *strat, ListaRandPal *l)
 {
     CelulaRandPal *palavra = malloc(sizeof(CelulaRandPal));
     palavra->string = malloc(sizeof(char) * strlen(strat) + 1);
@@ -169,7 +169,7 @@ void insere_RandPal(char *strat, SentRandPal *l)
     l->qtd++;
 }
 
-void libera_RandPal(SentRandPal *l)
+void libera_RandPal(ListaRandPal *l)
 {
     CelulaRandPal *ant;
     CelulaRandPal *aux = l->primeiro;
@@ -183,7 +183,7 @@ void libera_RandPal(SentRandPal *l)
     free(l);
 }
 
-char *busca_RandPal(int indice, SentRandPal *l)
+char *busca_RandPal(int indice, ListaRandPal *l)
 {
     CelulaRandPal *aux = l->primeiro;
     for (int i = 0; i < indice && i < l->qtd; i++)

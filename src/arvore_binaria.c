@@ -10,89 +10,6 @@ ArvBin *cria_ArvBin()
     return nova;
 }
 
-int esta_vazia_ArvBin(ArvBin *raiz)
-{
-    if (raiz == NULL)
-        return 1;
-    if (*raiz == NULL)
-        return 1;
-    return 0;
-}
-
-int eh_folha(No *no)
-{
-    if (no == NULL)
-    {
-        return 0;
-    }
-    else
-    {
-        return no->esq == no->dir == NULL;
-    }
-}
-
-/* Não lembro se está funcionando
-Conta o número de nós-folha de uma árvore binária
-retorna: Numero de nós folha
-*/
-int total_folha_ArvBin(ArvBin *raiz)
-{
-    int folhas = 0;
-    if (raiz != NULL && *raiz != NULL)
-    {
-        if (eh_folha(*raiz))
-        {
-            folhas++;
-        }
-        if ((*raiz)->esq != NULL)
-        {
-            int folhasEsq = total_folha_ArvBin(&((*raiz)->esq));
-        }
-        if ((*raiz)->dir != NULL)
-        {
-            int folhasDir = total_folha_ArvBin(&((*raiz)->dir));
-        }
-    }
-
-    return folhas;
-}
-
-/**
-Conta o número de folhas de uma árvore binária.
-retorna: Numero de nós folhas
-*/
-int total_folha_ArvBin(ArvBin *raiz);
-
-/*conta o número de nós de uma árvore binária. */
-int total_No_ArvBin(ArvBin *raiz)
-{
-    if (raiz == NULL)
-        return 0;
-    if (*raiz == NULL)
-        return 0;
-    int alt_esq = total_No_ArvBin(&((*raiz)->esq));
-    int alt_dir = total_No_ArvBin(&((*raiz)->dir));
-    return (alt_esq + alt_dir + 1);
-}
-/*
-* Imprime em pré-ordem /
-void imprime_pre_ordem_ArvBin(ArvBin *raiz)
-{
-    if (raiz != NULL)
-    {
-        printf("%d\n", (*raiz)->info);
-        if ((*raiz)->esq != NULL)
-        {
-            imprime_pre_ordem_ArvBin(&((*raiz)->esq));
-        }
-        if ((*raiz)->dir != NULL)
-        {
-            imprime_pre_ordem_ArvBin(&((*raiz)->dir));
-        }
-    }
-}
-*/
-// Imprime em-ordem
 void imprime_em_ordem_ArvBin(ArvBin *raiz)
 {
     if (raiz != NULL)
@@ -108,39 +25,6 @@ void imprime_em_ordem_ArvBin(ArvBin *raiz)
         }
     }
 }
-
-/*Imprime em pós-ordem
-void imprime_pos_ordem_ArvBin(ArvBin *raiz)
-{
-    if (raiz != NULL)
-    {
-        if ((*raiz)->esq != NULL)
-        {
-            imprime_pos_ordem_ArvBin(&((*raiz)->esq));
-        }
-        if ((*raiz)->dir != NULL)
-        {
-            imprime_pos_ordem_ArvBin(&((*raiz)->dir));
-        }
-        printf("%d\n", (*raiz)->info);
-    }
-}
-
-
-int altura_ArvBin(ArvBin *raiz)
-{
-    if (raiz == NULL)
-        return 0;
-    if (*raiz == NULL)
-        return 0;
-    int alt_esq = altura_ArvBin(&((*raiz)->esq));
-    int alt_dir = altura_ArvBin(&((*raiz)->dir));
-    if (alt_esq > alt_dir)
-        return (alt_esq + 1);
-    else
-        return (alt_dir + 1);
-}
-*/
 
 int insere_ArvBin(ArvBin *raiz, Palavra *palavra)
 {
@@ -229,16 +113,16 @@ Palavra *busca_ArvBin(ArvBin *raiz, char *strat)
 
 void libera_No(struct No *no)
 {
-    if (no == NULL)
-        return;
-    libera_Palavra(no->palavra);
-    libera_No(no->esq);
-    libera_No(no->dir);
-    free(no);
-    no = NULL;
+    if (no != NULL)
+    {
+        libera_Palavra(no->palavra);
+        libera_No(no->esq);
+        libera_No(no->dir);
+        free(no);
+        no = NULL;
+    }
 }
 
-/** Libera em pós-ordem */
 void libera_ArvBin(ArvBin *raiz)
 {
     if (raiz == NULL)

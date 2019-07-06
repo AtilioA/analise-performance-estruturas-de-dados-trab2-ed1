@@ -8,12 +8,12 @@ ArvTrie *cria_ArvTrie()
 {
     ArvTrie *nova = (ArvTrie *)malloc(sizeof(ArvTrie));
 
-    *nova = cria_no();
+    *nova = cria_NoTrie();
 
     return nova;
 }
 
-NoTrie *cria_no()
+NoTrie *cria_NoTrie()
 {
     NoTrie *novo = malloc(sizeof(NoTrie));
 
@@ -80,7 +80,7 @@ void insere_ArvTrie(Palavra *palavra, ArvTrie *raiz)
         int ind = indice_ArvTrie(palavra->string[i]);
         if (aux->filhos[ind] == NULL)
         {
-            aux->filhos[ind] = cria_no();
+            aux->filhos[ind] = cria_NoTrie();
         }
         aux = aux->filhos[ind];
         aux->letra = palavra->string[i];

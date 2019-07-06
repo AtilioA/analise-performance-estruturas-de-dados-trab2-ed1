@@ -16,66 +16,27 @@ typedef struct No
     int altura;
 } No;
 
-/**
-Contem um inteiro e dois apontadores (esquerda/direita)
-*/
-typedef struct No *ArvBin;
+typedef struct No *ArvBin; // raiz
 
-/**
-Inicializa a árvore e deixa a raiz NULL
-retorna: Raiz alocada e apontada para NULL
-*/
+// Inicializa a árvore e deixa a raiz NULL, retornando a raiz alocada
 ArvBin *cria_ArvBin();
 
-/**
-Insere 'valor' na árvore utilizando a regra que o filho esquerdo é menor que a raiz que é menor o filho direito.
-
-Retorna: 1 em caso de sucesso.
-*/
+// Insere uma Palavra na árvore, retornando 1 em caso de sucesso.
 int insere_ArvBin(ArvBin *raiz, Palavra *palavra);
-int remove_ArvBin(ArvBin *raiz, int valor);
-
-/**
-Pesquisa um valor a partir da árvore raiz
-retorna 1 se encontrar o valor e 0 caso não encontre
-*/
-Palavra *busca_ArvBin(ArvBin *raiz, char *strat);
-
-/**
-Verifica se a árvore está vazia
-*/
-int estaVaziaArvBin(ArvBin *raiz);
-
-int eh_Folha(No *no);
 
 /*
-Conta o número de nós não-folha de uma árvore binária
-retorna: Numero de nós não folha
+Pesquisa uma string a partir da árvore raiz
+retorna a Palavra se encontrar e NULL caso não encontre
 */
-int totalNaoFolhaArvbin(ArvBin *raiz);
-
-/**
-Conta o número de folhas de uma árvore binária.
-retorna: Numero de nós folhas
-*/
-int total_folha_ArvBin(ArvBin *raiz);
-
-/*conta o número de nós de uma árvore binária. */
-int total_No_ArvBin(ArvBin *raiz);
-
-/** Imprime em pre-ordem */
-// void imprime_pre_ordem_ArvBin(ArvBin *raiz);
+Palavra *busca_ArvBin(ArvBin *raiz, char *strat);
 
 /** Imprime em-ordem */
 void imprime_em_ordem_ArvBin(ArvBin *raiz);
 
-/** Imprime em pós-ordem */
-void imprime_pos_ordem_ArvBin(ArvBin *raiz);
-
-/**
-Libera a árvore binária da memória
-*/
+// Libera a árvore binária da memória
+// Libera um nó
 void libera_No(struct No *no);
+// Libera em pós-ordem
 void libera_ArvBin(ArvBin *raiz);
 
 #endif
