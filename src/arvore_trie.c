@@ -44,8 +44,11 @@ void libera_NosTrie(ArvTrie *raiz)
 
 void libera_ArvTrie(ArvTrie *raiz)
 {
-    libera_NosTrie(raiz);
-    free(raiz);
+    if (raiz != NULL)
+    {
+        libera_NosTrie(raiz);
+        free(raiz);
+    }
 }
 
 int indice_ArvTrie(char c)

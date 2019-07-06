@@ -95,20 +95,26 @@ int insere_ArvBin(ArvBin *raiz, Palavra *palavra)
 
 Palavra *busca_ArvBin(ArvBin *raiz, char *strat)
 {
-    if (raiz == NULL)
-        return 0;
-    struct No *atual = *raiz;
-    while (atual != NULL)
+    if (raiz != NULL)
     {
-        if (!strcasecmp(atual->palavra->string, strat))
+        struct No *atual = *raiz;
+        while (atual != NULL)
         {
-            return atual->palavra;
+            if (!strcasecmp(atual->palavra->string, strat))
+            {
+                return atual->palavra;
+            }
+            if (strcasecmp(strat, atual->palavra->string) > 0)
+            {
+                atual = atual->dir;
+            }
+            else
+            {
+                atual = atual->esq;
+            }
         }
-        if (strcasecmp(strat, atual->palavra->string) > 0)
-            atual = atual->dir;
-        else
-            atual = atual->esq;
     }
+
     return NULL;
 }
 
@@ -126,10 +132,9 @@ void libera_No(struct No *no)
 
 void libera_ArvBin(ArvBin *raiz)
 {
-    if (raiz == NULL)
+    if (raiz != NULL)
     {
-        return;
+        libera_No(*raiz);
+        free(raiz);
     }
-    libera_No(*raiz);
-    free(raiz);
 }

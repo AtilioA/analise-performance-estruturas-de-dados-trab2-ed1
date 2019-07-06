@@ -241,7 +241,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         }
         */
 
-        printf("TEMPO DE INSERCAO ARVORE binaria: %f\n", tempoInsercaoArvore);
+        printf("TEMPO DE INSERCAO ARVORE BINARIA: %f\n", tempoInsercaoArvore);
         printf("TEMPO DE BUSCA ARVORE BINARIA: %f\n\n", tempoBuscaArvore);
 
         libera_ArvBin(arvore);
@@ -637,6 +637,19 @@ void menu(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
+    /* Validação de argumentos de entrada */
+    if (argv[1] == NULL)
+    {
+        printf("Entrada de buscas invalida.\n");
+        exit(1);
+    }
+
+    if (atoi(argv[1]) < 1)
+    {
+        printf("Numero de buscas invalido.\n");
+        exit(1);
+    }
+
     menu(argc, argv);
     return 0;
 }
