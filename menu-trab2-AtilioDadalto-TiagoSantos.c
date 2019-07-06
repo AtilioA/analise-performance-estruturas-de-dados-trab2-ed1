@@ -32,7 +32,7 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
 
     char vetBusca[n][TAM_STRING]; // Vetor para busca de palavras
     FILE *fs;
-    SentRandPal *palavrasAleatorias = cria_RandPal(); // Lista para busca de palavras
+    ListaRandPal *palavrasAleatorias = cria_RandPal(); // Lista para busca de palavras
     Palavra *palavraInserida;
     printf("Lista de busca de palavras criada com sucesso.\n");
 

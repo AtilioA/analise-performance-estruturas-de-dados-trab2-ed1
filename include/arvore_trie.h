@@ -16,18 +16,26 @@ typedef struct NoTrie
 {
     char letra;
     Palavra *palavra;
-    struct NoTrie *filhos[TAM_TRIE]; // ponteiro?
+    struct NoTrie *filhos[TAM_TRIE];
 } NoTrie;
 
 typedef NoTrie *ArvTrie; // raiz
 
-void insere_trie(Palavra *palavra, ArvTrie *raiz);
+// Insere uma Palavra na árvore trie
+void insere_ArvTrie(Palavra *palavra, ArvTrie *raiz);
 
+// Inicializa uma árvore trie;
 ArvTrie *cria_ArvTrie();
-NoTrie *cria_no();
+
+// Inicializa um nó de arvore trie
+NoTrie *cria_NoTrie();
+
+// Libera os elementos dos nós da árvore trie
 void libera_NosTrie(ArvTrie *raiz);
+
+// Libera os elementos dos nós da árvore trie
 void libera_ArvTrie(ArvTrie *raiz);
-void insere_trie(Palavra *palavra, ArvTrie *raiz);
+
 Palavra *busca_ArvTrie(ArvTrie *raiz, char *strat);
 
 #endif

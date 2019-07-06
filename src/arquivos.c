@@ -5,8 +5,12 @@
 #include "../include/arquivos.h"
 
 #define TAM_STRING 80
-#define _STRING_BUFFER_ TAM_STRING
-#define UNUSED ".,!? "
+
+int arquivo_vazio(FILE *f)
+{
+    fgetc(f);
+    return feof(f);
+}
 
 FILE *le_arquivo(char *string)
 {
@@ -17,51 +21,16 @@ FILE *le_arquivo(char *string)
         printf("Erro na leitura do arquivo.\n");
         return NULL;
     }
+    else if (arquivo_vazio(f))
+    {
+        printf("Arquivo vazio.\n");
+        fclose(f);
+        return NULL;
+    }
 
     return f;
 }
 
-int eh_valido(char c)
-{
-    for (int i = 0; i < strlen(UNUSED); i++)
-    {
-        if (c == UNUSED[i])
-        {
-            return 0;
-        }
-    }
-
-    return 1;
-}
-
-// OUTRA VERSÃO DA le_palavra QUE FIZ COM RENAN
-char *le_palavra_file(FILE *f, char *str)
-{
-    char c;
-    int i = 0;
-
-    while (((c = fgetc(f)) != EOF) && !isalpha(c));
-
-    if (c != EOF)
-    {
-        str[i++] = c;
-    }
-    else
-    {
-        return NULL;
-    }
-
-    while (((c = fgetc(f)) != EOF) && isalpha(c))
-    {
-        str[i++] = c;
-    }
-
-    str[i] = '\0';
-
-    return str;
-}
-
-// Lê uma palavra do arquivo, retorna sua posição diretamente e sua string por referência
 int le_palavra(FILE *f, char *str)
 {
     int i = 0;
