@@ -109,18 +109,6 @@ void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre)
     insere_Ocorrencias(aux->ocorrencias, ocorre);
 }
 
-/*
-Palavra *cria_Palavra(char *string, int ocorre)
-{
-    Palavra *nova = (Palavra *)malloc(sizeof(Palavra)); // ponteiro?
-    nova->string = malloc(sizeof(char) * strlen(string) + 1);
-    nova->ocorrencias = nova_Ocorrencias();
-    nova->ocorrencias->qtd = 1;
-    strcpy(nova->string, string);
-    insere_Ocorrencias(nova->ocorrencias, ocorre);
-    return nova;
-}
-*/
 void libera_Ocorrencias(ListaOcorr *ocorres)
 {
     CelulaOcorr *ant = NULL;
