@@ -355,7 +355,7 @@ tags
 
 
 indexador
-txt/enwik9.txt
-txt/azbwiki-20190701-pages-articles-multistream.txt
-txt/EnWiki100mb.txt
 *.csv
+txt/MetadataWiki_600mb.txt
+txt/EnWiki_100mb.txt
+txt/EnWiki_1gb.txt
