@@ -6,33 +6,30 @@
 
 #define TAM_STRING 80
 
-int arquivo_vazio(FILE *f)
+int arquivo_vazio(char *nomeArquivo)
 {
+    FILE *f = fopen(nomeArquivo, "r");
+
     fgetc(f);
-    return feof(f);
+    int eof = feof(f);
+
+    fclose(f);
+    return eof;
 }
 
-FILE *le_arquivo(char *string)
+FILE *le_arquivo(char *nomeArquivo)
 {
-    FILE *f = fopen(string, "r"); // abre apenas para leitura
+    FILE *f = fopen(nomeArquivo, "r"); // abre apenas para leitura
 
     if (f == NULL)
     {
         printf("Erro na leitura do arquivo.\n");
         return NULL;
     }
-    else if (arquivo_vazio(f))
+    else if (arquivo_vazio(nomeArquivo))
     {
         printf("Arquivo vazio.\n");
         fclose(f);
-        return NULL;
-    }
-
-    f = fopen(string, "r"); // abre novamente para ler primeiro caractere
-
-    if (f == NULL)
-    {
-        printf("Erro na leitura do arquivo.\n");
         return NULL;
     }
 
