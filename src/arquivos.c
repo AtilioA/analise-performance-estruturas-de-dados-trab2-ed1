@@ -28,6 +28,14 @@ FILE *le_arquivo(char *string)
         return NULL;
     }
 
+    f = fopen(string, "r"); // abre novamente para ler primeiro caractere
+
+    if (f == NULL)
+    {
+        printf("Erro na leitura do arquivo.\n");
+        return NULL;
+    }
+
     return f;
 }
 

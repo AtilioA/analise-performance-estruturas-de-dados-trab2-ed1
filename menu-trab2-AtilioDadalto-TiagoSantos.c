@@ -561,6 +561,7 @@ void menu(int argc, char *argv[])
         printf("%s\n", argv[i + 2]);
     }
 
+    // while (escolhe != 0)
     {
         printf("OPCOES PARA INDEXACAO:\n");
         printf("1 - LISTA ENCADEADA\n");
