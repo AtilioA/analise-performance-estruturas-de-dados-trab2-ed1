@@ -8,8 +8,9 @@ tester(){
     COUNT=0
     INSERT_SUM=0
     SEARCH_SUM=0
+    BYTE_COUNT=0
     if [[ ! -e id_$2.csv ]]; then
-        echo "QTD DE BUSCAS,ARQUIVOS,N DE REPETIÇÕES,TEMPO DE INSERÇÃO,TEMPO DE BUSCA,BUSCA/QTD DE BUSCAS" > id_$2.csv
+        echo "QTD DE BUSCAS,ARQUIVOS,QTD DE BYTES,N DE REPETIÇÕES,TEMPO DE INSERÇÃO,TEMPO DE BUSCA,BUSCA/QTD DE BUSCAS" > id_$2.csv
     fi
     while [[ $COUNT -lt $4 ]]; do
         OUTPUT="$(echo $2 | ./indexador $1 $3)"
@@ -22,8 +23,11 @@ tester(){
     done
     MEAN_INSERT=$(echo "$INSERT_SUM / $4" | bc -l | sed 's/^\./0./')
     MEAN_SEARCH=$(echo "$SEARCH_SUM / $4" | bc -l | sed 's/^\./0./')
-    echo "MEDIA TEMPO INSERÇÃO = $MEAN_INSERT, MEDIA TEMPO BUSCA = $MEAN_SEARCH, BUSCA/QTD DE BUSCAS = $(echo "$MEAN_SEARCH / $1" | bc -l | sed 's/^\./0./')"
-    echo -e "$1,$3,$4,\"$(echo $MEAN_INSERT | tr . ,)\",\"$(echo $MEAN_SEARCH | tr . ,)\",\"$(echo "$MEAN_SEARCH / $1" | bc -l | sed 's/^\./0./' | tr . ,)\"" >> id_$2.csv
+    for file in $3; do
+        BYTE_COUNT=$(expr $BYTE_COUNT + $(wc -c $file | cut -d " " -f1))
+    done
+    echo "BYTES = $BYTE_COUNT, MEDIA TEMPO INSERÇÃO = $MEAN_INSERT, MEDIA TEMPO BUSCA = $MEAN_SEARCH, BUSCA/QTD DE BUSCAS = $(echo "$MEAN_SEARCH / $1" | bc -l | sed 's/^\./0./')"
+    echo -e "$1,$3,$BYTE_COUNT,$4,\"$(echo $MEAN_INSERT | tr . ,)\",\"$(echo $MEAN_SEARCH | tr . ,)\",\"$(echo "$MEAN_SEARCH / $1" | bc -l | sed 's/^\./0./' | tr . ,)\"" >> id_$2.csv
 }
 
 # agr pra multiplas buscas
@@ -38,6 +42,17 @@ tester_repeat(){
         for busca in $1; do
             echo -e "\n--------  BUSCA = $busca, ID = $id, ARQUIVOS = "$3", REPETIÇÕES = $4  --------\n"
             tester $busca $id "$3" $4
+        done
+    done
+}
+
+tester_repeat_each_file(){
+    for id in $2; do
+        for busca in $1; do
+            for file in $3; do
+                echo -e "\n--------  BUSCA = $busca, ID = $id, ARQUIVO = $file, REPETIÇÕES = $4  --------\n"
+                tester $busca $id $file $4
+            done
         done
     done
 }
