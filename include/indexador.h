@@ -58,8 +58,11 @@ typedef struct Palavra
 // Retorna a string de uma palavra
 char *get_string(Palavra *palavra);
 
-// Retorna a lista de ocorrencias de uma palavra
+// Retorna a lista de ocorrências de uma palavra
 ListaOcorre *get_posicoes(Palavra *palavra);
+
+// Insere um arquivo na lista encadeada de arquivos e a ocorrência da palavra
+void insere_Arq(char *nomeArquivo, ListaArq *arquivos, int ocorre);
 
 // Cria uma lista a string de uma palavra
 ListaOcorre *nova_Ocorre();

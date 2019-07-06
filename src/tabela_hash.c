@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <string.h>
+#include <ctype.h>
 #include "../include/tabela_hash.h"
 
 TabelaHash *cria_Hash()
