@@ -8,7 +8,7 @@
 
 #include "../include/indexador.h"
 
-// Lista encadeada que abstrai um conjunto de itens
+// Lista encadeada que abstrai um conjunto de Palavras
 typedef struct Celula
 {
     Palavra *palavra;
@@ -20,37 +20,28 @@ typedef struct Lista
     Celula *primeiro, *ultimo;
 } Lista;
 
-/* Funções para acessar estrutura opaca */
-// Retorna a quantidade de elementos da lista
-// int QuantidadeLista(Lista *lista);
 
 // Cria uma lista vazia
 Lista *cria_Lista();
-/*
-// Verifica se o lista está _vazia
-int esta_vazia_Lista(Lista *lista);
 
-// Cria uma célula vazia e retorna-a
-Celula *cria_Celula_vazia();
-
-// Verifica se uma carta existe na lista
-int existe_Palavra(Palavra *x, Lista *lista);
-int indice_Palavra(Palavra *x, Lista *lista);
-
-// Insere uma carta na lista
-void insere_Lista_antiga(Palavra *x, Lista *lista);
-*/
-
-// Imprime as cartas do lista
+// Imprime as Palavras da lista
 void imprime_Lista(Lista *lista);
-
-// Libera as células de um lista e define seu tamanho para 0
-void libera_Lista(Lista *lista);
 
 // Libera os elementos de uma célula
 void libera_Celula(Celula *celula);
 
+// Libera as células de uma lista
+void libera_Lista(Lista *lista);
+
+/* Insere uma Palavra na lista.
+ * Não insere palavras repetidas (percorre a lista em busca de repetição)
+ */
 void insere_Lista(Palavra *x, Lista *lista);
 
+/* Busca na lista se existe uma célula com uma Palavra com
+ * string igual à string de entrada,
+ * retorna a Palavra da célula se for encontrada
+ * NULL caso contrário
+ */
 Palavra *busca_Lista(char *strat, Lista *lista);
 #endif

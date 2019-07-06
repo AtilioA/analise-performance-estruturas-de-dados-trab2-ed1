@@ -4,69 +4,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
-int esta_vazia_Lista(Lista *lista)
+Lista *cria_Lista()
 {
-    return lista->primeiro == NULL;
+    Lista *nova = malloc(sizeof(Lista));
+
+    nova->primeiro = NULL;
+    nova->ultimo = NULL;
+
+    return nova;
 }
 
-Celula *cria_Celula_vazia()
-{
-    Celula *celulaVazia = (Celula *)malloc(sizeof(Celula));
-    celulaVazia->prox = NULL;
-
-    return celulaVazia;
-}
-
-int existe_palavra(Palavra *x, Lista *lista)
-{
-    if (esta_vazia_Lista(lista))
-    {
-        return 0;
-    }
-    Celula *atual = lista->primeiro;
-
-    while (atual != NULL)
-    {
-        if (get_string(x) == get_string(atual))
-        {
-            return 1;
-        }
-        atual = atual->prox;
-    }
-    return 0;
-}
-
-int indice_Palavra(Palavra *x, Lista *lista)
-{
-    if (esta_vazia_Lista(lista))
-    {
-        printf("Lista vazia.\n");
-        return -1;
-    }
-    Celula *atual = lista->primeiro;
-
-    int i = 0;
-    while (atual != NULL)
-    {
-        printf("%i <- oi\n", strcmp(get_string(x), get_string(atual)));
-        if (strcmp(get_string(x), get_string(atual)) == 0)
-        {
-            printf("achei\n");
-            return i;
-        }
-        atual = atual->prox;
-        i++;
-    }
-
-    return -1;
-}
-
-void libera_Celula(Celula *celula)
-{
-    libera_Palavra(celula->palavra);
-}
-*/
 void imprime_Lista(Lista *lista)
 {
     Celula *aux = lista->primeiro;
@@ -98,17 +45,7 @@ void libera_Lista(Lista *lista)
     free(lista);
 }
 
-Lista *cria_Lista()
-{
-    Lista *nova = malloc(sizeof(Lista));
-
-    nova->primeiro = NULL;
-    nova->ultimo = NULL;
-
-    return nova;
-}
-
-// modularizar essa bagaceira
+// Não insere palavras repetidas (percorre a lista em busca de repetição)
 void insere_Lista(Palavra *x, Lista *l)
 {
     Celula *nova = malloc(sizeof(Celula));

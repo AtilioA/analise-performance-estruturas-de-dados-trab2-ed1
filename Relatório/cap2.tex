@@ -9,7 +9,7 @@ Primeiramente, a estrutura que possivelmente seja a mais importante do projeto, 
 typedef struct Arq
 {
     char *nomeArquivo;
-    ListaOcorr *ocorrencias;
+    ListaOcorre *ocorrencias;
     struct Arq *prox;
 } Arq;
 
@@ -38,7 +38,7 @@ Primeiramente, uma das nossas estruturas mais simples, a lista encadeada, é def
         Palavra *palavra;
         struct celula *prox;
     } Celula;
-    
+
     typedef struct Lista
     {
         Celula *primeiro, *ultimo;
@@ -53,28 +53,28 @@ typedef struct ocorre
 {
     int ocorreu;
     struct ocorre *prox;
-} CelulaOcorr;
+} CelulaOcorre;
 
 typedef struct ocorrencias
 {
-    CelulaOcorr *primeiro;
-    CelulaOcorr *ultimo;
+    CelulaOcorre *primeiro;
+    CelulaOcorre *ultimo;
     int qtd;
-} ListaOcorr;
+} ListaOcorre;
 
 // Lista encadeada para pesquisar palavras aleatoriamente
-typedef struct celula_pal_rand
+typedef struct CelulaRandPal
 {
     char *string;
     struct pal_rand *prox;
 } CelulaRandPal;
 
-typedef struct sent_pal_rand
+typedef struct ListaRandPal
 {
     CelulaRandPal *primeiro;
     CelulaRandPal *ultimo;
     int qtd;
-} SentRandPal;
+} ListaRandPal;
 \end{lstlisting}
 
 

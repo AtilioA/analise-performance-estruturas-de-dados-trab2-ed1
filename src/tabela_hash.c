@@ -4,8 +4,6 @@
 #include <string.h>
 #include "../include/tabela_hash.h"
 
-// uma implementação diferenciada
-
 TabelaHash *cria_Hash()
 {
     TabelaHash *nova = malloc(sizeof(TabelaHash));
@@ -97,49 +95,3 @@ void libera_Hash(TabelaHash *tab)
     free(tab->pesos);
     free(tab);
 }
-
-/*
-void Imprime(TipoDicionario Tabela)
-{
-    int i;
-    for (i = 0; i < M; i++)
-    {
-        printf("%d: ", i);
-        if (!Vazia(&Tabela[i]))
-            imprime_Lista(Tabela[i]);
-        putchar('\n');
-    }
-}
-
-int n_elementos(TipoDicionario tabela)
-{
-    int i = 0, qtd = 0;
-
-    for (i = 0; i < M; i++)
-    {
-        qtd += tabela[i].qtd;
-    }
-
-    return qtd;
-}
-
-int n_colisoes(TipoDicionario tabela)
-{
-    int i = 0, colisoes = 0;
-
-    for (i = 0; i < M; i++)
-    {
-        colisoes += tabela[i].colisoes;
-    }
-
-    return colisoes;
-}
-
-float carga_pesada(TipoDicionario tabela)
-{
-    int qtd = n_elementos(tabela);
-
-    return (float)qtd / M;
-}
-
-*/
