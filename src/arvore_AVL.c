@@ -96,15 +96,15 @@ Palavra *busca_ArvAVL(ArvAVL *raiz, char *stringBuscada)
 }
 
 /* LR = Left rotation
- * RL = Right rotation
+ * RR = Right rotation
  * LRR = Left-right rotation
  * RLR = Right-left rotation
  */
 
 void rotacao_LR(ArvAVL *A)
 {
-    //printf("rotacao_LR\n");
     struct No *B;
+
     B = (*A)->esq;
     (*A)->esq = B->dir;
     B->dir = *A;
@@ -115,8 +115,8 @@ void rotacao_LR(ArvAVL *A)
 
 void rotacao_RR(ArvAVL *A)
 {
-    //printf("rotacao_RR\n");
     struct No *B;
+
     B = (*A)->dir;
     (*A)->dir = B->esq;
     B->esq = (*A);
@@ -132,7 +132,7 @@ void rotacao_LRR(ArvAVL *A)
 }
 
 void rotacao_RLR(ArvAVL *A)
-{ //RL
+{
     rotacao_LR(&(*A)->dir);
     rotacao_RR(A);
 }
