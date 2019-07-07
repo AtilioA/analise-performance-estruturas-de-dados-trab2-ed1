@@ -18,7 +18,7 @@ tester(){
         T_SEARCH=$(echo "$OUTPUT" | grep -w "TEMPO DE BUSCA" | cut -d ":" -f2)
         INSERT_SUM=$(echo "$T_INSERT + $INSERT_SUM" | bc -l)
         SEARCH_SUM=$(echo "$T_SEARCH + $SEARCH_SUM" | bc -l)
-        echo "RESULTADOS DA $(expr $COUNT + 1)ª EXECUÇÃO: T_Inserção = $T_INSERT, T_Busca = $T_SEARCH"
+        echo "RESULTADOS DA $(expr $COUNT + 1)ª EXECUÇÃO: T_Inserção = $T_INSERT | T_Busca = $T_SEARCH"
         COUNT=$(expr $COUNT + 1)
     done
     MEAN_INSERT=$(echo "$INSERT_SUM / $4" | bc -l | sed 's/^\./0./')
@@ -26,7 +26,7 @@ tester(){
     for file in $3; do
         BYTE_COUNT=$(expr $BYTE_COUNT + $(wc -c $file | cut -d " " -f1))
     done
-    echo "BYTES = $BYTE_COUNT, MEDIA TEMPO INSERÇÃO = $MEAN_INSERT, MEDIA TEMPO BUSCA = $MEAN_SEARCH, BUSCA/QTD DE BUSCAS = $(echo "$MEAN_SEARCH / $1" | bc -l | sed 's/^\./0./')"
+    echo "BYTES = $BYTE_COUNT | MEDIA TEMPO INSERÇÃO = $MEAN_INSERT | MEDIA TEMPO BUSCA = $MEAN_SEARCH BUSCA/QTD DE BUSCAS = $(echo "$MEAN_SEARCH / $1" | bc -l | sed 's/^\./0./')"
     echo -e "$1,$3,$BYTE_COUNT,$4,\"$(echo $MEAN_INSERT | tr . ,)\",\"$(echo $MEAN_SEARCH | tr . ,)\",\"$(echo "$MEAN_SEARCH / $1" | bc -l | sed 's/^\./0./' | tr . ,)\"" >> id_$2.csv
 }
 
