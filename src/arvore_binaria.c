@@ -45,7 +45,6 @@ int insere_ArvBin(ArvBin *raiz, Palavra *palavra)
 
         while (aux->esq != NULL || aux->dir != NULL)
         {
-
             if (strcasecmp(palavra->string, aux->palavra->string) < 0)
             {
                 if (aux->esq == NULL)
