@@ -59,15 +59,16 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                 printf("LIBERANDO ESTRUTURAS E ENCERRANDO EXECUCAO DO PROGRAMA.\n");
                 exit(1);
             }
-            if (fs != NULL)
+
+            printf("%io arquivo aberto com sucesso.\n", i + 1);
+
+            printf("Lendo %io arquivo...\n", i + 1);
+            while (!feof(fs))
             {
-                printf("%io arquivo aberto com sucesso.\n", i + 1);
+                posicao = le_palavra(fs, strTexto);
 
-                printf("Lendo %io arquivo...\n", i + 1);
-                while (!feof(fs))
+                if (posicao != -1)
                 {
-                    posicao = le_palavra(fs, strTexto);
-
                     // Preenchendo lista de palavras aleatórias
                     insere_RandPal(strTexto, palavrasAleatorias);
 
@@ -75,8 +76,9 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
                     palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
                     insere_Lista(palavraInserida, lista);
                 }
-                printf("%io arquivo lido.\n", i + 1);
             }
+            printf("%io arquivo lido.\n", i + 1);
+
             fclose(fs);
         }
         t = clock() - t;
@@ -171,12 +173,15 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             {
                 posicao = le_palavra(fs, strTexto);
 
-                // Preenchendo arvore de palavras aleatórias
-                insere_RandPal(strTexto, palavrasAleatorias);
+                    if (posicao != -1)
+                    {
+                    // Preenchendo arvore de palavras aleatórias
+                    insere_RandPal(strTexto, palavrasAleatorias);
 
-                // Preenchendo estruturas de dados do projeto
-                palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_ArvBin(arvore, palavraInserida);
+                    // Preenchendo estruturas de dados do projeto
+                    palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                    insere_ArvBin(arvore, palavraInserida);
+                }
             }
             printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
@@ -272,12 +277,15 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             {
                 posicao = le_palavra(fs, strTexto);
 
-                // Preenchendo avl de palavras aleatórias
-                insere_RandPal(strTexto, palavrasAleatorias);
+                    if (posicao != -1)
+                    {
+                    // Preenchendo avl de palavras aleatórias
+                    insere_RandPal(strTexto, palavrasAleatorias);
 
-                // Preenchendo estruturas de dados do projeto
-                palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_ArvAVL(avl, palavraInserida);
+                    // Preenchendo estruturas de dados do projeto
+                    palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                    insere_ArvAVL(avl, palavraInserida);
+                }
             }
             printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
@@ -371,14 +379,20 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             printf("Lendo %io arquivo...\n", i + 1);
             while (!feof(fs))
             {
+                if (posicao != -1)
+                {
                 posicao = le_palavra(fs, strTexto);
 
-                // Preenchendo trie de palavras aleatórias
-                insere_RandPal(strTexto, palavrasAleatorias);
+                    if (posicao != -1)
+                    {
+                    // Preenchendo trie de palavras aleatórias
+                    insere_RandPal(strTexto, palavrasAleatorias);
 
-                // Preenchendo estruturas de dados do projeto
-                palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_ArvTrie(palavraInserida, trie);
+                    // Preenchendo estruturas de dados do projeto
+                        palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                        insere_ArvTrie(palavraInserida, trie);
+                    }
+                }
             }
             printf("%io arquivo lido.\n", i + 1);
             fclose(fs);
@@ -472,12 +486,15 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
             {
                 posicao = le_palavra(fs, strTexto);
 
-                // Preenchendo tabela de palavras aleatórias
-                insere_RandPal(strTexto, palavrasAleatorias);
+                    if (posicao != -1)
+                    {
+                    // Preenchendo tabela de palavras aleatórias
+                    insere_RandPal(strTexto, palavrasAleatorias);
 
-                // Preenchendo estruturas de dados do projeto
-                palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
-                insere_Hash(palavraInserida, tabela);
+                    // Preenchendo estruturas de dados do projeto
+                    palavraInserida = cria_Palavra(argv[i + 2], strTexto, posicao);
+                    insere_Hash(palavraInserida, tabela);
+                }
             }
             printf("%io arquivo lido.\n", i + 1);
             fclose(fs);

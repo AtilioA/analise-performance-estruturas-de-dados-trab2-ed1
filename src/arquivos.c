@@ -52,7 +52,7 @@ int le_palavra(FILE *f, char *str)
 
     if (c == EOF)
     {
-        return 0;
+        return -1;
     }
     else
     {
