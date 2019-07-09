@@ -565,9 +565,9 @@ void menu(int argc, char *argv[])
     {
         printf("OPCOES PARA INDEXACAO:\n");
         printf("1 - LISTA ENCADEADA\n");
-        printf("2 - ÁRVORE BINÁRIA (NÃO BALANCEADA)\n");
-        printf("3 - ÁRVORE AVL\n");
-        printf("4 - ÁRVORE TRIE\n");
+        printf("2 - ARVORE BINARIA (NAO BALANCEADA)\n");
+        printf("3 - ARVORE AVL\n");
+        printf("4 - ARVORE TRIE\n");
         printf("5 - TABELA HASH\n");
         printf("----------------------------------\n");
         printf("6 - INDEXAR EM TODAS AS ESTRUTURAS\n");
