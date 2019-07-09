@@ -99,16 +99,6 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (int i = 0; i < n; i++)
         {
             palavraAleatoria = busca_Lista(vetBusca[i], lista);
-
-            if (palavraAleatoria != NULL)
-            {
-                // printf("PALAVRA ENCONTRADA.\n");
-                // imprime_Palavra(palavraAleatoria);
-            }
-            else
-            {
-                // printf("Palavra %s nao encontrada.\n", vetBusca[i]);
-            }
             printf("\n");
         }
         t = clock() - t;
@@ -201,16 +191,6 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (int i = 0; i < n; i++)
         {
             palavraAleatoria = busca_ArvBin(arvore, vetBusca[i]);
-
-            if (palavraAleatoria != NULL)
-            {
-                // printf("PALAVRA ENCONTRADA.\n");
-                // imprime_Palavra(palavraAleatoria);
-            }
-            else
-            {
-                // printf("Palavra %s nao encontrada.\n", vetBusca[i]);
-            }
             printf("\n");
         }
         t = clock() - t;
@@ -302,16 +282,6 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (int i = 0; i < n; i++)
         {
             palavraAleatoria = busca_ArvAVL(avl, vetBusca[i]);
-
-            if (palavraAleatoria != NULL)
-            {
-                // printf("PALAVRA ENCONTRADA.\n");
-                // imprime_Palavra(palavraAleatoria);
-            }
-            else
-            {
-                // printf("Palavra %s nao encontrada.\n", vetBusca[i]);
-            }
             printf("\n");
         }
         t = clock() - t;
@@ -403,16 +373,6 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (int i = 0; i < n; i++)
         {
             palavraAleatoria = busca_ArvTrie(trie, vetBusca[i]);
-
-            if (palavraAleatoria != NULL)
-            {
-                // printf("PALAVRA ENCONTRADA.\n");
-                // imprime_Palavra(palavraAleatoria);
-            }
-            else
-            {
-                // printf("Palavra %s nao encontrada.\n", vetBusca[i]);
-            }
             printf("\n");
         }
         t = clock() - t;
@@ -502,16 +462,6 @@ void AvaliaDesempenho(int n, int estrutura, int argc, char *argv[])
         for (int i = 0; i < n; i++)
         {
             palavraAleatoria = busca_Hash(vetBusca[i], tabela);
-
-            if (palavraAleatoria != NULL)
-            {
-                // printf("PALAVRA ENCONTRADA.\n");
-                // imprime_Palavra(palavraAleatoria);
-            }
-            else
-            {
-                // printf("Palavra %s nao encontrada.\n", vetBusca[i]);
-            }
             printf("\n");
         }
 
