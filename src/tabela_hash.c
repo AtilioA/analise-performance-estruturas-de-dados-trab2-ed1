@@ -14,8 +14,6 @@ TabelaHash *cria_Hash()
         nova->hash[i] = cria_ArvAVL();
     }
 
-    nova->colisoes = 0;
-    nova->qtd = 0;
     nova->pesos = lista_Pesos();
 
     return nova;
@@ -56,12 +54,7 @@ void insere_Hash(Palavra *palavra, TabelaHash *tab)
     {
         indice = (-1) * indice;
     }
-    if (*(tab->hash[indice]) != NULL)
-    {
-        tab->colisoes++;
-    }
     insere_ArvAVL(tab->hash[indice], palavra);
-    tab->qtd++;
 }
 
 void imprime_Hash(TabelaHash *tab)

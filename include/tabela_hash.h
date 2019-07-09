@@ -17,8 +17,6 @@
 typedef struct tabelahash
 {
     ArvAVL *hash[TAM_HASH];
-    int colisoes;
-    int qtd;
     int *pesos;
 } TabelaHash;
 

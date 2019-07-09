@@ -86,7 +86,6 @@ void insere_ArvTrie(Palavra *palavra, ArvTrie *raiz)
             aux->filhos[ind] = cria_NoTrie();
         }
         aux = aux->filhos[ind];
-        aux->letra = palavra->string[i];
     }
 
     if (aux->palavra == NULL)

@@ -14,7 +14,6 @@
 
 typedef struct NoTrie
 {
-    char letra;
     Palavra *palavra;
     struct NoTrie *filhos[TAM_TRIE];
 } NoTrie;
