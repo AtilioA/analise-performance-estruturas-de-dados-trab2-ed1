@@ -1,5 +1,5 @@
 /* Esta biblioteca contém o código que implementa funções mais básicas
- * relevantes ao TAD lista encadeada para o indexador de arquivos.
+ * relevantes ao indexador de arquivos, assim como TADs específicas a este.
  */
 
 // Guard para evitar dupla inclusão
