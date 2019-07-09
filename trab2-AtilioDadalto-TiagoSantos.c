@@ -641,12 +641,16 @@ int main(int argc, char *argv[])
     if (argv[1] == NULL)
     {
         printf("Entrada de buscas invalida.\n");
+        printf("Modo de uso (Linux):\n");
+        printf("./indexador [n buscas] [arquivo 1] [arquivo 2] ... [arquivo n]\n");
         exit(1);
     }
 
     if (atoi(argv[1]) < 0)
     {
         printf("Numero de buscas invalido.\n");
+        printf("Modo de uso (Linux):\n");
+        printf("./indexador [n buscas] [arquivo 1] [arquivo 2] ... [arquivo n]\n");
         exit(1);
     }
 
