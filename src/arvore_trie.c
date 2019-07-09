@@ -125,7 +125,7 @@ Palavra *busca_ArvTrie(ArvTrie *raiz, char *strat)
 
 void imprime_ArvTrie(ArvTrie *raiz)
 {
-    if ((*raiz) != NULL && raiz == NULL)
+    if ((*raiz) != NULL && raiz != NULL)
     {
         for (int i = 0; i < TAM_TRIE; i++)
         {
